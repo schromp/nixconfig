@@ -55,3 +55,5 @@ k.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current change
 k.set("n", "<C-t>", ":ToggleTerm<CR>")
 
 k.set("n", "<leader>h", ":nohlsearch<CR>")
+
+

@@ -30,7 +30,7 @@ in
       # LSPs
       ccls
       rnix-lsp
-      lua-language-server
+      sumneko-lua-language-server
       rust-analyzer
     ];
 

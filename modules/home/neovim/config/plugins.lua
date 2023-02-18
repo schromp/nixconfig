@@ -12,9 +12,13 @@ local telescope_actions = require("telescope.actions")
 telescope.setup {
     defaults = {
         mappings = {
+          n = {
+            ["<C-q>"] = telescope_actions.send_selected_to_qflist + telescope_actions.open_qflist, -- send selected to quickfixlist
+          },
+          i = {
             ["<C-k>"] = telescope_actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = telescope_actions.move_selection_next, -- move to next result
-            ["<C-q>"] = telescope_actions.send_selected_to_qflist + telescope_actions.open_qflist, -- send selected to quickfixlist
+          }
         }
     }
 }
@@ -72,4 +76,4 @@ autopairs.setup {
 }
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_dine())
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

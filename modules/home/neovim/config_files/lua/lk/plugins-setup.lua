@@ -120,8 +120,6 @@ return packer.startup(function(use)
 
 	use("ggandor/leap.nvim") -- leap into code
 
-	use("lewis6991/gitsigns.nvim") -- git: show line modifications on left hand side
-
 	use("norcalli/nvim-colorizer.lua")
 
 	use("folke/which-key.nvim")

@@ -5,7 +5,6 @@ require('cheatsheet').setup()
 require('Comment').setup()
 require('crates').setup()
 
-
 -- Telescope
 local telescope = require('telescope')
 local telescope_actions = require("telescope.actions")

@@ -52,7 +52,7 @@ k.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help 
 
 k.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
-k.set("n", "<C-t>", ":ToggleTerm<CR>")
+-- k.set("n", "<C-t>", ":ToggleTerm<CR>")
 
 k.set("n", "<leader>h", ":nohlsearch<CR>")
 

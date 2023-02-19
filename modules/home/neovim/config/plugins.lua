@@ -4,6 +4,7 @@ require('which-key').setup()
 require('cheatsheet').setup()
 require('Comment').setup()
 require('crates').setup()
+require('leap').add_default_mappings()
 
 -- Telescope
 local telescope = require('telescope')
@@ -11,13 +12,13 @@ local telescope_actions = require("telescope.actions")
 telescope.setup {
     defaults = {
         mappings = {
-          n = {
-            ["<C-q>"] = telescope_actions.send_selected_to_qflist + telescope_actions.open_qflist, -- send selected to quickfixlist
-          },
-          i = {
-            ["<C-k>"] = telescope_actions.move_selection_previous, -- move to prev result
-            ["<C-j>"] = telescope_actions.move_selection_next, -- move to next result
-          }
+            n = {
+                ["<C-q>"] = telescope_actions.send_selected_to_qflist + telescope_actions.open_qflist, -- send selected to quickfixlist
+            },
+            i = {
+                ["<C-k>"] = telescope_actions.move_selection_previous, -- move to prev result
+                ["<C-j>"] = telescope_actions.move_selection_next, -- move to next result
+            }
         }
     }
 }
@@ -51,6 +52,7 @@ nvimtree.setup {
 
 -- Lualine
 local lualine = require('lualine')
+local navic = require("nvim-navic")
 lualine.setup {
     options = {
         theme = "catppuccin"
@@ -63,15 +65,20 @@ lualine.setup {
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     },
+    winbar = {
+        lualine_c = {
+            { navic.get_location, cond = navic.is_available },
+        }
+    }
 }
 
 -- Autopairs
 local autopairs = require('nvim-autopairs')
 autopairs.setup {
-  check_ts = true, -- enable treesitter
-  ts_config = {
-    lua = { "string" }, -- dont add pairs in lua strings
-  }
+    check_ts = true, -- enable treesitter
+    ts_config = {
+        lua = { "string" }, -- dont add pairs in lua strings
+    }
 }
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')

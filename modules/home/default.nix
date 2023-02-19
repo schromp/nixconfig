@@ -8,6 +8,7 @@
     ./hyprland
     ./kitty
     ./neovim
+    ./zsh
     inputs.hyprland.homeManagerModules.default
   ];
 

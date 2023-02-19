@@ -18,6 +18,8 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withNodeJs = true;
+    withPython3 = true;
     extraPackages = with pkgs; [
       # here come lsps and other dependencies
 
@@ -28,7 +30,7 @@ in
       tree-sitter
 
       # LSPs
-      ccls
+      clang-tools
       rnix-lsp
       sumneko-lua-language-server
       rust-analyzer

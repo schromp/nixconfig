@@ -35,7 +35,11 @@
     vim
     gcc
     upower
+    htop
   ];
+
+  # for zsh autocompletions on systemlevel
+  environment.pathsToLink = [ "/share/zsh" ];
 
   services.upower.enable = true;
 

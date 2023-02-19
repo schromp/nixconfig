@@ -9,6 +9,7 @@
     ./kitty
     ./neovim
     ./zsh
+    ./tmux
     inputs.hyprland.homeManagerModules.default
   ];
 

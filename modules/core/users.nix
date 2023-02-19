@@ -5,7 +5,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     uid = 1000;
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
     initialPassword = "1234";
   };
 }

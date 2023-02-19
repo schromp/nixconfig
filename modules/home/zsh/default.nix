@@ -1,4 +1,7 @@
 { config, inputs, ... }: {
+
+  imports = [ ./starship.nix ];
+  
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -17,6 +20,7 @@
     '';
     shellAliases = {
       ".." = "cd ..";
+      update = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
     };
     oh-my-zsh = {
       enable = true;

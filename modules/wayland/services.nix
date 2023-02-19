@@ -7,12 +7,14 @@
       script = "${pkgs.seatd}/bin/seatd -g wheel";
       serviceConfig = {
         Type = "simple";
-	Restart = "always";
-	RestartSec = "1";
+      	Restart = "always";
+	      RestartSec = "1";
       };
       wantedBy = [ "multi-user.target" ];
     };
   };
+
+  security.rtkit.enable = true;
 
   services = {
     pipewire = {
@@ -23,7 +25,7 @@
       };
       wireplumber.enable = true;
       pulse.enable = true;
-      jack.enable = true;
+      # jack.enable = true;
     };
   };
 }

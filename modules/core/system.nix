@@ -30,7 +30,7 @@
     coreutils
     curl
     moreutils
-    pipewire
+    # pipewire
     wireplumber
     vim
     gcc

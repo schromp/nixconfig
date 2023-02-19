@@ -26,10 +26,10 @@
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         vaapiVdpau
-	libvdpau-va-gl
+	    libvdpau-va-gl
       ];
     };
-    pulseaudio.support32Bit = true;
+    # pulseaudio.support32Bit = true;
   };
 
   xdg.portal = {
@@ -42,7 +42,6 @@
   };
 
   sound = {
-    enable = true;
     mediaKeys.enable = true;
   };
 }

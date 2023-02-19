@@ -10,6 +10,7 @@
     ./neovim
     ./zsh
     ./tmux
+    ./lf
     inputs.hyprland.homeManagerModules.default
   ];
 

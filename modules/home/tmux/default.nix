@@ -26,6 +26,8 @@
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      bind -n C-l clear-history
+
     '';
   };
 }

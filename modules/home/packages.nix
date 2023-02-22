@@ -5,5 +5,12 @@
     kitty
     firefox
     cargo
+    lxappearance
+    wofi
+    gimp
+    pcmanfm
+
+    # theme stuff
+    bibata-cursors
   ];
 }

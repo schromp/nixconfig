@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
   services = {
     dbus = {
@@ -28,14 +28,14 @@
     pciutils
     binutils
     coreutils
-    curl
     moreutils
-    # pipewire
+    curl
     wireplumber
     vim
     gcc
     upower
     htop
+    inputs.eww.packages.x86_64-linux.eww-wayland
   ];
 
   # for zsh autocompletions on systemlevel
@@ -45,4 +45,7 @@
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  security.pam.services.swaylock = {};
+
 }

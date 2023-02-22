@@ -9,13 +9,22 @@
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland";
       ANKI_WAYLAND = "1";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_QPA_PLATFORM = "wayland;xcb";
       XDG_SESSION_TYPE = "wayland";
+      XDG_CURRENT_DESKTOP="Hyprland";
+      XDG_SESSION_DESKTOP="Hyprland";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+
+      GDK_SCALE = "2";
+      # XCURSOR_SIZE = "48";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+
       WLR_BACKEND = "vulkan";
       WLR_RENDERER = "vulkan";
-      #WLR_DRM_DEVICES = "/dev/dir/card1:/dev/dri/card0/";
+
+      # theming
+      XCURSOR_SIZE = "16";
+      XCURSOR_THEME = "Bibata Modern Ice";
     };
   };
 
@@ -40,6 +49,9 @@
       inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };
+
+  # this is needed for gtk stuff it seems
+  programs.dconf.enable = true;
 
   sound = {
     mediaKeys.enable = true;

@@ -63,6 +63,7 @@ in
       cmp-path
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
+      yuck-vim
 
       # themes
       catppuccin-nvim
@@ -83,6 +84,7 @@ in
       which-key-nvim
       cheatsheet-nvim
       lualine-nvim
+      dashboard-nvim
 
       # snippets
       luasnip

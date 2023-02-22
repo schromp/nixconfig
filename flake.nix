@@ -8,6 +8,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper"; 
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    eww.url = "github:elkowar/eww";
 
     home-manager = {
       url = "github:nix-community/home-manager";

@@ -1,13 +1,51 @@
+; workspaces
+; current window?
+; battery brightness volume aichat system notifications
+
 (defwindow example
            :monitor 0
            :geometry (geometry :x "0%"
-                               :y "20px"
-                               :width "90%"
-                               :height "30px"
+                               :y "5px"
+                               :width "99%"
+                               :height "1%"
                                :anchor "top center")
            :stacking "fg"
-           :reserve (struts :distance "40px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
-  "example content")
+           :exclusive true
+  (bar_layout))
 
+
+(defpoll time :interval "5s"
+  :initial `date +'{"hour":"%H","min":"%M"}'`
+  `date +'{"hour":"%H","min":"%M"}'`)
+
+
+(defwidget bar_layout []
+  (centerbox :orientation "horizontal" :class "bar-layout"
+    (left)
+    (middle)
+    (right)))
+
+(defwidget left []
+  (box :orientation "horizontal" :halign "start" (label :text "test2")))
+
+(defwidget middle []
+  (box :orientation "horizontal" :halign "middle" "middle1"))
+
+(defwidget right []
+  (box :orientation "horizontal" :halign "end"
+    (_battery :status {EWW_BATTERY.BAT0.status}
+                :battery {EWW_BATTERY.BAT0.capacity}
+                :charge "󰂄" :one "󰁹" :two "󰂂" :three "󰂀" :four "󰁿"
+                :five "󰁽" :six "󰁼" :seven "󰁺")))
+
+(defwidget _battery [battery status one two three
+                    four five six seven charge]
+  (box :class "bat-box" :space-evenly false :spacing 8
+    (label :text {status == 'Charging' ? charge :
+      battery < 15 ? seven :
+        battery < 30 ? six :
+          battery < 45 ? five :
+            battery < 60 ? four :
+              battery < 75 ? three :
+                battery < 95 ? two : one})
+        (label :text "${EWW_BATTERY.BAT0.capacity}")))

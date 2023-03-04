@@ -15,16 +15,15 @@
       XDG_SESSION_DESKTOP="Hyprland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
 
-      GDK_SCALE = "2";
-      # XCURSOR_SIZE = "48";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-
       WLR_BACKEND = "vulkan";
       WLR_RENDERER = "vulkan";
 
+      GDK_SCALE = "2";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+
       # theming
-      XCURSOR_SIZE = "16";
-      XCURSOR_THEME = "Bibata Modern Ice";
+      XCURSOR_SIZE = "24";
+      XCURSOR_THEME = "Bibata-Modern-Ice";
     };
   };
 

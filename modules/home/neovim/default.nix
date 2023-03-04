@@ -64,6 +64,7 @@ in
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
       yuck-vim
+      vim-parinfer
 
       # themes
       catppuccin-nvim

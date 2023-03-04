@@ -12,9 +12,20 @@
     udisks2.enable = true;
     xserver = {
       enable = false;
-      displayManager.sddm.enable = false;
+      displayManager.sddm = {
+        enable = false;
+        enableHidpi = true;
+        settings = {
+          General = {
+            DisplayServer = "wayland";
+          };
+        };
+      };
+
       desktopManager.plasma5.enable = false;
     };
+    upower.enable = true;
+
   };
 
   # add environment variables to the system
@@ -35,13 +46,13 @@
     gcc
     upower
     htop
+    glxinfo
     inputs.eww.packages.x86_64-linux.eww-wayland
   ];
 
   # for zsh autocompletions on systemlevel
   environment.pathsToLink = [ "/share/zsh" ];
 
-  services.upower.enable = true;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";

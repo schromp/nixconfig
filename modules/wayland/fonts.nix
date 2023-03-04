@@ -1,10 +1,9 @@
-{ config, pkgs, ... }:{
+{ config, pkgs, ... }: {
   fonts = {
     fonts = with pkgs; [
       material-icons
       material-design-icons
-      jetbrains-mono
-      ( nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono"];})
+      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
     ];
 
     enableDefaultFonts = false;
@@ -12,13 +11,14 @@
     fontconfig = {
       defaultFonts = {
         monospace = [
+          "JetBrainsMono Nerd Font"
           "Iosevka Term"
-	  "Iosevka Term Nerd Font Complete Mono"
-	  "Iosevka Nerd Font"
-  	  "Noto Color Emoji"
+          "Iosevka Term Nerd Font Complete Mono"
+          "Iosevka Nerd Font"
+          "Noto Color Emoji"
         ];
-        sansSerif = [ "Lexend" "Noto Color Emoji"];
-        serif = [ "Noto Serif" "Noto Color Emoji"];
+        sansSerif = [ "Lexend" "Noto Color Emoji" ];
+        serif = [ "Noto Serif" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };

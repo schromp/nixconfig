@@ -15,20 +15,21 @@ let
     };
     users.lk = ../modules/home; # where the user config lifes
   };
-in {
+in
+{
 
   xi = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux"; # double defined this FIX
     modules = [
-      { 
-        networking.hostName = "xi"; 
+      {
+        networking.hostName = "xi";
       }
       ./xi/hardware-configuration.nix
       bootloader
       core
       wayland
       hmModule
-      {inherit home-manager;} # why do we inherit this?
+      { inherit home-manager; } # this pulls down the config we have defined in let
     ];
     specialArgs = { inherit inputs; };
   };

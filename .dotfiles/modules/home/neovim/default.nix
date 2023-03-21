@@ -31,9 +31,13 @@ in
 
       # LSPs
       clang-tools
-      rnix-lsp
+      # rnix-lsp
+      nil
       sumneko-lua-language-server
       rust-analyzer
+      statix
+      nixpkgs-fmt
+      nil
     ];
 
     extraConfig = builtins.concatStringsSep "\n" [
@@ -61,10 +65,13 @@ in
       neodev-nvim
       cmp-buffer
       cmp-path
+
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
+
       yuck-vim
       vim-parinfer
+
 
       # themes
       catppuccin-nvim

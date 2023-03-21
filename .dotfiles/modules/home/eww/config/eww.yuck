@@ -18,7 +18,6 @@
   :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
 
-
 (defwidget bar_layout []
   (centerbox :orientation "horizontal" :class "bar-layout"
     (left)
@@ -26,7 +25,7 @@
     (right)))
 
 (defwidget left []
-  (box :orientation "horizontal" :halign "start" (label :text "test2")))
+  (box :orientation "horizontal" :halign "start" "start1"))
 
 (defwidget middle []
   (box :orientation "horizontal" :halign "middle" "middle1"))
@@ -37,6 +36,8 @@
                 :battery {EWW_BATTERY.BAT0.capacity}
                 :charge "󰂄" :one "󰁹" :two "󰂂" :three "󰂀" :four "󰁿"
                 :five "󰁽" :six "󰁼" :seven "󰁺")))
+
+; WIDGETS
 
 (defwidget _battery [battery status one two three
                     four five six seven charge]
@@ -49,3 +50,4 @@
               battery < 75 ? three :
                 battery < 95 ? two : one})
         (label :text "${EWW_BATTERY.BAT0.capacity}")))
+

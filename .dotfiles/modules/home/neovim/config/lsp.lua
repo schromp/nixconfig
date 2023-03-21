@@ -105,7 +105,12 @@ require('lspconfig')['clangd'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['rnix'].setup {
+-- require('lspconfig')['rnix'].setup {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+-- }
+require('lspconfig')['nix'].setup {
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,

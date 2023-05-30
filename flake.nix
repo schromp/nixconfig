@@ -8,6 +8,7 @@
     hyprpaper.url = "github:hyprwm/hyprpaper"; 
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     eww.url = "github:elkowar/eww";
+    #webcord.url = "github:fufexan/webcord-flake";
 
     home-manager = {
       url = "github:nix-community/home-manager";

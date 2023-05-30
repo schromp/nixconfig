@@ -17,7 +17,7 @@
     };
 
     # in here for me as an example
-    overlays = with inputs; [ ];
+    overlays = with inputs; [ nixpkgs-wayland.overlay ];
   };
 
   nix = {

@@ -20,5 +20,8 @@
     direnv
 
     python3
+
+    pavucontrol
+    swww
   ];
 }

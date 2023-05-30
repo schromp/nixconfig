@@ -10,8 +10,8 @@
       GDK_BACKEND = "wayland";
       ANKI_WAYLAND = "1";
       QT_QPA_PLATFORM = "wayland;xcb";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_CURRENT_DESKTOP="Hyprland";
+      #XDG_SESSION_TYPE = "wayland";
+      #XDG_CURRENT_DESKTOP="Hyprland";
       XDG_SESSION_DESKTOP="Hyprland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
 

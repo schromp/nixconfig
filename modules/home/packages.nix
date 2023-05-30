@@ -1,16 +1,23 @@
 { inputs, pkgs, config, ... }: {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    # command line utils
     zip
     unzip
-    kitty
-    firefox
     cargo
+    socat
+    jq
+
+    # gui programs
+    kitty
     wofi
     gimp
     pcmanfm
-    socat
-    jq
+    firefox
+    pavucontrol
+    swww
+    prismlauncher
+    inputs.webcord.packages.${pkgs.system}.default
 
     # theme stuff
     bibata-cursors
@@ -19,9 +26,9 @@
     glfw
     direnv
 
+    # language servers
     python3
 
-    pavucontrol
-    swww
+
   ];
 }

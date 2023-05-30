@@ -35,5 +35,28 @@ in
   };
 
   # Can add more systems here later
+tower = nixpkgs.lib.nixosSystem {
+  system = "x86_64-linux"; # double defined this FIX
+  modules = [
+    {
+      networking.hostName = "tower";
+    }
+    ./tower/hardware-configuration.nix
+    bootloader
+    core
+    wayland
+    hmModule
+    #nvidia
+    #hyprlandModule
+    hyprland.nixosModules.default
+    { programs.hyprland = {
+        enable = true;
+        nvidiaPatches = true;
+      };
+    }
+    { inherit home-manager; } # this pulls down the config we have defined in let
+  ];
+  specialArgs = { inherit inputs; };
+};
 
 }

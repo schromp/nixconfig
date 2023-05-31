@@ -18,6 +18,7 @@
     swww
     prismlauncher
     inputs.webcord.packages.${pkgs.system}.default
+    parted
 
     # theme stuff
     bibata-cursors
@@ -28,7 +29,5 @@
 
     # language servers
     python3
-
-
   ];
 }

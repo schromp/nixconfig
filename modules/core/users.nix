@@ -5,7 +5,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "audio" ];
     uid = 1000;
-    #shell = pkgs.zsh;
+    shell = pkgs.zsh;
     initialPassword = "1234";
   };
+  programs.zsh.enable = true;
 }

@@ -8,6 +8,7 @@
     socat
     jq
     lazygit
+    udiskie
 
     # gui programs
     kitty

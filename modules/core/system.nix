@@ -61,5 +61,6 @@
 
   security.pam.services.swaylock = {};
 
+  boot.supportedFilesystems = [ "ntfs" ];
 
 }

@@ -13,6 +13,7 @@
     ./lf
     ./themes
     ./eww
+    ./spotify
     inputs.hyprland.homeManagerModules.default
   ];
 

@@ -13,9 +13,5 @@
   #   brightnessctl
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-  #
-  #
-  #home.file.".config/eww/eww.scss".source = ./config/eww.scss;
-  #home.file.".config/eww/eww.yuck".source = ./config/eww.yuck;
 
 }

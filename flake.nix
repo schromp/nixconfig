@@ -10,6 +10,8 @@
     eww.url = "github:elkowar/eww";
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
     webcord.url = "github:fufexan/webcord-flake";
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";

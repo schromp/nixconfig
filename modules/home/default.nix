@@ -14,6 +14,7 @@
     ./themes
     ./eww
     ./spotify
+    ./fuzzel
     inputs.hyprland.homeManagerModules.default
   ];
 

@@ -41,6 +41,10 @@ tower = nixpkgs.lib.nixosSystem {
   modules = [
     {
       networking.hostName = "tower";
+      fileSystems."/mnt/shared_ssd" = {
+         device = "/dev/disk/by-uuid/2858FCBB58FC88B8";
+         fsType = "ntfs";
+      };
     }
     ./tower/hardware-configuration.nix
     bootloader

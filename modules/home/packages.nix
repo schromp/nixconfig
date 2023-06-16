@@ -1,5 +1,6 @@
 { inputs, pkgs, config, ... }: {
   nixpkgs.config.allowUnfree = true;
+  
   home.packages = with pkgs; [
     # command line utils
     zip
@@ -9,19 +10,28 @@
     jq
     lazygit
     udiskie
+    bitwarden-cli
 
     # gui programs
     kitty
     wofi
     gimp
     pcmanfm
+    nomacs
     firefox
     pavucontrol
     swww
-    prismlauncher
-    inputs.webcord.packages.${pkgs.system}.default
+    #inputs.webcord.packages.${pkgs.system}.default
+    webcord-vencord
     parted
     obs-studio
+    qt6.full
+
+    # Gaming
+    prismlauncher
+    lutris
+    winePackages.waylandFull
+    bottles
 
     # theme stuff
     bibata-cursors

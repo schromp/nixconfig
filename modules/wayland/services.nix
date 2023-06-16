@@ -16,6 +16,8 @@
 
   security.rtkit.enable = true;
 
+  services.onedrive.enable = true;
+
   services = {
     pipewire = {
       enable = true;

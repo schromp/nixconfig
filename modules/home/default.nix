@@ -15,6 +15,7 @@
     ./eww
     ./spotify
     ./fuzzel
+    ./direnv
     inputs.hyprland.homeManagerModules.default
   ];
 

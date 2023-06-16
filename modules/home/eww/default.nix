@@ -3,7 +3,8 @@
   programs.eww = {
     enable = true;
     package = inputs.eww.packages.x86_64-linux.eww-wayland;
-    configDir = config.lib.file.mkOutOfStoreSymlink ./config;
+    # configDir = config.lib.file.mkOutOfStoreSymlink ./config;
+    configDir = ./config;
   };
 
   home.packages = with pkgs; [

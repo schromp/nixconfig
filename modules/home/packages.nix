@@ -32,6 +32,7 @@
     lutris
     winePackages.waylandFull
     bottles
+    steam
 
     # theme stuff
     bibata-cursors

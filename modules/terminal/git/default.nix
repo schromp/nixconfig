@@ -1,10 +1,10 @@
-{lib, ...}:
+{lib, config, pkgs, ...}:
 with lib; let
-  cfg = options.modules.terminal.git;
+  cfg = config.modules.terminal.git;
 in {
-  cfg.enable = mkEnableOption "Enable git + lazygit";
+  options.modules.terminal.git.enable = mkEnableOption "Enable git + lazygit";
 
-  config.git = mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
 
@@ -17,6 +17,6 @@ in {
       lazygit
     ];
 
-    programs.gnupg.agent.enableSSHSupport = true;
+    # programs.gnupg.agent.enableSSHSupport = true;
   };
 }

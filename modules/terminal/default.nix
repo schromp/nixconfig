@@ -1,5 +1,5 @@
 { ... }: {
-    modules = [
+    imports = [
       ./git
       ./zsh
       ./tmux

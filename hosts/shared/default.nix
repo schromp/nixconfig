@@ -7,9 +7,6 @@
     config = {
       allowUnfree = true;
       allowBroken = false;
-      overlays = with inputs; [
-        prismlauncher.overlay # TODO: move away
-      ];
     };
   };
 

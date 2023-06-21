@@ -22,10 +22,9 @@
     };
   };
 
-  outputs = { self, ... }@inputs: let
-    system = "x86_64-linux";
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
-  in {
-    nixosConfigurations = import ./hosts inputs;
+  outputs = { self, home-manager, ... }@inputs: 
+  {
+    # nixosConfigurations = import ./hosts inputs;
+    nixosConfigurations = import ./testing/testing_caller.nix inputs;
   };
 }

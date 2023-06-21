@@ -1,5 +1,5 @@
 { config, ... }: {
-  modules = [
+  imports = [
     ./umlaute.nix
   ];
 }

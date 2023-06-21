@@ -1,9 +1,10 @@
 {
   lib,
+  config,
   ...
 }:
 with lib; let
-  cfg = options.modules.desktop.fuzzel;
+  cfg = config.modules.desktop.fuzzel;
 in {
   options.modules.desktop.fuzzel.enable = mkEnableOption "Enable fuzzel";
 

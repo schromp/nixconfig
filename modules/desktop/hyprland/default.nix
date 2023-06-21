@@ -1,19 +1,21 @@
 {
   lib,
   inputs,
+  home-manager,
+  username,
   ...
 }:
 with lib; let
-  cfg = options.modules.desktop.hyprland;
+  cfg = config.modules.desktop.hyprland;
 in {
   imports = [
-    ../pipewire/default.nix
-    ../../input/umlaute.nix
-    ../nvidia
-    ../fonts # WARN: these are not options but just set and install fonts
+    #../pipewire/default.nix
+    #../../input/umlaute.nix
+    #../nvidia
+    #../fonts # WARN: these are not options but just set and install fonts
   ];
 
-  cfg = {
+  options.modules.desktop.hyprland = {
     enable = mkEnableOption "Hyprland";
 
     nvidiaSupport = mkEnableOption "Enable Nvidia Support for Hyprland";
@@ -52,54 +54,54 @@ in {
       # from old config, leaving this for reference if something breaks
       # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
 
-      wayland.windowManager.hyprland = {
-        enable = true;
-        systemdIntegration = true;
-        extraConfig = builtins.readFile ./hyprland.conf;
-      };
+      home-manager.users.${username} = {
+        wayland.windowManager.hyprland = {
+          enable = true;
+          systemdIntegration = true;
+          extraConfig = builtins.readFile ./hyprland.conf;
+        };
 
-      xdg.portal = {
-        enable = true;
-        wlr.enable = true;
-        # xdgOpenUsePortal = true; makes programs open with xdg portal
-        extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
-        ];
-      };
+        xdg.portal = {
+          enable = true;
+          wlr.enable = true;
+          # xdgOpenUsePortal = true; makes programs open with xdg portal
+          extraPortals = [
+            pkgs.xdg-desktop-portal-gtk
+          ];
+        };
 
-      programs.dconf.enable = true; # TODO: why? my comment said gtk stuff
+        programs.dconf.enable = true; # TODO: why? my comment said gtk stuff
 
-      sound = {
-        mediaKeys.enable = true;
-      };
+        sound = {
+          mediaKeys.enable = true;
+        };
 
-      options.modules.desktop.pipwire.enable = true;
+        environment = {
+          # here we set all important wayland envs
+          variables = {
+            NIXOS_OZONE_WL = "1";
+            GDK_BACKEND = "wayland";
+            ANKI_WAYLAND = "1";
+            QT_QPA_PLATFORM = "wayland;xcb";
+            #XDG_SESSION_TYPE = "wayland";
+            #XDG_CURRENT_DESKTOP="Hyprland";
+            XDG_SESSION_DESKTOP = "Hyprland";
+            QT_QPA_PLATFORMTHEME = "qt5ct";
 
-      environment = {
-        # here we set all important wayland envs
-        variables = {
-          NIXOS_OZONE_WL = "1";
-          GDK_BACKEND = "wayland";
-          ANKI_WAYLAND = "1";
-          QT_QPA_PLATFORM = "wayland;xcb";
-          #XDG_SESSION_TYPE = "wayland";
-          #XDG_CURRENT_DESKTOP="Hyprland";
-          XDG_SESSION_DESKTOP = "Hyprland";
-          QT_QPA_PLATFORMTHEME = "qt5ct";
+            WLR_BACKEND = "vulkan";
+            WLR_RENDERER = "vulkan";
 
-          WLR_BACKEND = "vulkan";
-          WLR_RENDERER = "vulkan";
+            # TODO: move this into hidpi option
+            GDK_SCALE = "1";
+            QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
-          # TODO: move this into hidpi option
-          GDK_SCALE = "1";
-          QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+            # TODO: move this into theming module
+            # theming
+            XCURSOR_SIZE = "24";
+            XCURSOR_THEME = "Bibata-Modern-Ice";
 
-          # TODO: move this into theming module
-          # theming
-          XCURSOR_SIZE = "24";
-          XCURSOR_THEME = "Bibata-Modern-Ice";
-
-          MOZ_ENABLE_WAYLAND = "1";
+            MOZ_ENABLE_WAYLAND = "1";
+          };
         };
       };
     })

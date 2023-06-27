@@ -5,6 +5,7 @@
   ...
 }:
 with lib; let
+  username = import ../../../username.nix;
   cfg = config.modules.terminal.tmux;
 in {
   options.modules.terminal.tmux = {
@@ -12,34 +13,36 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.tmux = {
-      enable = true;
-      clock24 = true;
-      plugins = with pkgs.tmuxPlugins; [
-        vim-tmux-navigator
-        sensible
-        yank
-        {
-          plugin = dracula;
-          extraConfig = ''
-            set -g @dracula-show-battery false
-            set -g @dracula-show-powerline true
-            set -g @dracula-refresh-rate 10
-          '';
-        }
-      ];
-      extraConfig = ''
-        set -g default-command "\$\{SHELL}"
+    home-manager.users.${username} = {
+      programs.tmux = {
+        enable = true;
+        clock24 = true;
+        plugins = with pkgs.tmuxPlugins; [
+          vim-tmux-navigator
+          sensible
+          yank
+          {
+            plugin = dracula;
+            extraConfig = ''
+              set -g @dracula-show-battery false
+              set -g @dracula-show-powerline true
+              set -g @dracula-refresh-rate 10
+            '';
+          }
+        ];
+        extraConfig = ''
+          set -g default-command "\$\{SHELL}"
 
-        set -g mouse on
+          set -g mouse on
 
-        setw -g mode-keys vi
-        bind-key h select-pane -L
-        bind-key j select-pane -D
-        bind-key k select-pane -U
-        bind-key l select-pane -R
+          setw -g mode-keys vi
+          bind-key h select-pane -L
+          bind-key j select-pane -D
+          bind-key k select-pane -U
+          bind-key l select-pane -R
 
-      '';
+        '';
+      };
     };
   };
 }

@@ -4,8 +4,9 @@
   ...
 }: {
   imports = [
+    ./common
     ./swww
-    # ./fonts
+    ./eww
     ./kitty
     ./fuzzel
     ./nvidia

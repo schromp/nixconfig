@@ -1,16 +1,19 @@
-{lib, inputs, ...}:
+{lib, config, inputs, pkgs, ...}:
 with lib; let
-  cfg = options.modules.gaming.prismLauncher;
+  username = import ../../username.nix;
+  cfg = config.modules.gaming.prismLauncher;
 in {
-  cfg.enable = mkEnableOption "Enable PrismLauncher";
+  options.modules.gaming.prismLauncher.enable = mkEnableOption "Enable PrismLauncher";
 
-  config.prismLauncher = mkIf cfg.enable {
+  config = mkIf cfg.enable {
     nixpkgs.config.overlay = with inputs; [
       prismlauncher.overlay
     ];
 
-    home.packages = with pkgs; [
-      prismlauncher
-    ];
+    home-manager.users.${username} = {
+      home.packages = with pkgs; [
+        prismlauncher
+      ];
+    };
   };
 }

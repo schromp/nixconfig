@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland"; 
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprpaper.url = "github:hyprwm/hyprpaper"; 
+    hyprpaper.url = "github:hyprwm/hyprpaper";
     eww.url = "github:elkowar/eww";
 
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
@@ -22,9 +22,14 @@
     };
   };
 
-  outputs = { nixpkgs,... }@inputs: 
-  {
-    # nixosConfigurations = import ./hosts inputs;
-    nixosConfigurations = import ./testing/testing_caller.nix { inherit inputs nixpkgs; };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
+    nixosConfigurations = import ./hosts {
+      inherit inputs home-manager nixpkgs;
+    };
+    # nixosConfigurations = import ./testing/testing_caller.nix { inherit inputs nixpkgs; };
   };
 }

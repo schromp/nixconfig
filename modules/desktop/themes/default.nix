@@ -1,9 +1,16 @@
-{lib, config, ...}:
+{
+  lib,
+  config,
+  ...
+}:
 with lib; let
   cfg = config.modules.desktop.themes;
+  createTheme = name:
+    mkIf (builtins.elem name cfg.name)
+    (import ./${name}.nix);
 in {
   options.modules.desktop.themes.name = mkOption {
-    type = types.enum ["WIP"];
+    type = types.enum ["wip"];
     default = "WIP";
     description = ''
       Select the theme to be used.
@@ -11,16 +18,8 @@ in {
     example = "WIP";
   };
 
-  config = let
-    createTheme = name: (
-      mkIf
-      (builtins.elem "WIP" cfg.name)
-      {
-        modules = [./${name}.nix];
-      }
-    );
-  in
-    mkMerge [
-      createTheme "WIP"
-    ];
+  config = mkMerge [
+    # (createTheme "wip")
+    mkIf (cfg.name == "wip") ( import ./wip.nix)
+  ];
 }

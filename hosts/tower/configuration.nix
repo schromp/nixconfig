@@ -2,17 +2,30 @@
   inputs,
   pkgs,
   ...
-}: {
-
+}: let
+  username = import ../../username.nix;
+in {
+  # Setup the user
   users.users.root.initialPassword = "1234";
-  users.users.lk = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio"];
-    uid = 1000;
-    #shell = pkgs.zsh;
+    # shell = pkgs.zsh;
     initialPassword = "1234";
   };
 
+  # Setup home-manager options
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+
+    users.${username}.home.stateVersion = "23.11";
+  };
+
+  # start services
   services = {
     journald.extraConfig = ''
       SystemMaxUse=50M
@@ -22,14 +35,42 @@
   };
 
   # for zsh autocompletions on systemlevel
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = ["/share/zsh"]; # TODO:move to zsh
 
+  # Set timezone
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   time.hardwareClockInLocalTime = true;
 
+  # Fonts
+  fonts = {
+    fonts = with pkgs; [
+      material-icons
+      material-design-icons
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    ];
+
+    enableDefaultFonts = true;
+
+    fontconfig = {
+      defaultFonts = {
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Iosevka Term"
+          "Iosevka Term Nerd Font Complete Mono"
+          "Iosevka Nerd Font"
+          "Noto Color Emoji"
+        ];
+        sansSerif = ["Lexend" "Noto Color Emoji"];
+        serif = ["Noto Serif" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
+
   boot.supportedFilesystems = ["ntfs"];
 
+  # Networking
   networking = {
     networkmanager.enable = true;
     firewall = {
@@ -39,6 +80,7 @@
     };
   };
 
+  # Bootloader stuff
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;

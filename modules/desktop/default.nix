@@ -5,22 +5,13 @@
 }: {
   imports = [
     ./swww
-    #./fonts
+    # ./fonts
     ./kitty
     ./fuzzel
-    #./nvidia
+    ./nvidia
     #./themes
-    #./hyprland
+    ./hyprland
     ./pipewire
   ];
 
-  home.packages = with pkgs; [
-    brightnessctl # change this to light probably
-    wl-clipboard
-    swaylock-effects
-    swayidle
-    libnotify
-  ];
-
-  services.dunst.enable = true;
 }

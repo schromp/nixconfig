@@ -1,21 +1,34 @@
-{ pkgs, lib, config, inputs, ... }:
 {
-  home.packages = with pkgs; [
-    brightnessctl # change this to light probably
-    wl-clipboard
-    swaylock-effects
-    swayidle
-    libnotify
-  ];
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
+with lib; let
+  cfg = config.modules.desktop.hyprland;
+in {
+  options.modules.desktop.hyprland.nvidia = mkEnableOption "Enable Nvidia Support for Hyprland-Home-Manager Module";
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemdIntegration = true;
-    nvidiaPatches = true;
-    extraConfig = builtins.readFile ./hyprland.conf;
+  config = {
+    home.packages = with pkgs; [
+      brightnessctl # change this to light probably
+      wl-clipboard
+      swaylock-effects
+      swayidle
+      libnotify
+    ];
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemdIntegration = true;
+      nvidiaPatches = true;
+      extraConfig = builtins.readFile ./hyprland.conf;
+    };
+    xdg.configFile."hypr/hyprpaper.conf".text = builtins.readFile ./hyprpaper.conf;
+
+    services.dunst.enable = true;
   };
 
-  xdg.configFile."hypr/hyprpaper.conf".text = builtins.readFile ./hyprpaper.conf;
 
   # umlaute into keyboard
   xdg.configFile."xkb/symbols/us-german-umlaut".text = ''
@@ -32,7 +45,4 @@
     };
 
   '';
-
-  # TODO start the services i need
-  services.dunst.enable = true;
 }

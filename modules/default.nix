@@ -1,8 +1,8 @@
-{ inputs, ... }: {
+{ ... }: {
   imports = [
     ./terminal
-    #./desktop
-    #./gaming
-    #./input
+    ./desktop
+    ./gaming
+    ./input
   ];
 }

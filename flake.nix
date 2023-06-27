@@ -22,9 +22,9 @@
     };
   };
 
-  outputs = { self, home-manager, ... }@inputs: 
+  outputs = { nixpkgs,... }@inputs: 
   {
     # nixosConfigurations = import ./hosts inputs;
-    nixosConfigurations = import ./testing/testing_caller.nix inputs;
+    nixosConfigurations = import ./testing/testing_caller.nix { inherit inputs nixpkgs; };
   };
 }

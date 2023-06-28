@@ -13,6 +13,9 @@ in {
 
   config = mkIf cfg.enable {
 
+    # for zsh autocompletions on systemlevel
+    environment.pathsToLink = ["/share/zsh"];
+
     home-manager.users.${username} = {
       imports = [./starship.nix];
       programs.zsh = {
@@ -38,8 +41,8 @@ in {
           "..." = "cd ../..";
           "...." = "cd ../../..";
           "....." = "cd ../../../..";
+          lg = "lazygit";
           rn = "ranger";
-          # update = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
         };
         oh-my-zsh = {
           enable = true;

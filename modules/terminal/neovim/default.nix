@@ -30,6 +30,7 @@ in {
         nixpkgs-fmt
         nil
         python311Packages.jedi-language-server
+        alejandra
       ];
 
       programs.neovim = {

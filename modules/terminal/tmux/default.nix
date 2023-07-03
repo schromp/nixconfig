@@ -27,6 +27,11 @@ in {
               set -g @dracula-show-battery false
               set -g @dracula-show-powerline true
               set -g @dracula-refresh-rate 10
+
+              set -g @dracula-ping-server "google.com"
+              set -g @dracula-ping-rate 5
+
+              set -g @dracula-show-location false
             '';
           }
         ];

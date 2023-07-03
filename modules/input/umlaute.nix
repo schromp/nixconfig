@@ -10,6 +10,7 @@ in {
   options.modules.input.umlaute.enable = mkEnableOption "Create Umlaute xkb layout";
 
   config = mkIf cfg.enable {
+    services.xserver.layout = "us(altgr-intl)";
     home-manager.users.${username} = {
       xdg.configFile."xkb/symbols/us-german-umlaut".text = ''
         default partial alphanumeric_keys

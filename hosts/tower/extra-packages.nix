@@ -9,6 +9,8 @@ in {
     discord
     rnote
     evince
+    p7zip
+    seatd
   ];
 
   home-manager.users.${username} = {

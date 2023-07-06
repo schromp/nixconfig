@@ -1,5 +1,5 @@
 { ... }: {
   imports = [
-    ./sddm.nix
+    ./hyprland
   ];
 }

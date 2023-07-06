@@ -1,12 +1,23 @@
 # My personal nixos configuration
 
 ## TODO:
-- login manager
+- move config files to out of store symlinks
 - Theming
-- i3
-- neovim flake
+    - login manager
+    - ricing
 - collections
+- neovim flake
 - fonts
+- bar
+- mail program
 
 ## Later:
 - lf
+
+## thoughts
+
+Either:
+- out of store symlinks for autoreloads
+- or normal nixos symlinks -> can use nix expressions
+    -> nix expressions would make making themes very easy
+    -> could also use nix to just symlink the correct things

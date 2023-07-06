@@ -6,14 +6,12 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop.hyprland;
+  opts = config.modules.user;
+  username = opts.username;
+  enabled = opts.desktopEnvironment == "hyprland";
+  cfg = config.modules.programs.hyprland;
 in {
-  options.modules.desktop.hyprland = {
-    enable = mkEnableOption "Enable Hyprland";
-
-    nvidiaSupport = mkEnableOption "Enable Nvidia Support for Hyprland";
-
+  options.modules.programs.hyprland = {
     appRunner = mkOption {
       type = types.enum ["fuzzel"];
       default = "fuzzel";
@@ -28,8 +26,8 @@ in {
     inputs.hyprland.nixosModules.default
   ];
 
-  config = mkMerge [
-    (mkIf cfg.enable {
+  config = mkIf enabled (mkMerge [
+    (mkIf (enabled && opts.displayServerProtocol == "wayland") {
       # add binary cache
       nix.settings.substituters = [
         "https://nixpkgs-wayland.cachix.org"
@@ -46,6 +44,10 @@ in {
 
       # from old config, leaving this for reference if something breaks
       # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
+
+      # TODO:not working yet
+      # add hyprland to displaymanager sessions
+      # services.xserver.displayManager.sessionPackages = [inputs.hyprland.packages.default];
 
       environment = {
         # here we set all important wayland envs
@@ -70,6 +72,7 @@ in {
           XCURSOR_THEME = "Bibata-Modern-Ice";
 
           MOZ_ENABLE_WAYLAND = "1";
+          # LIBSEAT_BACKEND = "logind";
         };
       };
 
@@ -90,6 +93,7 @@ in {
 
       home-manager.users.${username} = {
         imports = [inputs.hyprland.homeManagerModules.default];
+
         wayland.windowManager.hyprland = {
           enable = true;
           systemdIntegration = true;
@@ -108,7 +112,7 @@ in {
       };
     })
 
-    (mkIf cfg.nvidiaSupport {
+    (mkIf config.modules.system.nvidia {
       home-manager.users.${username} = {
         wayland.windowManager.hyprland.nvidiaPatches = true;
       };
@@ -140,5 +144,5 @@ in {
     #     # TODO: append app runner to keybinds
     #   }
     # ])
-  ];
+  ]);
 }

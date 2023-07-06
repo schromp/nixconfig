@@ -1,10 +1,8 @@
 {lib, config, ...}:
 with lib; let
-  cfg = config.modules.desktop.nvidia;
+  cfg = config.modules.system.nvidia;
 in {
-  options.modules.desktop.nvidia.enable = mkEnableOption "Enable Nvidia Drivers";
-
-  config = mkIf cfg.enable {
+  config = mkIf cfg {
     services.xserver.videoDrivers = ["nvidia"];
     #hardware.nvidia.open = true;
     #hardware.nvidia.nvidiaSettings = true;

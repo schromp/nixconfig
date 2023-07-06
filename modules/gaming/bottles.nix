@@ -1,8 +1,8 @@
 { config, lib, pkgs, ...}: with lib; let
-  username = import ../../username.nix;
-  cfg = config.modules.gaming.bottles;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.bottles;
 in {
-  options.modules.gaming.bottles.enable = mkEnableOption "Enable bottles";
+  options.modules.programs.bottles.enable = mkEnableOption "Enable bottles";
 
   config = mkIf cfg.enable {
     environment.systemPackages = [pkgs.bottles];

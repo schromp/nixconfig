@@ -6,22 +6,17 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop.eww;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.eww;
 in {
-  options.modules.desktop.eww = {
+  options.modules.programs.eww = {
     enable = mkEnableOption "Enable Eww";
-    backend = mkOption {
-      type = types.enum [ "wayland" "x11" ];
-      default = "x11";
-      description = "Which backend to use. wayland or x11";
-    };
   };
 
   config = mkIf cfg.enable {
     home-manager.users.${username} = {
       programs.eww = let 
-        pkg = if cfg.backend == "wayland" 
+        pkg = if config.modules.user.displayServerProtocol == "wayland" 
         then inputs.eww.packages.x86_64-linux.eww-wayland
         else
           pkgs.eww;

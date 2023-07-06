@@ -1,9 +1,7 @@
-{ pkgs, ... }: let
-  username = import ../../username.nix;
+{ pkgs, config, ... }: let
+  username = config.modules.user.username;
 in {
   # here you can add packages specific to your setup.
-  programs.zsh.enable = true;
-
   environment.systemPackages = with pkgs; [
     rofi
     pdfmixtool
@@ -12,4 +10,10 @@ in {
     rnote
     evince
   ];
+
+  home-manager.users.${username} = {
+    home.packages = with pkgs; [
+
+    ];
+  };
 }

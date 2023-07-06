@@ -20,6 +20,6 @@ in {
 
   config = mkMerge [
     # (createTheme "wip")
-    mkIf (cfg.name == "wip") ( import ./wip.nix)
+    # mkIf (cfg.name == "wip") ( import ./wip.nix)
   ];
 }

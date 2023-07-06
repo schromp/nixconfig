@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop.kitty;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.kitty;
 in {
-  options.modules.desktop.kitty = {
+  options.modules.programs.kitty = {
     enable = mkEnableOption "Enable Kitty";
     # TODO: add theming option
   };

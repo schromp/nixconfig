@@ -5,10 +5,10 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.terminal.neovim;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.neovim;
 in {
-  options.modules.terminal.neovim.enable = mkEnableOption "Enable neovim";
+  options.modules.programs.neovim.enable = mkEnableOption "Enable neovim";
 
   config = mkIf cfg.enable {
     # dependencies for nvim

@@ -1,0 +1,10 @@
+default_shell "zsh"
+pane_frames true
+
+theme "dracula"
+
+keybinds {
+  normal {
+    unbind "Ctrl h" # You can still use this when going into pane mode
+  }
+}

@@ -4,25 +4,33 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.desktop.displaymanager.sddm;
+  cfg = config.modules.programs.sddm;
 in {
-  options.modules.desktop.displaymanager.sddm.enable = mkEnableOption "Enable sddm";
+  options.modules.programs.sddm.enable = mkEnableOption "Enable sddm";
 
   config = mkIf cfg.enable {
     services.xserver = {
-      # enable = true;
+      enable = true;
       displayManager = {
-        gdm.enable = false;
-        lightdm.enable = false;
         sddm = {
           enable = true;
-          # settings = {
-          #   General = {
-          #     DisplayServer = "wayland";
-          #     # GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
-          #   };
-          # };
+          settings = {
+            General = {
+              DisplayServer = "x11";
+            };
+          };
         };
+
+        # session = [
+        #   {
+        #     manage = "window";
+        #     name = "hyprland";
+        #     start = ''
+        #       Hyprland
+        #     '';
+        #   }
+        # ];
+
       };
     };
   };

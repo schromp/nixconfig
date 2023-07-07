@@ -7,5 +7,6 @@
       ./direnv
       ./neovim
       ./zellij
+      ./greetd
     ];
   }

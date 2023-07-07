@@ -7,6 +7,7 @@
     ./fuzzel
     ./themes
     ./pipewire
+    ./libreoffice
 
     ./displaymanager
     ./windowmanager

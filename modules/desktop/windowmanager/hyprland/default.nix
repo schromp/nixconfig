@@ -22,9 +22,9 @@ in {
     };
   };
 
-  imports = [
-    inputs.hyprland.nixosModules.default
-  ];
+  # imports = [
+  #   inputs.hyprland.nixosModules.default
+  # ];
 
   config = mkIf enabled (mkMerge [
     (mkIf (enabled && opts.displayServerProtocol == "wayland") {
@@ -44,10 +44,6 @@ in {
 
       # from old config, leaving this for reference if something breaks
       # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
-
-      # TODO:not working yet
-      # add hyprland to displaymanager sessions
-      # services.xserver.displayManager.sessionPackages = [inputs.hyprland.packages.default];
 
       environment = {
         # here we set all important wayland envs
@@ -84,12 +80,14 @@ in {
 
       xdg.portal = {
         enable = true;
-        wlr.enable = true;
+        wlr.enable = false;
         # xdgOpenUsePortal = true; makes programs open with xdg portal
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
         ];
       };
+
+      programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
 
       home-manager.users.${username} = {
         imports = [inputs.hyprland.homeManagerModules.default];
@@ -106,6 +104,8 @@ in {
           swaylock-effects
           swayidle
           libnotify
+
+          inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];
 
         services.dunst.enable = true;
@@ -113,6 +113,7 @@ in {
     })
 
     (mkIf config.modules.system.nvidia {
+      programs.hyprland.nvidiaPatches = true; 
       home-manager.users.${username} = {
         wayland.windowManager.hyprland.nvidiaPatches = true;
       };

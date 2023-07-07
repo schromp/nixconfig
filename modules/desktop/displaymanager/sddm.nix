@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
   ...
 }:
 with lib; let
@@ -12,25 +13,29 @@ in {
     services.xserver = {
       enable = true;
       displayManager = {
-        sddm = {
+        gdm = {
           enable = true;
-          settings = {
-            General = {
-              DisplayServer = "x11";
-            };
-          };
+          wayland = true;
         };
 
+        # sddm = {
+        #   enable = true;
+        #   settings = {
+        #     General = {
+        #       DisplayServer = "x11";
+        #     };
+        #   };
+        # };
+        #
         # session = [
         #   {
         #     manage = "window";
         #     name = "hyprland";
         #     start = ''
-        #       Hyprland
+        #       Hyprland &
         #     '';
         #   }
         # ];
-
       };
     };
   };

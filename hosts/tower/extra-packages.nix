@@ -16,7 +16,6 @@ in {
     spotify
     discord
 
-
     p7zip
 
     xemu

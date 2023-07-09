@@ -64,6 +64,26 @@
         "type": "github"
       }
     },
+    "arrpc": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683545835,
+        "narHash": "sha256-GfsXWlidRkQG/eB/iwWrUAvB2v2uYrQr1LKRAToId/s=",
+        "owner": "notashelf",
+        "repo": "arrpc-flake",
+        "rev": "b29476f08795519fdac720fb4caf46dbe756823b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "notashelf",
+        "repo": "arrpc-flake",
+        "type": "github"
+      }
+    },
     "crane": {
       "flake": false,
       "locked": {
@@ -937,6 +957,7 @@
     "root": {
       "inputs": {
         "alejandra": "alejandra",
+        "arrpc": "arrpc",
         "eww": "eww",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

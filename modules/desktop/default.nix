@@ -8,6 +8,7 @@
     ./themes
     ./pipewire
     ./libreoffice
+    ./discord
 
     ./displaymanager
     ./windowmanager

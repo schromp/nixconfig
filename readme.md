@@ -2,22 +2,22 @@
 
 ## TODO:
 - move config files to out of store symlinks
-- Theming
-    - ricing
+- automate hyprland config (arrpc, ...)
 - collections
+
 - neovim flake
-- fonts
-- bar
-- zoxide
 - sops
+
+- zoxide
+- automate zellij (for example preconfigured setup when entering nixconfig)
+
+- bar
+- grimblast -> make easier to use
+- fonts
+- Theming
 - notifications
-- screenshot program
 
 
-## thoughts
-
-Either:
-- out of store symlinks for autoreloads
-- or normal nixos symlinks -> can use nix expressions
-    -> nix expressions would make making themes very easy
-    -> could also use nix to just symlink the correct things
+## Planned architecture changes
+Symlinks for auto reloading but import these links in a nix configured file
+-> can import other files that are configured through nix

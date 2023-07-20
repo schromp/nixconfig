@@ -1,7 +1,6 @@
 # My personal nixos configuration
 
 ## TODO:
-- move config files to out of store symlinks
 - automate hyprland config (arrpc, ...)
 - collections
 
@@ -17,7 +16,3 @@
 - Theming
 - notifications
 
-
-## Planned architecture changes
-Symlinks for auto reloading but import these links in a nix configured file
--> can import other files that are configured through nix

@@ -11,19 +11,84 @@ with lib; let
   enabled = opts.desktopEnvironment == "hyprland";
   cfg = config.modules.programs.hyprland;
 in {
-  options.modules.programs.hyprland = {
-    appRunner = mkOption {
-      type = types.enum ["fuzzel"];
-      default = "fuzzel";
-      description = ''
-        Select the App Runner Hyprland should use.
-      '';
-      example = "fuzzel";
+  options.modules.programs.hyprland.config = {
+    keybinds = {
+      mainMod = mkOption {
+        type = types.str;
+        default = "SUPER";
+      };
+
+      binds = mkOption {
+        type = with types;
+          listOf (submodule {
+            options = {
+              modifier = mkOption {
+                type = types.str;
+                default = "$mainMod";
+                example = "$mainMod CONTROL";
+              };
+              key = mkOption {
+                type = types.str;
+                default = " ";
+              };
+              keyword = mkOption {
+                type = types.str;
+                example = "exec";
+                default = " ";
+              };
+              command = mkOption {
+                type = types.str;
+                example = "firefox";
+                default = " ";
+              };
+              mouseBind = mkOption {
+                type = types.bool;
+                example = "true";
+                default = false;
+                description = "If the bind is a mousebind. Uses bindm instead of bind";
+              };
+            };
+          });
+      };
+    };
+
+    general = {
+      gaps_in = mkOption {
+        type = types.int;
+        default = 0;
+      };
+      gaps_out = mkOption {
+        type = types.int;
+        default = 0;
+      };
+      border_size = mkOption {
+        type = types.int;
+        default = 1;
+      };
+      col_active_border = mkOption {
+        type = types.str;
+        default = "00000000";
+        description = "rgba value";
+      };
+      col_inactive_border = mkOption {
+        type = types.str;
+        default = "00000000";
+        description = "rgba value";
+      };
+    };
+
+    animations = {
+      enabled = mkOption {
+        type = types.str;
+        default = "yes";
+        description = "yes or no";
+      };
+      # TODO: add other animation options
     };
   };
 
   # imports = [
-  #   inputs.hyprland.nixosModules.default
+  # inputs.hyprland.nixosModules.default
   # ];
 
   config = mkIf enabled (mkMerge [
@@ -90,12 +155,15 @@ in {
       programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
 
       home-manager.users.${username} = {
-        imports = [inputs.hyprland.homeManagerModules.default];
+        imports = [
+          inputs.hyprland.homeManagerModules.default
+        ];
 
         wayland.windowManager.hyprland = {
           enable = true;
           systemdIntegration = true;
-          extraConfig = builtins.readFile ./hyprland.conf;
+          # extraConfig = builtins.readFile ./hyprland.conf;
+          extraConfig = import ./config.nix {inherit config lib;};
         };
 
         home.packages = with pkgs; [
@@ -113,7 +181,7 @@ in {
     })
 
     (mkIf config.modules.system.nvidia {
-      programs.hyprland.nvidiaPatches = true; 
+      programs.hyprland.nvidiaPatches = true;
       home-manager.users.${username} = {
         wayland.windowManager.hyprland.nvidiaPatches = true;
       };

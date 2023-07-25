@@ -1,5 +1,5 @@
 { lib, config, pkgs, ... }: with lib; let
-  username = ../../../username.nix;
+  username = config.user.username;
   cfg = config.modules.terminal.vifm;
 in {
   

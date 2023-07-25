@@ -1,5 +1,5 @@
 { config, lib, pkgs, ...}: with lib; let 
-  username = ../../../../username.nix;
+  username = config.user.username;
   cfg = config.modules.desktop.x11.picom;
 in {
   options.modules.desktop.x11.picom.enable = mkEnableOption "Enable picom";

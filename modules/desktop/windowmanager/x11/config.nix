@@ -1,5 +1,5 @@
 { config, lib, ... }: with lib; let
-  username = import ../../../username.nix;
+  username = config.user.username;
   cfg = config.modules.desktop.x11.config;
 in {
   options.modules.desktop.x11.config = {

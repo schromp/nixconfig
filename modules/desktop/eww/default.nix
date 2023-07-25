@@ -14,6 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # TODO: add systemd service that starts after compositor
     home-manager.users.${username} = {
       programs.eww = let 
         pkg = if config.modules.user.displayServerProtocol == "wayland" 

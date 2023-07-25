@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  username = import ../../../username.nix;
+  username = config.user.username;
 in {
   home-manager.users.${username} = {
     home.pointerCursor.package = pkgs.bibata-cursors;

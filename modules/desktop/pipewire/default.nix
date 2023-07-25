@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.desktop.pipewire;
+  cfg = config.modules.programs.pipewire;
 in {
-  options.modules.desktop.pipewire = {
+  options.modules.programs.pipewire = {
     enable = mkEnableOption "Enable pipwire";
   };
 

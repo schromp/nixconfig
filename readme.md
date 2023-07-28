@@ -1,8 +1,8 @@
 # My personal nixos configuration
 
 ## TODO:
-- automate hyprland config (arrpc, ...)
-- collections
+- better themes/rices. self contained + no adding to enum in options
+- convert hyprland options to [simple fucking version](https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/hyprland.nix#L82)
 
 - neovim flake
 - sops

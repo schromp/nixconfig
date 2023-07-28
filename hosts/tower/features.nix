@@ -10,8 +10,8 @@
         "hyprland"
       ];
 
-      themes = {
-        name = "wip";
+      rices = {
+        name = "glass";
       };
     };
 

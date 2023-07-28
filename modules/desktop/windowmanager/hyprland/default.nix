@@ -14,7 +14,6 @@ in {
 
   imports = [
   # inputs.hyprland.nixosModules.default
-    ./options.nix
   ];
 
   config = mkIf enabled (mkMerge [
@@ -81,9 +80,9 @@ in {
       programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
 
       home-manager.users.${username} = {
-        imports = [
-          inputs.hyprland.homeManagerModules.default
-        ];
+        # imports = [
+        #   inputs.hyprland.homeManagerModules.default
+        # ];
 
         wayland.windowManager.hyprland = {
           enable = true;

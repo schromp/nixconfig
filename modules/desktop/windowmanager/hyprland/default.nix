@@ -13,7 +13,7 @@ with lib; let
 in {
 
   imports = [
-  # inputs.hyprland.nixosModules.default
+    inputs.hyprland.nixosModules.default
   ];
 
   config = mkIf enabled (mkMerge [
@@ -77,7 +77,7 @@ in {
         ];
       };
 
-      programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
+      # programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
 
       home-manager.users.${username} = {
         # imports = [
@@ -88,7 +88,6 @@ in {
           enable = true;
           systemdIntegration = true;
           # extraConfig = builtins.readFile ./hyprland.conf;
-          extraConfig = import ./config.nix {inherit config lib;};
         };
 
         home.packages = with pkgs; [
@@ -106,9 +105,8 @@ in {
     })
 
     (mkIf config.modules.system.nvidia {
-      programs.hyprland.nvidiaPatches = true;
       home-manager.users.${username} = {
-        wayland.windowManager.hyprland.nvidiaPatches = true;
+        wayland.windowManager.hyprland.enableNvidiaPatches = true;
       };
       hardware = {
         opengl = {

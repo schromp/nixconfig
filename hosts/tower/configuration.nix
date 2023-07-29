@@ -44,11 +44,11 @@ in {
 
   # Fonts
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
     ];
 
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
     # fontconfig = {
     #   defaultFonts = {

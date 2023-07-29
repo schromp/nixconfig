@@ -38,6 +38,8 @@ in {
           accel_profile = "flat";
         };
 
+        animations.enabled = false;
+
         general = {
           gaps_in = 3;
           gaps_out = 7;
@@ -74,8 +76,8 @@ in {
                 in
                   builtins.toString (x + 1 - (c * 10));
               in ''
-                bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
-                bind = $MODSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+                bind = $mod, ${ws}, workspace, ${toString (x + 1)}
+                bind = $mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
               ''
             )
             10)}"

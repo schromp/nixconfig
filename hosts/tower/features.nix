@@ -39,7 +39,7 @@
         # Desktop
         sddm.enable = false;
         kitty.enable = true;
-        eww.enable = true;
+        # eww.enable = true;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {

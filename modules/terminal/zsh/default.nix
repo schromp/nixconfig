@@ -51,6 +51,7 @@ in {
 
           "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
           "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";
+          "update-check" = "nix flake check";
         };
         oh-my-zsh = {
           enable = true;

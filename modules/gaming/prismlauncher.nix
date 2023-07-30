@@ -7,12 +7,13 @@ in {
 
   config = mkIf cfg.enable {
     nixpkgs.config.overlay = with inputs; [
-      prismlauncher.overlay
+      # prismlauncher.overlay
     ];
 
     home-manager.users.${username} = {
       home.packages = with pkgs; [
-        prismlauncher
+        prismlauncher-qt5
+        glfw-wayland
       ];
     };
   };

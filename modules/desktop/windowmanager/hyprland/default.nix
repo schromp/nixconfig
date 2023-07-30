@@ -9,11 +9,10 @@ with lib; let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
-  cfg = config.modules.programs.hyprland;
 in {
-
   imports = [
     inputs.hyprland.nixosModules.default
+    ./config.nix
   ];
 
   config = mkIf enabled (mkMerge [
@@ -27,13 +26,6 @@ in {
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       ];
-
-      nixpkgs.config.overlay = with inputs; [
-        nixpkgs-wayland.overlay
-      ];
-
-      # from old config, leaving this for reference if something breaks
-      # nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
 
       environment = {
         # here we set all important wayland envs
@@ -79,17 +71,10 @@ in {
         ];
       };
 
-      # programs.hyprland.enable = true; # WARN: this might be problematic because its not the flake input
-
       home-manager.users.${username} = {
-        # imports = [
-        #   inputs.hyprland.homeManagerModules.default
-        # ];
-
         wayland.windowManager.hyprland = {
           enable = true;
           systemdIntegration = true;
-          # extraConfig = builtins.readFile ./hyprland.conf;
         };
 
         home.packages = with pkgs; [

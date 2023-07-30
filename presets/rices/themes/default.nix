@@ -7,13 +7,14 @@ with lib; {
     ./apply
 
     ./catppuccin_mocha.nix
+    ./catppuccin_latte.nix
   ];
 
   # GOAL: have these options for creating themes
   # When selecting theme: options.themes.select = ["name"];
   options.presets.themes = {
     name = mkOption {
-      type = types.enum ["none" "catppuccin-mocha"];
+      type = types.enum ["none" "catppuccin-mocha" "catppuccin-latte"];
       description = "The theme that should be applied to programs specified in apply";
       default = "none";
     };

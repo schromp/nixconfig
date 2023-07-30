@@ -6,10 +6,6 @@
 
   config = {
     presets = {
-      programs = [
-        "hyprland"
-      ];
-
       rices = {
         name = "glass";
       };

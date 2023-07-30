@@ -8,7 +8,12 @@
     nixpkgs.lib.nixosSystem {
       system = "${system}";
       modules = [
-        {config.modules.system.hostname = hostname;}
+        {
+          config.modules.system = {
+            hostname = hostname;
+            architecture = system;
+          };
+        }
         home-manager.nixosModules.home-manager
         ./${hostname}
         {networking.hostName = hostname;}

@@ -18,7 +18,7 @@ in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
-    monitor = [ "DP-3,3440x1440@144,0x0,1"];
+    monitor = ["DP-3,3440x1440@144,0x0,1"];
 
     exec-once = [
       "swww init & swww img /home/lk/Pictures/Wallpaper/od_outrun_wave.png"

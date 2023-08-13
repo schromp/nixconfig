@@ -3,6 +3,7 @@
     ./common
     ./swww
     ./eww
+    ./waybar
     ./kitty
     ./pipewire
     ./libreoffice

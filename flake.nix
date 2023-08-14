@@ -5,6 +5,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -23,21 +33,18 @@
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    nix-darwin,
     ...
-  } @ inputs: {
-    nixosConfigurations = import ./hosts {
-      inherit inputs home-manager nixpkgs;
-    };
-    # nixosConfigurations = import ./testing/testing_caller.nix { inherit inputs nixpkgs; };
+  } @ inputs: let
+    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
+  in {
+    nixosConfigurations = hosts.nixosSystems;
+
+    darwinConfigurations = hosts.darwinSystems;
   };
 }

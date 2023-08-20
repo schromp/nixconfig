@@ -17,6 +17,9 @@ in {
     discord
     pcmanfm
     audacity
+    easyeffects
+    qpwgraph
+    # soundux
 
     p7zip
     tshark

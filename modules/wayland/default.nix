@@ -45,7 +45,7 @@
     enable = true;
     wlr.enable = false;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+      #pkgs.xdg-desktop-portal-gtk
       #inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };

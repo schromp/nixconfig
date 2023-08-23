@@ -2,7 +2,7 @@
   username = config.modules.user.username;
   cfg = config.modules.programs.gamescope;
 in {
-  options.modules.programs.lutris.enable = mkEnableOption "Enable Gamescope";
+  options.modules.programs.gamescope.enable = mkEnableOption "Enable Gamescope";
 
   config = mkIf cfg.enable {
     programs.gamescope = {

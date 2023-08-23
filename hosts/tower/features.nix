@@ -14,10 +14,12 @@
     desktop = {
       commonPackages = true;
 
+      # displaymanager.sddm.enable = true;
+
       hyprland.enable = true;
       hyprland.nvidiaSupport = true;
 
-      x11.i3.enable = false;
+      x11.i3.enable = true;
       x11.config.mouse = false;
 
       eww.enable = true;

@@ -18,6 +18,11 @@ in {
 
       windowManager.i3.enable = true;
 
+      displayManager.sddm = {
+        enable = true;
+        settings.General.DisplayServer = "x11";
+      };
+
       xrandrHeads = [
         {
           monitorConfig = "Option \"Rotate\" \"inverted\"";

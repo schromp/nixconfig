@@ -4,5 +4,6 @@
     ./nix.nix
     ./network.nix
     ./users.nix
+    ./nvidia.nix
   ];
 }

@@ -18,12 +18,13 @@
       WLR_BACKEND = "vulkan";
       WLR_RENDERER = "vulkan";
 
-      GDK_SCALE = "2";
+      GDK_SCALE = "1";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
       # theming
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "Bibata-Modern-Ice";
+
     };
   };
 
@@ -45,7 +46,7 @@
     wlr.enable = false;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
+      #inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };
 

@@ -10,6 +10,12 @@ with lib; {
       '';
     };
 
+    architecture = mkOption {
+      type = types.str;
+      description = "The architecture of the system";
+      example = "x86_64-linux";
+    };
+
     bluetooth = mkEnableOption "Enable Bluetooth";
 
     printing = {

@@ -1,5 +1,7 @@
 { config, pkgs, inputs, ... }: {
   
+  # the following does not work correctly yet.
+  # i have a workaround in the hyprland.conf
   xdg.configFile."spotifyd/spotifyd.conf".text = '' 
     [global]
     username = "lenntleman@gmail.com"
@@ -7,8 +9,6 @@
   '';
 
   home.packages = with pkgs; [ spotifyd spotify-tui ];
-
-  # programs.ncspot.enable = true;
 
 }
 

@@ -1,3 +1,3 @@
 {...}: {
-  imports = [./programs ./themes ];
+  imports = [./programs ./rices ];
 }

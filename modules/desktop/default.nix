@@ -4,7 +4,6 @@
     ./swww
     ./eww
     ./kitty
-    ./themes
     ./pipewire
     ./libreoffice
     ./discord

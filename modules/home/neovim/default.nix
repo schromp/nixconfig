@@ -17,6 +17,8 @@
 
   # dependencies for nvim
   home.packages = with pkgs; [
+      neovide
+
       ripgrep
       fd
       fzf

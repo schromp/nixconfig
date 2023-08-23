@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     brightnessctl # change this to light probably
     wl-clipboard
-    hyprpaper
     swaylock-effects
     swayidle
     libnotify

@@ -18,6 +18,7 @@ in {
     pcmanfm
 
     p7zip
+    tshark
 
     xemu
     rpcs3

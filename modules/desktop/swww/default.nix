@@ -1,15 +1,17 @@
 {
   config,
   lib,
+  pkgs,
   ...
-}: with lib; let
+}:
+with lib; let
   cfg = config.modules.desktop;
 in {
   options.modules.desktop.swww = {
     enable = mkEnableOption "Enable swww";
   };
 
-  config.enable = mkIf cfg.swww.enable {
-    programs.swww.enable = true;
+  config = mkIf cfg.swww.enable {
+    home.packages = with pkgs; [ swww ];
   };
 }

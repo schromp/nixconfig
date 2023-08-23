@@ -1,22 +1,21 @@
 {
   lib,
+  config,
   ...
 }:
 with lib; let
-  cfg = options.modules.desktop.kitty;
+  cfg = config.modules.desktop.kitty;
 in {
-  cfg = {
+  options.modules.desktop.kitty = {
     enable = mkEnableOption "Enable Kitty";
     # TODO: add theming option
   };
 
-  config = {
-    kitty = mkIf cfg.enable {
-      programs.kitty = {
-        enable = true;
-        theme = "One Dark";
-        extraConfig = builtins.readFile ./kitty.conf;
-      };
+  config = mkIf cfg.enable {
+    programs.kitty = {
+      enable = true;
+      theme = "One Dark";
+      extraConfig = builtins.readFile ./kitty.conf;
     };
   };
 }

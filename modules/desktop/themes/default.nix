@@ -1,8 +1,8 @@
-{lib, ...}:
+{lib, config, ...}:
 with lib; let
-  cfg = options.modules.desktop.themes;
+  cfg = config.modules.desktop.themes;
 in {
-  cfg.name = mkOption {
+  options.modules.desktop.themes.name = mkOption {
     type = types.enum ["WIP"];
     default = "WIP";
     description = ''

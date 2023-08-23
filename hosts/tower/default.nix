@@ -1,8 +1,9 @@
 { config, ...}:
 {
-  modules = [
+  imports = [
     ./hardware-configuration.nix
-    ./features.nix
+    ./configuration.nix
+    ../shared
   ];
 
 }

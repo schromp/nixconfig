@@ -3,12 +3,14 @@
   pkgs,
   ...
 }: {
-  modules = [
-    # TODO: move these behind a option
-    ./hyprland
+  imports = [
     ./swww
-    ./fuzzel
+    #./fonts
     ./kitty
+    ./fuzzel
+    #./nvidia
+    #./themes
+    #./hyprland
     ./pipewire
   ];
 

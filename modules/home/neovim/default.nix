@@ -33,6 +33,8 @@ in
       statix
       nixpkgs-fmt
       nil
+      python311Packages.jedi-language-server
+
    ];
 
   programs.neovim = {

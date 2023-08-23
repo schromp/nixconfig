@@ -47,6 +47,7 @@
     upower
     htop
     glxinfo
+    ranger
     inputs.eww.packages.x86_64-linux.eww-wayland
   ];
 

@@ -49,6 +49,7 @@
     glxinfo
     ranger
     inputs.eww.packages.x86_64-linux.eww-wayland
+    inputs.alejandra.defaultPackage.${system}
   ];
 
   # for zsh autocompletions on systemlevel

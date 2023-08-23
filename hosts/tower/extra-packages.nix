@@ -15,6 +15,7 @@ in {
     evince
     spotify
     discord
+    pcmanfm
 
     p7zip
 

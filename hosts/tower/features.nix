@@ -13,10 +13,17 @@
 
     desktop = {
       commonPackages = true;
+
       hyprland.enable = true;
       hyprland.nvidiaSupport = true;
-      swww.enable = true;
+
+      x11.i3.enable = false;
+      x11.config.mouse = false;
+
       eww.enable = true;
+      eww.backend = "wayland";
+      swww.enable = true;
+
       nvidia.enable = true;
       pipewire.enable = true;
       kitty.enable = true;
@@ -24,10 +31,13 @@
 
     gaming = {
       prismLauncher.enable = true;
+      lutris.enable = false;
+      bottles.enable = false;
     };
 
     input = {
       umlaute.enable = true;
+      wacom.enable = true;
     };
   };
 }

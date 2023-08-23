@@ -12,6 +12,7 @@
     ./nvidia
     #./themes
     ./hyprland
+    ./x11
     ./pipewire
   ];
 

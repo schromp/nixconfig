@@ -13,10 +13,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-
     # for zsh autocompletions on systemlevel
     environment.pathsToLink = ["/share/zsh"];
-    environment.systemPackages = [ pkgs.fzf ];
+    environment.systemPackages = [pkgs.fzf];
 
     programs.zsh.enable = true;
 
@@ -49,6 +48,9 @@ in {
           "....." = "cd ../../../..";
           lg = "lazygit";
           rn = "ranger";
+
+          "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
+          "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";
         };
         oh-my-zsh = {
           enable = true;

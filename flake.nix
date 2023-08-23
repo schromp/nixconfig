@@ -6,7 +6,7 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland"; 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper"; 
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    #xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     eww.url = "github:elkowar/eww";
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
     webcord.url = "github:fufexan/webcord-flake";

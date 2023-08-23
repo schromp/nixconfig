@@ -10,7 +10,7 @@
         username = "lennartkoziollek";
       };
       system = {
-        nvidia = false;
+
       };
     };
   };

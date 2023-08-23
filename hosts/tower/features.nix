@@ -27,6 +27,10 @@
       kitty.enable = true;
       eww.enable = true;
       libreoffice.enable = true;
+      discord = {
+        enable = true;
+        aarpc = false;
+      };
 
       # Terminal
       greetd.enable = true;
@@ -43,8 +47,9 @@
       # Gaming
       prismLauncher.enable = true;
       lutris.enable = true;
-      bottles.enable = false;
+      bottles.enable = true;
       steam.enable = true;
+      retroarch.enable = true;
     };
 
     desktop = {

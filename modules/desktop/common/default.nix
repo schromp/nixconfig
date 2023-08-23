@@ -11,7 +11,6 @@ in {
         nomacs
         firefox
         pavucontrol
-        webcord-vencord
         obs-studio
         qt6.full
       ];

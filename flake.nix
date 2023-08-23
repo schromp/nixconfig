@@ -16,6 +16,10 @@
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
 
     webcord.url = "github:fufexan/webcord-flake";
+    arrpc = {
+      url = "github:notashelf/arrpc-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";

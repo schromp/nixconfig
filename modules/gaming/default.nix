@@ -4,5 +4,6 @@
     ./lutris.nix
     ./bottles.nix
     ./steam.nix
+    ./retroarch.nix
   ];
 }

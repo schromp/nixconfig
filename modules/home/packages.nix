@@ -7,6 +7,7 @@
     cargo
     socat
     jq
+    lazygit
 
     # gui programs
     kitty
@@ -19,6 +20,7 @@
     prismlauncher
     inputs.webcord.packages.${pkgs.system}.default
     parted
+    obs-studio
 
     # theme stuff
     bibata-cursors

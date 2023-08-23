@@ -4,6 +4,7 @@
   ...
 }:
 with lib; let
+  username = import ../../../username.nix;
   cfg = config.modules.desktop.kitty;
 in {
   options.modules.desktop.kitty = {
@@ -12,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.kitty = {
-      enable = true;
-      theme = "One Dark";
-      extraConfig = builtins.readFile ./kitty.conf;
+    home-manager.users.${username} = {
+      programs.kitty = {
+        enable = true;
+        theme = "One Dark";
+        extraConfig = builtins.readFile ./kitty.conf;
+      };
     };
   };
 }

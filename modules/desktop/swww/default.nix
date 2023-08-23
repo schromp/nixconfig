@@ -5,6 +5,7 @@
   ...
 }:
 with lib; let
+  username = import ../../../username.nix;
   cfg = config.modules.desktop;
 in {
   options.modules.desktop.swww = {
@@ -12,6 +13,8 @@ in {
   };
 
   config = mkIf cfg.swww.enable {
-    home.packages = with pkgs; [ swww ];
+    home-manager.users.${username} = {
+      home.packages = with pkgs; [swww];
+    };
   };
 }

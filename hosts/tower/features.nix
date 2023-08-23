@@ -1,7 +1,5 @@
-{inputs, pkgs, ...}: {
-  imports = [../../modules ];
-
-  config.home.stateVersion = "23.11";
+{...}: {
+  imports = [../../modules];
 
   config.modules = {
     terminal = {
@@ -11,8 +9,9 @@
       zsh.enable = true;
     };
 
-    #desktop = {
-      #hyprland.enable = true;
-    #};
+    desktop = {
+      hyprland.enable = true;
+      hyprland.nvidiaSupport = true;
+    };
   };
 }

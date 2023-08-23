@@ -33,7 +33,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [git curl coreutils vim htop ranger ];
+  environment.systemPackages = with pkgs; [git curl coreutils vim ranger ];
 
   services = {
     dbus = {

@@ -7,12 +7,14 @@
 in {
   # Setup the user
   users.users.root.initialPassword = "1234";
+  users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio"];
-    # shell = pkgs.zsh;
+    shell = pkgs.zsh;
     initialPassword = "1234";
   };
+  environment.shells = with pkgs; [ zsh ];
 
   # Setup home-manager options
   home-manager = {

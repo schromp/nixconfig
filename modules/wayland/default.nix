@@ -1,6 +1,10 @@
-{ config, pkgs, inputs, ... }:
 {
-  imports = [ ./services.nix ./fonts.nix ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [./services.nix ./fonts.nix];
   nixpkgs.overlays = with inputs; [nixpkgs-wayland.overlay];
 
   environment = {
@@ -12,7 +16,7 @@
       QT_QPA_PLATFORM = "wayland;xcb";
       #XDG_SESSION_TYPE = "wayland";
       #XDG_CURRENT_DESKTOP="Hyprland";
-      XDG_SESSION_DESKTOP="Hyprland";
+      XDG_SESSION_DESKTOP = "Hyprland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
 
       WLR_BACKEND = "vulkan";
@@ -25,7 +29,12 @@
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "Bibata-Modern-Ice";
 
+      MOZ_ENABLE_WAYLAND = "1";
     };
+  };
+
+  environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
   };
 
   hardware = {
@@ -35,7 +44,7 @@
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         vaapiVdpau
-	    libvdpau-va-gl
+        libvdpau-va-gl
       ];
     };
     # pulseaudio.support32Bit = true;
@@ -43,9 +52,10 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    wlr.enable = true;
+    xdgOpenUsePortal = true;
     extraPortals = [
-      #pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gtk
       #inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
   };

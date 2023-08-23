@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -15,7 +16,11 @@ in {
 
     # for zsh autocompletions on systemlevel
     environment.pathsToLink = ["/share/zsh"];
+    environment.systemPackages = [ pkgs.fzf ];
+
     programs.zsh.enable = true;
+
+    programs.fzf.keybindings = true;
 
     home-manager.users.${username} = {
       imports = [./starship.nix];
@@ -23,7 +28,7 @@ in {
         enable = true;
         enableAutosuggestions = true;
         enableCompletion = true;
-        enableSyntaxHighlighting = true;
+        syntaxHighlighting.enable = true;
         completionInit = ''
           autoload -U compinit
           compinit

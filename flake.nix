@@ -6,6 +6,10 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprpaper.url = "github:hyprwm/hyprpaper";
     eww.url = "github:elkowar/eww";
 

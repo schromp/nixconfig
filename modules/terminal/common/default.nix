@@ -21,6 +21,7 @@ in {
         bitwarden-cli
         parted
         btop
+        zoxide
       ];
     };
   };

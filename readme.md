@@ -3,16 +3,16 @@
 ## TODO:
 - move config files to out of store symlinks
 - Theming
-    - login manager
     - ricing
 - collections
 - neovim flake
 - fonts
 - bar
-- mail program
+- zoxide
+- sops
+- notifications
+- screenshot program
 
-## Later:
-- lf
 
 ## thoughts
 

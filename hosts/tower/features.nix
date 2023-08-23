@@ -23,11 +23,13 @@
       };
 
       # Desktop
-      # sddm.enable = true;
+      sddm.enable = false;
       kitty.enable = true;
       eww.enable = true;
+      libreoffice.enable = true;
 
       # Terminal
+      greetd.enable = true;
       tmux.enable = true;
       zellij.enable = true;
       direnv.enable = true;

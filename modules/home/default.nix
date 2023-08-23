@@ -7,7 +7,7 @@
     ./packages.nix
     ./hyprland
     ./kitty
-    #./neovim
+    ./neovim
     ./zsh
     ./tmux
     ./lf

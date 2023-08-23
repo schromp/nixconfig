@@ -20,6 +20,9 @@
     '';
     shellAliases = {
       ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
       update = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
     };
     oh-my-zsh = {

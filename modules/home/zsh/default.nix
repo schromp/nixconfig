@@ -17,13 +17,16 @@
       bindkey -M menuselect 'l' vi-forward-char
       bindkey -M menuselect 'j' vi-down-line-or-history
       bindkey -v '^?' backward-delete-char
+
+      eval "$(direnv hook zsh)"
     '';
     shellAliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
-      update = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
+      rn = "ranger";
+      # update = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
     };
     oh-my-zsh = {
       enable = true;

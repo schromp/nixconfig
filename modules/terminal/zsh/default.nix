@@ -12,9 +12,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    #imports = [./starship.nix]; # FIX:
 
     home-manager.users.${username} = {
+      imports = [./starship.nix];
       programs.zsh = {
         enable = true;
         enableAutosuggestions = true;

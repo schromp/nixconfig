@@ -2,12 +2,13 @@
 
 ## TODO:
 - better themes/rices. self contained + no adding to enum in options
+- move theme apply into modules/*program*
+
+- sops
+- fonts
 
 - neovim flake
-- sops
-
 - zoxide
 
 - bar
-- fonts
 - notifications

@@ -1,11 +1,17 @@
-{ nixpkgs, self, hyprland, ... }:
-let
+{
+  nixpkgs,
+  self,
+  hyprland,
+  ...
+}: let
+
+  tower = import ./tower;
+
   inputs = self.inputs; # make flake inputs accessible
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
   wayland = ../modules/wayland;
   hmModule = inputs.home-manager.nixosModules.home-manager;
-
 
   home-manager = {
     useUserPackages = true;
@@ -16,9 +22,8 @@ let
     };
     users.lk = ../modules/home; # where the user config lifes
   };
-in
-{
-
+in {
+  # TODO: make this smaller
   xi = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux"; # double defined this FIX
     modules = [
@@ -30,38 +35,12 @@ in
       core
       wayland
       hmModule
-      { inherit home-manager; } # this pulls down the config we have defined in let
+      {inherit home-manager;} # this pulls down the config we have defined in let
     ];
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
   };
 
-  # Can add more systems here later
-tower = nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux"; # double defined this FIX
-  modules = [
-    {
-      networking.hostName = "tower";
-      fileSystems."/mnt/shared_ssd" = {
-         device = "/dev/disk/by-uuid/2858FCBB58FC88B8";
-         fsType = "ntfs";
-      };
-    }
-    ./tower/hardware-configuration.nix
-    bootloader
-    core
-    wayland
-    hmModule
-    #nvidia
-    #hyprlandModule
-    hyprland.nixosModules.default
-    { programs.hyprland = {
-        enable = true;
-        nvidiaPatches = true;
-      };
-    }
-    { inherit home-manager; } # this pulls down the config we have defined in let
-  ];
-  specialArgs = { inherit inputs; };
-};
-
+  # TODO: look into packages that have to be inherited.
+  # {inherit base-options}
+  tower = nixpkgs.lib.nixosSystem (tower);
 }

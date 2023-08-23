@@ -15,8 +15,8 @@ in {
     home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
       general = {
         # FIX: Hardcoded transparency values
-        col_active_border = "rgb(${focused})";
-        col_inactive_border = "rgb(${unfocused})";
+        "col.active_border" = "rgb(${focused})";
+        "col.inactive_border" = "rgb(${unfocused})";
       };
     };
   };

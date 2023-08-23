@@ -12,7 +12,7 @@ in {
   ];
 
   config = mkIf (cfg.name == "glass") {
-    presets.themes.name = "catppuccin-mocha";
+    presets.themes.name = "catppuccin-latte";
 
     home-manager.users.${username} = {
       wayland.windowManager.hyprland.settings =

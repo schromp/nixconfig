@@ -1,3 +1,3 @@
 {...}: {
-  imports = [./programs ./rices ];
+  imports = [./rices];
 }

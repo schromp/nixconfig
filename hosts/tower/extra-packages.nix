@@ -16,9 +16,11 @@ in {
     spotify
     discord
     pcmanfm
+    audacity
 
     p7zip
     tshark
+    nix-prefetch-git
 
     xemu
     rpcs3

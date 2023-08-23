@@ -57,6 +57,7 @@
         };
 
         # Gaming
+        gamescope.enable = true;
         prismLauncher.enable = true;
         lutris.enable = true;
         bottles.enable = true;

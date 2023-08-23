@@ -11,85 +11,11 @@ with lib; let
   enabled = opts.desktopEnvironment == "hyprland";
   cfg = config.modules.programs.hyprland;
 in {
-  options.modules.programs.hyprland.config = {
-    keybinds = {
-      mainMod = mkOption {
-        type = types.str;
-        default = "SUPER";
-      };
 
-      binds = mkOption {
-        type = with types;
-          listOf (submodule {
-            options = {
-              modifier = mkOption {
-                type = types.str;
-                default = "$mainMod";
-                example = "$mainMod CONTROL";
-              };
-              key = mkOption {
-                type = types.str;
-                default = " ";
-              };
-              keyword = mkOption {
-                type = types.str;
-                example = "exec";
-                default = " ";
-              };
-              command = mkOption {
-                type = types.str;
-                example = "firefox";
-                default = " ";
-              };
-              mouseBind = mkOption {
-                type = types.bool;
-                example = "true";
-                default = false;
-                description = "If the bind is a mousebind. Uses bindm instead of bind";
-              };
-            };
-          });
-      };
-    };
-
-    general = {
-      gaps_in = mkOption {
-        type = types.int;
-        default = 0;
-      };
-      gaps_out = mkOption {
-        type = types.int;
-        default = 0;
-      };
-      border_size = mkOption {
-        type = types.int;
-        default = 1;
-      };
-      col_active_border = mkOption {
-        type = types.str;
-        default = "00000000";
-        description = "rgba value";
-      };
-      col_inactive_border = mkOption {
-        type = types.str;
-        default = "00000000";
-        description = "rgba value";
-      };
-    };
-
-    animations = {
-      enabled = mkOption {
-        type = types.str;
-        default = "yes";
-        description = "yes or no";
-      };
-      # TODO: add other animation options
-    };
-  };
-
-  # imports = [
+  imports = [
   # inputs.hyprland.nixosModules.default
-  # ];
+    ./options.nix
+  ];
 
   config = mkIf enabled (mkMerge [
     (mkIf (enabled && opts.displayServerProtocol == "wayland") {
@@ -198,20 +124,8 @@ in {
         # pulseaudio.support32Bit = true;
       };
     })
-
-    # (mkIf options.modules.input.umlaute.enable {
-    #   # TODO: append to .conf file
-    # })
-    #
     # (mkIf options.modules.desktop.swww.enable {
     #   # TODO: append swww lines to hyprland config
     # })
-    #
-    # (mkMerge [
-    #   (mkIf (builtins.elem ""))
-    #   {
-    #     # TODO: append app runner to keybinds
-    #   }
-    # ])
   ]);
 }

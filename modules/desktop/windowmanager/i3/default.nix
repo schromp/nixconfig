@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  username = import ../../../../username.nix;
+  username = config.user.username;
   cfg = config.modules.desktop.x11.i3;
 in {
   options.modules.desktop.x11.i3 = {

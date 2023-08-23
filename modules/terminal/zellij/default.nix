@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: with lib; let
-  username = import ../../../username.nix;
+  username = config.modules.user.username;
   cfg = config.modules.programs.zellij;
 in {
 
@@ -13,6 +13,7 @@ in {
 
     home-manager.users.${username} = {
       xdg.configFile."zellij/config.kdl".text = builtins.readFile ./config.kdl;
+      xdg.configFile."zellij/layouts/default.kdl".text = builtins.readFile ./layouts/default.kdl;
     };
 
   };

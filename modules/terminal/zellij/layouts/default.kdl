@@ -1,4 +1,17 @@
 layout {
-  pane command="echo here todolist" size="20%"
-  pane
+  pane split_direction="vertical" {
+    pane name="notes" command="nix" size="20%" {
+      args "flake" "check"
+    }
+    pane split_direction="horizontal" {
+      pane name="main" focus=true size="85%"
+      pane name="commands"
+    }
+  }
+  pane size=1 borderless=true {
+    plugin location="zellij:compact-bar"
+  }
+  pane size=1 borderless=true {
+    plugin location="zellij:status-bar"
+  }
 }

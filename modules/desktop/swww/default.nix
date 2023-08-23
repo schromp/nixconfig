@@ -5,10 +5,10 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop;
+  username = config.modules.user.username;
+  cfg = config.modules.programs;
 in {
-  options.modules.desktop.swww = {
+  options.modules.programs.swww = {
     enable = mkEnableOption "Enable swww";
   };
 

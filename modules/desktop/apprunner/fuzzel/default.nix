@@ -4,13 +4,12 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop.fuzzel;
+  username = config.modules.user.username;
+  cfg = config.modules.user.appRunner;
 in {
-  options.modules.desktop.fuzzel.enable = mkEnableOption "Enable fuzzel";
 
   # TODO: split the fuzzel config into different option
-  config = mkIf cfg.enable {
+  config = mkIf (cfg == "fuzzel") {
     home-manager.users.${username} = {
       programs.fuzzel = {
         enable = true;

@@ -11,14 +11,14 @@ with lib; {
     };
 
     keymap = mkOption {
-      type = types.enum [ "us" "us-umlaute" ];
-      default = [ "us" ];
+      type = types.enum ["us" "us-umlaute"];
+      default = ["us"];
       description = ''Set xkb layout'';
     };
 
     displayManager = mkOption {
-      type = types.enum [ "sddm" ];
-      description = '' Choose your display manager'';
+      type = types.enum ["sddm"];
+      description = ''Choose your display manager'';
     };
 
     displayServerProtocol = mkOption {
@@ -48,12 +48,12 @@ with lib; {
     };
 
     fileManager = mkOption {
-      type = types.enum [ "pcmanfm" ];
+      type = types.enum ["pcmanfm"];
       description = ''Choose your file manager'';
     };
 
     appRunner = mkOption {
-      type = types.enum ["fuzzel"];
+      type = types.enum ["fuzzel" "wofi"];
       default = "fuzzel";
       description = ''
         Select the App Runner Hyprland should use.

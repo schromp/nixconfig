@@ -24,7 +24,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "sudo" "web-search" "git" "tmux" ];
+      plugins = [ "sudo" "web-search" "git" "tmux" "ssh-agent" ];
     };
   };
 }

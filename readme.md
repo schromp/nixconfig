@@ -12,3 +12,6 @@
 
 - bar
 - notifications
+
+- command runner: mute, open config
+- default apps

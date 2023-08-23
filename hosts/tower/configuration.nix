@@ -36,8 +36,6 @@ in {
     udisks2.enable = true;
   };
 
-  # for zsh autocompletions on systemlevel
-  environment.pathsToLink = ["/share/zsh"]; # TODO:move to zsh
 
   # Set timezone
   time.timeZone = "Europe/Berlin";
@@ -47,27 +45,25 @@ in {
   # Fonts
   fonts = {
     fonts = with pkgs; [
-      material-icons
-      material-design-icons
       (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
     ];
 
     enableDefaultFonts = true;
 
-    fontconfig = {
-      defaultFonts = {
-        monospace = [
-          "JetBrainsMono Nerd Font"
-          "Iosevka Term"
-          "Iosevka Term Nerd Font Complete Mono"
-          "Iosevka Nerd Font"
-          "Noto Color Emoji"
-        ];
-        sansSerif = ["Lexend" "Noto Color Emoji"];
-        serif = ["Noto Serif" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
-      };
-    };
+    # fontconfig = {
+    #   defaultFonts = {
+    #     monospace = [
+    #       "JetBrainsMono Nerd Font"
+    #       "Iosevka Term"
+    #       "Iosevka Term Nerd Font Complete Mono"
+    #       "Iosevka Nerd Font"
+    #       "Noto Color Emoji"
+    #     ];
+    #     sansSerif = ["Lexend" "Noto Color Emoji"];
+    #     serif = ["Noto Serif" "Noto Color Emoji"];
+    #     emoji = ["Noto Color Emoji"];
+    #   };
+    # };
   };
 
   boot.supportedFilesystems = ["ntfs"];

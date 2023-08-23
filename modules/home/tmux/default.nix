@@ -2,6 +2,7 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
+    shell = "\${pkgs.zsh}/bin/zsh"; # TODO:
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       sensible
@@ -16,8 +17,6 @@
       }
     ];
     extraConfig = ''
-      # set-option -g default-shell zsh
-
       set -g mouse on
 
       setw -g mode-keys vi

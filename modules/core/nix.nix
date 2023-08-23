@@ -14,10 +14,12 @@
     config = {
       allowUnfree = true;
       allowBroken = false; # TODO eval if this could be useful
+        overlays = with inputs; [
+          nixpkgs-wayland.overlay 
+          prismlauncher.overlay
+        ];
     };
 
-    # in here for me as an example
-    overlays = with inputs; [ nixpkgs-wayland.overlay ];
   };
 
   nix = {

@@ -32,6 +32,7 @@
       statix
       nixpkgs-fmt
       nil
+      rnix-lsp
       python311Packages.jedi-language-server
 
    ];

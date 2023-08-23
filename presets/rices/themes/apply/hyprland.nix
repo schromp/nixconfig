@@ -14,7 +14,6 @@ in {
   config = mkIf (cfg.name != "none") {
     home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
       general = {
-        # FIX: Hardcoded transparency values
         "col.active_border" = "rgb(${focused})";
         "col.inactive_border" = "rgb(${unfocused})";
       };

@@ -66,7 +66,7 @@ in {
 
           "$mod, 36, exec, kitty"
           "$mod, B, exec, firefox"
-          "$mod, R, exec, ${appRunner}" # WARN: problematic because of different exe names
+          "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
           "$mod SHIFT, S, exec, grimblast copy area"
 
           "${builtins.concatStringsSep "\n" (builtins.genList (

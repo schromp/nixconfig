@@ -1,67 +1,19 @@
-{ nixpkgs, self, hyprland, ... }:
-let
-  inputs = self.inputs; # make flake inputs accessible
-  bootloader = ../modules/core/bootloader.nix;
-  core = ../modules/core;
-  wayland = ../modules/wayland;
-  hmModule = inputs.home-manager.nixosModules.home-manager;
-
-
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    extraSpecialArgs = {
-      inherit inputs; # make flake inputs accessible to home manager
-      inherit self;
-    };
-    users.lk = ../modules/home; # where the user config lifes
-  };
-in
 {
-
-  xi = nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux"; # double defined this FIX
-    modules = [
-      {
-        networking.hostName = "xi";
-      }
-      ./xi/hardware-configuration.nix
-      bootloader
-      core
-      wayland
-      hmModule
-      { inherit home-manager; } # this pulls down the config we have defined in let
-    ];
-    specialArgs = { inherit inputs; };
-  };
-
-  # Can add more systems here later
-tower = nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux"; # double defined this FIX
-  modules = [
-    {
-      networking.hostName = "tower";
-      fileSystems."/mnt/shared_ssd" = {
-         device = "/dev/disk/by-uuid/2858FCBB58FC88B8";
-         fsType = "ntfs";
-      };
-    }
-    ./tower/hardware-configuration.nix
-    bootloader
-    core
-    wayland
-    hmModule
-    #nvidia
-    #hyprlandModule
-    hyprland.nixosModules.default
-    { programs.hyprland = {
-        enable = true;
-        nvidiaPatches = true;
-      };
-    }
-    { inherit home-manager; } # this pulls down the config we have defined in let
-  ];
-  specialArgs = { inherit inputs; };
-};
-
+  nixpkgs,
+  inputs,
+  home-manager,
+  ...
+}: let
+  mkNixosSystem = system: hostname:
+    nixpkgs.lib.nixosSystem {
+      system = "${system}";
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./${hostname}
+        {networking.hostName = hostname;}
+      ];
+      specialArgs = {inherit inputs;};
+    };
+in {
+  tower = mkNixosSystem "x86_64-linux" "tower";
 }

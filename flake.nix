@@ -3,13 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland"; 
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprpaper.url = "github:hyprwm/hyprpaper"; 
-    #xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
     eww.url = "github:elkowar/eww";
+
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+
     webcord.url = "github:fufexan/webcord-flake";
+
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -19,10 +22,14 @@
     };
   };
 
-  outputs = { self, ... }@inputs: let
-    system = "x86_64-linux";
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
-  in {
-    nixosConfigurations = import ./hosts inputs;
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
+    nixosConfigurations = import ./hosts {
+      inherit inputs home-manager nixpkgs;
+    };
+    # nixosConfigurations = import ./testing/testing_caller.nix { inherit inputs nixpkgs; };
   };
 }

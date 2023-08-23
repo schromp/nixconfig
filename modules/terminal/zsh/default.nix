@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.terminal.zsh;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.zsh;
 in {
-  options.modules.terminal.zsh = {
+  options.modules.programs.zsh = {
     enable = mkEnableOption "Enable zsh";
   };
 
@@ -15,6 +15,7 @@ in {
 
     # for zsh autocompletions on systemlevel
     environment.pathsToLink = ["/share/zsh"];
+    programs.zsh.enable = true;
 
     home-manager.users.${username} = {
       imports = [./starship.nix];

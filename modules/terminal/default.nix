@@ -6,5 +6,6 @@
       ./tmux
       ./direnv
       ./neovim
+      ./zellij
     ];
   }

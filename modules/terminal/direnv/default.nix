@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.terminal.direnv;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.direnv;
 in {
-  options.modules.terminal.direnv.enable = mkEnableOption "Enable direnv";
+  options.modules.programs.direnv.enable = mkEnableOption "Enable direnv";
 
   config = mkIf cfg.enable {
     home-manager.users.${username} = {

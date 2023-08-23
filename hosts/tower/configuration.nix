@@ -1,9 +1,10 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: let
-  username = import ../../username.nix;
+  username = config.modules.user.username;
 in {
   # Setup the user
   users.users.root.initialPassword = "1234";
@@ -14,7 +15,7 @@ in {
     shell = pkgs.zsh;
     initialPassword = "1234";
   };
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   # Setup home-manager options
   home-manager = {
@@ -35,7 +36,6 @@ in {
     '';
     udisks2.enable = true;
   };
-
 
   # Set timezone
   time.timeZone = "Europe/Berlin";

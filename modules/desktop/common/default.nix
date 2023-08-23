@@ -1,14 +1,13 @@
 {pkgs, lib, config, ...}: with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.desktop.commonPackages;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.installCommon.desktop;
 in {
-  options.modules.desktop.commonPackages = mkEnableOption "Install common desktop packages";
+  options.modules.programs.installCommon.desktop = mkEnableOption "Install common desktop packages";
 
   config = mkIf cfg {
     home-manager.users.${username} = {
       home.packages = with pkgs; [
         wofi
-        pcmanfm
         nomacs
         firefox
         pavucontrol

@@ -1,9 +1,9 @@
 { lib, config, pkgs, ... }: with lib; let
-  username = ../../username.nix;
-  cfg = config.modules.gaming.lutris;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.lutris;
 in {
   
-  options.modules.gaming.lutris.enable = mkEnableOption "Enable lutris";
+  options.modules.programs.lutris.enable = mkEnableOption "Enable lutris";
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ lutris wineWowPackages.stable winetricks ];

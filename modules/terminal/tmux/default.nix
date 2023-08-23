@@ -5,15 +5,15 @@
   ...
 }:
 with lib; let
-  username = import ../../../username.nix;
-  cfg = config.modules.terminal.tmux;
+  user = config.modules.user.username;
+  cfg = config.modules.programs.tmux;
 in {
-  options.modules.terminal.tmux = {
+  options.modules.programs.tmux = {
     enable = mkEnableOption "Enable tmux";
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${username} = {
+    home-manager.users.${user} = {
       programs.tmux = {
         enable = true;
         clock24 = true;

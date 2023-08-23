@@ -1,9 +1,9 @@
 {lib, config, inputs, pkgs, ...}:
 with lib; let
-  username = import ../../username.nix;
-  cfg = config.modules.gaming.prismLauncher;
+  username = config.modules.user.username;
+  cfg = config.modules.programs.prismLauncher;
 in {
-  options.modules.gaming.prismLauncher.enable = mkEnableOption "Enable PrismLauncher";
+  options.modules.programs.prismLauncher.enable = mkEnableOption "Enable PrismLauncher";
 
   config = mkIf cfg.enable {
     nixpkgs.config.overlay = with inputs; [

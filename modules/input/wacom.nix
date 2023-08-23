@@ -5,11 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.input.wacom;
+  cfg = config.modules.system.wacom;
 in {
-  options.modules.input.wacom.enable = mkEnableOption "Enable Wacom drivers";
-
-  config = mkIf cfg.enable {
+  config = mkIf cfg {
     services.xserver.wacom.enable = true;
     hardware.opentabletdriver.enable = true;
 

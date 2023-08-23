@@ -51,5 +51,14 @@ with lib; {
       type = types.enum [ "pcmanfm" ];
       description = ''Choose your file manager'';
     };
+
+    appRunner = mkOption {
+      type = types.enum ["fuzzel"];
+      default = "fuzzel";
+      description = ''
+        Select the App Runner Hyprland should use.
+      '';
+      example = "fuzzel";
+    };
   };
 }

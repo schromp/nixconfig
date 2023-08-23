@@ -1,5 +1,8 @@
 {...}: {
-  imports = [../../modules];
+  imports = [
+    ../../modules
+    ../../presets
+  ];
 
   config.modules = {
     user = {
@@ -7,6 +10,7 @@
       displayServerProtocol = "wayland";
       desktopEnvironment = "hyprland";
       keymap = "us-umlaute";
+      appRunner = "fuzzel";
     };
 
     system = {
@@ -14,6 +18,10 @@
       wacom = true;
       bluetooth = true;
     };
+
+    presets = [
+      "hyprland"
+    ];
 
     programs = {
       # Common programs

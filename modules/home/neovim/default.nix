@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let
+# let
   # installs a vim plugin from git with a given tag / branch
   # pluginGit = ref: repo: vimUtils.buildVimPluginFrom2Nix {
   #   pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -12,7 +12,7 @@ let
 
   # always installs latest version
   # plugin = pluginGit "HEAD";
-in
+# in
 {
 
   # dependencies for nvim
@@ -20,13 +20,10 @@ in
       ripgrep
       fd
       fzf
-
       tree-sitter
 
       # LSPs
-
       clang-tools
-      # rnix-lsp
       nil
       sumneko-lua-language-server
       rust-analyzer
@@ -43,7 +40,6 @@ in
     withNodeJs = true;
     withPython3 = true;
   };
-
 
   programs.fzf.enable = true;
 

@@ -40,7 +40,7 @@
 in {
   nixosSystems = {
     tower = mkNixosSystem "x86_64-linux" "tower";
-    cake = mkNixosSystem "aarch64" "cake";
+    # cake = mkNixosSystem "aarch64" "cake";
   };
 
   # darwinSystems = {

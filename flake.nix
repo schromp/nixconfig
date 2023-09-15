@@ -45,6 +45,6 @@
   in {
     nixosConfigurations = hosts.nixosSystems;
 
-    darwinConfigurations = hosts.darwinSystems;
+    # darwinConfigurations = hosts.darwinSystems;
   };
 }

@@ -11,7 +11,7 @@ in {
         firefox
         pavucontrol
         obs-studio
-        qt6.full
+        # qt6.full
       ];
     };
   };

@@ -32,6 +32,5 @@ with lib; {
     nvidia = mkEnableOption "Enable Nvidia drivers";
 
     wacom = mkEnableOption "Enalbe Wacom drivers";
-
   };
 }

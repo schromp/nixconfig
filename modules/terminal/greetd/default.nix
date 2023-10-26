@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-with lib; let 
+with lib; let
   cfg = config.modules.programs.greetd;
 in {
   options.modules.programs.greetd.enable = mkEnableOption "Enable greetd + tuigreet";

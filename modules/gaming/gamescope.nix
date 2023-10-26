@@ -1,4 +1,9 @@
-{ config, lib, ... }: with lib; let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.gamescope;
 in {

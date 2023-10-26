@@ -16,6 +16,5 @@ in {
       libwacom
       wacomtablet
     ];
-
   };
 }

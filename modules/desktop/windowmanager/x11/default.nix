@@ -1,8 +1,10 @@
-{config, lib, ...}: {
-  imports = [ 
+{
+  config,
+  lib,
+  ...
+}: {
+  imports = [
     ./i3
     ./config.nix
   ];
-
-
 }

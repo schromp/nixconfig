@@ -1,10 +1,13 @@
-{ config, lib, ... }: with lib; let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   username = config.modules.user.username;
   cfg = config.presets.themes;
   colors = cfg.colors;
-
 in {
-
   config = mkIf (cfg.name != "none") {
     home-manager.users.${username} = {
       programs.fuzzel.settings = {
@@ -16,5 +19,4 @@ in {
       };
     };
   };
-
 }

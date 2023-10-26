@@ -49,7 +49,6 @@ in {
       home.packages = with pkgs; [arandr feh];
 
       xdg.configFile."i3/config".text = builtins.readFile ./config;
-
     };
   };
 }

@@ -11,7 +11,7 @@ in {
   users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "wireshark" ];
+    extraGroups = ["wheel" "networkmanager" "audio" "wireshark"];
     shell = pkgs.zsh;
     initialPassword = "1234";
   };

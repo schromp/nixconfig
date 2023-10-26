@@ -1,4 +1,10 @@
-{pkgs, lib, config, ...}: with lib; let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.installCommon.desktop;
 in {

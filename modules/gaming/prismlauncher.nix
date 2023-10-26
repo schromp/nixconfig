@@ -1,4 +1,10 @@
-{lib, config, inputs, pkgs, ...}:
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.prismLauncher;

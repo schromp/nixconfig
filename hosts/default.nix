@@ -21,26 +21,23 @@
       ];
       specialArgs = {inherit inputs;};
     };
-  # mkDarwinSystem = system: hostname:
-  #   nix-darwin.lib.darwinSystem {
-  #     # nixpkgs.hostPlatform = "${system}";
-  #     system = "${system}";
-  #     modules = [
-  #       {
-  #         config.modules.system = {
-  #           hostname = hostname;
-  #           architecture = system;
-  #         };
-  #       }
-  #       home-manager.darwinModules.home-manager
-  #       ./${hostname}
-  #     ];
-  #     specialArgs = {inherit inputs;};
-  #   };
+
+  mkHmSystem = system: hostname:
+    home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [
+        ./${hostname}
+      ];
+    };
 in {
   nixosSystems = {
     tower = mkNixosSystem "x86_64-linux" "tower";
     # cake = mkNixosSystem "aarch64" "cake";
+  };
+
+  hmSystems = {
+    submarine = mkHmSystem "x86_64-linux" "submarine";
+    work = mkHmSystem "x86_64-linux" "work";
   };
 
   # darwinSystems = {

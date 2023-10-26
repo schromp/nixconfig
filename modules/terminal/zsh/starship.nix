@@ -1,5 +1,8 @@
-{ config, inputs, ... }: {
-
+{
+  config,
+  inputs,
+  ...
+}: {
   programs.starship = {
     enable = true;
     settings = {
@@ -42,7 +45,6 @@
         format = "[$duration]($style) ";
         style = "yellow";
       };
-
     };
   };
 }

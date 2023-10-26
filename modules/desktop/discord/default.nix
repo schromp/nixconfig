@@ -8,7 +8,6 @@
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.discord;
-
 in {
   options.modules.programs.discord = {
     enable = mkEnableOption "Enable Discord";

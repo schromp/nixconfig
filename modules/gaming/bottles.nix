@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.bottles;
 in {

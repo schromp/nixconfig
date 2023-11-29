@@ -21,6 +21,8 @@ in {
         fzf
         tree-sitter
 
+        clang
+
         # LSPs
         clang-tools
         nil
@@ -31,6 +33,10 @@ in {
         nil
         python311Packages.jedi-language-server
         alejandra
+        go
+        stylua
+        prettierd
+        yamllint
       ];
 
       programs.neovim = {

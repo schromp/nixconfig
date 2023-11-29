@@ -20,7 +20,7 @@
         appRunner = "fuzzel";
       };
       system = {
-        nvidia = true;
+        nvidia = false;
         wacom = true;
         bluetooth = true;
       };

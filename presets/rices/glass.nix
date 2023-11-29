@@ -18,11 +18,12 @@ in {
       wayland.windowManager.hyprland.settings = mkIf (config.modules.user.desktopEnvironment == "hyprland") {
         decoration = {
           rounding = 5;
-          multisample_edges = true;
-          blur = true;
-          blur_size = 5;
-          blur_passes = 5;
-          blur_ignore_opacity = true;
+          blur = {
+            enabled = true;
+            size = 5;
+            passes = 5;
+            ignore_opacity = true;
+          };
           drop_shadow = true;
           shadow_range = 30;
           shadow_render_power = 3;

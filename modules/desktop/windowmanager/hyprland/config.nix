@@ -21,19 +21,20 @@ in {
     monitor = ["DP-3,3440x1440@144,0x0,1"];
 
     exec-once = [
-      "swww init & swww img /home/lk/Pictures/Wallpaper/od_outrun_wave.png"
+      "swww init & swww img /home/lk/Pictures/Wallpaper/wallpaper.png"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
     ];
 
     input = {
       kb_layout = "${keymap_language}"; # TODO: not pretty
-      follow_mouse = 2;
+      follow_mouse = 1;
+      mouse_refocus = false;
       touchpad = {
         natural_scroll = true;
       };
 
-      sensitivity = "-0.2";
+      sensitivity = "-0.1";
       accel_profile = "flat";
     };
 

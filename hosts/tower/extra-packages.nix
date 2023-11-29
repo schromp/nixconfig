@@ -9,7 +9,6 @@ in {
   environment.systemPackages = with pkgs; [
     rofi
 
-    pdfmixtool
     imagemagick
     rnote
     evince

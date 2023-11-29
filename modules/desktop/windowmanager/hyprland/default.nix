@@ -69,9 +69,11 @@ in {
         wlr.enable = false;
         # xdgOpenUsePortal = true; makes programs open with xdg portal
         extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
+          pkgs.xdg-desktop-portal-hyprland
         ];
       };
+
+      qt.enable = true;
 
       home-manager.users.${username} = {
         wayland.windowManager.hyprland = {
@@ -85,6 +87,7 @@ in {
           swaylock-effects
           swayidle
           libnotify
+          xwaylandvideobridge
 
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];

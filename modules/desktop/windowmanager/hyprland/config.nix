@@ -26,6 +26,13 @@ in {
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
     ];
 
+    windowrulev2 = [ 
+      "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+      "noanim,class:^(xwaylandvideobridge)$"
+      "nofocus,class:^(xwaylandvideobridge)$"
+      "noinitialfocus,class:^(xwaylandvideobridge)$" 
+    ];
+
     input = {
       kb_layout = "${keymap_language}"; # TODO: not pretty
       follow_mouse = 1;
@@ -34,7 +41,7 @@ in {
         natural_scroll = true;
       };
 
-      sensitivity = "-0.1";
+      sensitivity = "0";
       accel_profile = "flat";
     };
 

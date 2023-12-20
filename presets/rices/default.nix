@@ -10,7 +10,7 @@ in {
 
   options.presets.rices = {
     name = mkOption {
-      type = types.enum ["none" "glass"];
+      type = types.enum ["none" "glass" "solid"];
       default = "none";
     };
   };

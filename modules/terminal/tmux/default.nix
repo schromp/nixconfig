@@ -16,36 +16,37 @@ in {
     home-manager.users.${user} = {
       programs.tmux = {
         enable = true;
-        clock24 = true;
-        plugins = with pkgs.tmuxPlugins; [
-          vim-tmux-navigator
-          sensible
-          yank
+        baseIndex = 1;
+        mouse = true;
+        keyMode = "vi";
+        plugins = with pkgs; [
           {
-            plugin = dracula;
+            plugin = tmuxPlugins.continuum;
             extraConfig = ''
-              set -g @dracula-show-battery false
-              set -g @dracula-show-powerline true
-              set -g @dracula-refresh-rate 10
-
-              set -g @dracula-ping-server "google.com"
-              set -g @dracula-ping-rate 5
-
-              set -g @dracula-show-location false
+              set -g @continuum-restore 'on'
+              set -g @continuum-save-interval '60' # minutes
             '';
           }
+          {
+            plugin = tmuxPlugins.vim-tmux-navigator;
+          }
+          {
+            plugin = tmuxPlugins.sensible;
+          }
         ];
+
         extraConfig = ''
           set -g default-command "\$\{SHELL}"
 
-          set -g mouse on
-
           setw -g mode-keys vi
+
+          set -g base-index 1
+          setw -g pane-base-index 1
+
           bind-key h select-pane -L
           bind-key j select-pane -D
           bind-key k select-pane -U
           bind-key l select-pane -R
-
         '';
       };
     };

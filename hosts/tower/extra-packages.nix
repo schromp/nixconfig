@@ -7,15 +7,18 @@
 in {
   # here you can add packages specific to your setup.
   environment.systemPackages = with pkgs; [
-    rofi
+    pantheon.elementary-iconbrowser
+    texliveFull
 
     imagemagick
     rnote
     evince
+    okular
     spotify
     discord
     pcmanfm
     audacity
+    soundux
 
     p7zip
     tshark

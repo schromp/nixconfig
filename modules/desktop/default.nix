@@ -8,6 +8,8 @@
     ./pipewire
     ./libreoffice
     ./discord
+    ./ags
+    ./anyrun
 
     ./displaymanager
     ./windowmanager

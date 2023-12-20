@@ -6,5 +6,6 @@
     ./steam.nix
     ./retroarch.nix
     ./gamescope.nix
+    ./gamemode.nix
   ];
 }

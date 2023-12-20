@@ -1,13 +1,13 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.neovim;
-in {
+in
+{
   options.modules.programs.neovim.enable = mkEnableOption "Enable neovim";
 
   config = mkIf cfg.enable {
@@ -23,6 +23,8 @@ in {
 
         clang
 
+        sassc
+
         # LSPs
         clang-tools
         nil
@@ -37,6 +39,11 @@ in {
         stylua
         prettierd
         yamllint
+        nixd
+        nodePackages.typescript
+        nodePackages.typescript-language-server
+        vscode-langservers-extracted
+        texlab
       ];
 
       programs.neovim = {
@@ -48,5 +55,6 @@ in {
 
       programs.fzf.enable = true;
     };
+    programs.npm.enable = true;
   };
 }

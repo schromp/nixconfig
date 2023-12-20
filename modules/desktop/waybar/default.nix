@@ -29,7 +29,7 @@ in {
             height = 30;
 
             modules-left = [
-              "wlr/workspaces"
+              "hyprland/workspaces"
             ];
 
             modules-middle = [
@@ -42,10 +42,8 @@ in {
               "clock"
             ];
 
-            "wlr/workspaces" = {
+            "hyprland/workspaces" = {
               format = "{icon}";
-              on-scroll-up = "hyprctl dispatch workspace e+1";
-              on-scroll-down = "hyprctl dispatch workspace e-1";
               on-click = "activate";
               format-icons = {
                 active = "";

@@ -33,20 +33,27 @@
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+
+    ags.url = "github:Aylur/ags";
+
+    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    ...
-  } @ inputs: let
-    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
-  in {
-    nixosConfigurations = hosts.nixosSystems;
+  outputs =
+    { nixpkgs
+    , home-manager
+    , nix-darwin
+    , ...
+    } @ inputs:
+    let
+      hosts = import ./hosts { inherit inputs home-manager nixpkgs nix-darwin; };
+    in
+    {
+      nixosConfigurations = hosts.nixosSystems;
 
-    homeConfigurations = hosts.hmSystems;
+      homeConfigurations = hosts.hmSystems;
 
-    # darwinConfigurations = hosts.darwinSystems;
-  };
+      # darwinConfigurations = hosts.darwinSystems;
+    };
 }

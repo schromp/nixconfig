@@ -7,17 +7,18 @@
   config = {
     presets = {
       rices = {
-        name = "glass";
+        name = "solid";
       };
     };
 
     modules = {
       user = {
+        homeManager.enabled = true;
         username = "lk";
         displayServerProtocol = "wayland";
         desktopEnvironment = "hyprland";
         keymap = "us-umlaute";
-        appRunner = "fuzzel";
+        appRunner = "anyrun";
       };
       system = {
         nvidia = false;
@@ -36,7 +37,7 @@
         sddm.enable = false;
         kitty.enable = true;
         eww.enable = false;
-        waybar.enable = true;
+        waybar.enable = false;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {
@@ -64,6 +65,7 @@
         bottles.enable = true;
         steam.enable = true;
         retroarch.enable = true;
+        gamemode.enable = true;
       };
     };
   };

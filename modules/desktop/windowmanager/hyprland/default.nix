@@ -1,19 +1,21 @@
-{
-  lib,
-  inputs,
-  config,
-  pkgs,
-  ...
+{ lib
+, inputs
+, config
+, pkgs
+, ...
 }:
 with lib; let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
-in {
+in
+{
   imports = [
     inputs.hyprland.nixosModules.default
     ./config.nix
   ];
+
+  options.modules.programs.hyprland.xdgOptions = mkEnableOption "Enable premade xdg options";
 
   config = mkIf enabled (mkMerge [
     (mkIf (enabled && opts.displayServerProtocol == "wayland") {
@@ -35,14 +37,14 @@ in {
           ANKI_WAYLAND = "1";
           QT_QPA_PLATFORM = "wayland;xcb";
           QT_QPA_PLATFORMTHEME = "qt5ct";
-          SDL_VIDEODRIVER="wayland";
+          # SDL_VIDEODRIVER = "wayland";
 
           WLR_BACKEND = "vulkan";
           WLR_RENDERER = "vulkan";
 
-          XDG_CURRENT_DESKTOP="Hyprland";
-          XDG_SESSION_TYPE="wayland";
-          XDG_SESSION_DESKTOP="Hyprland";
+          XDG_CURRENT_DESKTOP = "Hyprland";
+          XDG_SESSION_TYPE = "wayland";
+          XDG_SESSION_DESKTOP = "Hyprland";
 
           # TODO: move this into hidpi option
           GDK_SCALE = "1";
@@ -54,7 +56,7 @@ in {
           XCURSOR_THEME = "Bibata-Modern-Ice";
 
           MOZ_ENABLE_WAYLAND = "1";
-          WLR_NO_HARDWARE_CURSORS = "1";
+          # WLR_NO_HARDWARE_CURSORS = "1";
         };
       };
 
@@ -64,14 +66,7 @@ in {
         mediaKeys.enable = true;
       };
 
-      xdg.portal = {
-        enable = true;
-        wlr.enable = false;
-        # xdgOpenUsePortal = true; makes programs open with xdg portal
-        extraPortals = [
-          pkgs.xdg-desktop-portal-hyprland
-        ];
-      };
+      xdg = import ./xdg.nix { inherit pkgs; };
 
       qt.enable = true;
 
@@ -91,6 +86,15 @@ in {
 
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];
+
+        gtk = {
+          enable = true;
+
+          iconTheme = {
+            name = "Adwaita";
+            package = pkgs.gnome.adwaita-icon-theme;
+          };
+        };
 
         services.dunst.enable = true;
       };

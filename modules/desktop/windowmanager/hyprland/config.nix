@@ -1,7 +1,6 @@
-{
-  config,
-  lib,
-  ...
+{ config
+, lib
+, ...
 }:
 with lib; let
   username = config.modules.user.username;
@@ -14,38 +13,46 @@ with lib; let
     else ''
       us
     '';
-in {
+in
+{
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
-    monitor = ["DP-3,3440x1440@144,0x0,1"];
+    monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
     exec-once = [
       "swww init & swww img /home/lk/Pictures/Wallpaper/wallpaper.png"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
+      "ags"
     ];
 
-    windowrulev2 = [ 
+    windowrulev2 = [
       "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
       "noanim,class:^(xwaylandvideobridge)$"
       "nofocus,class:^(xwaylandvideobridge)$"
-      "noinitialfocus,class:^(xwaylandvideobridge)$" 
+      "noinitialfocus,class:^(xwaylandvideobridge)$"
+      "nofocus, class:^(steam)$, title:^()$"
     ];
 
     input = {
       kb_layout = "${keymap_language}"; # TODO: not pretty
-      follow_mouse = 1;
+      follow_mouse = 2;
       mouse_refocus = false;
       touchpad = {
         natural_scroll = true;
       };
 
-      sensitivity = "0";
+      sensitivity = "-0.15";
       accel_profile = "flat";
     };
 
-    animations.enabled = false;
+    animations = {
+      enabled = true;
+      animation = [
+        "workspaces,1,3,default,slidevert"
+      ];
+    };
 
     general = {
       gaps_in = 3;

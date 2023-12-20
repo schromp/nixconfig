@@ -3,6 +3,8 @@ with lib; {
   options.modules.user = {
     # Here we define global user choices
 
+    homeManager.enabled = mkEnableOption "Enable home-manager modules";
+
     username = mkOption {
       type = types.str;
       description = ''
@@ -35,8 +37,6 @@ with lib; {
       '';
     };
 
-    homeManager = mkEnableOption "Enable Home-Manager";
-
     terminal = mkOption {
       type = types.enum ["kitty"];
       description = ''Choose your terminal emulator'';
@@ -53,7 +53,7 @@ with lib; {
     };
 
     appRunner = mkOption {
-      type = types.enum ["fuzzel" "wofi"];
+      type = types.enum ["fuzzel" "wofi" "anyrun"];
       default = "fuzzel";
       description = ''
         Select the App Runner Hyprland should use.

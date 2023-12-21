@@ -2,8 +2,15 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }: let
+  dependencies = with pkgs; [
+    bash
+    coreutils
+    sassc
+  ];
+
   opts = config.modules.user;
   username = opts.username;
 in {
@@ -18,7 +25,23 @@ in {
       # configDir = ../ags;
 
       # packages to add to gjs's runtime
-      extraPackages = [pkgs.libsoup_3];
+      # extraPackages = [pkgs.libsoup_3];
+    };
+
+    systemd.user.services.ags = {
+      Unit = {
+        Description = "Aylur's Gtk Shell";
+        PartOf = [
+          "tray.target"
+          "graphical-session.target"
+        ];
+      };
+      Service = {
+        Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
+        ExecStart = "${inputs.ags.packages."x86_64-linux".default}/bin/ags";
+        Restart = "on-failure";
+      };
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }

@@ -1,12 +1,13 @@
-{
-  config,
-  lib,
-  ...
+{ config
+, lib
+, ...
 }:
 with lib; let
   cfg = config.presets.rices;
   username = config.modules.user.username;
-in {
+  vertical = if cfg.vertical then "slidevert" else "slide";
+in
+{
   imports = [
     ./themes
   ];
@@ -28,6 +29,11 @@ in {
           shadow_range = 30;
           shadow_render_power = 3;
           "col.shadow" = "00000099";
+          animations = {
+            animation = [
+              "workspaces,1,3,default,${vertical}"
+            ];
+          };
         };
       };
     };

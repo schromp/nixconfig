@@ -8,6 +8,7 @@
     presets = {
       rices = {
         name = "solid";
+        vertical = true;
       };
     };
 

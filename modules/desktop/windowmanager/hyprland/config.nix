@@ -43,7 +43,7 @@ in
         natural_scroll = true;
       };
 
-      sensitivity = "-0.15";
+      sensitivity = "-0.2";
       accel_profile = "flat";
     };
 
@@ -82,6 +82,8 @@ in
       "$mod, B, exec, firefox"
       "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
       "$mod SHIFT, S, exec, grimblast copy area"
+
+      "$mod A, A, exec, systemctl --user restart ags"
 
       "${builtins.concatStringsSep "\n" (builtins.genList (
           x: let

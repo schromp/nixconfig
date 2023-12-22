@@ -1,12 +1,12 @@
-{
-  lib,
-  config,
-  ...
+{ lib
+, config
+, ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.kitty;
-in {
+in
+{
   options.modules.programs.kitty = {
     enable = mkEnableOption "Enable Kitty";
     # TODO: add theming option

@@ -17,8 +17,11 @@ in {
     spotify
     discord
     pcmanfm
+    helvum
+
     audacity
     soundux
+    nwg-look
 
     p7zip
     tshark

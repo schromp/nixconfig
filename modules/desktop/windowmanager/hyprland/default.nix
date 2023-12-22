@@ -90,13 +90,18 @@ in
         gtk = {
           enable = true;
 
+          theme = {
+            name = "Dracula";
+            package = pkgs.dracula-theme;
+          };
+
           iconTheme = {
             name = "Adwaita";
             package = pkgs.gnome.adwaita-icon-theme;
           };
         };
 
-        services.dunst.enable = true;
+        services.dunst.enable = false;
       };
     })
 

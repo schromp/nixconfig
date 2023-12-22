@@ -9,6 +9,7 @@
     bash
     coreutils
     sassc
+    dunst
   ];
 
   opts = config.modules.user;
@@ -38,7 +39,7 @@ in {
       };
       Service = {
         Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
-        ExecStart = "${inputs.ags.packages."x86_64-linux".default}/bin/ags";
+        ExecStart = "${inputs.ags.packages.${config.modules.system.architecture}.default}/bin/ags";
         Restart = "on-failure";
       };
       Install.WantedBy = ["graphical-session.target"];

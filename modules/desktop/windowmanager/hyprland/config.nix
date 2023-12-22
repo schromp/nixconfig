@@ -5,6 +5,7 @@
 with lib; let
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
+  monitor = config.modules.user.monitor;
   keymap_language =
     if (config.modules.user.keymap == "us-umlaute")
     then ''
@@ -18,7 +19,9 @@ in
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
-    monitor = [ "DP-3,3440x1440@144,0x0,1" ];
+    # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
+
+    monitor = [ "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}" ];
 
     exec-once = [
       "swww init & swww img /home/lk/Pictures/Wallpaper/wallpaper.png"

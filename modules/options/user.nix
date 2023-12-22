@@ -37,6 +37,28 @@ with lib; {
       '';
     };
 
+    monitor = mkOption {
+      type = with types; submodule {
+	options = {
+        name = mkOption {
+          type = str;
+        };
+        resolution = mkOption {
+          type = str;
+        };
+        refreshRate = mkOption {
+          type = str;
+        };
+        scale = mkOption {
+          type = str;
+        };
+        position = mkOption {
+          type = str;
+        };
+	};
+      };
+    };
+
     terminal = mkOption {
       type = types.enum ["kitty"];
       description = ''Choose your terminal emulator'';

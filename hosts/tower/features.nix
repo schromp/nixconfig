@@ -53,6 +53,10 @@
           aarpc = false;
         };
         pipewire.enable = true;
+        hyprland = {
+          sens = "-0.2";
+          accel = "flat";
+        };
 
         # Terminal
         ssh.enable = true;

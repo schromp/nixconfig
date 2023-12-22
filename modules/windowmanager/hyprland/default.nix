@@ -17,6 +17,15 @@ in
 
   options.modules.programs.hyprland = {
     xdgOptions = mkEnableOption "Enable premade xdg options";
+    sens = mkOption {
+      type = types.str;
+      default = "1";
+    };
+    accel = mkOption {
+      type = types.str;
+      default = "flat";
+      description = "Can be flat or adaptive";
+    };
   };
 
   config = mkIf enabled (mkMerge [

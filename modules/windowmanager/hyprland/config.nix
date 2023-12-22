@@ -3,6 +3,7 @@
 , ...
 }:
 with lib; let
+  cfg = config.modules.programs.hyprland;
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
   monitor = config.modules.user.monitor;
@@ -46,8 +47,8 @@ in
         natural_scroll = true;
       };
 
-      sensitivity = "-0.2";
-      accel_profile = "flat";
+      sensitivity = cfg.sens;
+      accel_profile = cfg.accel;
     };
 
     animations = {

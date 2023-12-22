@@ -54,6 +54,7 @@
         pipewire.enable = true;
 
         # Terminal
+        ssh.enable = true;
         greetd.enable = false;
         tmux.enable = true;
         zellij.enable = true;

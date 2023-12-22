@@ -15,7 +15,9 @@ in
     ./config.nix
   ];
 
-  options.modules.programs.hyprland.xdgOptions = mkEnableOption "Enable premade xdg options";
+  options.modules.programs.hyprland = {
+    xdgOptions = mkEnableOption "Enable premade xdg options";
+  };
 
   config = mkIf enabled (mkMerge [
     (mkIf (enabled && opts.displayServerProtocol == "wayland") {

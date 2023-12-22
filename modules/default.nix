@@ -1,11 +1,45 @@
 {...}: {
   imports = [
     ./options
+    ./common
 
-    ./terminal
-    ./desktop
-    ./gaming
     ./input
     ./system
+
+    # Gaming
+    ./prismlauncher
+    ./lutris
+    ./bottles
+    ./steam
+    ./retroarch
+    ./gamescope
+    ./gamemode
+
+    # Desktop
+    ./swww
+    ./eww
+    ./waybar
+    ./kitty
+    ./pipewire
+    ./libreoffice
+    ./discord
+    ./ags
+    ./anyrun
+
+    ./displaymanager
+    ./windowmanager
+    ./apprunner
+
+    # Terminal
+    ./git
+    ./zsh
+    ./tmux
+    ./direnv
+    ./neovim
+    ./zellij
+    ./greetd
+    ./ssh
   ];
+
+
 }

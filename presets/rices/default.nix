@@ -15,5 +15,7 @@ in {
     };
 
     transparent = mkEnableOption "Enable transparency";
+
+    vertical = mkEnableOption "Should the desktop be vertical";
   };
 }

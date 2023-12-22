@@ -1,12 +1,12 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.gamescope;
-in
-{
+in {
   options.modules.programs.gamescope.enable = mkEnableOption "Enable Gamescope";
 
   config = mkIf cfg.enable {

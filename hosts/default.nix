@@ -32,6 +32,7 @@
 in {
   nixosSystems = {
     tower = mkNixosSystem "x86_64-linux" "tower";
+    xi = mkNixosSystem "x86_64-linux" "xi";
     # cake = mkNixosSystem "aarch64" "cake";
   };
 

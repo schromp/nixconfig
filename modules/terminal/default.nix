@@ -8,5 +8,6 @@
     ./neovim
     ./zellij
     ./greetd
+    ./ssh
   ];
 }

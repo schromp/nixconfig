@@ -58,16 +58,6 @@ in {
           plugins = ["sudo" "web-search" "git" "ssh-agent"];
         };
       };
-
-    programs.ssh = {
-      enable = true;
-      matchBlocks = {
-        "github.com" = {
-          hostname = "github.com";
-          identityFile = "~/.ssh/github";
-        };
-      };
-    };
     };
   };
 }

@@ -19,6 +19,7 @@ in {
         baseIndex = 1;
         mouse = true;
         keyMode = "vi";
+        tmuxinator.enable = true;
         plugins = with pkgs; [
           {
             plugin = tmuxPlugins.continuum;
@@ -32,6 +33,9 @@ in {
           }
           {
             plugin = tmuxPlugins.sensible;
+          }
+          {
+            plugin = tmuxPlugins.resurrect;
           }
         ];
 

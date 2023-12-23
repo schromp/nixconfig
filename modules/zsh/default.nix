@@ -49,7 +49,6 @@ in
           lg = "lazygit";
           rn = "ranger";
           ls = "eza --icons";
-          ll = "eza --icons --la";
 
           "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
           "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";

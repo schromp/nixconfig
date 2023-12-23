@@ -1,28 +1,28 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.zsh;
-in {
+in
+{
   options.modules.programs.zsh = {
     enable = mkEnableOption "Enable zsh";
   };
 
   config = mkIf cfg.enable {
     # for zsh autocompletions on systemlevel
-    environment.pathsToLink = ["/share/zsh"];
-    environment.systemPackages = [pkgs.fzf];
+    environment.pathsToLink = [ "/share/zsh" ];
+    environment.systemPackages = with pkgs; [ fzf eza ];
 
     programs.zsh.enable = true;
 
     programs.fzf.keybindings = true;
 
     home-manager.users.${username} = {
-      imports = [./starship.nix];
+      imports = [ ./starship.nix ];
       programs.zsh = {
         enable = true;
         enableAutosuggestions = true;
@@ -48,6 +48,7 @@ in {
           "....." = "cd ../../../..";
           lg = "lazygit";
           rn = "ranger";
+          ls = "eza --icons";
 
           "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
           "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";
@@ -55,7 +56,7 @@ in {
         };
         oh-my-zsh = {
           enable = true;
-          plugins = ["sudo" "web-search" "git" "ssh-agent"];
+          plugins = [ "sudo" "web-search" "git" "ssh-agent" ];
         };
       };
     };

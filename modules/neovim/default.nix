@@ -28,22 +28,22 @@ in
         # LSPs
         clang-tools
         nil
+        # nixd
         sumneko-lua-language-server
         rust-analyzer
         statix
         nixpkgs-fmt
-        nil
         python311Packages.jedi-language-server
         alejandra
         go
         stylua
         prettierd
         yamllint
-        nixd
         nodePackages.typescript
         nodePackages.typescript-language-server
         vscode-langservers-extracted
         texlab
+        prettierd
       ];
 
       programs.neovim = {

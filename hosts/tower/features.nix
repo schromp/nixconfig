@@ -43,7 +43,11 @@
 
         # Desktop
         sddm.enable = false;
-        kitty.enable = true;
+        xdg.enable = true;
+        kitty = {
+          enable = true;
+          theme = "kanagawa";
+        };
         eww.enable = false;
         waybar.enable = false;
         swww.enable = true;

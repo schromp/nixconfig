@@ -42,6 +42,7 @@
 
         # Desktop
         sddm.enable = false;
+        gdm.enable = false;
         kitty.enable = true;
         eww.enable = false;
         waybar.enable = false;
@@ -53,13 +54,13 @@
         };
         pipewire.enable = true;
         hyprland = {
-          sens = "0.2";
+          sens = "0.1";
           accel = "adaptive";
         };
 
         # Terminal
         ssh.enable = true;
-        greetd.enable = false;
+        greetd.enable = true;
         tmux.enable = true;
         zellij.enable = true;
         direnv.enable = true;

@@ -84,6 +84,10 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services = {
+    upower.enable = true;
+  };
+
   hardware = {
     opengl = {
       enable = true;

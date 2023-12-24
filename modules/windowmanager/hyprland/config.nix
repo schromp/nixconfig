@@ -99,6 +99,13 @@ in {
 
       "$mod A, A, exec, systemctl --user restart ags"
 
+      ", XF86MonBrightnessUp, exec, brightnessctl s +10"
+      ", XF86MonBrightnessDown, exec, brightnessctl s 10-"
+
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
       "${builtins.concatStringsSep "\n" (builtins.genList (
           x: let
             ws = let

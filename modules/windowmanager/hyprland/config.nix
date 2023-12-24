@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib; let
   cfg = config.modules.programs.hyprland;
@@ -15,14 +16,13 @@ with lib; let
     else ''
       us
     '';
-in
-{
+in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = [ "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}" ];
+    monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}"];
 
     exec-once = [
       "swww init & swww img /home/lk/Pictures/Wallpaper/wallpaper.png"
@@ -49,6 +49,16 @@ in
 
       sensitivity = cfg.sens;
       accel_profile = cfg.accel;
+
+      touchpad = {
+        scroll_factor = 0.5;
+      };
+    };
+
+    gestures = {
+      workspace_swipe = true;
+      workspace_swipe_fingers = 3;
+      workspace_swipe_distance = 200;
     };
 
     animations = {

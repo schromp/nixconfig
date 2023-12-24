@@ -71,7 +71,7 @@ in
         };
       };
 
-      programs.dconf.enable = true; # TODO: why? my comment said gtk stuff
+      programs.dconf.enable = true; # Enable gnome programs outside of gnome better
 
       sound = {
         mediaKeys.enable = true;

@@ -25,7 +25,6 @@
     ./discord
     ./ags
     ./anyrun
-    ./xdg
 
     ./displaymanager
     ./windowmanager

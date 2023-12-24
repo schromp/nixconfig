@@ -118,8 +118,8 @@ in {
           };
 
           iconTheme = {
-            name = "Adwaita";
-            package = pkgs.gnome.adwaita-icon-theme;
+            name = "Kanagawa";
+            package = inputs.self.packages."x86_64-linux".kanagawa-icon-theme;
           };
         };
 

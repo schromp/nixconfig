@@ -25,7 +25,7 @@ in
       runHook preInstall
 
       mkdir -p $out/share/themes/Kanagawa
-      cp -a themes/Kanagawa-B/* $out/share/themes/Kanagawa
+      cp -a themes/Kanagawa-BL/* $out/share/themes/Kanagawa
 
       ls $out/share/themes
 

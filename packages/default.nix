@@ -7,4 +7,5 @@
 in
   forAllSystems (pkgs: {
     kanagawa-gtk-theme = pkgs.callPackage ./kanagawa-gtk-theme.nix {};
+    kanagawa-icon-theme = pkgs.callPackage ./kanagawa-icon-theme.nix {};
   })

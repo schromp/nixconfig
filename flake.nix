@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpaper.url = "github:hyprwm/hyprpaper";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     eww.url = "github:elkowar/eww";
 
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
@@ -40,20 +45,21 @@
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    { nixpkgs
-    , home-manager
-    , nix-darwin
-    , ...
-    } @ inputs:
-    let
-      hosts = import ./hosts { inherit inputs home-manager nixpkgs nix-darwin; };
-    in
-    {
-      nixosConfigurations = hosts.nixosSystems;
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nix-darwin,
+    ...
+  } @ inputs: let
+    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
+    # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+  in {
+    nixosConfigurations = hosts.nixosSystems;
 
-      homeConfigurations = hosts.hmSystems;
+    homeConfigurations = hosts.hmSystems;
 
-      # darwinConfigurations = hosts.darwinSystems;
-    };
+    packages = import ./packages {inherit nixpkgs;};
+
+    # darwinConfigurations = hosts.darwinSystems;
+  };
 }

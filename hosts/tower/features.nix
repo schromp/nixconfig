@@ -27,6 +27,7 @@
         };
         keymap = "us-umlaute";
         appRunner = "anyrun";
+        browser = "firefox";
       };
       system = {
         nvidia = false;
@@ -43,7 +44,10 @@
 
         # Desktop
         sddm.enable = false;
-        kitty.enable = true;
+        kitty = {
+          enable = true;
+          theme = "kanagawa";
+        };
         eww.enable = false;
         waybar.enable = false;
         swww.enable = true;
@@ -65,6 +69,7 @@
         zellij.enable = true;
         direnv.enable = true;
         zsh.enable = true;
+        zoxide.enable = true;
         neovim.enable = true;
         git = {
           enable = true; # TODO: make option for username/mail

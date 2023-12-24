@@ -1,18 +1,19 @@
-{ lib
-, inputs
-, config
-, pkgs
-, ...
+{
+  lib,
+  inputs,
+  config,
+  pkgs,
+  ...
 }:
 with lib; let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
-in
-{
+in {
   imports = [
     inputs.hyprland.nixosModules.default
     ./config.nix
+    # ./xdg.nix
   ];
 
   options.modules.programs.hyprland = {
@@ -30,6 +31,11 @@ in
 
   config = mkIf enabled (mkMerge [
     (mkIf (enabled && opts.displayServerProtocol == "wayland") {
+      programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+      };
+
       # add binary cache
       nix.settings.substituters = [
         "https://nixpkgs-wayland.cachix.org"
@@ -77,13 +83,18 @@ in
         mediaKeys.enable = true;
       };
 
-      xdg = import ./xdg.nix { inherit pkgs; };
+      environment.systemPackages = with pkgs; [xdg-utils];
 
       qt.enable = true;
 
       home-manager.users.${username} = {
+        imports = [
+          inputs.hyprland.homeManagerModules.default
+        ];
+
         wayland.windowManager.hyprland = {
           enable = true;
+          # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
           # systemd = true;
         };
 
@@ -102,39 +113,18 @@ in
           enable = true;
 
           theme = {
-            name = "Dracula";
-            package = pkgs.dracula-theme;
+            name = "Kanagawa";
+            package = inputs.self.packages."x86_64-linux".kanagawa-gtk-theme;
           };
 
           iconTheme = {
-            name = "Adwaita";
-            package = pkgs.gnome.adwaita-icon-theme;
+            name = "Kanagawa";
+            package = inputs.self.packages."x86_64-linux".kanagawa-icon-theme;
           };
         };
 
         services.dunst.enable = false;
       };
     })
-
-    (mkIf config.modules.system.nvidia {
-      home-manager.users.${username} = {
-        wayland.windowManager.hyprland.enableNvidiaPatches = true;
-      };
-      hardware = {
-        opengl = {
-          enable = true;
-          driSupport = true;
-          driSupport32Bit = true;
-          extraPackages = with pkgs; [
-            vaapiVdpau
-            libvdpau-va-gl
-          ];
-        };
-        # pulseaudio.support32Bit = true;
-      };
-    })
-    # (mkIf options.modules.desktop.swww.enable {
-    #   # TODO: append swww lines to hyprland config
-    # })
   ]);
 }

@@ -33,6 +33,7 @@
     # Terminal
     ./git
     ./zsh
+    ./zoxide
     ./tmux
     ./direnv
     ./neovim

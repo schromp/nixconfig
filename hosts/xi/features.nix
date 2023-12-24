@@ -26,6 +26,7 @@
         };
         keymap = "us-umlaute";
         appRunner = "anyrun";
+        browser = "firefox";
       };
       system = {
         nvidia = false;
@@ -43,7 +44,10 @@
         # Desktop
         sddm.enable = false;
         gdm.enable = false;
-        kitty.enable = true;
+        kitty = {
+          enable = true;
+          theme = "kanagawa";
+        };
         eww.enable = false;
         waybar.enable = false;
         swww.enable = true;

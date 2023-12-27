@@ -16,6 +16,10 @@ with lib; let
     else ''
       us
     '';
+
+  colors = config.presets.themes.colors;
+  focused = colors.base0A;
+  unfocused = colors.base03;
 in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -73,6 +77,9 @@ in {
       gaps_out = 7;
       border_size = 2;
       layout = "dwindle";
+
+      "col.active_border" = "rgb(${focused})";
+      "col.inactive_border" = "rgb(${unfocused})";
     };
 
     bindm = [

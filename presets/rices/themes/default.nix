@@ -1,8 +1,6 @@
 {lib, ...}:
 with lib; {
   imports = [
-    ./apply
-
     ./catppuccin_mocha.nix
     ./catppuccin_latte.nix
   ];

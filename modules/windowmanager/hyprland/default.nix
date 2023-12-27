@@ -9,6 +9,11 @@ with lib; let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
+
+  cfg = config.presets.themes;
+  cursor = cfg.cursor;
+  theme = cfg.theme;
+  icon = cfg.icon;
 in {
   imports = [
     inputs.hyprland.nixosModules.default
@@ -108,6 +113,25 @@ in {
 
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];
+
+        gtk = {
+          enable = true;
+
+          theme = {
+            name = theme.name;
+            package = theme.package;
+          };
+
+          iconTheme = {
+            name = icon.name;
+            package = icon.package;
+          };
+
+          cursorTheme = {
+            name = cursor.name;
+            package = cursor.package;
+          };
+        };
 
         services.dunst.enable = false;
       };

@@ -1,13 +1,14 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.neovim;
-in
-{
+in {
   options.modules.programs.neovim.enable = mkEnableOption "Enable neovim";
 
   config = mkIf cfg.enable {
@@ -24,6 +25,8 @@ in
         clang
 
         sassc
+
+        inputs.sg-nvim.packages.${system}.default
 
         # LSPs
         clang-tools

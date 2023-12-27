@@ -6,6 +6,8 @@
     ./input
     ./system
 
+    ./sops
+
     # Gaming
     ./prismlauncher
     ./lutris
@@ -25,6 +27,7 @@
     ./discord
     ./ags
     ./anyrun
+    ./xdg
 
     ./displaymanager
     ./windowmanager

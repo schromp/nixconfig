@@ -25,7 +25,7 @@ in {
     monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}"];
 
     exec-once = [
-      "swww init & swww img /home/lk/Pictures/Wallpaper/wallpaper.png"
+      "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"

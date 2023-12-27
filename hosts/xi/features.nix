@@ -17,6 +17,7 @@
         username = "lk";
         displayServerProtocol = "wayland";
         desktopEnvironment = "hyprland";
+
         monitor = {
           name = "eDP-1";
           resolution = "2880x1800";
@@ -27,6 +28,8 @@
         keymap = "us-umlaute";
         appRunner = "anyrun";
         browser = "firefox";
+
+        createXDGDirectories = true;
       };
       system = {
         nvidia = false;
@@ -49,7 +52,7 @@
           theme = "kanagawa";
         };
         eww.enable = false;
-        waybar.enable = false;
+        waybar.enable = true;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {

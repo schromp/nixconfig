@@ -109,20 +109,6 @@ in {
           inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         ];
 
-        gtk = {
-          enable = true;
-
-          theme = {
-            name = "Kanagawa";
-            package = inputs.self.packages."x86_64-linux".kanagawa-gtk-theme;
-          };
-
-          iconTheme = {
-            name = "Kanagawa";
-            package = inputs.self.packages."x86_64-linux".kanagawa-icon-theme;
-          };
-        };
-
         services.dunst.enable = false;
       };
     })

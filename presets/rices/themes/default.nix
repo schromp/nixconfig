@@ -26,5 +26,44 @@ with lib; {
       type = with types; attrsOf str;
     };
 
+    cursor = mkOption {
+      type = with types; submodule {
+        options = {
+          name = mkOption {
+            type = str;
+          };
+          package = mkOption {
+            type = package;
+          };
+        };
+      };
+    };
+
+    theme = mkOption {
+      type = with types; submodule {
+        options = {
+          name = mkOption {
+            type = str;
+          };
+          package = mkOption {
+            type = package;
+          };
+        };
+      };
+    };
+
+    icon = mkOption {
+      type = with types; submodule {
+        options = {
+          name = mkOption {
+            type = str;
+          };
+          package = mkOption {
+            type = package;
+          };
+        };
+      };
+    };
+
   };
 }

@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  pkgs,
+  inputs,
   ...
 }:
 with lib; let
@@ -26,6 +28,18 @@ in {
         base0D = "89b4fa";
         base0E = "cba6f7";
         base0F = "f2cdcd";
+      };
+      cursor = {
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
+      };
+      theme = {
+        name = "Kanagawa";
+        package = inputs.self.packages."x86_64-linux".kanagawa-gtk-theme;
+      };
+      icon = {
+        name = "kanagawa";
+        package = inputs.self.packages."x86_64-linux".kanagawa-icon-theme;
       };
     };
   };

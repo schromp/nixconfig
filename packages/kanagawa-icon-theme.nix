@@ -3,6 +3,7 @@
   lib,
   fetchFromGitHub,
   gtk3,
+  pkgs,
 }:
 stdenvNoCC.mkDerivation {
   pname = "kanagawa-icon-theme";
@@ -19,8 +20,13 @@ stdenvNoCC.mkDerivation {
     gtk3
   ];
 
+  propagatedBuildInputs = with pkgs; [
+    hicolor-icon-theme
+  ];
+
   # avoid the makefile which is only for the theme maintainers
   dontBuild = true;
+  dontDropIconThemeCache = true;
 
   installPhase = ''
     runHook preInstall

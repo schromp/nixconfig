@@ -7,3 +7,5 @@
 - bar
 - notifications
 - lock screen
+- soundboard
+- voice changer?

@@ -23,6 +23,9 @@ in {
           # TODO: move this into userspace
           userName = "Lennart Koziollek";
           userEmail = "lennart.koziollek@stud.uni-due.de";
+          extraConfig = {
+            init.defaultBranch = "main";
+          };
         };
       };
     }

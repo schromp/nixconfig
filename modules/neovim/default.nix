@@ -35,6 +35,7 @@ in
         nixpkgs-fmt
         python311Packages.jedi-language-server
         alejandra
+        gopls
         go
         stylua
         prettierd

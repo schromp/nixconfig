@@ -43,6 +43,11 @@
 
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
+
+    tmux-sessionx = {
+      url = "github:schromp/tmux-sessionx";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

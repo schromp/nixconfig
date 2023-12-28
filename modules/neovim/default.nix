@@ -35,8 +35,11 @@ in
         nixpkgs-fmt
         python311Packages.jedi-language-server
         alejandra
+
         gopls
         go
+        air
+
         stylua
         prettierd
         yamllint
@@ -45,6 +48,7 @@ in
         vscode-langservers-extracted
         texlab
         prettierd
+        emmet-ls
       ];
 
       programs.neovim = {

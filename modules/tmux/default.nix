@@ -41,6 +41,12 @@ in {
           {
             plugin = inputs.tmux-sessionx.packages.${config.modules.system.architecture}.default;
           }
+          {
+            plugin = tmuxPlugins.tmux-thumbs;
+          }
+          {
+            plugin = tmuxPlugins.tmux-fzf;
+          }
         ];
 
         extraConfig = ''

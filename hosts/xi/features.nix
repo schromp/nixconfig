@@ -72,6 +72,7 @@
         zellij.enable = true;
         direnv.enable = true;
         zsh.enable = true;
+        zoxide.enable = true;
         neovim.enable = true;
         git = {
           enable = true; # TODO: make option for username/mail

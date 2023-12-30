@@ -19,6 +19,7 @@ in {
     pcmanfm
     audacity
     soundux
+    qpwgraph
 
     p7zip
     tshark

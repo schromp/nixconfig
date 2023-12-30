@@ -22,6 +22,7 @@ in {
     audacity
     soundux
     nwg-look
+    qpwgraph
 
     p7zip
     tshark

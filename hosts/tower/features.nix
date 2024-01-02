@@ -62,6 +62,9 @@
           sens = "-0.2";
           accel = "flat";
         };
+        ags = {
+          enable = true;
+        };
 
         # Terminal
         ssh.enable = true;

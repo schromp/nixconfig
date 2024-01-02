@@ -2,7 +2,7 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import * as Utils from "resource:///com/github/Aylur/ags/utils.js";
 
 import PowerButtonRow from "./info/PowerButtons.js";
-import { Microphone } from "./info/Sounds.js";
+import { VolumeSourceSelector } from "./info/Sounds.js";
 
 const Sound = Widget.Box({
   className: "sound",
@@ -13,7 +13,14 @@ const Sound = Widget.Box({
 const Info = Widget.Box({
   className: "info",
   vertical: true,
-  children: [Microphone, Widget.Label("text"), PowerButtonRow],
+  children: [
+    Widget.Label('Speakers'),
+    VolumeSourceSelector("speakers"),
+    Widget.Label('Microphones'),
+    VolumeSourceSelector("microphones"),
+    Widget.Label("text"),
+    PowerButtonRow,
+  ],
 });
 
 const SettingsContainer = Widget.Box({

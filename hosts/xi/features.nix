@@ -15,6 +15,8 @@
       user = {
         homeManager.enabled = true;
         username = "lk";
+        repoDirectory = "/home/lk/repos/nixconfig";
+
         displayServerProtocol = "wayland";
         desktopEnvironment = "hyprland";
 

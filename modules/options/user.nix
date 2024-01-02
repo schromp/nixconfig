@@ -12,6 +12,11 @@ with lib; {
       '';
     };
 
+    repoDirectory = mkOption {
+      type = types.str;
+      description = "Where the repo of this config is saved";
+    };
+
     keymap = mkOption {
       type = types.enum ["us" "us-umlaute"];
       default = ["us"];

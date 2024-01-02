@@ -1,0 +1,29 @@
+.settings {
+  background-color: transparent;
+}
+
+.info {
+  min-width: 25rem;
+
+  background: $base00;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid $base03;
+}
+
+.info-power-button {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  background: $base07;
+  border: none;
+  box-shadow: none;
+  color: white;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+
+  &:hover {
+    background: $base09;
+  }
+}
+
+.debug {
+  background: red;
+}

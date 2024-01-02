@@ -18,6 +18,8 @@ const Info = Widget.Box({
     VolumeSourceSelector("speakers"),
     Widget.Label('Microphones'),
     VolumeSourceSelector("microphones"),
+    Widget.Label('Apps'),
+    VolumeSourceSelector("apps"),
     Widget.Label("text"),
     PowerButtonRow,
   ],

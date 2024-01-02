@@ -90,5 +90,11 @@ tooltip {
   .info-power-button:hover {
     background: #FFA066; }
 
+.default-audio-selected {
+  background-color: red; }
+
+.default-audio-unselected {
+  background-color: blue; }
+
 .debug {
   background: red; }

@@ -33,7 +33,7 @@ in {
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
-      "hyprctl setcursor ${config.presets.themes.cursor.name} 16"
+      "hyprctl setcursor ${config.presets.themes.cursor.name} 24"
     ];
 
     windowrulev2 = [

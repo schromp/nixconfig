@@ -8,4 +8,5 @@ in
   forAllSystems (pkgs: {
     kanagawa-gtk-theme = pkgs.callPackage ./kanagawa-gtk-theme.nix {};
     kanagawa-icon-theme = pkgs.callPackage ./kanagawa-icon-theme.nix {};
+    tmux-powerline = pkgs.callPackage ./tmux-powerline.nix {};
   })

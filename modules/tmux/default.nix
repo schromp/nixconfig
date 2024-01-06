@@ -47,6 +47,9 @@ in {
           {
             plugin = tmuxPlugins.tmux-fzf;
           }
+          {
+            plugin = inputs.self.packages.${config.modules.system.architecture}.tmux-powerline;
+          }
         ];
 
         extraConfig = ''
@@ -71,6 +74,8 @@ in {
           bind-key -n C-S-Right swap-window -t +1
         '';
       };
+
+      xdg.configFile."tmux-powerline/config.sh".text = builtins.readFile ./tmux-powerline-config.sh;
     };
   };
 }

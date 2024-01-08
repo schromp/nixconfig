@@ -18,7 +18,7 @@ with lib; let
     '';
 
   colors = config.presets.themes.colors;
-  focused = colors.base0A;
+  focused = colors.base0C;
   unfocused = colors.base03;
 in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {

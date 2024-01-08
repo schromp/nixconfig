@@ -21,6 +21,7 @@ in {
     home-manager.users.${username} = {
       xdg.configFile = {
         "kitty/kanagawa.conf".source = ./kanagawa.conf;
+        "kitty/catppuccin-macchiato.conf".source = ./catppuccin-macchiato.conf;
       };
       programs.kitty = {
         enable = true;

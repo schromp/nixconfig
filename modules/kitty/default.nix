@@ -7,7 +7,7 @@ with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.kitty;
   configFile = builtins.readFile ./kitty.conf;
-  customThemes = ["none" "kanagawa"];
+  customThemes = ["none" "kanagawa" "catppuccin-macchiato"];
 in {
   options.modules.programs.kitty = {
     enable = mkEnableOption "Enable Kitty";

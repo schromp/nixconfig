@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable (mkMerge [
     {
       home-manager.users.${username} = {
-        home.packages = with pkgs; [webcord-vencord];
+        home.packages = with pkgs; [webcord-vencord vesktop];
       };
     }
     (mkIf cfg.aarpc {

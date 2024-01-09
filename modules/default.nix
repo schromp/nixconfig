@@ -26,6 +26,7 @@
     ./ags
     ./anyrun
     ./xdg
+    ./qutebrowser
 
     ./displaymanager
     ./windowmanager

@@ -20,9 +20,9 @@ in
         decoration = {
           rounding = 5;
           blur = {
-            enabled = false;
-            size = 5;
-            passes = 5;
+            enabled = true;
+            size = 4;
+            passes = 2;
             ignore_opacity = true;
           };
           drop_shadow = true;

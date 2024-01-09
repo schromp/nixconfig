@@ -28,7 +28,7 @@
         };
         keymap = "us-umlaute";
         appRunner = "anyrun";
-        browser = "firefox";
+        browser = "qutebrowser";
       };
       system = {
         nvidia = false;
@@ -47,7 +47,7 @@
         sddm.enable = false;
         kitty = {
           enable = true;
-          theme = "kanagawa";
+          theme = "catppuccin-macchiato";
         };
         eww.enable = false;
         waybar.enable = false;

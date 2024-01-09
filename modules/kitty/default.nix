@@ -7,7 +7,7 @@ with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.kitty;
   configFile = builtins.readFile ./kitty.conf;
-  customThemes = ["none" "kanagawa"];
+  customThemes = ["none" "kanagawa" "catppuccin-macchiato"];
 in {
   options.modules.programs.kitty = {
     enable = mkEnableOption "Enable Kitty";
@@ -21,6 +21,7 @@ in {
     home-manager.users.${username} = {
       xdg.configFile = {
         "kitty/kanagawa.conf".source = ./kanagawa.conf;
+        "kitty/catppuccin-macchiato.conf".source = ./catppuccin-macchiato.conf;
       };
       programs.kitty = {
         enable = true;

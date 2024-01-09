@@ -59,7 +59,7 @@ in {
           ANKI_WAYLAND = "1";
           QT_QPA_PLATFORM = "wayland;xcb";
           QT_QPA_PLATFORMTHEME = "qt5ct";
-          # SDL_VIDEODRIVER = "wayland";
+          SDL_VIDEODRIVER = "wayland"; # For csgo
 
           WLR_BACKEND = "vulkan";
           WLR_RENDERER = "vulkan";

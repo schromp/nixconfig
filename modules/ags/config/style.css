@@ -8,7 +8,7 @@
   border-radius: 0.4rem;
   margin: 0.5rem 0rem 0.5rem 0.5rem;
   font-size: 1rem;
-  background: #1F1F28; }
+  background: #24273a; }
 
 .os-btn {
   font-size: 0.5rem;
@@ -29,37 +29,37 @@
     border: none;
     box-shadow: none;
     color: white;
-    background: #2A2A37;
+    background: #1e2030;
     border: none;
     border-radius: 9999px;
     margin: 0.2rem 0rem;
     min-width: 0.1rem;
     min-height: 0.6rem; }
     .workspaces button.occupied {
-      background-color: #727169; }
+      background-color: #494d64; }
     .workspaces button.active {
-      background: #DCD7BA;
+      background: #cad3f5;
       min-height: 1.2rem; }
 
 .tray {
-  background: #223249;
+  background: #363a4f;
   border-radius: 0.6rem; }
 
 .tray-item {
-  background: #727169;
+  background: #494d64;
   border: none;
   box-shadow: none;
   margin: 0.1rem 0rem;
   padding: 0rem 0.5rem; }
 
 tooltip {
-  background-color: #1F1F28;
-  color: #DCD7BA; }
+  background-color: #24273a;
+  color: #cad3f5; }
 
 .clock {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #DCD7BA;
+  color: #cad3f5;
   background: transparent;
   margin: 0.25rem;
   border-radius: 0.6rem; }
@@ -75,20 +75,20 @@ tooltip {
 
 .info {
   min-width: 25rem;
-  background: #1F1F28;
+  background: #24273a;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   border-radius: 0.5rem;
-  border: 0.1rem solid #727169; }
+  border: 0.1rem solid #494d64; }
 
 .info-power-button {
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-  background: #363646;
+  background: #b7bdf8;
   border: none;
   box-shadow: none;
   color: white;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem; }
   .info-power-button:hover {
-    background: #FFA066; }
+    background: #f5a97f; }
 
 .default-audio-selected {
   background-color: red; }

@@ -15,6 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users.${user} = {
+      home.packages = with pkgs; [ tmuxifier ];
       programs.tmux = {
         enable = true;
         baseIndex = 1;
@@ -48,8 +49,14 @@ in {
             plugin = tmuxPlugins.tmux-fzf;
           }
           {
-            plugin = inputs.self.packages.${config.modules.system.architecture}.tmux-powerline;
+            plugin = tmuxPlugins.catppuccin;
+            extraConfig = ''
+              set -g @catppuccin_flavour 'macchiato'
+            '';
           }
+          # {
+          #   plugin = inputs.self.packages.${config.modules.system.architecture}.tmux-powerline;
+          # }
         ];
 
         extraConfig = ''
@@ -60,6 +67,8 @@ in {
           set -g base-index 1
           setw -g pane-base-index 1
           set -g renumber-windows on
+
+          set-option -g status-position top
 
           bind-key h select-pane -L
           bind-key j select-pane -D
@@ -75,7 +84,8 @@ in {
         '';
       };
 
-      xdg.configFile."tmux-powerline/config.sh".text = builtins.readFile ./tmux-powerline-config.sh;
+      # xdg.configFile."tmux-powerline/config.sh".text = builtins.readFile ./tmux-powerline-config.sh;
+      # xdg.configFile."tmux-powerline/themes/theme.sh".text = builtins.readFile ./tmux-powerline-theme.sh;
     };
   };
 }

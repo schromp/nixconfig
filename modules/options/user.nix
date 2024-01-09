@@ -71,7 +71,7 @@ with lib; {
     };
 
     browser = mkOption {
-      type = types.enum ["firefox"];
+      type = types.enum ["firefox" "qutebrowser"];
       description = ''Choose your browser'';
     };
 

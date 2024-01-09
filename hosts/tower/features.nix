@@ -28,7 +28,7 @@
         };
         keymap = "us-umlaute";
         appRunner = "anyrun";
-        browser = "firefox";
+        browser = "qutebrowser";
       };
       system = {
         nvidia = false;

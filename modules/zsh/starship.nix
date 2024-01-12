@@ -51,7 +51,7 @@ in {
       directory = {
         style = "bg:${mauve} fg:${base}";
         format = "[ $path]($style)[$read_only]($read_only_style)";
-        trunctation_length = 3;
+        truncation_length = 3;
       };
 
       character = {

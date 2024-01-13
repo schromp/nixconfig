@@ -18,7 +18,6 @@ in {
   imports = [
     inputs.hyprland.nixosModules.default
     ./config.nix
-    ./xdg.nix
   ];
 
   options.modules.programs.hyprland = {

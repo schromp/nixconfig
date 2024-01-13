@@ -34,12 +34,17 @@ in {
         package = pkgs.bibata-cursors;
       };
       theme = {
-        name = "Kanagawa";
-        package = inputs.self.packages."x86_64-linux".kanagawa-gtk-theme;
+        name = "Catppuccin-Macchiato-Standard-Pink-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["pink"];
+          size = "standard";
+          tweaks = [];
+          variant = "macchiato";
+        };
       };
       icon = {
-        name = "kanagawa";
-        package = inputs.self.packages."x86_64-linux".kanagawa-icon-theme;
+        name = "Papirus";
+        package = pkgs.papirus-icon-theme;
       };
     };
   };

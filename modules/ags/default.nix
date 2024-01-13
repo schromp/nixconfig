@@ -11,6 +11,7 @@ with lib; let
     coreutils
     sassc
     dunst
+    pipewire
   ];
 
   opts = config.modules.user;
@@ -29,7 +30,7 @@ in {
       programs.ags = {
         enable = true;
         # packages to add to gjs's runtime
-        # extraPackages = [pkgs.libsoup_3];
+        extraPackages = [pkgs.libsoup_3 pkgs.alsa-utils];
       };
 
       systemd.user.services.ags = {

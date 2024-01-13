@@ -9,3 +9,4 @@
 - lock screen
 - soundboard
 - voice changer?
+- darkmode is not working correctly

@@ -44,6 +44,11 @@
         };
 
         # Desktop
+        xdg = {
+          enable = true;
+          createDirectories = true;
+          setAssociations = true;
+        };
         sddm.enable = false;
         kitty = {
           enable = true;

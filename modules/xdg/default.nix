@@ -6,7 +6,7 @@
 }:
 with lib; let
   username = config.modules.user.username;
-  cfg = config.modules.user.xdg;
+  cfg = config.modules.programs.xdg;
 
   wm = config.modules.user.desktopEnvironment;
   browser = config.modules.user.browser;
@@ -19,7 +19,7 @@ with lib; let
     "x-scheme-handler/unknown" = browser;
   };
 in {
-  options.modules.user.xdg = {
+  options.modules.programs.xdg = {
     enable = mkEnableOption "Enable xdg options";
     createDirectories = mkEnableOption "Create preset home directories";
     setAssociations = mkEnableOption "Create preset associatons";
@@ -33,7 +33,7 @@ in {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
         ];
-        config = mkfIf cfg.setAssociations {
+        config = mkIf cfg.setAssociations {
           common = {
             default = "*";
             "org.freedesktop.impl.portal.Screencast" = "${wm}";

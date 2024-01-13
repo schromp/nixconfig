@@ -1,12 +1,11 @@
 # My personal nixos configuration
 
 ## TODO:
-- move theme apply into modules/*program*
 - sops
 - fonts
 - bar
+- soundboard
 - notifications
 - lock screen
-- soundboard
 - voice changer?
 - darkmode is not working correctly

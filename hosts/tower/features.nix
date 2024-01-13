@@ -61,6 +61,7 @@
         hyprland = {
           sens = "-0.2";
           accel = "flat";
+          xdgOptions = true;
         };
         ags = {
           enable = true;

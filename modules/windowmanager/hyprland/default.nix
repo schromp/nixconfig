@@ -18,7 +18,7 @@ in {
   imports = [
     inputs.hyprland.nixosModules.default
     ./config.nix
-    # ./xdg.nix
+    ./xdg.nix
   ];
 
   options.modules.programs.hyprland = {
@@ -58,7 +58,7 @@ in {
           GDK_BACKEND = "wayland,x11";
           ANKI_WAYLAND = "1";
           QT_QPA_PLATFORM = "wayland;xcb";
-          QT_QPA_PLATFORMTHEME = "qt5ct";
+          # QT_QPA_PLATFORMTHEME = "qt5ct";
           SDL_VIDEODRIVER = "wayland"; # For csgo
 
           WLR_BACKEND = "vulkan";
@@ -90,7 +90,11 @@ in {
 
       environment.systemPackages = with pkgs; [xdg-utils];
 
-      qt.enable = true;
+      qt = {
+        enable = true;
+        platformTheme = "gtk2";
+        style = "gtk2";
+      };
 
       home-manager.users.${username} = {
         imports = [
@@ -133,7 +137,7 @@ in {
           };
         };
 
-        services.dunst.enable = false;
+        services.dunst.enable = true;
       };
     })
   ]);

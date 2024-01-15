@@ -28,7 +28,7 @@ in
         # LSPs
         clang-tools
         nil
-        # nixd
+        nixd
         sumneko-lua-language-server
         rust-analyzer
         statix

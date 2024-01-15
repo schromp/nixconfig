@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   lib,
@@ -25,8 +26,12 @@ in {
     vlc
     vscodium
     # obsidian
+    inputs.self.packages.${pkgs.system}.satty
 
     alsa-utils
+
+    grim
+    slurp
 
     audacity
     nwg-look

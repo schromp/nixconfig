@@ -29,6 +29,7 @@
     eww.url = "github:elkowar/eww";
 
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     webcord.url = "github:fufexan/webcord-flake";
     arrpc = {
@@ -45,7 +46,7 @@
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
     tmux-sessionx = {
-      url = "github:schromp/tmux-sessionx";
+      url = "github:omerxx/tmux-sessionx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

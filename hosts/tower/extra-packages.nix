@@ -8,7 +8,7 @@
 in {
   # here you can add packages specific to your setup.
 
-  nixpkgs.config.permittedInsecurePackages = lib.optional (pkgs.obsidian.version == "1.4.16") "electron-25.9.0";
+  # nixpkgs.config.permittedInsecurePackages = lib.optional (pkgs.obsidian.version == "1.4.16") "electron-25.9.0";
 
   environment.systemPackages = with pkgs; [
     pantheon.elementary-iconbrowser
@@ -24,12 +24,11 @@ in {
     helvum
     vlc
     vscodium
-    obsidian
+    # obsidian
 
     alsa-utils
 
     audacity
-    soundux
     nwg-look
     qpwgraph
 

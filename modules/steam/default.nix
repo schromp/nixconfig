@@ -1,13 +1,16 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib; let
   cfg = config.modules.programs.steam;
-in
-{
+in {
   options.modules.programs.steam.enable = mkEnableOption "Enable Steam";
+
+  imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
   config = mkIf cfg.enable {
     programs.steam = {
@@ -27,8 +30,11 @@ in
             xorg.libXScrnSaver
           ];
       };
+      extraCompatPackages = [
+        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      ];
     };
 
-    environment.systemPackages = with pkgs; [ mangohud ];
+    environment.systemPackages = with pkgs; [mangohud];
   };
 }

@@ -14,6 +14,8 @@ with lib; let
   cursor = cfg.cursor;
   theme = cfg.theme;
   icon = cfg.icon;
+
+  screenshotTool = config.modules.user.screenshotTool;
 in {
   imports = [
     inputs.hyprland.nixosModules.default
@@ -114,7 +116,15 @@ in {
           libnotify
           xwaylandvideobridge
 
-          inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+          slurp
+          grim
+
+          (
+            if screenshotTool == "grimblast"
+            then inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+            else if screenshotTool == "satty" then satty
+            else null
+          )
         ];
 
         gtk = {

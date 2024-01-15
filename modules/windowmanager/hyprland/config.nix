@@ -7,6 +7,7 @@ with lib; let
   cfg = config.modules.programs.hyprland;
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
+  screenshotTool = config.modules.user.screenshotTool;
   monitor = config.modules.user.monitor;
   keymap_language =
     if (config.modules.user.keymap == "us-umlaute")
@@ -103,7 +104,13 @@ in {
       "$mod, 36, exec, kitty"
       "$mod, B, exec, firefox"
       "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
-      "$mod SHIFT, S, exec, grimblast copy area"
+      (
+        if screenshotTool == "grimblast"
+        then "$mod SHIFT, S, exec, grimblast copy area"
+        else if screenshotTool == "satty"
+        then ''$mod SHIFT, S, exec, grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png''
+        else ""
+      )
 
       "$mod A, A, exec, systemctl --user restart ags"
 

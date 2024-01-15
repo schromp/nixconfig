@@ -80,6 +80,11 @@ with lib; {
       description = ''Choose your file manager'';
     };
 
+    screenshotTool = mkOption {
+      type = types.enum [ "grimblast" "satty"];
+      description = "Which screenshot tool to use";
+    };
+
     appRunner = mkOption {
       type = types.enum ["fuzzel" "wofi" "anyrun"];
       default = "fuzzel";

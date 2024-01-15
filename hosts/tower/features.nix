@@ -29,6 +29,7 @@
         keymap = "us-umlaute";
         appRunner = "anyrun";
         browser = "qutebrowser";
+        screenshotTool = "satty";
       };
       system = {
         nvidia = false;

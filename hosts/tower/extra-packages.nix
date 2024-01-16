@@ -25,6 +25,7 @@ in {
     vlc
     vscodium
     # obsidian
+    floorp
 
     alsa-utils
 

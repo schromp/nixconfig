@@ -24,6 +24,7 @@ in
           bitwarden-cli
           parted
           btop
+          tldr
         ];
       };
     })

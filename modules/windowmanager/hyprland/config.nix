@@ -43,6 +43,7 @@ in {
       "nofocus,class:^(xwaylandvideobridge)$"
       "noinitialfocus,class:^(xwaylandvideobridge)$"
       "nofocus, class:^(steam)$, title:^()$"
+      "immediate, class:^(overwatch)$"
     ];
 
     input = {
@@ -80,8 +81,22 @@ in {
       border_size = 2;
       layout = "dwindle";
 
+      allow_tearing = true;
+
       "col.active_border" = "rgb(${focused})";
       "col.inactive_border" = "rgb(${unfocused})";
+    };
+
+    dwindle = {
+      default_split_ratio = 1.3;
+      force_split = 2; # always split to right/bottom
+    };
+
+    misc = {
+      force_default_wallpaper = 0;
+      mouse_move_enables_dpms = true;
+      key_press_enables_dpms = true;
+      animate_manual_resizes = true;
     };
 
     bindm = [
@@ -93,13 +108,18 @@ in {
       "$mod, Q, killactive"
       "$mod CONTROL, M, exit"
       "$mod, V, togglefloating"
-      "$mod, P, pseudo"
       "$mod, F, fullscreen"
+      "$mod, P, pin"
 
       "$mod, h, movefocus, l"
-      "$mod, j, movefocus, u"
-      "$mod, k, movefocus, d"
+      "$mod, j, movefocus, d"
+      "$mod, k, movefocus, u"
       "$mod, l, movefocus, r"
+
+      "$mod SHIFT, h, swapwindow, l"
+      "$mod SHIFT, j, swapwindow, d"
+      "$mod SHIFT, k, swapwindow, u"
+      "$mod SHIFT, l, swapwindow, r"
 
       "$mod, 36, exec, kitty"
       "$mod, B, exec, firefox"
@@ -129,7 +149,7 @@ in {
               builtins.toString (x + 1 - (c * 10));
           in ''
             bind = $mod, ${ws}, workspace, ${toString (x + 1)}
-            bind = $mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+            bind = $mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
           ''
         )
         10)}"

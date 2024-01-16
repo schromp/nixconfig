@@ -80,6 +80,8 @@ in {
 
           MOZ_ENABLE_WAYLAND = "1";
           # WLR_NO_HARDWARE_CURSORS = "1";
+
+          WLR_DRM_NO_ATOMIC = "1"; # This disables the usage of a newer kernel DRM API that doesn’t support tearing yet.
         };
       };
 

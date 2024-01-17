@@ -41,6 +41,9 @@ in {
           }
           {
             plugin = inputs.tmux-sessionx.packages.${config.modules.system.architecture}.default;
+            extraConfig = ''
+              set -g @sessionx-zoxide-mode 'on'
+            '';
           }
           {
             plugin = tmuxPlugins.tmux-thumbs;

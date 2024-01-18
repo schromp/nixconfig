@@ -17,14 +17,19 @@ in {
     {
       programs.git.enable = true;
       home-manager.users.${username} = {
-        programs.git = {
-          enable = true;
+        programs = {
+          git = {
+            enable = true;
 
-          # TODO: move this into userspace
-          userName = "Lennart Koziollek";
-          userEmail = "lennart.koziollek@stud.uni-due.de";
-          extraConfig = {
-            init.defaultBranch = "main";
+            # TODO: move this into userspace
+            userName = "Lennart Koziollek";
+            userEmail = "lennart.koziollek@stud.uni-due.de";
+            extraConfig = {
+              init.defaultBranch = "main";
+            };
+          };
+          gh = {
+            enable = true;
           };
         };
       };

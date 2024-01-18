@@ -40,7 +40,7 @@ in {
             plugin = tmuxPlugins.resurrect;
           }
           {
-            plugin = inputs.tmux-sessionx.packages.${config.modules.system.architecture}.default;
+            plugin = inputs.tmux-sessionx.packages.${pkgs.system}.default;
             extraConfig = ''
               set -g @sessionx-zoxide-mode 'on'
             '';

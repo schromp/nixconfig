@@ -13,6 +13,7 @@ in {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
   config = mkIf cfg.enable {
+
     programs.steam = {
       enable = true;
       package = pkgs.steam.override {
@@ -36,5 +37,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [mangohud];
+    hardware.xone.enable = true; # Enable controller support
   };
 }

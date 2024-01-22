@@ -8,6 +8,7 @@
     presets = {
       rices = {
         name = "solid";
+        vertical = true;
       };
     };
 
@@ -30,8 +31,7 @@
         keymap = "us-umlaute";
         appRunner = "anyrun";
         browser = "firefox";
-
-        createXDGDirectories = true;
+        screenshotTool = "satty";
       };
       system = {
         nvidia = false;
@@ -46,15 +46,21 @@
           desktop = true;
         };
 
+        xdg = {
+          enable = true;
+          createDirectories = true;
+          setAssociations = true;
+        };
+
         # Desktop
         sddm.enable = false;
         gdm.enable = false;
         kitty = {
           enable = true;
-          theme = "kanagawa";
+          theme = "catppuccin-macchiato";
         };
         eww.enable = false;
-        waybar.enable = true;
+        waybar.enable = false;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {
@@ -66,6 +72,7 @@
           sens = "0.1";
           accel = "adaptive";
         };
+        ags.enable = true;
 
         # Terminal
         ssh.enable = true;

@@ -18,7 +18,6 @@ in {
     discord
     pcmanfm
     audacity
-    soundux
     qpwgraph
 
     p7zip

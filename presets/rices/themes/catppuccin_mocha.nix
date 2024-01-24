@@ -10,7 +10,7 @@ with lib; let
 in {
   config = mkIf (cfg.name == "catppuccin-mocha") {
     presets.themes = {
-      kind = "light";
+      kind = "dark";
       colors = {
         base00 = "1e1e2e";
         base01 = "181825";

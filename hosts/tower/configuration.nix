@@ -29,6 +29,8 @@ in
     users.${username}.home.stateVersion = "23.11";
   };
 
+  nix.settings.sandbox = true;
+
   # start services
   services = {
     journald.extraConfig = ''
@@ -81,18 +83,18 @@ in
     };
   };
 
-  # hardware = {
-  #   opengl = {
-  #     enable = true;
-  #     driSupport = true;
-  #     driSupport32Bit = true;
-  #     extraPackages = with pkgs; [
-  #       vaapiVdpau
-  #       libvdpau-va-gl
-  #     ];
-  #   };
-  #   # pulseaudio.support32Bit = true;
-  # };
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
+    # pulseaudio.support32Bit = true;
+  };
 
   # Bootloader stuff
   boot.loader = {

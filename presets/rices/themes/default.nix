@@ -3,13 +3,14 @@ with lib; {
   imports = [
     ./catppuccin_mocha.nix
     ./catppuccin_latte.nix
+    ./onedark.nix
   ];
 
   # GOAL: have these options for creating themes
   # When selecting theme: options.themes.select = ["name"];
   options.presets.themes = {
     name = mkOption {
-      type = types.enum ["none" "catppuccin-mocha" "catppuccin-latte"];
+      type = types.enum ["none" "catppuccin-mocha" "catppuccin-latte" "onedark"];
       description = "The theme that should be applied to programs specified in apply";
       default = "none";
     };

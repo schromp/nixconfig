@@ -12,7 +12,7 @@ in
     ./themes
   ];
 
-  config = mkIf (cfg.name == "solid") {
+  config = mkIf (cfg.name == "onedark") {
     presets.themes.name = "onedark";
 
     home-manager.users.${username} = {
@@ -20,7 +20,7 @@ in
         decoration = {
           rounding = 5;
           blur = {
-            enabled = true;
+            enabled = false;
             size = 4;
             passes = 2;
             ignore_opacity = true;

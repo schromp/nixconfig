@@ -7,7 +7,7 @@
   config = {
     presets = {
       rices = {
-        name = "solid";
+        name = "onedark";
         vertical = true;
       };
     };
@@ -53,7 +53,7 @@
         sddm.enable = false;
         kitty = {
           enable = true;
-          theme = "catppuccin-macchiato";
+          theme = "onedark";
         };
         eww.enable = false;
         waybar.enable = false;

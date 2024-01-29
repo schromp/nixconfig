@@ -124,7 +124,7 @@ in {
       "$mod SHIFT, l, swapwindow, r"
 
       "$mod, 36, exec, kitty"
-      "$mod, B, exec, ${pkgs.${browser}}/bin/${browser}"
+      "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
       "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
       (
         if screenshotTool == "grimblast"

@@ -1,12 +1,14 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
   cfg = config.modules.programs.hyprland;
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
+  browser = config.modules.user.browser;
   screenshotTool = config.modules.user.screenshotTool;
   monitor = config.modules.user.monitor;
   keymap_language =
@@ -122,7 +124,7 @@ in {
       "$mod SHIFT, l, swapwindow, r"
 
       "$mod, 36, exec, kitty"
-      "$mod, B, exec, firefox"
+      "$mod, B, exec, ${pkgs.${browser}}/bin/${browser}"
       "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
       (
         if screenshotTool == "grimblast"

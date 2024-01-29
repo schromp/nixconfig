@@ -28,7 +28,7 @@
         };
         keymap = "us-umlaute";
         appRunner = "anyrun";
-        browser = "qutebrowser";
+        browser = "floorp";
         screenshotTool = "satty";
       };
       system = {

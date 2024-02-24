@@ -49,6 +49,8 @@ in {
           lg = "lazygit";
           rn = "ranger";
           ls = "eza --icons=auto";
+          hyprgame-off = "hyprctl keyword bind SUPER,Q,killactive";
+          hyprgame-on = "hyprctl keyword unbind SUPER,Q";
 
           "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
           "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";

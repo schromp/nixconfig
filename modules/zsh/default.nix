@@ -59,6 +59,9 @@ in {
         oh-my-zsh = {
           enable = true;
           plugins = ["sudo" "web-search" "git"];
+          extraConfig = ''
+            DISABLE_MAGIC_FUNCTIONS="true"
+          '';
         };
       };
     };

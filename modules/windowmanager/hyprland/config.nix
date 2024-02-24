@@ -131,6 +131,8 @@ in {
           then "$mod SHIFT, S, exec, grimblast copy area"
           else if screenshotTool == "satty"
           then ''$mod SHIFT, S, exec, grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png''
+          else if screenshotTool == "swappy"
+          then ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | ${lib.getExe pkgs.swappy} -f -''
           else ""
         )
 

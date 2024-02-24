@@ -81,7 +81,7 @@ with lib; {
     };
 
     screenshotTool = mkOption {
-      type = types.enum [ "grimblast" "satty"];
+      type = types.enum ["grimblast" "satty" "swappy"];
       description = "Which screenshot tool to use";
     };
 

@@ -126,6 +126,7 @@ in {
             if screenshotTool == "grimblast"
             then inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
             else if screenshotTool == "satty" then satty
+            else if screenshotTool == "swappy" then swappy
             else null
           )
         ];

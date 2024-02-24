@@ -22,6 +22,8 @@ in
         tree-sitter
 
         clang
+        cargo
+        rustc
 
         sassc
 

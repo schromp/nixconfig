@@ -93,11 +93,12 @@ in {
 
       environment.systemPackages = with pkgs; [xdg-utils];
 
-      qt = {
-        enable = true;
-        platformTheme = "gtk2";
-        style = "gtk2";
-      };
+      # WARN: disabled because this causes issues with the hyprland share picker
+      # qt = {
+      #   enable = true;
+      #   platformTheme = "gtk2";
+      #   style = "gtk2";
+      # };
 
       home-manager.users.${username} = {
         imports = [

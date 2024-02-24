@@ -27,8 +27,8 @@
           position = "0x0";
         };
         keymap = "us-umlaute";
-        appRunner = "anyrun";
-        browser = "floorp";
+        appRunner = "tofi";
+        browser = "firefox";
         screenshotTool = "swappy";
       };
       system = {

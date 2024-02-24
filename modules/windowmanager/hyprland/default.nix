@@ -40,6 +40,7 @@ in {
       programs.hyprland = {
         enable = true;
         xwayland.enable = true;
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       };
 
       # add binary cache
@@ -125,8 +126,10 @@ in {
           (
             if screenshotTool == "grimblast"
             then inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-            else if screenshotTool == "satty" then satty
-            else if screenshotTool == "swappy" then swappy
+            else if screenshotTool == "satty"
+            then satty
+            else if screenshotTool == "swappy"
+            then swappy
             else null
           )
         ];

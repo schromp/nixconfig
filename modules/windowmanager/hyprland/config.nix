@@ -19,6 +19,7 @@ with lib; let
     else ''
       us
     '';
+  widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 
   colors = config.presets.themes.colors;
   focused = colors.base0C;
@@ -33,6 +34,7 @@ in {
 
     exec-once = [
       # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
+      "${widescreenScript}"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"

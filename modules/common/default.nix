@@ -34,7 +34,6 @@ in
         home.packages = with pkgs; [
           nomacs
           firefox
-          floorp
           pavucontrol
           obs-studio
           # qt6.full

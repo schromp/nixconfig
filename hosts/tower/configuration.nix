@@ -87,14 +87,20 @@ in
     opengl = {
       enable = true;
       driSupport = true;
-      driSupport32Bit = true;
+      # driSupport32Bit = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl
+        amdvlk
       ];
     };
     # pulseaudio.support32Bit = true;
   };
+
+  # Testing https://nixos.wiki/wiki/AMD_GPU
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
 
   # Bootloader stuff
   boot.loader = {

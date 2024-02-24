@@ -9,8 +9,10 @@ with lib; let
   cfg = config.modules.programs.xdg;
 
   wm = config.modules.user.desktopEnvironment;
-  browser = config.modules.user.browser;
+  browser = "${config.modules.user.browser}.desktop";
   associations = {
+    "default-web-browser" = "floorp.desktop";
+    "default-url-scheme-handler" = "floorp.desktop";
     "application/pdf" = "org.gnome.Evince.desktop";
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -33,13 +35,20 @@ in {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
         ];
-        config = mkIf cfg.setAssociations {
-          common = {
-            default = "*";
-            "org.freedesktop.impl.portal.Screencast" = "${wm}";
-            "org.freedesktop.impl.portal.Screenshot" = "${wm}";
-          };
+        config = {
+          common.default = ["gtk"];
+          hyprland.default = ["gtk" "hyprland"];
         };
+
+        # config = mkIf cfg.setAssociations {
+        #   common = {
+        #     default = "*";
+        #     "org.freedesktop.impl.portal.Screencast" = "${wm}";
+        #     "org.freedesktop.impl.portal.Screenshot" = "${wm}";
+        #     "x-scheme-handler/http" = "floorp.desktop";
+        #     "x-scheme-handler/https" = "floorp.desktop";
+        #   };
+        # };
       };
     };
 
@@ -49,7 +58,7 @@ in {
           enable = true;
           createDirectories = true;
           extraConfig = {
-            Wallpapers = "/home/${username}/Documents/Wallpapers";
+            # Wallpapers = "/home/${username}/Documents/Wallpapers";
           };
         };
         mimeApps = mkIf cfg.setAssociations {

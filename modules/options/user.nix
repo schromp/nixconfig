@@ -1,7 +1,7 @@
 {lib, ...}:
 with lib; {
   options.modules.user = {
-    # Here we define global user choices
+    # Here we define global user choicesuser
 
     homeManager.enabled = mkEnableOption "Enable home-manager modules";
 
@@ -86,7 +86,7 @@ with lib; {
     };
 
     appRunner = mkOption {
-      type = types.enum ["fuzzel" "wofi" "anyrun"];
+      type = types.enum ["fuzzel" "wofi" "anyrun" "tofi"];
       default = "fuzzel";
       description = ''
         Select the App Runner Hyprland should use.

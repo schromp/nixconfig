@@ -25,8 +25,10 @@
     ./discord
     ./ags
     ./anyrun
+    ./tofi
     ./xdg
     ./qutebrowser
+    ./obsidian
 
     ./displaymanager
     ./windowmanager

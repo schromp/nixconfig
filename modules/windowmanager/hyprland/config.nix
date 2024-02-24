@@ -32,7 +32,7 @@ in {
     monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}"];
 
     exec-once = [
-      "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
+      # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
@@ -90,8 +90,8 @@ in {
     };
 
     dwindle = {
-      default_split_ratio = 1.3;
-      force_split = 2; # always split to right/bottom
+      default_split_ratio = 0.7;
+      force_split = 1; # always split to left/top
     };
 
     misc = {
@@ -106,55 +106,64 @@ in {
       "$mod, mouse:273, resizewindow"
     ];
 
-    bind = [
-      "$mod, Q, killactive"
-      "$mod CONTROL, M, exit"
-      "$mod, V, togglefloating"
-      "$mod, F, fullscreen"
-      "$mod, P, pin"
+    bind =
+      [
+        "$mod, Q, killactive"
+        "$mod CONTROL, M, exit"
+        "$mod, V, togglefloating"
+        "$mod, F, fullscreen"
+        "$mod, P, pin"
 
-      "$mod, h, movefocus, l"
-      "$mod, j, movefocus, d"
-      "$mod, k, movefocus, u"
-      "$mod, l, movefocus, r"
+        "$mod, h, movefocus, l"
+        "$mod, j, movefocus, d"
+        "$mod, k, movefocus, u"
+        "$mod, l, movefocus, r"
 
-      "$mod SHIFT, h, swapwindow, l"
-      "$mod SHIFT, j, swapwindow, d"
-      "$mod SHIFT, k, swapwindow, u"
-      "$mod SHIFT, l, swapwindow, r"
+        "$mod SHIFT, h, swapwindow, l"
+        "$mod SHIFT, j, swapwindow, d"
+        "$mod SHIFT, k, swapwindow, u"
+        "$mod SHIFT, l, swapwindow, r"
 
-      "$mod, 36, exec, kitty"
-      "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
-      "$mod, R, exec, ${appRunner}" # WARN: problematic because of different executable names
-      (
-        if screenshotTool == "grimblast"
-        then "$mod SHIFT, S, exec, grimblast copy area"
-        else if screenshotTool == "satty"
-        then ''$mod SHIFT, S, exec, grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png''
-        else ""
-      )
+        "$mod, 36, exec, kitty"
+        "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
+        (
+          if screenshotTool == "grimblast"
+          then "$mod SHIFT, S, exec, grimblast copy area"
+          else if screenshotTool == "satty"
+          then ''$mod SHIFT, S, exec, grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png''
+          else ""
+        )
 
-      "$mod A, A, exec, systemctl --user restart ags"
+        "$mod A, A, exec, systemctl --user restart ags"
 
-      ", XF86MonBrightnessUp, exec, brightnessctl s +10"
-      ", XF86MonBrightnessDown, exec, brightnessctl s 10-"
+        "$mod SHIFT, Z, exec, hyprctl keyword misc:cursor_zoom_factor, 2"
 
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86MonBrightnessUp, exec, brightnessctl s +10"
+        ", XF86MonBrightnessDown, exec, brightnessctl s 10-"
 
-      "${builtins.concatStringsSep "\n" (builtins.genList (
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ]
+      ++ (lib.lists.flatten (builtins.genList (
           x: let
             ws = let
               c = (x + 1) / 10;
             in
               builtins.toString (x + 1 - (c * 10));
-          in ''
-            bind = $mod, ${ws}, workspace, ${toString (x + 1)}
-            bind = $mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
-          ''
+          in [
+            ''$mod, ${ws}, workspace, ${toString (x + 1)}''
+            ''$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)} ''
+          ]
         )
-        10)}"
-    ];
+        10))
+      ++ (
+        if appRunner == "tofi"
+        then [
+          ''$mod, R, exec, tofi-drun --drun-launch=true''
+          ''$mod SHIFT, F, exec, hyprctl clients -j | jq -r '.[] | select(.initialClass != " " and .pid != -1) | .initialClass' | tofi | xargs -r hyprctl dispatch focuswindow --''
+        ]
+        else ["$mod, R, exec, ${appRunner}"] # WARN: problematic because of different executable names
+      );
   };
 }

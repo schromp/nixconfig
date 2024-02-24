@@ -9,10 +9,10 @@ with lib; let
 in {
   config = mkMerge [
     (mkIf (cfg == "us") {
-      services.xserver.layout = "us"; # WARN: not tested
+      services.xserver.xkb.layout = "us"; # WARN: not tested
     })
     (mkIf (cfg == "us-umlaute") {
-      services.xserver.layout = "us(altgr-intl)";
+      services.xserver.xkb.layout = "us(altgr-intl)";
       home-manager.users.${username} = {
         xdg.configFile."xkb/symbols/us-german-umlaut".text = ''
           default partial alphanumeric_keys

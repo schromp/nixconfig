@@ -18,9 +18,8 @@ change_gaps() {
   local gcd=$(gcd "$monitor_width" "$monitor_height")
 
   local aspect_ratio="$((monitor_width / gcd)):$((monitor_height / gcd))"
-  echo $aspect_ratio
 
-  if [ "$aspect_ratio" = "21:9" ]; then
+  if [ "$aspect_ratio" = "43:18" ]; then
     local amount="$(hyprctl activeworkspace -j | jq '.["windows"]')"
     
     if [ "$amount" -eq 1 ]; then

@@ -29,9 +29,9 @@
           position = "0x0";
         };
         keymap = "us-umlaute";
-        appRunner = "anyrun";
+        appRunner = "tofi";
         browser = "firefox";
-        screenshotTool = "satty";
+        screenshotTool = "swappy";
       };
       system = {
         nvidia = false;

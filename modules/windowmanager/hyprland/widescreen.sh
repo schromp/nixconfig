@@ -20,7 +20,8 @@ change_gaps() {
   local aspect_ratio="$((monitor_width / gcd)):$((monitor_height / gcd))"
 
   if [ "$aspect_ratio" = "43:18" ]; then
-    local amount="$(hyprctl clients -j | jq '[ .[] | select(.workspace.id == 1 and .floating == false and .pid != -1 and .hidden == false)] | length')"
+    local workspace_id=$(hyprctl activeworkspace -j | jq '.["id"]')
+    local amount=$(hyprctl clients -j | jq --argjson workspace_id "$workspace_id" '[ .[] | select(.workspace.id == $workspace_id and .floating == false and .pid != -1 and .hidden == false)] | length')
     
     if [ "$amount" -eq 1 ]; then
       hyprctl keyword general:gaps_out $default_gaps, 350 >/dev/null

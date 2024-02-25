@@ -2,17 +2,34 @@
 
 default_gaps=15
 
-change_gaps() {
-  local amount="$(hyprctl activeworkspace -j | jq '.["windows"]')"
-  
-  if [ "$amount" -eq 1 ]; then
-    echo One window
-    hyprctl keyword general:gaps_out $default_gaps, 350 >/dev/null
-
+gcd() {
+  if [[ $2 -eq 0 ]]; then
+    echo "$1"
   else
-    echo More windows
-    hyprctl keyword general:gaps_out $default_gaps >/dev/null
+    gcd "$2" "$(($1 % $2))"
   fi
+}
+
+change_gaps() {
+  local monitor=$(hyprctl monitors -j)
+  local monitor_width=$(echo $monitor | jq '.[] | .["width"]')
+  local monitor_height=$(echo $monitor | jq '.[] | .["height"]')
+
+  local gcd=$(gcd "$monitor_width" "$monitor_height")
+
+  local aspect_ratio="$((monitor_width / gcd)):$((monitor_height / gcd))"
+  echo $aspect_ratio
+
+  if [ "$aspect_ratio" = "21:9" ]; then
+    local amount="$(hyprctl activeworkspace -j | jq '.["windows"]')"
+    
+    if [ "$amount" -eq 1 ]; then
+      hyprctl keyword general:gaps_out $default_gaps, 350 >/dev/null
+    else
+      hyprctl keyword general:gaps_out $default_gaps >/dev/null
+    fi
+  fi
+
 }
 
 handle() {

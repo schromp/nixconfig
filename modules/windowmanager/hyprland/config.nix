@@ -39,6 +39,7 @@ in {
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
       "hyprctl setcursor ${config.presets.themes.cursor.name} 24"
+      "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
     ];
 
     windowrulev2 = [
@@ -81,13 +82,13 @@ in {
 
     general = {
       gaps_in = 7;
-      gaps_out = 15;
+      gaps_out = 7;
       border_size = 2;
       layout = "dwindle";
 
       allow_tearing = true;
 
-      "col.active_border" = "rgb(${focused})";
+      "col.active_border" = "rgb(c678dd) rgb(${focused})";
       "col.inactive_border" = "rgb(${unfocused})";
     };
 

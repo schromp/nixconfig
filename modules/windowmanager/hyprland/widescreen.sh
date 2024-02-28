@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-default_gaps=15
+default_gaps=7
 
 gcd() {
   if [[ $2 -eq 0 ]]; then

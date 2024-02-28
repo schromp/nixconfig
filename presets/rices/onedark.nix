@@ -18,11 +18,11 @@ in
     home-manager.users.${username} = {
       wayland.windowManager.hyprland.settings = mkIf (config.modules.user.desktopEnvironment == "hyprland") {
         decoration = {
-          rounding = 5;
+          rounding = 10;
           blur = {
-            enabled = false;
-            size = 4;
-            passes = 2;
+            enabled = true;
+            size = 7;
+            passes = 3;
             ignore_opacity = true;
           };
           drop_shadow = true;

@@ -72,6 +72,7 @@
         ags = {
           enable = true;
         };
+        obsidian.enable = true;
 
         # Terminal
         ssh.enable = true;

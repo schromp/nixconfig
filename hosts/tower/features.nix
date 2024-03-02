@@ -68,6 +68,8 @@
           sens = "-0.2";
           accel = "flat";
           xdgOptions = true;
+
+          hyprlock.enable = true;
         };
         ags = {
           enable = true;

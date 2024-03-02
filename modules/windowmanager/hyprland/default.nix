@@ -20,6 +20,7 @@ in {
   imports = [
     inputs.hyprland.nixosModules.default
     ./config.nix
+    ./hyprlock.nix
   ];
 
   options.modules.programs.hyprland = {

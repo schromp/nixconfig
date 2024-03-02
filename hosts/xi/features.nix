@@ -71,6 +71,8 @@
         hyprland = {
           sens = "0.1";
           accel = "adaptive";
+          
+          hyprlock.enable = true;
         };
         ags.enable = true;
 

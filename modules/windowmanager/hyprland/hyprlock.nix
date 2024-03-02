@@ -13,6 +13,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    security.pam.services.hyprlock = {};
+
     home-manager.users.${username} = {
       imports = [inputs.hyprlock.homeManagerModules.default];
 

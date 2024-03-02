@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-default_gaps=15
+default_gaps=7
 
 gcd() {
   if [[ $2 -eq 0 ]]; then
@@ -18,10 +18,10 @@ change_gaps() {
   local gcd=$(gcd "$monitor_width" "$monitor_height")
 
   local aspect_ratio="$((monitor_width / gcd)):$((monitor_height / gcd))"
-  echo $aspect_ratio
 
-  if [ "$aspect_ratio" = "21:9" ]; then
-    local amount="$(hyprctl activeworkspace -j | jq '.["windows"]')"
+  if [ "$aspect_ratio" = "43:18" ]; then
+    local workspace_id=$(hyprctl activeworkspace -j | jq '.["id"]')
+    local amount=$(hyprctl clients -j | jq --argjson workspace_id "$workspace_id" '[ .[] | select(.workspace.id == $workspace_id and .floating == false and .pid != -1 and .hidden == false)] | length')
     
     if [ "$amount" -eq 1 ]; then
       hyprctl keyword general:gaps_out $default_gaps, 350 >/dev/null

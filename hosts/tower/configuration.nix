@@ -40,6 +40,14 @@ in
     udisks2.enable = true;
   };
 
+  # This is for obs virtual camera
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+
   security.polkit.enable = true;
 
   # Set timezone
@@ -87,7 +95,7 @@ in
     opengl = {
       enable = true;
       driSupport = true;
-      # driSupport32Bit = true;
+      driSupport32Bit = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl

@@ -9,10 +9,10 @@ with lib; let
   cfg = config.modules.programs.xdg;
 
   wm = config.modules.user.desktopEnvironment;
-  browser = "${config.modules.user.browser}.desktop";
+  browser = "org.mozilla.firefox.desktop";
   associations = {
-    "default-web-browser" = "floorp.desktop";
-    "default-url-scheme-handler" = "floorp.desktop";
+    "default-web-browser" = "org.mozilla.firefox.desktop";
+    "default-url-scheme-handler" = "org.mozilla.firefox.desktop";
     "application/pdf" = "org.gnome.Evince.desktop";
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -51,6 +51,11 @@ in {
         # };
       };
     };
+
+    # This fixes: https://github.com/NixOS/nixpkgs/issues/189851
+    systemd.user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/current-system/sw/bin"
+    '';
 
     home-manager.users.${username} = {
       xdg = {

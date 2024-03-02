@@ -21,6 +21,13 @@ in
             hostname = "github.com";
             identityFile = "~/.ssh/github";
           };
+          "linode" = {
+            hostname = "194.233.162.214";
+            identityFile = "~/.ssh/linode";
+          };
+          "194.233.162.214" = {
+            identityFile = "~/.ssh/linode";
+          };
         };
       };
     };

@@ -9,12 +9,14 @@
     nixpkgs.lib.nixosSystem {
       system = "${system}";
       modules = [
-        {
+        (if hostname != "rain" 
+        then {
           config.modules.system = {
             hostname = hostname;
             architecture = system;
           };
-        }
+        } 
+        else {})
         home-manager.nixosModules.home-manager
         ./${hostname}
         {networking.hostName = hostname;}
@@ -33,6 +35,7 @@ in {
   nixosSystems = {
     tower = mkNixosSystem "x86_64-linux" "tower";
     xi = mkNixosSystem "x86_64-linux" "xi";
+    rain = mkNixosSystem "x86_64-linux" "rain";
     # cake = mkNixosSystem "aarch64" "cake";
   };
 

@@ -34,7 +34,10 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${vrr}"];
+    monitor = [
+      "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${vrr}"
+      ",preferred,auto,1"
+    ];
 
     exec-once = [
       # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"

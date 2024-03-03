@@ -61,6 +61,10 @@ with lib; {
             position = mkOption {
               type = str;
             };
+            vrr = mkOption {
+              type = bool;
+              default = false;
+            };
           };
         };
     };

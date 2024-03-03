@@ -25,6 +25,7 @@
           refreshRate = "144";
           scale = "1";
           position = "0x0";
+          vrr = true;
         };
         keymap = "us-umlaute";
         appRunner = "tofi";

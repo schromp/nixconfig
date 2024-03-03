@@ -11,6 +11,10 @@ with lib; let
   browser = config.modules.user.browser;
   screenshotTool = config.modules.user.screenshotTool;
   monitor = config.modules.user.monitor;
+  vrr =
+    if monitor.vrr
+    then "vrr,1"
+    else "";
   keymap_language =
     if (config.modules.user.keymap == "us-umlaute")
     then ''
@@ -30,7 +34,7 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale}"];
+    monitor = ["${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${vrr}"];
 
     exec-once = [
       # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"

@@ -24,9 +24,9 @@ change_gaps() {
     local amount=$(hyprctl clients -j | jq --argjson workspace_id "$workspace_id" '[ .[] | select(.workspace.id == $workspace_id and .floating == false and .pid != -1 and .hidden == false)] | length')
     
     if [ "$amount" -eq 1 ]; then
-      hyprctl keyword general:gaps_out $default_gaps, 350 >/dev/null
+      hyprctl keyword workspace $workspace_id,gapsout:$default_gaps 350 # >/dev/null
     else
-      hyprctl keyword general:gaps_out $default_gaps >/dev/null
+      hyprctl keyword workspace $workspace_id,gapsout:$default_gaps # >/dev/null
     fi
   fi
 

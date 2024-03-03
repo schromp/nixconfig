@@ -1,13 +1,13 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.neovim;
-in
-{
+in {
   options.modules.programs.neovim.enable = mkEnableOption "Enable neovim";
 
   config = mkIf cfg.enable {
@@ -58,6 +58,8 @@ in
         defaultEditor = true;
         withNodeJs = true;
         withPython3 = true;
+
+        extraLuaPackages = luaPkgs: with luaPkgs; [cjson];
       };
 
       programs.fzf.enable = true;

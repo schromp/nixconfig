@@ -7,8 +7,8 @@
   config = {
     presets = {
       rices = {
-        name = "solid";
-        vertical = true;
+        name = "onedark";
+        vertical = false;
       };
     };
 

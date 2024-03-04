@@ -22,7 +22,6 @@ in {
     helvum
     vlc
     vscodium
-    # obsidian
 
     alsa-utils
 

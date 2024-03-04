@@ -177,8 +177,9 @@ in {
       ++ (
         if appRunner == "tofi"
         then [
-          ''$mod, R, exec, tofi-drun --drun-launch=true''
-          ''$mod SHIFT, F, exec, hyprctl clients -j | jq -r '.[] | select(.initialClass != " " and .pid != -1) | .initialClass' | tofi | xargs -r hyprctl dispatch focuswindow --''
+          ''$mod, R, exec, ${lib.getExe config.modules.programs.tofi.runnerScript}''
+          # ''$mod, R, exec, tofi-drun --drun-launch=true''
+          # ''$mod SHIFT, F, exec, hyprctl clients -j | jq -r '.[] | select(.initialClass != " " and .pid != -1) | .initialClass' | tofi | xargs -r hyprctl dispatch focuswindow --''
         ]
         else ["$mod, R, exec, ${appRunner}"] # WARN: problematic because of different executable names
       );

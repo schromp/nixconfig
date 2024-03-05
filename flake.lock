@@ -1519,11 +1519,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709595045,
-        "narHash": "sha256-hqCDRF1bSm7a4Vbf/O+bPnH4CPcvp13M6hmYqqlIFBY=",
+        "lastModified": 1709662530,
+        "narHash": "sha256-zQXp/okHNVV4lK64FumThJiJs+NDgZvz8CSa4t7tsSc=",
         "owner": "schromp",
         "repo": "themer",
-        "rev": "1a9db0dea6339efa37461e31811781069fe86d3d",
+        "rev": "0727b10669977416035cd05366ae83ccd3f12a19",
         "type": "github"
       },
       "original": {

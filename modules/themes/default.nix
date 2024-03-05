@@ -23,6 +23,7 @@ in {
         "themer/gruvbox.yaml".source = ./gruvbox.yaml;
         "themer/catppuccin.yaml".source = ./catppuccin.yaml;
         "themer/onedark.yaml".source = ./onedark.yaml;
+        "themer/rose-pine-dawn.yaml".source = ./rose-pine-dawn.yaml;
       };
     };
   };

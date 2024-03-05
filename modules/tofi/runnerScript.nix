@@ -13,7 +13,7 @@ in
 
     generateOptions() {
       # System options
-      echo "shutdown"
+      echo "poweroff"
       echo "reboot"
       echo "suspend"
       echo "lock"

@@ -91,6 +91,10 @@
           lazygit = true;
         };
 
+        themer = {
+          enable = true;
+        };
+
         # Gaming
         gamescope.enable = true;
         prismLauncher.enable = true;

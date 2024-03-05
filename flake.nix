@@ -53,6 +53,11 @@
       url = "github:omerxx/tmux-sessionx";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    themer = {
+      url = "github:schromp/themer";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

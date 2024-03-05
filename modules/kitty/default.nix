@@ -26,15 +26,12 @@ in {
       };
       programs.kitty = {
         enable = true;
-        theme = mkIf (!builtins.elem cfg.theme customThemes) cfg.theme;
+        # theme = mkIf (!builtins.elem cfg.theme customThemes) cfg.theme;
         extraConfig =
-          if (builtins.elem cfg.theme customThemes) && (cfg.theme != "none")
-          then
-            configFile
-            + ''
-              include ./${cfg.theme}.conf
-            ''
-          else configFile;
+          configFile
+          + ''
+            include ./theme.conf
+          '';
       };
     };
   };

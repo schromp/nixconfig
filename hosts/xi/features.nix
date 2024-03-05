@@ -90,6 +90,11 @@
           lazygit = true;
         };
 
+        # Theming
+        themer = {
+          enable = true;
+        };
+
         # Gaming
         gamescope.enable = false;
         prismLauncher.enable = false;

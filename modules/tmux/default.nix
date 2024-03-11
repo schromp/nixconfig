@@ -15,7 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users.${user} = {
-      home.packages = with pkgs; [ tmuxifier ];
+      home.packages = with pkgs; [tmuxifier];
       programs.tmux = {
         enable = true;
         baseIndex = 1;
@@ -51,19 +51,10 @@ in {
           {
             plugin = tmuxPlugins.tmux-fzf;
           }
-          {
-            plugin = tmuxPlugins.catppuccin;
-            extraConfig = ''
-              set -g @catppuccin_flavour 'mocha'
-            '';
-          }
-          # {
-          #   plugin = inputs.self.packages.${config.modules.system.architecture}.tmux-powerline;
-          # }
         ];
 
         extraConfig = ''
-          set -g default-command "\$\{SHELL}"
+          # set -g default-command "\$\{SHELL}"
 
           setw -g mode-keys vi
 
@@ -84,11 +75,26 @@ in {
 
           bind-key -n C-S-Left swap-window -t -1
           bind-key -n C-S-Right swap-window -t +1
+
+
+          # --- Status line ---
+          set-option -g status-left ""
+          set-option -g status-right "[#S]"
+
+          setw -g window-status-format ' #I-#W '
+          setw -g window-status-current-format '[#I-#W]'
+
+          set-option -g status-interval 1
+          set-option -g automatic-rename on
+          set-option -g automatic-rename-format '#{b:pane_current_path}'
+
+          ${
+            if config.modules.programs.themer.enable
+            then ''source-file ~/.config/tmux/themer.conf''
+            else ""
+          }
         '';
       };
-
-      # xdg.configFile."tmux-powerline/config.sh".text = builtins.readFile ./tmux-powerline-config.sh;
-      # xdg.configFile."tmux-powerline/themes/theme.sh".text = builtins.readFile ./tmux-powerline-theme.sh;
     };
   };
 }

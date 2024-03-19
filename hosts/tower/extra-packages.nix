@@ -22,6 +22,7 @@ in {
     helvum
     vlc
     vscodium
+    gimp
 
     alsa-utils
 

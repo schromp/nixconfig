@@ -47,6 +47,7 @@ in {
       "ags"
       "hyprctl setcursor ${config.presets.themes.cursor.name} 24"
       "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
+      "${lib.getExe pkgs.lxqt.lxqt-policykit}"
     ];
 
     windowrulev2 = [

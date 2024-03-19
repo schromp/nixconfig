@@ -1,22 +1,21 @@
-{ inputs
-, pkgs
-, config
-, ...
-}:
-let
-  username = config.modules.user.username;
-in
 {
+  inputs,
+  pkgs,
+  config,
+  ...
+}: let
+  username = config.modules.user.username;
+in {
   # Setup the user
   users.users.root.initialPassword = "1234";
   users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "wireshark" ];
+    extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
     shell = pkgs.zsh;
     initialPassword = "1234";
   };
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   # Setup home-manager options
   home-manager = {
@@ -49,6 +48,9 @@ in
   '';
 
   security.polkit.enable = true;
+  environment.systemPackages = with pkgs; [
+    lxqt.lxqt-policykit
+  ];
 
   # Set timezone
   time.timeZone = "Europe/Berlin";
@@ -58,7 +60,7 @@ in
   # Fonts
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" "FiraCode" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
     ];
 
     enableDefaultPackages = true;
@@ -79,7 +81,7 @@ in
     # };
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
   # Networking
   networking = {
@@ -87,7 +89,7 @@ in
     firewall = {
       # this is in here as an example for me
       enable = false;
-      allowedTCPPorts = [ 443 80 22 ];
+      allowedTCPPorts = [443 80 22];
     };
   };
 
@@ -109,6 +111,8 @@ in
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
+
+  virtualisation.docker.enable = true;
 
   # Bootloader stuff
   boot.loader = {

@@ -89,6 +89,7 @@
           enable = true; # TODO: make option for username/mail
           lazygit = true;
         };
+        walker.enable = true;
 
         # Theming
         themer = {

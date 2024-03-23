@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: let
   username = config.modules.user.username;
@@ -19,6 +20,8 @@ in {
     pcmanfm
     audacity
     qpwgraph
+
+    inputs.self.packages.${pkgs.system}.affine
 
     p7zip
     tshark

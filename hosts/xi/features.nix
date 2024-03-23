@@ -74,7 +74,7 @@
           
           hyprlock.enable = true;
         };
-        ags.enable = true;
+        ags.enable = false;
 
         # Terminal
         ssh.enable = true;

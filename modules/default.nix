@@ -33,6 +33,7 @@
     ./displaymanager
     ./windowmanager
     ./apprunner
+    ./walker
 
     # Terminal
     ./git

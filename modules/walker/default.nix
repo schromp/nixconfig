@@ -1,16 +1,17 @@
-{ inputs, config, lib, pkgs, ...}: with lib; let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   username = config.modules.user.username;
-  cfg = config.modules.programs.walker;
+  opts = config.modules.user;
 in {
-  options.modules.programs.walker = {
-    enable = mkEnableOption "Enable walker app runner";
-  };
-
-  config = mkIf cfg.enable {
+  config = mkIf (opts.homeManager.enabled && opts.appRunner == "walker") {
     home-manager.users.${username} = {
-      home.packages = [ inputs.walker.packages.${pkgs.system}.default ];
+      home.packages = [inputs.walker.packages.${pkgs.system}.default];
     };
-
-    # xdg.configFile 
   };
 }

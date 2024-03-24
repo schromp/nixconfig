@@ -90,7 +90,7 @@ with lib; {
     };
 
     appRunner = mkOption {
-      type = types.enum ["fuzzel" "wofi" "anyrun" "tofi"];
+      type = types.enum ["fuzzel" "wofi" "anyrun" "tofi" "walker"];
       default = "fuzzel";
       description = ''
         Select the App Runner Hyprland should use.

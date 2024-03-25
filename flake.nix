@@ -60,7 +60,7 @@
     };
 
     walker = {
-      url = "github:abenz1267/walker";
+      url = "github:schromp/walker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

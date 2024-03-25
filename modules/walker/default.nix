@@ -11,7 +11,25 @@ with lib; let
 in {
   config = mkIf (opts.homeManager.enabled && opts.appRunner == "walker") {
     home-manager.users.${username} = {
-      home.packages = [inputs.walker.packages.${pkgs.system}.default];
+      imports = [inputs.walker.homeManagerModules.walker];
+
+      programs.walker = {
+        enabled = true;
+        runAsService = true;
+        config = {
+          placeholder = "test123";
+          modules = [
+            {
+              name = "websearch";
+              prefix = "?";
+            }
+            {
+              name = "switcher";
+              prefix = "/";
+            }
+          ];
+        };
+      };
     };
   };
 }

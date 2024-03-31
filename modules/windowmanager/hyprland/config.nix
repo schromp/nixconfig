@@ -124,6 +124,7 @@ in {
         "$mod, V, togglefloating"
         "$mod, F, fullscreen"
         "$mod, P, pin"
+        "$mod, O, pseudo"
         (
           if cfg.hyprlock.enable
           then "$mod CONTROL, L, exec, hyprlock"

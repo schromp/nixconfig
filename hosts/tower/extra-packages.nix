@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   lib,
@@ -24,6 +25,8 @@ in {
     vscodium
     gimp
 
+    inputs.self.packages.${pkgs.system}.affine
+
     alsa-utils
 
     audacity
@@ -37,7 +40,7 @@ in {
     marp-cli
 
     xemu
-    rpcs3
+    # rpcs3
   ];
 
   home-manager.users.${username} = {

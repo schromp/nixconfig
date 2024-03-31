@@ -23,6 +23,7 @@ in
           udiskie
           bitwarden-cli
           parted
+          htop
           btop
           tldr
         ];

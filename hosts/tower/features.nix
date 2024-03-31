@@ -57,7 +57,7 @@
           theme = "onedark";
         };
         eww.enable = false;
-        waybar.enable = false;
+        waybar.enable = true;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {
@@ -73,7 +73,7 @@
           hyprlock.enable = true;
         };
         ags = {
-          enable = true;
+          enable = false;
         };
         obsidian.enable = true;
 

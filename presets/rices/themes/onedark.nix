@@ -34,7 +34,7 @@ in {
         package = pkgs.bibata-cursors;
       };
       theme = {
-        name = "Juno";
+        name = "Adwaita";
         package = pkgs.juno-theme;
       };
       icon = {

@@ -17,8 +17,17 @@ in {
         enabled = true;
         runAsService = true;
         config = {
-          placeholder = "test123";
+          # placeholder = "test123";
+          terminal = "kitty";
           modules = [
+            {
+              name = "runner";
+              prefix = "";
+            }
+            {
+              name = "applications";
+              prefix = "";
+            }
             {
               name = "websearch";
               prefix = "?";

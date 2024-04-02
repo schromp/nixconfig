@@ -1,13 +1,13 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib; let
   username = config.modules.user.username;
   cfg = config.modules.programs.ssh;
-in
-{
+in {
   options.modules.programs.ssh = {
     enable = mkEnableOption "Enable ssh";
   };
@@ -24,6 +24,10 @@ in
           "linode" = {
             hostname = "194.233.162.214";
             identityFile = "~/.ssh/linode";
+          };
+          "git.ude-syssec.de" = {
+            hostname = "git.ude-syssec.de";
+            identityFile = "~/.ssh/git-syssec";
           };
           "194.233.162.214" = {
             identityFile = "~/.ssh/linode";

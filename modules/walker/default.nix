@@ -15,7 +15,7 @@ in {
 
       programs.walker = {
         enable = true;
-        runAsService = false;
+        runAsService = true;
         config = {
           # placeholder = "test123";
           terminal = "kitty";

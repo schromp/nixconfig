@@ -24,7 +24,7 @@ in {
     zoom-us
     slack
 
-    inputs.self.packages.${pkgs.system}.affine
+    affine
 
     p7zip
     tshark

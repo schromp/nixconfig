@@ -25,7 +25,7 @@ in {
     vscodium
     gimp
 
-    inputs.self.packages.${pkgs.system}.affine
+    affine
 
     alsa-utils
 

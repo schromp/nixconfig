@@ -15,10 +15,13 @@ in {
 
       programs.walker = {
         enabled = true;
-        runAsService = true;
+        runAsService = false;
         config = {
           # placeholder = "test123";
           terminal = "kitty";
+          list = {
+            height = 500;
+          };
           modules = [
             {
               name = "runner";

@@ -27,7 +27,7 @@ in {
           };
           "git.ude-syssec.de" = {
             hostname = "git.ude-syssec.de";
-            identityFile = "~/.ssh/git-syssec";
+            identityFile = "~/.ssh/gitlab-syssec";
           };
           "194.233.162.214" = {
             identityFile = "~/.ssh/linode";

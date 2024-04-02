@@ -21,6 +21,9 @@ in {
     audacity
     qpwgraph
 
+    zoom-us
+    slack
+
     inputs.self.packages.${pkgs.system}.affine
 
     p7zip

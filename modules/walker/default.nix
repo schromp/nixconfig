@@ -24,12 +24,12 @@ in {
           };
           modules = [
             {
-              name = "runner";
+              name = "applications";
               prefix = "";
             }
             {
-              name = "applications";
-              prefix = "";
+              name = "runner";
+              prefix = "$";
             }
             {
               name = "websearch";
@@ -38,6 +38,10 @@ in {
             {
               name = "switcher";
               prefix = "/";
+            }
+            {
+              name = "finder";
+              prefix = "~";
             }
           ];
         };

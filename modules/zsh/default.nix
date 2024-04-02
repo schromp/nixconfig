@@ -28,7 +28,8 @@ in {
       programs.zsh = {
         enable = true;
         dotDir = ".config/zsh";
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
+        # enableAutosuggestions = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         completionInit = ''

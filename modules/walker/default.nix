@@ -14,7 +14,7 @@ in {
       imports = [inputs.walker.homeManagerModules.walker];
 
       programs.walker = {
-        enabled = true;
+        enable = true;
         runAsService = false;
         config = {
           # placeholder = "test123";

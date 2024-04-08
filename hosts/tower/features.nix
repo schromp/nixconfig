@@ -28,7 +28,7 @@
           vrr = true;
         };
         keymap = "us-umlaute";
-        appRunner = "walker";
+        appRunner = "tofi";
         browser = "firefox";
         screenshotTool = "swappy";
       };

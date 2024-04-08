@@ -10,7 +10,7 @@ with lib; let
 in {
   options.modules.programs.steam.enable = mkEnableOption "Enable Steam";
 
-  # imports = [inputs.nix-gaming.nixosModules.steamCompat];
+  imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
   config = mkIf cfg.enable {
     programs.steam = {
@@ -30,12 +30,12 @@ in {
             xorg.libXScrnSaver
           ];
       };
-      # extraCompatPackages = [
-      #   inputs.nix-gaming.packages.${pkgs.system}.proton-ge
-      # ];
       extraCompatPackages = [
-        pkgs.proton-ge-bin
+        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       ];
+      # extraCompatPackages = [
+      #   pkgs.proton-ge-bin
+      # ];
     };
 
     environment.systemPackages = with pkgs; [mangohud];

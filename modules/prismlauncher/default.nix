@@ -20,6 +20,7 @@ in {
       home.packages = with pkgs; [
         prismlauncher-qt5
         glfw-wayland
+        alsa-oss
       ];
     };
   };

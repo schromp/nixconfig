@@ -32,6 +32,7 @@
 
     ./displaymanager
     ./windowmanager
+    ./sway
     ./apprunner
     ./walker
 

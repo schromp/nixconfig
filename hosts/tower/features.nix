@@ -18,7 +18,7 @@
         username = "lk";
         repoDirectory = "/home/lk/repos/nixconfig";
         displayServerProtocol = "wayland";
-        desktopEnvironment = "hyprland";
+        desktopEnvironment = "sway";
         monitor = {
           name = "DP-3";
           resolution = "3440x1440";
@@ -28,7 +28,7 @@
           vrr = true;
         };
         keymap = "us-umlaute";
-        appRunner = "tofi";
+        appRunner = "walker";
         browser = "firefox";
         screenshotTool = "swappy";
       };
@@ -57,7 +57,7 @@
           theme = "onedark";
         };
         eww.enable = false;
-        waybar.enable = true;
+        waybar.enable = false;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {

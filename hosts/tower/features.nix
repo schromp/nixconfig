@@ -57,7 +57,7 @@
 
         # Desktop
         xdg = {
-          enable = true;
+          enable = false;
           createDirectories = true;
           setAssociations = true;
         };

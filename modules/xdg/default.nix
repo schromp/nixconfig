@@ -37,7 +37,8 @@ in {
         ];
         config = {
           common.default = ["gtk"];
-          hyprland.default = ["gtk" "hyprland"];
+          sway.default = mkIf (wm == "sway") ["gtk" "wlr"];
+          hyprland.default = mkIf (wm == "Hyprland") ["gtk" "hyprland"];
         };
 
         # config = mkIf cfg.setAssociations {

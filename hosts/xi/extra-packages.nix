@@ -31,7 +31,6 @@ in {
     nix-prefetch-git
 
     xemu
-    rpcs3
   ];
 
   home-manager.users.${username} = {

@@ -10,11 +10,7 @@ with lib; let
   appRunner = config.modules.user.appRunner;
   browser = config.modules.user.browser;
   screenshotTool = config.modules.user.screenshotTool;
-  monitor = config.modules.user.monitor;
-  vrr =
-    if monitor.vrr
-    then "vrr,1"
-    else "";
+  monitors = config.modules.user.monitors;
   keymap_language =
     if (config.modules.user.keymap == "us-umlaute")
     then ''
@@ -34,10 +30,18 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = [
-      "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${vrr}"
-      ",preferred,auto,1"
-    ];
+    monitor = lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
+      if monitor.vrr
+      then "vrr,1"
+      else ""
+    }");
+    
+    # # TODO: make this universal
+    # workspace = mkIf (lists.count monitors != 1) [
+    #   "r[1-5],${(builtins.elemAt monitors 0).name}"
+    #   "r[6-9],${(builtins.elemAt monitors 1).name}"
+    # ];
+    
 
     exec-once = [
       # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"

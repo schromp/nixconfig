@@ -21,13 +21,15 @@
         displayServerProtocol = "wayland";
         desktopEnvironment = "hyprland";
 
-        monitor = {
-          name = "eDP-1";
-          resolution = "2880x1800";
-          refreshRate = "90";
-          scale = "1.5";
-          position = "0x0";
-        };
+        monitors = [
+          {
+            name = "eDP-1";
+            resolution = "2880x1800";
+            refreshRate = "90";
+            scale = "1.5";
+            position = "0x0";
+          }
+        ];
         keymap = "us-umlaute";
         appRunner = "walker";
         browser = "firefox";
@@ -71,7 +73,7 @@
         hyprland = {
           sens = "0.1";
           accel = "adaptive";
-          
+
           hyprlock.enable = true;
         };
         ags.enable = false;

@@ -18,15 +18,25 @@
         username = "lk";
         repoDirectory = "/home/lk/repos/nixconfig";
         displayServerProtocol = "wayland";
-        desktopEnvironment = "sway";
-        monitor = {
-          name = "DP-3";
-          resolution = "3440x1440";
-          refreshRate = "144";
-          scale = "1";
-          position = "0x0";
-          vrr = true;
-        };
+        desktopEnvironment = "hyprland";
+        monitors = [
+          {
+            name = "DP-3";
+            resolution = "3440x1440";
+            refreshRate = "144";
+            scale = "1";
+            position = "0x0";
+            vrr = true;
+          }
+          {
+            name = "HDMI-A-1";
+            resolution = "1920x1080";
+            refreshRate = "60";
+            scale = "1";
+            position = "0x1440";
+            vrr = false;
+          }
+        ];
         keymap = "us-umlaute";
         appRunner = "walker";
         browser = "firefox";

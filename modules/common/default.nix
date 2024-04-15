@@ -38,6 +38,7 @@ in
           pavucontrol
           obs-studio
           # qt6.full
+          slack
         ];
       };
     })

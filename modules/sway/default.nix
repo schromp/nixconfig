@@ -13,6 +13,8 @@ with lib; let
   modifier = "Mod4";
 in {
   config = mkIf enabled {
+    programs.sway.enable = true;
+
     home-manager.users.${username} = {
       wayland.windowManager.sway = {
         enable = true;
@@ -26,23 +28,30 @@ in {
           # output = {
           # };
           modifier = "${modifier}";
-          menu = "walker";
+          # menu = "walker";
           keybindings = lib.mkOptionDefault {
             "${modifier}+Return" = "exec ${lib.getExe pkgs.kitty}";
             "${modifier}+b" = "exec ${lib.getExe pkgs.firefox}";
             "${modifier}+q" = "kill";
-            "${modifier}+r" = "exec walker";
+            # "${modifier}+r" = "exec walker";
             "${modifier}+f" = "fullscreen toggle";
+            "${modifier}+v" = "floating toggle";
+            "${modifier}+Shift+s" = ''exec grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png'';
           };
           input = {
             "*" = {
               accel_profile = "flat";
-              pointer_accel = "0.3";
+              pointer_accel = "-0.2";
               xkb_layout = "us-german-umlaut";
             };
           };
+          focus = {
+            followMouse = "no";
+          };
         };
       };
+
+      services.dunst.enable = true;
     };
   };
 }

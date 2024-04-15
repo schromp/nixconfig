@@ -18,7 +18,7 @@ in {
         runAsService = false;
         config = {
           # placeholder = "test123";
-          terminal = "kitty";
+          # terminal = "kitty";
           list = {
             height = 500;
           };

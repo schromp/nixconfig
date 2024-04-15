@@ -42,9 +42,9 @@ with lib; {
       '';
     };
 
-    monitor = mkOption {
+    monitors = mkOption {
       type = with types;
-        submodule {
+        listOf (submodule {
           options = {
             name = mkOption {
               type = str;
@@ -66,7 +66,7 @@ with lib; {
               default = false;
             };
           };
-        };
+        });
     };
 
     terminal = mkOption {

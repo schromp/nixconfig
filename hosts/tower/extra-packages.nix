@@ -25,7 +25,7 @@ in {
     vscodium
     gimp
 
-    # affine
+    affine
 
     alsa-utils
 

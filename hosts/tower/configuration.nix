@@ -60,7 +60,8 @@ in {
   # Fonts
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode" "Hermit" "ProggyClean" "CaskaydiaCove"];})
+      hack-font
     ];
 
     enableDefaultPackages = true;

@@ -33,6 +33,7 @@ in {
         nixd
         sumneko-lua-language-server
         rust-analyzer
+        rustfmt
         statix
         nixpkgs-fmt
         python311Packages.jedi-language-server

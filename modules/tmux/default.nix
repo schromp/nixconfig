@@ -18,6 +18,7 @@ in {
       home.packages = with pkgs; [tmuxifier];
       programs.tmux = {
         enable = true;
+        prefix = "C-a";
         baseIndex = 1;
         mouse = true;
         keyMode = "vi";

@@ -18,7 +18,7 @@ in {
 
     home-manager.users.${username} = {
       home.packages = with pkgs; [
-        prismlauncher-qt5
+        prismlauncher
         glfw-wayland
         alsa-oss
       ];

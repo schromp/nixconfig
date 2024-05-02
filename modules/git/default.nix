@@ -27,6 +27,8 @@ in {
             extraConfig = {
               init.defaultBranch = "main";
             };
+
+            lfs.enable = true;
           };
           gh = {
             enable = true;

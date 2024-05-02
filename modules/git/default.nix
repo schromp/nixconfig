@@ -20,6 +20,9 @@ in {
         programs = {
           git = {
             enable = true;
+            lfs = {
+              enable = true;
+            };
 
             # TODO: move this into userspace
             userName = "Lennart Koziollek";

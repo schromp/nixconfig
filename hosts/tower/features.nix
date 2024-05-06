@@ -101,6 +101,7 @@
           enable = true; # TODO: make option for username/mail
           lazygit = true;
         };
+        nh.enable = true;
 
         themer = {
           enable = true;

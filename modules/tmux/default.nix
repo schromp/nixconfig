@@ -4,16 +4,15 @@
   config,
   inputs,
   ...
-}:
-with lib; let
+}: let
   user = config.modules.user.username;
   cfg = config.modules.programs.tmux;
 in {
   options.modules.programs.tmux = {
-    enable = mkEnableOption "Enable tmux";
+    enable = lib.mkEnableOption "Enable tmux";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home-manager.users.${user} = {
       home.packages = with pkgs; [tmuxifier];
       programs.tmux = {
@@ -23,34 +22,34 @@ in {
         mouse = true;
         keyMode = "vi";
         tmuxinator.enable = true;
-        plugins = with pkgs; [
+        plugins = [
           {
-            plugin = tmuxPlugins.continuum;
+            plugin = pkgs.tmuxPlugins.continuum;
             extraConfig = ''
               set -g @continuum-restore 'on'
               set -g @continuum-save-interval '60' # minutes
             '';
           }
           {
-            plugin = tmuxPlugins.vim-tmux-navigator;
+            plugin = pkgs.tmuxPlugins.vim-tmux-navigator;
           }
           {
-            plugin = tmuxPlugins.sensible;
+            plugin = pkgs.tmuxPlugins.sensible;
           }
           {
-            plugin = tmuxPlugins.resurrect;
+            plugin = pkgs.tmuxPlugins.resurrect;
           }
           {
-            plugin = inputs.tmux-sessionx.packages.${pkgs.system}.default;
+            plugin = inputs.tmux-sessionx.packages.${system}.default;
             extraConfig = ''
               set -g @sessionx-zoxide-mode 'on'
             '';
           }
           {
-            plugin = tmuxPlugins.tmux-thumbs;
+            plugin = pkgs.tmuxPlugins.tmux-thumbs;
           }
           {
-            plugin = tmuxPlugins.tmux-fzf;
+            plugin = pkgs.tmuxPlugins.tmux-fzf;
           }
         ];
 

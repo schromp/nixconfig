@@ -4,16 +4,16 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs.git;
 in {
   options.modules.programs.git = {
-    enable = mkEnableOption "Enable git";
-    lazygit = mkEnableOption "Enable lazygit";
+    enable = lib.mkEnableOption "Enable git";
+    lazygit = lib.mkEnableOption "Enable lazygit";
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = lib.mkIf cfg.enable (lib.mkMerge [
     {
       programs.git.enable = true;
       home-manager.users.${username} = {
@@ -30,8 +30,6 @@ in {
             extraConfig = {
               init.defaultBranch = "main";
             };
-
-            lfs.enable = true;
           };
           gh = {
             enable = true;
@@ -39,7 +37,7 @@ in {
         };
       };
     }
-    (mkIf cfg.lazygit {
+    (lib.mkIf cfg.lazygit {
       home-manager.users.${username} = {
         home.packages = with pkgs; [
           lazygit

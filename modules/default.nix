@@ -47,6 +47,7 @@
     ./zellij
     ./greetd
     ./ssh
+    ./nh
 
     ./themes
   ];

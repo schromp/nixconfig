@@ -17,6 +17,8 @@
       warn-dirty = false
     '';
 
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
     settings = {
       auto-optimise-store = true;
 

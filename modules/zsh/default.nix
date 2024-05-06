@@ -4,15 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs.zsh;
 in {
   options.modules.programs.zsh = {
-    enable = mkEnableOption "Enable zsh";
+    enable = lib.mkEnableOption "Enable zsh";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     # for zsh autocompletions on systemlevel
     environment.pathsToLink = ["/share/zsh"];
     environment.systemPackages = with pkgs; [fzf eza killall];

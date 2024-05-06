@@ -1,16 +1,17 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs.neovim;
 in {
-  options.modules.programs.neovim.enable = mkEnableOption "Enable neovim";
+  options.modules.programs.neovim.enable = lib.mkEnableOption "Enable neovim";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     # dependencies for nvim
     home-manager.users.${username} = {
       home.packages = with pkgs; [
@@ -33,6 +34,7 @@ in {
         nixd
         sumneko-lua-language-server
         rust-analyzer
+        rustfmt
         statix
         nixpkgs-fmt
         python311Packages.jedi-language-server
@@ -55,6 +57,9 @@ in {
 
       programs.neovim = {
         enable = true;
+
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+
         defaultEditor = true;
         withNodeJs = true;
         withPython3 = true;

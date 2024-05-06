@@ -1,18 +1,16 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.programs.steam;
 in {
-  options.modules.programs.steam.enable = mkEnableOption "Enable Steam";
+  options.modules.programs.steam.enable = lib.mkEnableOption "Enable Steam";
 
   # imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.steam = {
       enable = true;
       package = pkgs.steam.override {

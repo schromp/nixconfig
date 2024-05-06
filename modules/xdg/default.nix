@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   username = config.modules.user.username;
   cfg = config.modules.programs.xdg;
 
@@ -22,12 +21,12 @@ with lib; let
   };
 in {
   options.modules.programs.xdg = {
-    enable = mkEnableOption "Enable xdg options";
-    createDirectories = mkEnableOption "Create preset home directories";
-    setAssociations = mkEnableOption "Create preset associatons";
+    enable = lib.mkEnableOption "Enable xdg options";
+    createDirectories = lib.mkEnableOption "Create preset home directories";
+    setAssociations = lib.mkEnableOption "Create preset associatons";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     xdg = {
       portal = {
         enable = true;
@@ -37,8 +36,8 @@ in {
         ];
         config = {
           common.default = ["gtk"];
-          sway.default = mkIf (wm == "sway") ["gtk" "wlr"];
-          hyprland.default = mkIf (wm == "Hyprland") ["gtk" "hyprland"];
+          sway.default = lib.mkIf (wm == "sway") ["gtk" "wlr"];
+          hyprland.default = lib.mkIf (wm == "hyprland") ["gtk" "hyprland"];
         };
 
         # config = mkIf cfg.setAssociations {
@@ -60,14 +59,14 @@ in {
 
     home-manager.users.${username} = {
       xdg = {
-        userDirs = mkIf cfg.createDirectories {
+        userDirs = lib.mkIf cfg.createDirectories {
           enable = true;
           createDirectories = true;
           extraConfig = {
             # Wallpapers = "/home/${username}/Documents/Wallpapers";
           };
         };
-        mimeApps = mkIf cfg.setAssociations {
+        mimeApps = lib.mkIf cfg.setAssociations {
           enable = true;
           defaultApplications = associations;
         };

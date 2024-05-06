@@ -57,7 +57,7 @@
 
         # Desktop
         xdg = {
-          enable = false;
+          enable = true;
           createDirectories = true;
           setAssociations = true;
         };
@@ -86,6 +86,7 @@
           enable = false;
         };
         obsidian.enable = true;
+        udiskie.enable = true;
 
         # Terminal
         ssh.enable = true;

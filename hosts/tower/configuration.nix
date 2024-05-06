@@ -60,7 +60,16 @@ in {
   # Fonts
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode" "Hermit" "ProggyClean" "CaskaydiaCove"];})
+      (nerdfonts.override {
+        fonts = [
+          "JetBrainsMono"
+          "Iosevka"
+          "FiraCode"
+          "Hermit"
+          "ProggyClean"
+          # "CaskaydiaCove Nerd Font"
+        ];
+      })
       hack-font
     ];
 

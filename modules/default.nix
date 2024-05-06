@@ -35,6 +35,7 @@
     ./sway
     ./apprunner
     ./walker
+    ./udiskie
 
     # Terminal
     ./git

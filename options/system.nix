@@ -3,6 +3,13 @@ with lib; {
   options.modules.system = {
     # Here we define global system options
 
+    kind = mkOption {
+      type = types.enum [ "nixos" "homeManager" "combined" ];
+      description = ''
+        Declare if the system is a nixos system or a home-manager system"
+      '';
+    };
+
     hostname = mkOption {
       type = types.str;
       description = ''

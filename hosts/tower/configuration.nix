@@ -16,6 +16,9 @@ in {
     initialPassword = "1234";
   };
   environment.shells = with pkgs; [zsh];
+  # TODO: temporary
+  programs.zsh.enable = true;
+  # programs.fish.enable = true;
 
   # Setup home-manager options
   home-manager = {

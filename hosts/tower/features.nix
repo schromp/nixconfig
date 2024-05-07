@@ -48,74 +48,74 @@
         bluetooth = true;
       };
 
-      programs = {
-        # Common programs
-        installCommon = {
-          terminal = true;
-          desktop = true;
-        };
-
-        # Desktop
-        xdg = {
-          enable = true;
-          createDirectories = true;
-          setAssociations = true;
-        };
-        sddm.enable = false;
-        kitty = {
-          enable = true;
-          theme = "onedark";
-        };
-        eww.enable = false;
-        waybar.enable = false;
-        swww.enable = true;
-        libreoffice.enable = true;
-        discord = {
-          enable = true;
-          aarpc = false;
-        };
-        pipewire.enable = true;
-        hyprland = {
-          sens = "-0.2";
-          accel = "flat";
-          xdgOptions = true;
-
-          hyprlock.enable = true;
-        };
-        ags = {
-          enable = false;
-        };
-        obsidian.enable = true;
-        udiskie.enable = true;
-
-        # Terminal
-        ssh.enable = true;
-        greetd.enable = true;
-        tmux.enable = true;
-        zellij.enable = true;
-        direnv.enable = true;
-        zsh.enable = true;
-        zoxide.enable = true;
-        neovim.enable = true;
-        git = {
-          enable = true; # TODO: make option for username/mail
-          lazygit = true;
-        };
-        nh.enable = true;
-
-        themer = {
-          enable = true;
-        };
-
-        # Gaming
-        gamescope.enable = true;
-        prismLauncher.enable = true;
-        lutris.enable = true;
-        bottles.enable = true;
-        steam.enable = true;
-        retroarch.enable = true;
-        gamemode.enable = true;
-      };
+      # programs = {
+      #   # Common programs
+      #   installCommon = {
+      #     terminal = true;
+      #     desktop = true;
+      #   };
+      #
+      #   # Desktop
+      #   xdg = {
+      #     enable = true;
+      #     createDirectories = true;
+      #     setAssociations = true;
+      #   };
+      #   sddm.enable = false;
+      #   kitty = {
+      #     enable = true;
+      #     theme = "onedark";
+      #   };
+      #   eww.enable = false;
+      #   waybar.enable = false;
+      #   swww.enable = true;
+      #   libreoffice.enable = true;
+      #   discord = {
+      #     enable = true;
+      #     aarpc = false;
+      #   };
+      #   pipewire.enable = true;
+      #   hyprland = {
+      #     sens = "-0.2";
+      #     accel = "flat";
+      #     xdgOptions = true;
+      #
+      #     hyprlock.enable = true;
+      #   };
+      #   ags = {
+      #     enable = false;
+      #   };
+      #   obsidian.enable = true;
+      #   udiskie.enable = true;
+      #
+      #   # Terminal
+      #   ssh.enable = true;
+      #   greetd.enable = true;
+      #   tmux.enable = true;
+      #   zellij.enable = true;
+      #   direnv.enable = true;
+      #   zsh.enable = true;
+      #   zoxide.enable = true;
+      #   neovim.enable = true;
+      #   git = {
+      #     enable = true; # TODO: make option for username/mail
+      #     lazygit = true;
+      #   };
+      #   nh.enable = true;
+      #
+      #   themer = {
+      #     enable = true;
+      #   };
+      #
+      #   # Gaming
+      #   gamescope.enable = true;
+      #   prismLauncher.enable = true;
+      #   lutris.enable = true;
+      #   bottles.enable = true;
+      #   steam.enable = true;
+      #   retroarch.enable = true;
+      #   gamemode.enable = true;
+      # };
     };
   };
 }

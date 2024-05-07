@@ -9,10 +9,12 @@
     nixpkgs.lib.nixosSystem {
       system = "${system}";
       modules = [
+        ../options
         {
           config.modules.system = {
             hostname = hostname;
             architecture = system;
+            kind = "nixos";
           };
         }
         home-manager.nixosModules.home-manager
@@ -25,7 +27,15 @@
   mkHmSystem = system: hostname:
     home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
+
       modules = [
+        ../options
+
+        {
+          config.modules.system = {
+            kind = "nixos";
+          };
+        }
         ./${hostname}
       ];
     };

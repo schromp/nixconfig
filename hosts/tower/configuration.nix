@@ -67,10 +67,12 @@ in {
           "FiraCode"
           "Hermit"
           "ProggyClean"
-          # "CaskaydiaCove Nerd Font"
+          # "Cascadia Code"
         ];
       })
       hack-font
+      # CaskaydiaCove
+      cascadia-code
     ];
 
     enableDefaultPackages = true;

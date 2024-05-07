@@ -3,9 +3,9 @@
   lib,
   ...
 }:
-with lib; let
+let
   cfg = config.presets.rices;
-in {
+in with lib; {
   imports = [./themes ./glass.nix ./solid.nix ./onedark.nix];
 
   options.presets.rices = {

@@ -5,7 +5,7 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
@@ -18,30 +18,30 @@ with lib; let
   screenshotTool = config.modules.user.screenshotTool;
 in {
   imports = [
-    inputs.hyprland.nixosModules.default
+    # inputs.hyprland.nixosModules.default
     ./config.nix
     ./hyprlock.nix
   ];
 
   options.modules.programs.hyprland = {
-    xdgOptions = mkEnableOption "Enable premade xdg options";
-    sens = mkOption {
-      type = types.str;
+    xdgOptions = lib.mkEnableOption "Enable premade xdg options";
+    sens = lib.mkOption {
+      type = lib.types.str;
       default = "1";
     };
-    accel = mkOption {
-      type = types.str;
+    accel = lib.mkOption {
+      type = lib.types.str;
       default = "flat";
       description = "Can be flat or adaptive";
     };
   };
 
-  config = mkIf enabled (mkMerge [
-    (mkIf (enabled && opts.displayServerProtocol == "wayland") {
+  config = lib.mkIf enabled (lib.mkMerge [
+    (lib.mkIf (enabled && opts.displayServerProtocol == "wayland") {
       programs.hyprland = {
         enable = true;
         xwayland.enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       };
 
       # add binary cache
@@ -104,7 +104,7 @@ in {
 
       home-manager.users.${username} = {
         imports = [
-          inputs.hyprland.homeManagerModules.default
+          # inputs.hyprland.homeManagerModules.default
         ];
 
         wayland.windowManager.hyprland = {

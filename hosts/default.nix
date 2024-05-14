@@ -2,29 +2,25 @@
   nixpkgs,
   inputs,
   home-manager,
-  nix-darwin,
   ...
 }: let
-  lib = nixpkgs.lib;
-  config = nixpkgs.config;
   mkNixosSystem = system: hostname:
     nixpkgs.lib.nixosSystem {
       system = "${system}";
       modules = [
+        ./${hostname}
         ../options
-        (import ../modules {inherit config lib inputs; kind = "nixos";})
+        ../modules/system.nix
         {
           config.modules.system = {
             hostname = hostname;
             architecture = system;
-            kind = "nixos";
           };
         }
         {
           networking.hostName = hostname;
         }
         home-manager.nixosModules.home-manager
-        ./${hostname}
       ];
       specialArgs = {inherit inputs;};
     };
@@ -34,14 +30,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       modules = [
-        ../options
-        (import ../modules {inherit config lib inputs; kind = "homeManager";})
-        {
-          config.modules.system = {
-            kind = "nixos";
-          };
-        }
         ./${hostname}
+        ../options
+        ../modules/home.nix
       ];
     };
 in {

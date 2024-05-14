@@ -5,11 +5,14 @@
   nix-darwin,
   ...
 }: let
+  lib = nixpkgs.lib;
+  config = nixpkgs.config;
   mkNixosSystem = system: hostname:
     nixpkgs.lib.nixosSystem {
       system = "${system}";
       modules = [
         ../options
+        (import ../modules {inherit config lib inputs; kind = "nixos";})
         {
           config.modules.system = {
             hostname = hostname;
@@ -17,9 +20,11 @@
             kind = "nixos";
           };
         }
+        {
+          networking.hostName = hostname;
+        }
         home-manager.nixosModules.home-manager
         ./${hostname}
-        {networking.hostName = hostname;}
       ];
       specialArgs = {inherit inputs;};
     };
@@ -30,7 +35,7 @@
 
       modules = [
         ../options
-
+        (import ../modules {inherit config lib inputs; kind = "homeManager";})
         {
           config.modules.system = {
             kind = "nixos";

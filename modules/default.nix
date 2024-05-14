@@ -1,31 +1,26 @@
 {
   config,
   lib,
+  kind,
   ...
 }: let
-  test = import ./test/test.nix {inherit lib;};
-  # modules = builtins.readDir ./.;
-  modules = {test = "";};
-  kind = config.modules.system.kind; # FIX: this leads to infinite recursion
-  # kind = "nixos";
+  modules = builtins.readDir ./.;
+  # modules = {test = "";};
   importModule = name: let
     mod = import ./${name}/${name}.nix {inherit config lib;};
   in
-    if config.modules.system.kind == "nixos"
+    if kind == "nixos"
     then mod.system
     else if kind == "homeManager"
     then mod.home
     else mod.system;
 in {
   # TODO: create list not map/set
-  # imports = lib.mapAttrsToList (name: _: (importModule)) modules;
+  imports = lib.mapAttrsToList (name: _: (importModule)) modules;
 
-  # options.modules.testing = lib.mkEnableOption "";
-
-  imports = [
-    # test.system
-    (importModule "test")
-  ];
+  # imports = [
+  #   (importModule "test")
+  # ];
 
   # imports = [
   #   ./options

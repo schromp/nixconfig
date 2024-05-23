@@ -10,19 +10,13 @@ in {
   # here you can add packages specific to your setup.
 
   environment.systemPackages = with pkgs; [
-    pantheon.elementary-iconbrowser
-    texliveFull
-
     imagemagick
     rnote
     evince
     okular
     spotify
-    discord
     pcmanfm
-    helvum
     vlc
-    vscodium
     gimp
 
     affine
@@ -34,10 +28,7 @@ in {
     qpwgraph
 
     p7zip
-    tshark
     nix-prefetch-git
-    
-    marp-cli
 
     xemu
     # rpcs3

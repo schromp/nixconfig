@@ -18,17 +18,7 @@ in {
     {
       home-manager.users.${username} = {
         home.packages = with pkgs; [
-          webcord-vencord
-          armcord
           vesktop
-          # (vesktop.overrideAttrs (old: {
-          #   src = fetchFromGitHub {
-          #     owner = "Vencord";
-          #     repo = "Vesktop";
-          #     rev = "3fdc55a47e48d0bfd0bfa5cc9f9f566a57d99417";
-          #     hash = "sha256-K6+G82yIQgi5NhYOobDYlqvPzFhPSg4NDdmPy8PHwVI=";
-          #   };
-          # }))
         ];
       };
     }

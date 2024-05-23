@@ -9,7 +9,6 @@ in {
   # here you can add packages specific to your setup.
   environment.systemPackages = with pkgs; [
     pantheon.elementary-iconbrowser
-    texliveFull
 
     imagemagick
     rnote

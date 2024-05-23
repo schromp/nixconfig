@@ -87,6 +87,7 @@
         };
         obsidian.enable = true;
         udiskie.enable = true;
+        onedrive.enable = true;
 
         # Terminal
         ssh.enable = true;

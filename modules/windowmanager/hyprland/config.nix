@@ -44,7 +44,8 @@ in {
     
 
     exec-once = [
-      # "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
+      "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
+      (if appRunner == "walker" then ''"walker gapplication-service"'' else "")
       "${widescreenScript}"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"

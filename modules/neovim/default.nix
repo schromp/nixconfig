@@ -4,8 +4,7 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   username = config.modules.user.username;
   cfg = config.modules.programs.neovim;
 in {
@@ -25,6 +24,8 @@ in {
         clang
         cargo
         rustc
+        inputs.rustacean.packages.${pkgs.system}.codelldb
+        gdb
 
         sassc
 

@@ -4,15 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs;
 in {
   options.modules.programs.swww = {
-    enable = mkEnableOption "Enable swww";
+    enable = lib.mkEnableOption "Enable swww";
   };
 
-  config = mkIf cfg.swww.enable {
+  config = lib.mkIf cfg.swww.enable {
     home-manager.users.${username} = {
       home.packages = with pkgs; [swww];
     };

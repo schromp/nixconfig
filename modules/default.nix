@@ -36,6 +36,7 @@
     ./apprunner
     ./walker
     ./udiskie
+    ./onedrive
 
     # Terminal
     ./git

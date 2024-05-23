@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   cfg = config.modules.programs.hyprland;
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
@@ -30,7 +30,7 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
+    monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
       if monitor.vrr
       then "vrr,1"
       else ""
@@ -98,7 +98,7 @@ in {
       border_size = 2;
       layout = "dwindle";
 
-      allow_tearing = true;
+      allow_tearing = false;
 
       "col.active_border" = "rgb(c678dd) rgb(${focused})";
       "col.inactive_border" = "rgb(${unfocused})";
@@ -114,6 +114,7 @@ in {
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       animate_manual_resizes = true;
+      initial_workspace_tracking = 2;
     };
 
     bindm = [

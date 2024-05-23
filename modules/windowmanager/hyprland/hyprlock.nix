@@ -17,18 +17,18 @@ in {
     security.pam.services.hyprlock = {};
 
     home-manager.users.${username} = {
-      imports = [inputs.hyprlock.homeManagerModules.default];
-
       programs.hyprlock = {
         enable = true;
-        backgrounds = [
-          {
-            # monitor = "${(lists.take 1 monitors).name}"; TODO:
-            path = "screenshot";
-            blur_size = 2;
-            blur_passes = 5;
-          }
-        ];
+        settings = {
+          backgrounds = [
+            {
+              # monitor = "${(lists.take 1 monitors).name}"; TODO:
+              path = "screenshot";
+              blur_size = 2;
+              blur_passes = 5;
+            }
+          ];
+        };
       };
     };
   };

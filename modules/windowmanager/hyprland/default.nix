@@ -5,7 +5,7 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   opts = config.modules.user;
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
@@ -24,24 +24,24 @@ in {
   ];
 
   options.modules.programs.hyprland = {
-    xdgOptions = mkEnableOption "Enable premade xdg options";
-    sens = mkOption {
-      type = types.str;
+    xdgOptions = lib.mkEnableOption "Enable premade xdg options";
+    sens = lib.mkOption {
+      type = lib.types.str;
       default = "1";
     };
-    accel = mkOption {
-      type = types.str;
+    accel = lib.mkOption {
+      type = lib.types.str;
       default = "flat";
       description = "Can be flat or adaptive";
     };
   };
 
-  config = mkIf enabled (mkMerge [
-    (mkIf (enabled && opts.displayServerProtocol == "wayland") {
+  config = lib.mkIf enabled (lib.mkMerge [
+    (lib.mkIf (enabled && opts.displayServerProtocol == "wayland") {
       programs.hyprland = {
         enable = true;
         xwayland.enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       };
 
       # add binary cache
@@ -59,13 +59,13 @@ in {
         variables = {
           NIXOS_OZONE_WL = "1";
           GDK_BACKEND = "wayland,x11";
-          ANKI_WAYLAND = "1";
+          # ANKI_WAYLAND = "1";
           QT_QPA_PLATFORM = "wayland;xcb";
           # QT_QPA_PLATFORMTHEME = "qt5ct";
-          SDL_VIDEODRIVER = "wayland"; # For csgo
+          # SDL_VIDEODRIVER = "wayland"; # For csgo
 
-          WLR_BACKEND = "vulkan";
-          WLR_RENDERER = "vulkan";
+          # WLR_BACKEND = "vulkan";
+          # WLR_RENDERER = "vulkan";
 
           XDG_CURRENT_DESKTOP = "Hyprland";
           XDG_SESSION_TYPE = "wayland";
@@ -83,7 +83,7 @@ in {
           MOZ_ENABLE_WAYLAND = "1";
           # WLR_NO_HARDWARE_CURSORS = "1";
 
-          WLR_DRM_NO_ATOMIC = "1"; # This disables the usage of a newer kernel DRM API that doesn’t support tearing yet.
+          # R_DRM_NO_ATOMIC = "1";This disables the usage of a newer kernel DRM API that doesn’t support tearing yet
         };
       };
 

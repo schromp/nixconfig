@@ -69,7 +69,7 @@ in {
             # --- Prompt ---
             # Autoload zsh's `add-zsh-hook` and `vcs_info` functions
             # (-U autoload w/o substition, -z use zsh style)
-            # autoload -Uz add-zsh-hook vcs_info
+            autoload -Uz add-zsh-hook vcs_info
 
             # Set prompt substitution so we can use the vcs_info_message variable
             setopt prompt_subst

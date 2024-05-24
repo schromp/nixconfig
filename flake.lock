@@ -2318,11 +2318,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716505130,
-        "narHash": "sha256-yy4PSe8C6D3I4ktOr0C9ZeuD7m2c7RNmt0NA0YoHt8s=",
+        "lastModified": 1716556960,
+        "narHash": "sha256-6lrJVyLxLPLTtjTsBmVkclCPzE8lxooLAIXC1ocnKck=",
         "owner": "schromp",
         "repo": "themer",
-        "rev": "782b405fbeb6463a8ef2ddf8300a57ffd21c81c3",
+        "rev": "5db6314f06bd6a46a0c80e5826012ae4641dc7f4",
         "type": "github"
       },
       "original": {

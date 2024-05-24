@@ -12,6 +12,7 @@
   background: @base01;
   padding: 10px;
   border-radius: 10px;
+  min-height: min-content;
 }
 
 #searchwrapper {
@@ -53,6 +54,8 @@
 #list {
   background: @base00;
   border-radius: 10px;
+  min-height: min-content;
+  overflow: auto;
 }
 
 row:selected {

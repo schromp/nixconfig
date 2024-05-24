@@ -2,15 +2,12 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
-}:
-with lib; let
+}: let
   username = config.modules.user.username;
   opts = config.modules.user;
 in {
-  config = mkIf (opts.homeManager.enabled && opts.appRunner == "walker") {
-
+  config = lib.mkIf (opts.homeManager.enabled && opts.appRunner == "walker") {
     nix.settings = {
       substituters = ["https://walker.cachix.org"];
       trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
@@ -23,10 +20,10 @@ in {
         enable = true;
         runAsService = false;
         config = {
-          # placeholder = "test123";
-          # terminal = "kitty";
           list = {
-            height = 500;
+            height = 300;
+            always_show = false;
+            hide_sub = true;
           };
           modules = [
             {
@@ -48,6 +45,10 @@ in {
             {
               name = "finder";
               prefix = "~";
+            }
+            {
+              name = "hyprland";
+              prefix = "-";
             }
           ];
         };

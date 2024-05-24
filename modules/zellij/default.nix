@@ -4,15 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs.zellij;
 in {
   options.modules.programs.zellij = {
-    enable = mkEnableOption "Enable zellij";
+    enable = lib.mkEnableOption "Enable zellij";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [zellij];
 
     home-manager.users.${username} = {

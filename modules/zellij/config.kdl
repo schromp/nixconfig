@@ -1,10 +1,30 @@
 default_shell "zsh"
 pane_frames true
+simplified_ui false
 
-theme "dracula"
+// theme "dracula"
 
 keybinds {
-  normal {
-    unbind "Ctrl h"; 
+  locked {
+      bind "F1" { SwitchToMode "Normal"; }
+  }
+  shared_except "locked" {
+      bind "F1" { SwitchToMode "Locked"; }
+  }
+
+  normal clear-defaults=true {
+    bind "Ctrl h" { MoveFocus "Left"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
+    bind "Ctrl l" { MoveFocus "Right"; }
+
+    bind "Ctrl a" { SwitchToMode "tmux"; }
+    bind "F1" { SwitchToMode "Locked"; }
+    bind "F2" { SwitchToMode "pane"; }
+    bind "F3" { SwitchToMode "tab"; }
+    bind "F4" { SwitchToMode "resize"; }
+    bind "F5" { SwitchToMode "move"; }
+    bind "F6" { SwitchToMode "search"; }
+    bind "F7" { SwitchToMode "session"; }
   }
 }

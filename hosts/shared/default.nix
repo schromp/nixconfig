@@ -23,6 +23,7 @@
       auto-optimise-store = true;
 
       trusted-users = ["root" "@wheel"];
+      builders-use-substitutes = true;
 
       substituters = [
         "https://cache.nixos.org"

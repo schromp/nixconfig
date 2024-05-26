@@ -50,7 +50,7 @@
     ./ssh
     ./nh
 
-    ./themes
+    ./themer
   ];
 
 

@@ -1,32 +1,32 @@
-{ inputs
-, config
-, pkgs
-, lib
-, ...
-}:
-with lib; let
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   opts = config.modules.user;
   username = opts.username;
-in
-{
-  config = mkIf (opts.homeManager.enabled && opts.appRunner == "anyrun") {
+in {
+  config = lib.mkIf (opts.homeManager.enabled && opts.appRunner == "anyrun") {
     home-manager.users.${username} = {
-      imports = [ inputs.anyrun.homeManagerModules.default ];
+      imports = [inputs.anyrun.homeManagerModules.default];
 
       programs.anyrun = {
         enable = true;
         config = {
           plugins = with inputs.anyrun.packages.${pkgs.system}; [
             applications
-            randr
+            # randr
             rink
             shell
             symbols
             translate
+            stdin
           ];
-          x = { fraction = 0.5; };
-          y = { absolute = 15; };
-          width = { fraction = 0.3; };
+          x = {fraction = 0.5;};
+          y = {absolute = 15;};
+          width = {fraction = 0.3;};
           hideIcons = false;
           ignoreExclusiveZones = false;
           layer = "overlay";
@@ -38,13 +38,26 @@ in
 
         extraCss = builtins.readFile ./style-dark.css;
 
-        extraConfigFiles."some-plugin.ron".text = ''
+        extraConfigFiles."symbols.ron".text = ''
           Config(
-            // for any other plugin
-            // this file will be put in ~/.config/anyrun/some-plugin.ron
-            // refer to docs of xdg.configFile for available options
+            prefix: "sym ",
+            symbols: {
+              "shrug": "¯\\_(ツ)_/¯",
+              ""
+            },
+            max_entries: 3,
           )
         '';
+      };
+      nix.settings = {
+        # substituters to use
+        substituters = [
+          "https://anyrun.cachix.org"
+        ];
+
+        trusted-public-keys = [
+          "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        ];
       };
     };
   };

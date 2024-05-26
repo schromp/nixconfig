@@ -38,7 +38,7 @@
           }
         ];
         keymap = "us-umlaute";
-        appRunner = "walker";
+        appRunner = "anyrun";
         browser = "firefox";
         screenshotTool = "swappy";
       };

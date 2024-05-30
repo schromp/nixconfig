@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-
+  # Read only directories, not files
   modules = lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./.);
 
   importModule = name: let

@@ -19,6 +19,7 @@ in {
     pcmanfm
     audacity
     qpwgraph
+    gimp
 
     zoom-us
     slack

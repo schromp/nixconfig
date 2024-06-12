@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   username = config.modules.user.username;
   cfg = config.modules.programs.zsh;
 in {
@@ -14,17 +13,26 @@ in {
 
   config = lib.mkIf cfg.enable {
     # for zsh autocompletions on systemlevel
-    environment.pathsToLink = ["/share/zsh"];
-    environment.systemPackages = with pkgs; [fzf eza killall];
+    # environment.pathsToLink = ["/share/zsh"];
+    # environment.systemPackages = with pkgs; [fzf eza killall];
 
-    programs.zsh = {
-      enable = true;
-    };
+    # programs.zsh = {
+    #  enable = true;
+    #};
 
-    programs.fzf.keybindings = true;
+    # programs.fzf.keybindings = true;
 
     home-manager.users.${username} = {
       # imports = [./starship.nix];
+
+      home.packages = with pkgs; [
+        fzf
+        eza
+        killall
+      ];
+
+      programs.fzf.enableZshIntegration = true;
+
       programs.zsh = {
         enable = true;
         dotDir = ".config/zsh";
@@ -108,6 +116,15 @@ in {
               if config.modules.programs.themer.enable
               then "source ~/.config/zsh/prompt.sh"
               else ""
+            }
+
+            ${
+              if pkgs.system == "aarch64-darwin"
+              then ''
+                eval $(/opt/homebrew/bin/brew shellenv)
+                export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
+              ''
+              else ''''
             }
           '';
         };

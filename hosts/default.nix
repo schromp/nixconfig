@@ -41,7 +41,16 @@ in {
     work = mkHmSystem "x86_64-linux" "work";
   };
 
-  # darwinSystems = {
-  #   viajar = mkDarwinSystem "x86_64-darwin" "viajar";
-  # };
+  darwinSystems = {
+    "M65L7Q9X32" = nix-darwin.lib.darwinSystem {
+      modules = [ 
+        ./portal/default.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.extraSpecialArgs = {inherit inputs; };
+        }
+      ];
+      specialArgs = { inherit inputs home-manager; };
+    };
+  };
 }

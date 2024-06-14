@@ -23,37 +23,36 @@ in {
         "themer/onedark.yaml".source = ./onedark.yaml;
         "themer/rose-pine-dawn.yaml".source = ./rose-pine-dawn.yaml;
         "themer/rose-pine-moon.yaml".source = ./rose-pine-moon.yaml;
-        "themer/tokyonight.yaml".source = ./tokyonight.yaml;
-        # "themer/themer.toml".text = ''
-        #   [hyprland]
-        #   enable = true
-        #
-        #   [kitty]
-        #   enable = true
-        #
-        #   [nvim]
-        #   enable = true
-        #
-        #   [tmux]
-        #   enable = true
-        #
-        #   [zsh]
-        #   enable = true
-        #
-        #   [walker]
-        #   enable = true
-        #
-        #   [swww]
-        #   enable = true
-        #   wallpaper_dir = "/home/lk/Pictures/Wallpaper"
-        #
-        #   [presets]
-        #
-        #   [presets.glassy]
-        #   transparency = "blur"
-        #   colorscheme = "rose-pine-moon"
-        #   wallpaper = "pink-house-moon.jpg"
-        # '';
+        "themer/themer.toml".text = ''
+          # [hyprland]
+          # enable = true
+
+          [kitty]
+          enable = true
+
+          [nvim]
+          enable = true
+
+          [tmux]
+          enable = true
+
+          [zsh]
+          enable = true
+
+          # [walker]
+          # enable = true
+
+          # [swww]
+          # enable = true
+          # wallpaper_dir = "/home/lk/Pictures/Wallpaper"
+
+          [presets]
+
+          [presets.glassy]
+          transparency = "blur"
+          colorscheme = "rose-pine-moon"
+          wallpaper = "pink-house-moon.jpg"
+        '';
       };
     };
   };

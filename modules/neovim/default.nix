@@ -25,7 +25,7 @@ in {
         cargo
         rustc
         inputs.rustacean.packages.${pkgs.system}.codelldb
-        gdb
+        # gdb # Not supported on darwin
 
         sassc
 
@@ -70,6 +70,6 @@ in {
 
       programs.fzf.enable = true;
     };
-    programs.npm.enable = true;
+    # programs.npm.enable = true;
   };
 }

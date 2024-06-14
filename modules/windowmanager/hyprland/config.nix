@@ -147,6 +147,9 @@ in {
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, l, swapwindow, r"
 
+        "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
+        "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
+
         "$mod, 36, exec, kitty"
         "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
         (

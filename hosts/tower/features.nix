@@ -85,9 +85,9 @@
         ags = {
           enable = false;
         };
-        obsidian.enable = true;
+        obsidian.enable = false;
         udiskie.enable = true;
-        onedrive.enable = true;
+        onedrive.enable = false;
 
         # Terminal
         ssh.enable = true;

@@ -16,6 +16,7 @@ in {
     initialPassword = "1234";
   };
   environment.shells = with pkgs; [zsh];
+  programs.zsh.enable = true;
 
   # Setup home-manager options
   home-manager = {

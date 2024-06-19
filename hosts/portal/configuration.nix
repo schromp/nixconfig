@@ -14,6 +14,12 @@
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = false;
+    };
+  };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
@@ -44,6 +50,11 @@
     home.packages = with pkgs; [
       # openfortivpn
       lazygit
+      tldr
+      spotify
+      raycast
+      unnaturalscrollwheels
+      yaml-language-server
     ];
   };
 
@@ -61,11 +72,9 @@
       "salt-lint"
     ];
     casks = [
-      "raycast"
       "michaelroosz/ssh/libsk-libfido2-install"
-      "unnaturalscrollwheels"
-      "spotify"
       "whatsapp"
+      "nikitabobko/tap/aerospace"
     ];
     taps = [];
   };

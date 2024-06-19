@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager-darwin = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -78,10 +83,11 @@
     self,
     nixpkgs,
     home-manager,
+    home-manager-darwin,
     nix-darwin,
     ...
   } @ inputs: let
-    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
+    hosts = import ./hosts {inherit inputs home-manager home-manager-darwin nixpkgs nix-darwin;};
     # pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in {
     nixosConfigurations = hosts.nixosSystems;

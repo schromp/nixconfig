@@ -54,6 +54,7 @@ in {
         texlab
         prettierd
         emmet-ls
+        phpactor
       ];
 
       programs.neovim = {

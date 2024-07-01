@@ -55,6 +55,7 @@
       raycast
       unnaturalscrollwheels
       yaml-language-server
+      colima
     ];
   };
 

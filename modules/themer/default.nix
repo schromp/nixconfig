@@ -23,6 +23,7 @@ in {
         "themer/onedark.yaml".source = ./onedark.yaml;
         "themer/rose-pine-dawn.yaml".source = ./rose-pine-dawn.yaml;
         "themer/rose-pine-moon.yaml".source = ./rose-pine-moon.yaml;
+        "themer/tokyonight.yaml".source = ./tokyonight.yaml;
         "themer/themer.toml".text = ''
           # [hyprland]
           # enable = true

@@ -62,7 +62,7 @@
       devpod
       php83Packages.composer
       php83
-      nodePackages.npm
+      nodejs_18
     ];
   };
 

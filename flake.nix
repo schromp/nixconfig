@@ -21,6 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=2566d818848b58b114071f199ffe944609376270&submodules=1";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";

@@ -1,17 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ../../modules
-    ../../presets
   ];
 
   config = {
-    presets = {
-      # rices = {
-      #   name = "onedark";
-      #   vertical = true;
-      # };
-    };
-
     modules = {
       user = {
         homeManager.enabled = true;

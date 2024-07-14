@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../../modules
     ../../presets
@@ -6,10 +6,10 @@
 
   config = {
     presets = {
-      rices = {
-        name = "onedark";
-        vertical = true;
-      };
+      # rices = {
+      #   name = "onedark";
+      #   vertical = true;
+      # };
     };
 
     modules = {
@@ -41,6 +41,23 @@
         appRunner = "anyrun";
         browser = "firefox";
         screenshotTool = "swappy";
+        cursor = {
+          name = "Bibata-Modern-Ice";
+          package = pkgs.bibata-cursors;
+        };
+        theme = {
+          name = "Catppuccin-Macchiato-Standard-Pink-Dark";
+          package = pkgs.catppuccin-gtk.override {
+            accents = ["pink"];
+            size = "standard";
+            tweaks = [];
+            variant = "macchiato";
+          };
+        };
+        icon = {
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
+        };
       };
       system = {
         nvidia = false;
@@ -57,7 +74,7 @@
 
         # Desktop
         xdg = {
-          enable = true;
+          enable = false;
           createDirectories = true;
           setAssociations = true;
         };
@@ -79,6 +96,7 @@
           sens = "-0.2";
           accel = "flat";
           xdgOptions = true;
+          workspace_animations = false;
 
           hyprlock.enable = true;
         };
@@ -91,7 +109,7 @@
 
         # Terminal
         ssh.enable = true;
-        greetd.enable = true;
+        greetd.enable = false;
         tmux.enable = true;
         zellij.enable = false;
         direnv.enable = true;
@@ -103,6 +121,7 @@
           lazygit = true;
         };
         nh.enable = true;
+        yazi.enable = true;
 
         themer = {
           enable = true;

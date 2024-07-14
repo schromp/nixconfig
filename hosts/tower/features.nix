@@ -101,7 +101,7 @@
 
         # Terminal
         ssh.enable = true;
-        greetd.enable = false;
+        greetd.enable = true;
         tmux.enable = true;
         zellij.enable = false;
         direnv.enable = true;

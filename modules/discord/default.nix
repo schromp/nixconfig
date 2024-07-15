@@ -4,8 +4,7 @@
   inputs,
   pkgs,
   ...
-}:
-let
+}: let
   username = config.modules.user.username;
   cfg = config.modules.programs.discord;
 in {
@@ -19,7 +18,15 @@ in {
       home-manager.users.${username} = {
         home.packages = with pkgs; [
           vesktop
-          # discord
+          # (vesktop.overrideAttrs (old: {
+          #   src = fetchFromGitHub {
+          #     owner = "Vencord";
+          #     repo = "Vesktop";
+          #     rev = "v1.5.3";
+          #     hash = "sha256-pQ87Yy+wixpTCejPEQu0IMHGuoFeRDH65y5BfxNHN9U=";
+          #   };
+          # }))
+          discord
           # webcord
         ];
       };

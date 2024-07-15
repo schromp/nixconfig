@@ -41,12 +41,13 @@ in {
             "${modifier}+f" = "fullscreen toggle";
             "${modifier}+v" = "floating toggle";
             "${modifier}+Shift+s" = ''exec grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png'';
+            "${modifier}+r" = "exec ${lib.getExe pkgs.anyrun}";
           };
           input = {
             "*" = {
               accel_profile = "flat";
               pointer_accel = "-0.2";
-              xkb_layout = "us-german-umlaut";
+              # xkb_layout = "us-umlaute";
               natural_scroll = "enabled";
               tap = "enabled";
             };

@@ -76,6 +76,7 @@ in {
           bind-key -n C-S-Left swap-window -t -1
           bind-key -n C-S-Right swap-window -t +1
 
+          bind-key y display-popup -w 85% -h 90% -E "yazi"
 
           # --- Status line ---
           set-option -g status-left ""

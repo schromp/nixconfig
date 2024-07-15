@@ -49,6 +49,7 @@
     ./greetd
     ./ssh
     ./nh
+    ./yazi
 
     ./themer
   ];

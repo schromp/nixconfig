@@ -66,7 +66,7 @@
 
         # Desktop
         xdg = {
-          enable = false;
+          enable = true;
           createDirectories = true;
           setAssociations = true;
         };
@@ -95,7 +95,7 @@
         ags = {
           enable = false;
         };
-        obsidian.enable = false;
+        obsidian.enable = true;
         udiskie.enable = true;
         onedrive.enable = false;
 

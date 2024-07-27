@@ -50,12 +50,19 @@
     home.packages = with pkgs; [
       # openfortivpn
       lazygit
+      htop
       tldr
+
       spotify
       raycast
       unnaturalscrollwheels
+
       yaml-language-server
       colima
+      devpod
+      php83Packages.composer
+      php83
+      nodejs_18
     ];
   };
 
@@ -76,6 +83,7 @@
       "michaelroosz/ssh/libsk-libfido2-install"
       "whatsapp"
       "nikitabobko/tap/aerospace"
+      "orbstack"
     ];
     taps = [];
   };

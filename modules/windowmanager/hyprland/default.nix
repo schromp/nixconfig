@@ -64,9 +64,9 @@ in {
           # WLR_BACKEND = "vulkan";
           # WLR_RENDERER = "vulkan";
 
-          XDG_CURRENT_DESKTOP = "Hyprland";
-          XDG_SESSION_TYPE = "wayland";
-          XDG_SESSION_DESKTOP = "Hyprland";
+          # XDG_CURRENT_DESKTOP = "Hyprland";
+          # XDG_SESSION_TYPE = "wayland";
+          # XDG_SESSION_DESKTOP = "Hyprland";
 
           # TODO: move this into hidpi option
           GDK_SCALE = "1";
@@ -85,10 +85,6 @@ in {
       };
 
       programs.dconf.enable = true; # Enable gnome programs outside of gnome better
-
-      sound = {
-        mediaKeys.enable = true;
-      };
 
       environment.systemPackages = with pkgs; [xdg-utils];
 

@@ -20,6 +20,7 @@ in {
     audacity
     qpwgraph
     gimp
+    chromium
 
     zoom-us
     slack

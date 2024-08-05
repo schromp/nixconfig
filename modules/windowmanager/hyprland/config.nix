@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.modules.programs.hyprland;
   username = config.modules.user.username;
   appRunner = config.modules.user.appRunner;
@@ -21,9 +20,6 @@ let
     '';
   widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 
-  colors = config.presets.themes.colors;
-  focused = colors.base0C;
-  unfocused = colors.base03;
 in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -35,22 +31,25 @@ in {
       then "vrr,1"
       else ""
     }");
-    
+
     # # TODO: make this universal
     # workspace = mkIf (lists.count monitors != 1) [
     #   "r[1-5],${(builtins.elemAt monitors 0).name}"
     #   "r[6-9],${(builtins.elemAt monitors 1).name}"
     # ];
-    
 
     exec-once = [
       "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
-      (if appRunner == "walker" then ''"walker gapplication-service"'' else "")
+      (
+        if appRunner == "walker"
+        then ''"walker gapplication-service"''
+        else ""
+      )
       "${widescreenScript}"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
-      "hyprctl setcursor ${config.presets.themes.cursor.name} 24"
+      "hyprctl setcursor ${config.modules.user.cursor.name} 24"
       "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
     ];
@@ -78,6 +77,12 @@ in {
       touchpad = {
         scroll_factor = 0.5;
       };
+
+      # device = {
+      #   "kensington-orbit-fusion-wireless-trackball-1" = {
+      #     sensitivity = "-0.5";
+      #   };
+      # };
     };
 
     gestures = {
@@ -89,25 +94,26 @@ in {
     animations = {
       enabled = true;
       animation = [
-        "workspaces,1,3,default,slidevert"
+        (
+          if cfg.workspace_animations
+          then "workspaces,1,3,default,slidevert"
+          else "workspaces,0"
+        )
       ];
     };
 
     general = {
-      gaps_in = 7;
-      gaps_out = 7;
+      gaps_in = 15;
+      gaps_out = 15;
       border_size = 2;
       layout = "dwindle";
 
       allow_tearing = false;
-
-      "col.active_border" = "rgb(c678dd) rgb(${focused})";
-      "col.inactive_border" = "rgb(${unfocused})";
     };
 
     dwindle = {
-      default_split_ratio = 0.7;
-      force_split = 1; # always split to left/top
+      # default_split_ratio = 0.7;
+      # force_split = 1; # always split to left/top
     };
 
     misc = {

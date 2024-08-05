@@ -25,8 +25,8 @@ in {
         "themer/rose-pine-moon.yaml".source = ./rose-pine-moon.yaml;
         "themer/tokyonight.yaml".source = ./tokyonight.yaml;
         "themer/themer.toml".text = ''
-          # [hyprland]
-          # enable = true
+          [hyprland]
+          enable = true
 
           [kitty]
           enable = true
@@ -43,9 +43,9 @@ in {
           # [walker]
           # enable = true
 
-          # [swww]
-          # enable = true
-          # wallpaper_dir = "/home/lk/Pictures/Wallpaper"
+          [swww]
+          enable = true
+          wallpaper_dir = "/home/lk/Pictures/Wallpaper"
 
           [presets]
 

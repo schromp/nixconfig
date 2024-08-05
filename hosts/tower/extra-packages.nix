@@ -18,6 +18,7 @@ in {
     pcmanfm
     vlc
     gimp
+    chromium
 
     affine
 
@@ -31,7 +32,11 @@ in {
     nix-prefetch-git
 
     xemu
+    freecad
+    pureref
     # rpcs3
+    cutter
+    ghidra
   ];
 
   home-manager.users.${username} = {

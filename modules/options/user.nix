@@ -97,5 +97,47 @@ with lib; {
       '';
       example = "fuzzel";
     };
+
+    theme = mkOption {
+      type = with types;
+        submodule {
+          options = {
+            name = mkOption {
+              type = str;
+            };
+            package = mkOption {
+              type = package;
+            };
+          };
+        };
+    };
+
+    icon = mkOption {
+      type = with types;
+        submodule {
+          options = {
+            name = mkOption {
+              type = str;
+            };
+            package = mkOption {
+              type = package;
+            };
+          };
+        };
+    };
+
+    cursor = mkOption {
+      type = with types;
+        submodule {
+          options = {
+            name = mkOption {
+              type = str;
+            };
+            package = mkOption {
+              type = package;
+            };
+          };
+        };
+    };
   };
 }

@@ -37,6 +37,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [mangohud];
-    hardware.xone.enable = true; # Enable controller support
+    hardware.xpadneo.enable = true; # Enable controller support
   };
 }

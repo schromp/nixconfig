@@ -10,10 +10,6 @@ let
   username = opts.username;
   enabled = opts.desktopEnvironment == "hyprland";
 
-  cfg = config.presets.themes;
-  cursor = cfg.cursor;
-  theme = cfg.theme;
-  icon = cfg.icon;
 
   screenshotTool = config.modules.user.screenshotTool;
 in {
@@ -34,6 +30,7 @@ in {
       default = "flat";
       description = "Can be flat or adaptive";
     };
+    workspace_animations = lib.mkEnableOption "Enable workspace animations";
   };
 
   config = lib.mkIf enabled (lib.mkMerge [
@@ -67,9 +64,9 @@ in {
           # WLR_BACKEND = "vulkan";
           # WLR_RENDERER = "vulkan";
 
-          XDG_CURRENT_DESKTOP = "Hyprland";
-          XDG_SESSION_TYPE = "wayland";
-          XDG_SESSION_DESKTOP = "Hyprland";
+          # XDG_CURRENT_DESKTOP = "Hyprland";
+          # XDG_SESSION_TYPE = "wayland";
+          # XDG_SESSION_DESKTOP = "Hyprland";
 
           # TODO: move this into hidpi option
           GDK_SCALE = "1";
@@ -88,10 +85,6 @@ in {
       };
 
       programs.dconf.enable = true; # Enable gnome programs outside of gnome better
-
-      sound = {
-        mediaKeys.enable = true;
-      };
 
       environment.systemPackages = with pkgs; [xdg-utils];
 
@@ -139,18 +132,18 @@ in {
           enable = true;
 
           theme = {
-            name = theme.name;
-            package = theme.package;
+            name = config.modules.user.theme.name;
+            package = config.modules.user.theme.package;
           };
 
           iconTheme = {
-            name = icon.name;
-            package = icon.package;
+            name = config.modules.user.icon.name;
+            package = config.modules.user.icon.package;
           };
 
           cursorTheme = {
-            name = cursor.name;
-            package = cursor.package;
+            name = config.modules.user.cursor.name;
+            package = config.modules.user.cursor.package;
           };
         };
 

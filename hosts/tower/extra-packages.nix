@@ -19,6 +19,7 @@ in {
     vlc
     gimp
     chromium
+    element-desktop
 
     affine
 

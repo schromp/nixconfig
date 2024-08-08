@@ -38,6 +38,14 @@ in {
       RuntimeMaxUse=10M
     '';
     udisks2.enable = true;
+    printing = {
+      enable = true;
+    };
+    avahi = { # Scans for printers on the network
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+    };
   };
 
   # This is for obs virtual camera

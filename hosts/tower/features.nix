@@ -10,7 +10,7 @@
         username = "lk";
         repoDirectory = "/home/lk/repos/nixconfig";
         displayServerProtocol = "wayland";
-        desktopEnvironment = "hyprland";
+        desktopEnvironment = "cosmic";
         monitors = [
           {
             name = "DP-3";
@@ -66,18 +66,21 @@
 
         # Desktop
         xdg = {
-          enable = true;
+          enable = false;
           createDirectories = true;
           setAssociations = true;
         };
         sddm.enable = false;
         kitty = {
-          enable = true;
+          enable = false;
           theme = "onedark";
+        };
+        wezterm = {
+          enable = true;
         };
         eww.enable = false;
         waybar.enable = false;
-        swww.enable = true;
+        swww.enable = false;
         libreoffice.enable = true;
         discord = {
           enable = true;
@@ -101,7 +104,7 @@
 
         # Terminal
         ssh.enable = true;
-        greetd.enable = true;
+        greetd.enable = false;
         tmux.enable = true;
         zellij.enable = false;
         direnv.enable = true;
@@ -122,10 +125,10 @@
         # Gaming
         gamescope.enable = true;
         prismLauncher.enable = true;
-        lutris.enable = true;
+        lutris.enable = false;
         bottles.enable = true;
         steam.enable = true;
-        retroarch.enable = true;
+        retroarch.enable = false;
         gamemode.enable = true;
       };
     };

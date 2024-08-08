@@ -1,3 +1,5 @@
+scheme: "gruvbox"
+author: ""
 nvimName: "gruvbox-material"
 base00: "282828" # ----
 base01: "3c3836" # ---

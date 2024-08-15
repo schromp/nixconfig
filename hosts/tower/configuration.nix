@@ -46,6 +46,7 @@ in {
       nssmdns = true;
       openFirewall = true;
     };
+    gvfs.enable = true;
   };
 
   # This is for obs virtual camera

@@ -7,27 +7,36 @@ local config = wezterm.config_builder()
 -- ==== NVIM SHIT ====
 local a = wezterm.action
 local function is_inside_vim(pane)
-  local tty = pane:get_tty_name()
-  if tty == nil then return false end
-  local success, stdout, stderr = wezterm.run_child_process { 'sh', '-c',
-      'ps -o state= -o comm= -t' .. wezterm.shell_quote_arg(tty) .. ' | ' ..
-      'grep -iqE \'^[^TXZ ]+ +(\\S+\\/)?g?(view|l?nvim?x?)(diff)?$\'' }
-  return success
+	local tty = pane:get_tty_name()
+	if tty == nil then
+		return false
+	end
+	local success, stdout, stderr = wezterm.run_child_process({
+		"sh",
+		"-c",
+		"ps -o state= -o comm= -t"
+			.. wezterm.shell_quote_arg(tty)
+			.. " | "
+			.. "grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?nvim?x?)(diff)?$'",
+	})
+	return success
 end
-local function is_outside_vim(pane) return not is_inside_vim(pane) end
+local function is_outside_vim(pane)
+	return not is_inside_vim(pane)
+end
 
 local function bind_if(cond, key, mods, action)
-  local function callback (win, pane)
-    if cond(pane) then
-      win:perform_action(action, pane)
-    else
-      win:perform_action(a.SendKey({key=key, mods=mods}), pane)
-    end
-  end
-  return {key=key, mods=mods, action=wezterm.action_callback(callback)}
+	local function callback(win, pane)
+		if cond(pane) then
+			win:perform_action(action, pane)
+		else
+			win:perform_action(a.SendKey({ key = key, mods = mods }), pane)
+		end
+	end
+	return { key = key, mods = mods, action = wezterm.action_callback(callback) }
 end
 
--- ==== NVIM SHIT END ==== 
+-- ==== NVIM SHIT END ====
 
 config.use_fancy_tab_bar = false
 config.window_decorations = "NONE"
@@ -47,7 +56,7 @@ config.keys = {
 	bind_if(is_outside_vim, "k", "CTRL", a.ActivatePaneDirection("Up")),
 	bind_if(is_outside_vim, "l", "CTRL", a.ActivatePaneDirection("Right")),
 	{
-		key = "%",
+		key = '"',
 		mods = "LEADER|SHIFT",
 		action = act.SplitPane({
 			direction = "Down",
@@ -55,7 +64,7 @@ config.keys = {
 		}),
 	},
 	{
-		key = '"',
+		key = "%",
 		mods = "LEADER|SHIFT",
 		action = act.SplitPane({
 			direction = "Right",

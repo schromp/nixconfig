@@ -63,6 +63,7 @@ in {
           ls = "eza --icons=auto";
           hyprgame-off = "hyprctl keyword bind SUPER,Q,killactive";
           hyprgame-on = "hyprctl keyword unbind SUPER,Q";
+          "cat" = lib.mkIf config.modules.programs.bat.enable "bat";
 
           "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.hostname}";
           "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.hostname}";

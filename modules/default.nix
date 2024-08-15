@@ -44,6 +44,7 @@
     ./git
     ./zsh
     ./zoxide
+    ./bat
     ./tmux
     ./direnv
     ./neovim

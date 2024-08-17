@@ -20,6 +20,7 @@
     ./eww
     ./waybar
     ./kitty
+    ./wezterm
     ./pipewire
     ./libreoffice
     ./discord
@@ -33,6 +34,7 @@
     ./displaymanager
     ./windowmanager
     ./sway
+    ./cosmic
     ./apprunner
     ./walker
     ./udiskie
@@ -42,6 +44,7 @@
     ./git
     ./zsh
     ./zoxide
+    ./bat
     ./tmux
     ./direnv
     ./neovim

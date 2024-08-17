@@ -36,7 +36,7 @@ with lib; {
     };
 
     desktopEnvironment = mkOption {
-      type = types.enum ["hyprland" "i3" "gnome" "sway"];
+      type = types.enum ["hyprland" "i3" "gnome" "sway" "cosmic"];
       description = ''
         Choose your desktop environment
       '';

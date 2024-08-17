@@ -26,16 +26,16 @@ in {
         "themer/tokyonight.yaml".source = ./tokyonight.yaml;
         "themer/themer.toml".text = ''
           [hyprland]
-          enable = true
+          enable = false
 
           [kitty]
-          enable = true
+          enable = false
 
           [nvim]
           enable = true
 
           [tmux]
-          enable = true
+          enable = false
 
           [zsh]
           enable = true
@@ -44,7 +44,7 @@ in {
           # enable = true
 
           [swww]
-          enable = true
+          enable = false
           wallpaper_dir = "/home/lk/Pictures/Wallpaper"
 
           [presets]

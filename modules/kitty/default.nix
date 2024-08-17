@@ -27,6 +27,7 @@ in {
       programs.kitty = {
         enable = true;
         # theme = mkIf (!builtins.elem cfg.theme customThemes) cfg.theme;
+        shellIntegration.enableZshIntegration = true;
         extraConfig =
           configFile
           + ''

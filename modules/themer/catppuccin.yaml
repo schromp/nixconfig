@@ -1,3 +1,5 @@
+scheme: "catppuccin-mocha"
+author: ""
 nvimName: "catppuccin-mocha"
 base00: "1e1e2e" # base
 base01: "181825" # mantle

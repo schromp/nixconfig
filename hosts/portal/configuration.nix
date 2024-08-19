@@ -52,6 +52,7 @@
       lazygit
       htop
       tldr
+      jira-cli-go
 
       spotify
       raycast

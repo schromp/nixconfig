@@ -100,6 +100,7 @@
       ShowStatusBar = true;
       QuitMenuItem = true;
     };
+    NSGlobalDomain.KeyRepeat = 1;
   };
 
   system.activationScripts.postUserActivation.text = ''

@@ -64,6 +64,7 @@
       php83Packages.composer
       php83
       nodejs_18
+      openssh
     ];
   };
 
@@ -108,4 +109,6 @@
     # Following line should allow us to avoid a logout/login cycle when changing macos options
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
+
+  security.pam.enableSudoTouchIdAuth = true;
 }

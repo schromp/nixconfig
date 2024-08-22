@@ -21,6 +21,7 @@ in {
         prismlauncher
         glfw-wayland
         alsa-oss
+        openal
       ];
     };
   };

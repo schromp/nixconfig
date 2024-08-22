@@ -20,6 +20,9 @@ in {
     gimp
     chromium
     element-desktop
+    proton-pass
+    protonvpn-gui
+    protonmail-desktop
 
     affine
 

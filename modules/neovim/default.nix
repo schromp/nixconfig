@@ -50,7 +50,7 @@ in {
         yamllint
         nodePackages.typescript
         nodePackages.typescript-language-server
-        vscode-langservers-extracted
+        # vscode-langservers-extracted
         texlab
         prettierd
         emmet-ls

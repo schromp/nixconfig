@@ -14,8 +14,17 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.${username} = {
-      home.packages = [ pkgs.wezterm ];
-      xdg.configFile."wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
+
+      programs.wezterm = {
+        enable = true;
+        extraConfig = ''
+          local config = require "extras"
+          return config
+        '';
+        enableZshIntegration = true;
+      };
+
+      xdg.configFile."wezterm/extras.lua".text = builtins.readFile ./wezterm.lua;
     };
   };
 }

@@ -52,6 +52,7 @@
       lazygit
       htop
       tldr
+      jira-cli-go
 
       spotify
       raycast
@@ -63,13 +64,14 @@
       php83Packages.composer
       php83
       nodejs_18
+      openssh
     ];
   };
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+      cascadia-code
     ];
   };
 
@@ -100,10 +102,13 @@
       ShowStatusBar = true;
       QuitMenuItem = true;
     };
+    NSGlobalDomain.KeyRepeat = 1;
   };
 
   system.activationScripts.postUserActivation.text = ''
     # Following line should allow us to avoid a logout/login cycle when changing macos options
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
+
+  security.pam.enableSudoTouchIdAuth = true;
 }

@@ -39,9 +39,9 @@ end
 -- ==== NVIM SHIT END ====
 
 config.use_fancy_tab_bar = false
-config.window_decorations = "NONE"
+-- config.window_decorations = "NONE"
 -- config.color_scheme = "Catppuccin Frappe"
-config.colors = wezterm.color.load_base16_scheme("/home/lk/.config/themer/tokyonight.yaml")
+config.colors = wezterm.color.load_base16_scheme("Users/lennart.koziollek/.config/themer/tokyonight.yaml")
 
 -- config.font = wezterm.font 'Iosevka' This doesnt work
 
@@ -93,6 +93,8 @@ config.keys = {
 		mods = "CMD|SHIFT",
 		action = wezterm.action.ReloadConfiguration,
 	},
+	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
+	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
 }
 
 for i = 1, 8 do
@@ -107,6 +109,9 @@ for i = 1, 8 do
 		action = act.ActivateTab(i - 1),
 	})
 end
+
+config.font_size = 16
+config.audible_bell = "Disabled"
 
 -- and finally, return the configuration to wezterm
 return config

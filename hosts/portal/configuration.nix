@@ -64,7 +64,7 @@
       php83Packages.composer
       php83
       nodejs_18
-      openssh
+      # openssh
     ];
   };
 
@@ -80,12 +80,14 @@
 
     brews = [
       "salt-lint"
+      "openssh"
     ];
     casks = [
       "michaelroosz/ssh/libsk-libfido2-install"
       "whatsapp"
       "nikitabobko/tap/aerospace"
       "orbstack"
+      "proton-pass"
     ];
     taps = [];
   };

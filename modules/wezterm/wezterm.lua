@@ -39,6 +39,7 @@ end
 -- ==== NVIM SHIT END ====
 
 config.use_fancy_tab_bar = false
+config.tab_max_width = 64
 -- config.window_decorations = "NONE"
 -- config.color_scheme = "Catppuccin Frappe"
 config.colors = wezterm.color.load_base16_scheme("Users/lennart.koziollek/.config/themer/tokyonight.yaml")
@@ -95,6 +96,7 @@ config.keys = {
 	},
 	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
+	{ key = "R", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
 	{
 		key = ",",
 		mods = "LEADER",
@@ -127,6 +129,35 @@ end
 
 config.font_size = 16
 config.audible_bell = "Disabled"
+
+local function tab_title_format(title) 
+  return " [" .. title .. "] "
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
+	local pane = tab.active_pane
+	local original_title = tab.tab_title
+	local prefix = tab.tab_index .. ": "
+
+  local title = ""
+
+  -- if the tab title is explicitly set, take that
+  if original_title and #original_title > 0 then
+    title = original_title
+  else
+    title = tab.active_pane.title
+  end
+
+	if string.match(title, "nvim") then
+    local full_path = tostring(pane.current_working_dir.file_path)
+    local dir = full_path:match("([^/]+)/?$")
+		title = tab_title_format(prefix .. " " .. dir)
+	else
+		title = tab_title_format(prefix .. title)
+	end
+
+	return title
+end)
 
 -- and finally, return the configuration to wezterm
 return config

@@ -137,7 +137,7 @@ end
 wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
 	local pane = tab.active_pane
 	local original_title = tab.tab_title
-	local prefix = tab.tab_index .. ": "
+	local prefix = tab.tab_index + 1 .. ": "
 
   local title = ""
 

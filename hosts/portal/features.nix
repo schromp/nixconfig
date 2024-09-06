@@ -11,6 +11,9 @@
     ../../modules/kitty
     ../../modules/tmux
     ../../modules/zoxide
+    ../../modules/yazi
+    ../../modules/wezterm
+    ../../modules/bat
   ];
 
   config.modules = {
@@ -27,8 +30,11 @@
       };
       neovim.enable = true;
       kitty.enable = true;
+      wezterm.enable = true;
       tmux.enable = true;
       zoxide.enable = true;
+      yazi.enable = true;
+      bat.enable = true;
     };
   };
 }

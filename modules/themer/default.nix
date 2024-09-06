@@ -24,6 +24,7 @@ in {
         "themer/rose-pine-dawn.yaml".source = ./rose-pine-dawn.yaml;
         "themer/rose-pine-moon.yaml".source = ./rose-pine-moon.yaml;
         "themer/tokyonight.yaml".source = ./tokyonight.yaml;
+        "themer/dracula.yaml".source = ./dracula.yaml;
         "themer/themer.toml".text = ''
           [hyprland]
           enable = false

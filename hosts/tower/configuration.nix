@@ -17,6 +17,7 @@ in {
   };
   environment.shells = with pkgs; [zsh];
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   # Setup home-manager options
   home-manager = {
@@ -33,6 +34,12 @@ in {
 
   # start services
   services = {
+    udev.packages = [
+      pkgs.android-udev-rules
+      pkgs.platformio-core.udev
+      pkgs.openocd
+    ];
+
     journald.extraConfig = ''
       SystemMaxUse=50M
       RuntimeMaxUse=10M
@@ -41,7 +48,8 @@ in {
     printing = {
       enable = true;
     };
-    avahi = { # Scans for printers on the network
+    avahi = {
+      # Scans for printers on the network
       enable = true;
       nssmdns = true;
       openFirewall = true;

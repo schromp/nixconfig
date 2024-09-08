@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.user.desktopEnvironment == "cosmic";
@@ -15,6 +16,7 @@ in {
       desktopManager.cosmic.enable = true;
       displayManager.cosmic-greeter.enable = true;
     };
+    environment.systemPackages = [pkgs.wl-clipboard];
 
     nix.settings = {
       substituters = ["https://cosmic.cachix.org/"];

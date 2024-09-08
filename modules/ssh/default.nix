@@ -4,15 +4,15 @@
   pkgs,
   ...
 }:
-with lib; let
+let
   username = config.modules.user.username;
   cfg = config.modules.programs.ssh;
 in {
   options.modules.programs.ssh = {
-    enable = mkEnableOption "Enable ssh";
+    enable = lib.mkEnableOption "Enable ssh";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home-manager.users.${username} = {
       programs.ssh = {
         enable = true;

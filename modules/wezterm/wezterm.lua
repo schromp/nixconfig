@@ -39,6 +39,7 @@ end
 -- ==== NVIM SHIT END ====
 
 config.use_fancy_tab_bar = false
+config.tab_max_width = 64
 -- config.window_decorations = "NONE"
 -- config.color_scheme = "Catppuccin Frappe"
 config.colors = wezterm.color.load_base16_scheme("/home/lk/.config/themer/tokyonight.yaml")
@@ -95,6 +96,22 @@ config.keys = {
 	},
 	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
 	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
+	{ key = "R", mods = "LEADER", action = wezterm.action.ShowDebugOverlay },
+	{
+		key = ",",
+		mods = "LEADER",
+		action = act.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 }
 
 for i = 1, 8 do
@@ -115,6 +132,35 @@ config.audible_bell = "Disabled"
 
 -- Fix render issues
 -- config.front_end = "WebGpu"
+--
+local function tab_title_format(title) 
+  return " [" .. title .. "] "
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
+	local pane = tab.active_pane
+	local original_title = tab.tab_title
+	local prefix = tab.tab_index + 1 .. ": "
+
+  local title = ""
+
+  -- if the tab title is explicitly set, take that
+  if original_title and #original_title > 0 then
+    title = original_title
+  else
+    title = tab.active_pane.title
+  end
+
+	if string.match(title, "nvim") then
+    local full_path = tostring(pane.current_working_dir.file_path)
+    local dir = full_path:match("([^/]+)/?$")
+		title = tab_title_format(prefix .. " " .. dir)
+	else
+		title = tab_title_format(prefix .. title)
+	end
+
+	return title
+end)
 
 -- and finally, return the configuration to wezterm
 return config

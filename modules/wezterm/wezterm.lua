@@ -41,9 +41,9 @@ end
 config.use_fancy_tab_bar = false
 -- config.window_decorations = "NONE"
 -- config.color_scheme = "Catppuccin Frappe"
-config.colors = wezterm.color.load_base16_scheme("Users/lennart.koziollek/.config/themer/tokyonight.yaml")
+config.colors = wezterm.color.load_base16_scheme("/home/lk/.config/themer/tokyonight.yaml")
 
--- config.font = wezterm.font 'Iosevka' This doesnt work
+config.font = wezterm.font('Fira Mono') -- This doesnt work
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
@@ -110,8 +110,11 @@ for i = 1, 8 do
 	})
 end
 
-config.font_size = 16
+config.font_size = 12
 config.audible_bell = "Disabled"
+
+-- Fix render issues
+-- config.front_end = "WebGpu"
 
 -- and finally, return the configuration to wezterm
 return config

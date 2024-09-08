@@ -23,6 +23,9 @@ in {
     proton-pass
     protonvpn-gui
     protonmail-desktop
+    bambu-studio
+    orca-slicer
+    pomodoro-gtk
 
     affine
 

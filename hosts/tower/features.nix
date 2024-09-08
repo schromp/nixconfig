@@ -10,7 +10,7 @@
         username = "lk";
         repoDirectory = "/home/lk/repos/nixconfig";
         displayServerProtocol = "wayland";
-        desktopEnvironment = "cosmic";
+        desktopEnvironment = "hyprland";
         monitors = [
           {
             name = "DP-3";
@@ -72,14 +72,14 @@
         };
         sddm.enable = false;
         kitty = {
-          enable = false;
+          enable = true;
           theme = "onedark";
         };
         wezterm = {
           enable = true;
         };
         eww.enable = false;
-        waybar.enable = false;
+        waybar.enable = true;
         swww.enable = false;
         libreoffice.enable = true;
         discord = {
@@ -88,7 +88,7 @@
         };
         pipewire.enable = true;
         hyprland = {
-          sens = "-0.2";
+          sens = "-0.3";
           accel = "flat";
           xdgOptions = true;
           workspace_animations = false;
@@ -126,7 +126,7 @@
         # Gaming
         gamescope.enable = true;
         prismLauncher.enable = true;
-        lutris.enable = false;
+        lutris.enable = true;
         bottles.enable = true;
         steam.enable = true;
         retroarch.enable = false;

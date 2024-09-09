@@ -42,6 +42,7 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 64
 -- config.window_decorations = "NONE"
 -- config.color_scheme = "Catppuccin Frappe"
+
 config.colors = wezterm.color.load_base16_scheme("Users/lennart.koziollek/.config/themer/dracula.yaml")
 -- config.colors = {
 -- 	foreground = "#e0e2ea",
@@ -55,8 +56,9 @@ config.colors = wezterm.color.load_base16_scheme("Users/lennart.koziollek/.confi
 -- 	ansi = { "#07080d", "#ffc0b9", "#b3f6c0", "#fce094", "#a6dbff", "#ffcaff", "#8cf8f7", "#eef1f8" },
 -- 	brights = { "#4f5258", "#ffc0b9", "#b3f6c0", "#fce094", "#a6dbff", "#ffcaff", "#8cf8f7", "#eef1f8" },
 -- }
+-- config.colors = wezterm.color.load_base16_scheme("/home/lk/.config/themer/tokyonight.yaml")
 
--- config.font = wezterm.font 'Iosevka' This doesnt work
+config.font = wezterm.font('Fira Mono') -- This doesnt work
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
@@ -139,17 +141,21 @@ for i = 1, 8 do
 	})
 end
 
-config.font_size = 16
+<<<<<<< HEAD
 config.font = wezterm.font_with_fallback({
 	"Cascadia Code",
 	"Iosevka Nerd Font",
 	"JetBrainsMono",
 })
 
+config.font_size = 12
 config.audible_bell = "Disabled"
 
-local function tab_title_format(title)
-	return " [" .. title .. "] "
+-- Fix render issues
+-- config.front_end = "WebGpu"
+
+local function tab_title_format(title) 
+  return " [" .. title .. "] "
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)

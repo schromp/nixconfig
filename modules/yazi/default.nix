@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   options,
   pkgs,
@@ -17,6 +18,7 @@ in {
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
+        package = inputs.nixpkgs-unstable.legacyPackages."aarch64-darwin".yazi;
       };
     };
   };

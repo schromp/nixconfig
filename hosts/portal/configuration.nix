@@ -70,8 +70,21 @@
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+      (nerdfonts.override {
+        fonts = [
+          "JetBrainsMono"
+          "Iosevka"
+          "FiraCode"
+          "Hermit"
+          "SpaceMono"
+          "OpenDyslexic"
+          "Terminus"
+          "BigBlueTerminal"
+          "HeavyData"
+        ];
+      })
       cascadia-code
+      open-dyslexic
     ];
   };
 

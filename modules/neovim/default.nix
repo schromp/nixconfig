@@ -44,6 +44,7 @@ in {
         gopls
         go
         air
+        ollama
 
         stylua
         prettierd

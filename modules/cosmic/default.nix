@@ -3,6 +3,7 @@
   pkgs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.user.desktopEnvironment == "cosmic";
@@ -16,6 +17,7 @@ in {
       desktopManager.cosmic.enable = true;
       displayManager.cosmic-greeter.enable = true;
     };
+    environment.systemPackages = [pkgs.wl-clipboard];
 
     environment.systemPackages = [pkgs.wl-clipboard];
 

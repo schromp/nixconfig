@@ -106,7 +106,7 @@
         ssh.enable = true;
         greetd.enable = false;
         tmux.enable = true;
-        zellij.enable = false;
+        zellij.enable = true;
         direnv.enable = true;
         zsh.enable = true;
         zoxide.enable = true;

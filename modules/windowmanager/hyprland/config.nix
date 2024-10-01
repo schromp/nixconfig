@@ -19,7 +19,6 @@
       us
     '';
   widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
-
 in {
   home-manager.users.${username}.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -103,12 +102,16 @@ in {
     };
 
     general = {
-      gaps_in = 15;
-      gaps_out = 15;
+      gaps_in = 8;
+      gaps_out = 8;
       border_size = 2;
       layout = "dwindle";
 
       allow_tearing = false;
+
+      # WARN: TEMP
+      "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
+      "col.inactive_border" = "rgba(44475aaa)";
     };
 
     dwindle = {
@@ -128,6 +131,12 @@ in {
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
     ];
+
+    # WARN: This is temporary until themer-rs is functional
+    decoration = {
+      rounding = 10;
+      "col.shadow" = "rgba(1E202966)";
+    };
 
     bind =
       [
@@ -167,6 +176,7 @@ in {
           then ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | ${lib.getExe pkgs.swappy} -f -''
           else ""
         )
+        "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpicker} -a"
 
         "$mod A, A, exec, systemctl --user restart ags"
 

@@ -80,7 +80,7 @@
         };
         eww.enable = false;
         waybar.enable = true;
-        swww.enable = false;
+        swww.enable = true;
         libreoffice.enable = true;
         discord = {
           enable = true;

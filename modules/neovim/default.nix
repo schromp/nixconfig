@@ -40,10 +40,12 @@ in {
         nixpkgs-fmt
         python311Packages.jedi-language-server
         alejandra
+        nodePackages.bash-language-server
 
         gopls
         go
         air
+        ollama
 
         stylua
         prettierd

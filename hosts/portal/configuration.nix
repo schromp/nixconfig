@@ -6,7 +6,7 @@
   lib,
   ...
 }: {
-  environment.systemPackages = with pkgs; [vim docker];
+  environment.systemPackages = with pkgs; [vim docker neovide coreutils mkpasswd];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -53,11 +53,14 @@
       htop
       tldr
       jira-cli-go
+      rio
 
       spotify
+      spicetify-cli
       raycast
       unnaturalscrollwheels
 
+      jq
       yaml-language-server
       colima
       devpod
@@ -70,8 +73,21 @@
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+      (nerdfonts.override {
+        fonts = [
+          "JetBrainsMono"
+          "Iosevka"
+          "FiraCode"
+          "Hermit"
+          "SpaceMono"
+          "OpenDyslexic"
+          "Terminus"
+          "BigBlueTerminal"
+          "HeavyData"
+        ];
+      })
       cascadia-code
+      open-dyslexic
     ];
   };
 
@@ -81,6 +97,7 @@
     brews = [
       "salt-lint"
       "openssh"
+      "sketchybar"
     ];
     casks = [
       "michaelroosz/ssh/libsk-libfido2-install"
@@ -88,8 +105,11 @@
       "nikitabobko/tap/aerospace"
       "orbstack"
       "proton-pass"
+      "flameshot"
     ];
-    taps = [];
+    taps = [
+      "FelixKratz/formulae"
+    ];
   };
 
   # System settings

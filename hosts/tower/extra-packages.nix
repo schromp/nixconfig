@@ -40,7 +40,7 @@ in {
 
     xemu
     freecad
-    pureref
+    # pureref
     # rpcs3
     cutter
     ghidra

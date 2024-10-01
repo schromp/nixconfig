@@ -116,6 +116,7 @@ in {
 
           slurp
           grim
+          hyprpicker
 
           (
             if screenshotTool == "grimblast"

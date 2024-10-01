@@ -118,6 +118,7 @@
         };
         nh.enable = true;
         yazi.enable = true;
+        rio.enable = true;
 
         themer = {
           enable = true;

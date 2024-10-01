@@ -156,7 +156,7 @@ in {
         "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
 
-        "$mod, 36, exec, kitty"
+        "$mod, 36, exec, rio"
         "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
         (
           if screenshotTool == "grimblast"

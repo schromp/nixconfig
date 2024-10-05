@@ -53,6 +53,7 @@
     ./ssh
     ./nh
     ./yazi
+    ./rio
 
     ./themer
   ];

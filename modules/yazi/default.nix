@@ -11,6 +11,7 @@
 in {
   options.modules.programs.yazi = {
     enable = lib.mkEnableOption "Enable Yazi terminal file manager";
+    macos = lib.mkEnableOption "Use macos package";
   };
 
   config = lib.mkIf cfg.enable {
@@ -18,7 +19,7 @@ in {
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
-        package = inputs.nixpkgs-unstable.legacyPackages."aarch64-darwin".yazi;
+        package = lib.mkIf cfg.macos inputs.nixpkgs-unstable.legacyPackages."aarch64-darwin".yazi;
       };
     };
   };

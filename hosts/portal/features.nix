@@ -14,6 +14,7 @@
     ../../modules/yazi
     ../../modules/wezterm
     ../../modules/bat
+    ../../modules/zellij
   ];
 
   config.modules = {
@@ -35,6 +36,7 @@
       zoxide.enable = true;
       yazi.enable = true;
       bat.enable = true;
+      zellij.enable = true;
     };
   };
 }

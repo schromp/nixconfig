@@ -80,7 +80,7 @@
         };
         eww.enable = false;
         waybar.enable = true;
-        swww.enable = false;
+        swww.enable = true;
         libreoffice.enable = true;
         discord = {
           enable = true;
@@ -106,7 +106,7 @@
         ssh.enable = true;
         greetd.enable = false;
         tmux.enable = true;
-        zellij.enable = false;
+        zellij.enable = true;
         direnv.enable = true;
         zsh.enable = true;
         zoxide.enable = true;
@@ -118,6 +118,7 @@
         };
         nh.enable = true;
         yazi.enable = true;
+        rio.enable = true;
 
         themer = {
           enable = true;

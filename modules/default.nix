@@ -54,6 +54,7 @@
     ./nh
     ./yazi
     ./rio
+    ./emacs
 
     ./themer
   ];

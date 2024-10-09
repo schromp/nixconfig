@@ -5,7 +5,7 @@
   ...
 }: {
   config = {
-    users.users.lk = {
+    users.users.lks = {
       isNormalUser = true;
       extraGroups = ["wheel" "docker"];
       shell = pkgs.zsh;
@@ -14,7 +14,26 @@
       ];
     };
 
-    home-manager.users.lk = {
+    # TODO: move this
+    programs = {
+      git = {
+        enable = true;
+        lfs = {
+          enable = true;
+        };
+
+        userName = "Lennart Koziollek";
+        userEmail = "lennart.koziollek@stud.uni-due.de";
+        extraConfig = {
+          init.defaultBranch = "main";
+        };
+      };
+      gh = {
+        enable = true;
+      };
+    };
+
+    home-manager.users.lks = {
       home.packages = [];
 
       home.stateVersion = "24.05";

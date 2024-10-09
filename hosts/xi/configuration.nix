@@ -37,6 +37,10 @@ in
       RuntimeMaxUse=10M
     '';
     udisks2.enable = true;
+    upower.enable = true;
+    tlp = {
+      enable = true;
+    };
   };
 
   security.polkit.enable = true;
@@ -87,10 +91,6 @@ in
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  services = {
-    upower.enable = true;
-  };
 
   hardware = {
     graphics = {

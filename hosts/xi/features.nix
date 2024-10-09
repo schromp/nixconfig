@@ -1,17 +1,9 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../../modules
-    ../../presets
   ];
 
   config = {
-    presets = {
-      rices = {
-        name = "onedark";
-        vertical = false;
-      };
-    };
-
     modules = {
       user = {
         homeManager.enabled = true;
@@ -20,6 +12,24 @@
 
         displayServerProtocol = "wayland";
         desktopEnvironment = "hyprland";
+
+        theme = {
+          name = "Catppuccin-Macchiato-Standard-Pink-Dark";
+          package = pkgs.catppuccin-gtk.override {
+            accents = ["pink"];
+            size = "standard";
+            tweaks = [];
+            variant = "macchiato";
+          };
+        };
+        cursor = {
+          name = "Bibata-Modern-Ice";
+          package = pkgs.bibata-cursors;
+        };
+        icon = {
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
+        };
 
         monitors = [
           {
@@ -69,8 +79,9 @@
           enable = true;
           theme = "catppuccin-macchiato";
         };
+        wezterm.enable = true;
         eww.enable = false;
-        waybar.enable = false;
+        waybar.enable = true;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {
@@ -94,12 +105,16 @@
         direnv.enable = true;
         zsh.enable = true;
         zoxide.enable = true;
+        bat.enable = true;
         neovim.enable = true;
         git = {
           enable = true; # TODO: make option for username/mail
           lazygit = true;
         };
         nh.enable = true;
+        yazi.enable = true;
+        rio.enable = true;
+        emacs.enable = true;
 
         # Theming
         themer = {
@@ -113,7 +128,7 @@
         bottles.enable = false;
         steam.enable = false;
         retroarch.enable = false;
-        gamemode.enable = true;
+        gamemode.enable = false;
       };
     };
   };

@@ -95,7 +95,7 @@ in
   hardware = {
     graphics = {
       enable = true;
-      driSupport = true;
+      # driSupport = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl

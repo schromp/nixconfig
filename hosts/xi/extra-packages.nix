@@ -21,6 +21,12 @@ in {
     qpwgraph
     gimp
     chromium
+    bambu-studio
+    freecad-wayland
+    zed-editor
+    proton-pass
+    protonvpn-gui
+    protonmail-desktop
 
     zoom-us
     slack

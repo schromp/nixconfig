@@ -18,6 +18,10 @@ in {
   environment.shells = with pkgs; [zsh];
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
+  programs.nh = {
+    enable = true;
+    flake = "/home/lk/repos/nixconfig";
+  };
 
   # Setup home-manager options
   home-manager = {
@@ -55,6 +59,7 @@ in {
       openFirewall = true;
     };
     gvfs.enable = true;
+    blueman.enable = true;
   };
 
   # This is for obs virtual camera
@@ -124,6 +129,7 @@ in {
   };
 
   hardware = {
+    bluetooth.enable = true;
     opengl = {
       enable = true;
       extraPackages = with pkgs; [

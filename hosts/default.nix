@@ -11,7 +11,7 @@
       system = "${system}";
       modules = [
         {
-          config.modules.system = {
+          config.modules.system.general = {
             hostname = hostname;
             architecture = system;
           };
@@ -34,6 +34,7 @@ in {
   nixosSystems = {
     tower = mkNixosSystem "x86_64-linux" "tower";
     xi = mkNixosSystem "x86_64-linux" "xi";
+    shelf = mkNixosSystem "x86_64-linux" "shelf";
     # cake = mkNixosSystem "aarch64" "cake";
   };
 

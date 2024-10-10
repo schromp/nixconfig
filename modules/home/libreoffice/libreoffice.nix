@@ -4,14 +4,12 @@
   pkgs,
   ...
 }:
-with lib; let
-  username = config.modules.user.username;
+let
   cfg = config.modules.programs.libreoffice;
 in {
-  options.modules.programs.libreoffice.enable = mkEnableOption "Enable Libreoffice";
+  options.modules.programs.libreoffice.enable = lib.mkEnableOption "Enable Libreoffice";
 
-  config = mkIf cfg.enable {
-    home-manager.users.${username} = {
+  config = lib.mkIf cfg.enable {
       home.packages = with pkgs; [libreoffice];
 
       xdg.desktopEntries = {
@@ -25,6 +23,5 @@ in {
           # https://github.com/LibreOffice/core/blob/master/solenv/inc/mime.types
         };
       };
-    };
   };
 }

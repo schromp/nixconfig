@@ -15,6 +15,7 @@ in {
 
   options.modules.system.programs.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
+    hyprlock = lib.mkEnableOption "Enable hyprlock";
   };
 
   config = lib.mkIf cfg.enabled {
@@ -71,5 +72,7 @@ in {
     programs.dconf.enable = true; # Enable gnome programs outside of gnome better
 
     environment.systemPackages = with pkgs; [xdg-utils];
+
+    security.pam.services.hyprlock = lib.mkIf cfg.hyprlock {};
   };
 }

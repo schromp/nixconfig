@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.modules.home.keymap;
+  cfg = config.modules.home.general.keymap;
 in {
   config = lib.mkIf (cfg == "us-umlaute") {
     services.xserver.xkb.layout = "us(altgr-intl)";

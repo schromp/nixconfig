@@ -5,9 +5,13 @@
   lib,
   ...
 }: let
-  opts = config.modules.user;
+  cfg = config.modules.home.programs.anyrun;
 in {
-  config = lib.mkIf (opts.appRunner == "anyrun") {
+  options.modules.home.programs.anyrun = {
+    enable = lib.mkEnableOption "Enable Anyrun";
+  };
+
+  config = lib.mkIf cfg.enable {
     imports = [inputs.anyrun.homeManagerModules.default];
 
     programs.anyrun = {

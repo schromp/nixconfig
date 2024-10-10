@@ -4,7 +4,6 @@
   lib,
   ...
 }: let
-  opts = config.modules.user;
   cfg = config.modules.home.programs.walker;
 in {
   options.modules.home.programs.walker = {
@@ -18,7 +17,7 @@ in {
     #   trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
     # };
 
-    imports = [inputs.walker.homeManagerModules.walker];
+    imports = [inputs.walker.homeManagerModules];
 
     programs.walker = {
       enable = true;

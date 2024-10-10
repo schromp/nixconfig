@@ -6,20 +6,30 @@
   nix-darwin,
   ...
 }: let
-  mkNixosSystem = system: hostname:
+  mkNixosSystem = system: hostname: homeManager:
     nixpkgs.lib.nixosSystem {
       system = "${system}";
-      modules = [
-        {
-          config.modules.system.general = {
-            hostname = hostname;
-            architecture = system;
-          };
-        }
-        home-manager.nixosModules.home-manager
-        ./${hostname}
-        {networking.hostName = hostname;}
-      ];
+      modules =
+        [
+          {
+            config = {
+              modules.system.general = {
+                hostname = hostname;
+                architecture = system;
+              };
+              networking.hostName = hostname;
+            };
+          }
+          ./${hostname}
+          ../modules/system
+        ]
+        ++ (
+          if homeManager
+          then [
+            home-manager.nixosModules.home-manager
+          ]
+          else []
+        );
       specialArgs = {inherit inputs;};
     };
 
@@ -32,9 +42,9 @@
     };
 in {
   nixosSystems = {
-    tower = mkNixosSystem "x86_64-linux" "tower";
-    xi = mkNixosSystem "x86_64-linux" "xi";
-    shelf = mkNixosSystem "x86_64-linux" "shelf";
+    tower = mkNixosSystem "x86_64-linux" "tower" true;
+    xi = mkNixosSystem "x86_64-linux" "xi" true;
+    shelf = mkNixosSystem "x86_64-linux" "shelf" true;
     # cake = mkNixosSystem "aarch64" "cake";
   };
 
@@ -45,16 +55,16 @@ in {
 
   darwinSystems = {
     "M65L7Q9X32" = nix-darwin.lib.darwinSystem {
-      modules = let 
+      modules = let
         home-manager = home-manager-darwin;
-      in [ 
+      in [
         ./portal/default.nix
         home-manager.darwinModules.home-manager
         {
-          home-manager.extraSpecialArgs = {inherit inputs; };
+          home-manager.extraSpecialArgs = {inherit inputs;};
         }
       ];
-      specialArgs = { inherit inputs home-manager; };
+      specialArgs = {inherit inputs home-manager;};
     };
   };
 }

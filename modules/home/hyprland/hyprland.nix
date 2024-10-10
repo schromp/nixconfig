@@ -7,7 +7,7 @@
 }: let
   cfg = config.modules.home.programs.hyprland;
 
-  screenshotTool = config.modules.user.screenshotTool;
+  screenshotTool = config.modules.home.desktop.defaultScreenshotTool;
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -30,7 +30,7 @@ in {
     workspace_animations = lib.mkEnableOption "Enable workspace animations";
   };
 
-  config = lib.mkIf cfg.enabled {
+  config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
@@ -64,18 +64,23 @@ in {
       enable = true;
 
       theme = {
-        name = config.modules.user.theme.name;
-        package = config.modules.user.theme.package;
+        name = "Catppuccin-Macchiato-Standard-Pink-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["pink"];
+          size = "standard";
+          tweaks = [];
+          variant = "macchiato";
+        };
       };
 
       iconTheme = {
-        name = config.modules.user.icon.name;
-        package = config.modules.user.icon.package;
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
       };
 
       cursorTheme = {
-        name = config.modules.user.cursor.name;
-        package = config.modules.user.cursor.package;
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
       };
     };
 

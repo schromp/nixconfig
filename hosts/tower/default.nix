@@ -2,8 +2,8 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    ./features.nix
+    # ./features.nix
     ../shared
-    ./extra-packages.nix
+    # ./extra-packages.nix
   ];
 }

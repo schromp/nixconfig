@@ -112,13 +112,13 @@ in {
           PROMPT=' ''${NEWLINE}%F{#$COL_NAME}%n%f %F{#$COL_DIR}%3~%f %F{#$COL_GIT}''${vcs_info_msg_0_}%f %(?..%B%F{red}(%?%)%f%b)''${NEWLINE}> '
 
           ${
-            if config.modules.system.hostname == "M65L7Q9X32"
+            if config.modules.system.general.hostname == "M65L7Q9X32"
             then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
             else ""
           }
 
           ${
-            if config.modules.programs.themer.enable
+            if config.modules.programs.home.themer.enable
             then "source ~/.config/zsh/prompt.sh"
             else ""
           }

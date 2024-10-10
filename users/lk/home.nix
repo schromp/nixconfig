@@ -1,15 +1,9 @@
-{pkgs, ...}: {
-  users.users.lk = {
-    isnormaluser = true;
-    extragroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
-    shell = pkgs.zsh;
-    hashedpassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
-  };
+{...}: {
+  imports = [
+    ../../modules/home
+  ];
 
-  home-manager.users.lk = {
-    imports = [
-      ../../modules/home
-    ];
+  config = {
     home.packages = [];
 
     programs = {

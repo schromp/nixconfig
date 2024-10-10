@@ -6,6 +6,7 @@
   cfg = config.modules.home.programs.kitty;
   configFile = builtins.readFile ./kitty.conf;
   customThemes = ["none" "kanagawa" "catppuccin-macchiato" "onedark"];
+  themerEnabled = config.modules.home.programs.themer.enable;
 in {
   options.modules.home.programs.kitty = {
     enable = lib.mkEnableOption "Enable Kitty";
@@ -23,13 +24,16 @@ in {
     };
     programs.kitty = {
       enable = true;
-      # theme = mkIf (!builtins.elem cfg.theme customThemes) cfg.theme;
       shellIntegration.enableZshIntegration = true;
       extraConfig =
         configFile
-        + ''
-          include ./theme.conf
-        '';
+        + (
+          if themerEnabled
+          then ''
+            include ./theme.conf
+          ''
+          else ""
+        );
     };
   };
 }

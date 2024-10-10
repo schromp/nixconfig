@@ -6,11 +6,6 @@
   config = {
     modules = {
       user = {
-        homeManager.enabled = true;
-        username = "lk";
-        repoDirectory = "/home/lk/repos/nixconfig";
-        displayServerProtocol = "wayland";
-        desktopEnvironment = "hyprland";
         monitors = [
           {
             name = "DP-3";
@@ -33,23 +28,6 @@
         appRunner = "anyrun";
         browser = "firefox";
         screenshotTool = "swappy";
-        cursor = {
-          name = "Bibata-Modern-Ice";
-          package = pkgs.bibata-cursors;
-        };
-        theme = {
-          name = "Catppuccin-Macchiato-Standard-Pink-Dark";
-          package = pkgs.catppuccin-gtk.override {
-            accents = ["pink"];
-            size = "standard";
-            tweaks = [];
-            variant = "macchiato";
-          };
-        };
-        icon = {
-          name = "Papirus";
-          package = pkgs.papirus-icon-theme;
-        };
       };
       system = {
         nvidia = false;

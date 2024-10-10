@@ -7,9 +7,6 @@
   imports = [
     # Presets
     ../../presets/hosts/desktop/configuration.nix
-
-    # Users
-    ../../users/lk
   ];
 
   modules.system = {

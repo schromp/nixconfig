@@ -4,7 +4,9 @@
   config,
   ...
 }: {
-  # TODO: import lk user
+  imports = [
+    ../../../users/lk
+  ];
 
   # SHELL:
   users.users.root.initialPassword = "1234";

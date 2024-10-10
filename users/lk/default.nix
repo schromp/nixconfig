@@ -7,9 +7,11 @@
   };
 
   home-manager.users.lk = {
+
     imports = [
       ../../modules/home
     ];
+
     home.packages = [];
 
     programs = {

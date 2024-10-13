@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = config.modules.programs.direnv;
+  cfg = config.modules.home.programs.direnv;
 in {
-  options.modules.programs.direnv.enable = lib.mkEnableOption "Enable direnv";
+  options.modules.home.programs.direnv.enable = lib.mkEnableOption "Enable direnv";
 
   config = lib.mkIf cfg.enable {
     programs.direnv.enable = true;

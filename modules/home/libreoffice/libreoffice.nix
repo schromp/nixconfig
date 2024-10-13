@@ -5,9 +5,9 @@
   ...
 }:
 let
-  cfg = config.modules.programs.libreoffice;
+  cfg = config.modules.home.programs.libreoffice;
 in {
-  options.modules.programs.libreoffice.enable = lib.mkEnableOption "Enable Libreoffice";
+  options.modules.home.programs.libreoffice.enable = lib.mkEnableOption "Enable Libreoffice";
 
   config = lib.mkIf cfg.enable {
       home.packages = with pkgs; [libreoffice];

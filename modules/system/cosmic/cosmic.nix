@@ -11,6 +11,10 @@ in {
     inputs.nixos-cosmic.nixosModules.default
   ];
 
+  options.modules.system.programs.cosmic = {
+    enable = lib.mkEnableOption "Enable cosmic desktop environment";
+  };
+
   config = lib.mkIf cfg.enable {
     services = {
       desktopManager.cosmic.enable = true;

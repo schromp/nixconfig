@@ -15,23 +15,20 @@
     };
 
     # TODO: move this
-    programs = {
-      git = {
-        enable = true;
-        lfs = {
-          enable = true;
-        };
-
-        userName = "Lennart Koziollek";
-        userEmail = "lennart.koziollek@stud.uni-due.de";
-        extraConfig = {
-          init.defaultBranch = "main";
-        };
-      };
-      gh = {
-        enable = true;
-      };
-    };
+    # programs = {
+    #   git = {
+    #     enable = true;
+    #     lfs = {
+    #       enable = true;
+    #     };
+    #
+    #     userName = "Lennart Koziollek";
+    #     userEmail = "lennart.koziollek@stud.uni-due.de";
+    #     extraConfig = {
+    #       init.defaultBranch = "main";
+    #     };
+    #   };
+    # };
 
     home-manager.users.lks = {
       home.packages = [];

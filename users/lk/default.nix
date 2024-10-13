@@ -1,13 +1,12 @@
 {pkgs, ...}: {
   users.users.lk = {
-    isnormaluser = true;
-    extragroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
+    isNormalUser = true;
+    extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
     shell = pkgs.zsh;
-    hashedpassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
+    hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 
   home-manager.users.lk = {
-
     imports = [
       ../../modules/home
     ];
@@ -16,18 +15,17 @@
 
     programs = {
       bat.enable = true;
-      programs.direnv = {
+      direnv = {
         enable = true;
         nix-direnv.enable = true;
       };
     };
 
-    modules = {
+    modules.home = {
       general = {
-        keymap = "us-umlaute";
         desktop = {
           defaultTerminal = "rio";
-          defaultBrowswer = "firefox";
+          defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
           defaultAppRunner = "anyrun";

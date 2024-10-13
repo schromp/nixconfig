@@ -2,15 +2,16 @@
   config,
   lib,
   pkgs,
+  sysConfig,
   ...
 }: let
-  cfg = config.modules.programs.hyprland;
-  appRunner = config.modules.home.desktop.defaultAppRunner;
-  browser = config.modules.home.desktop.defaultBrowser;
-  screenshotTool = config.modules.home.desktop.defaultScreenshotTool;
-  monitors = config.modules.home.desktop.monitors;
+  cfg = config.modules.home.programs.hyprland;
+  appRunner = config.modules.home.general.desktop.defaultAppRunner;
+  browser = config.modules.home.general.desktop.defaultBrowser;
+  screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
+  monitors = sysConfig.monitors;
   keymap_language =
-    if (config.modules.home.keymap == "us-umlaute")
+    if (sysConfig.keymap == "us-umlaute")
     then ''
       us-german-umlaut
     ''
@@ -47,7 +48,7 @@ in {
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
-      "hyprctl setcursor ${config.modules.user.cursor.name} 24"
+      "hyprctl setcursor Bibata-Modern-Ice 24"
       "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
     ];

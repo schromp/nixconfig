@@ -5,9 +5,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.modules.system.progams.hyprland;
-
-  screenshotTool = config.modules.user.screenshotTool;
+  cfg = config.modules.system.programs.hyprland;
 in {
   imports = [
     inputs.hyprland.nixosModules.default
@@ -18,7 +16,7 @@ in {
     hyprlock = lib.mkEnableOption "Enable hyprlock";
   };
 
-  config = lib.mkIf cfg.enabled {
+  config = lib.mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

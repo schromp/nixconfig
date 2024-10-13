@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  sysConfig,
   ...
 }: let
   cfg = config.modules.home.programs.zsh;
@@ -61,10 +62,10 @@ in {
         ls = "eza --icons=auto";
         hyprgame-off = "hyprctl keyword bind SUPER,Q,killactive";
         hyprgame-on = "hyprctl keyword unbind SUPER,Q";
-        "cat" = lib.mkIf config.modules.programs.bat.enable "bat";
+        "cat" = "${lib.getExe pkgs.bat}";
 
-        "update-switch" = "sudo nixos-rebuild switch --flake .#${config.modules.system.general.hostname}";
-        "update-test" = "sudo nixos-rebuild test --flake .#${config.modules.system.general.hostname}";
+        "update-switch" = "sudo nixos-rebuild switch --flake .#${sysConfig.hostname}";
+        "update-test" = "sudo nixos-rebuild test --flake .#${sysConfig.hostname}";
         "update-check" = "nix flake check";
       };
       oh-my-zsh = {
@@ -112,13 +113,13 @@ in {
           PROMPT=' ''${NEWLINE}%F{#$COL_NAME}%n%f %F{#$COL_DIR}%3~%f %F{#$COL_GIT}''${vcs_info_msg_0_}%f %(?..%B%F{red}(%?%)%f%b)''${NEWLINE}> '
 
           ${
-            if config.modules.system.general.hostname == "M65L7Q9X32"
+            if sysConfig.hostname == "M65L7Q9X32"
             then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
             else ""
           }
 
           ${
-            if config.modules.programs.home.themer.enable
+            if config.modules.home.programs.themer.enable
             then "source ~/.config/zsh/prompt.sh"
             else ""
           }

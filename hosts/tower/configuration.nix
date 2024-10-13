@@ -40,6 +40,8 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [];
+
   # Bootloader stuff
   boot.loader = {
     grub = {

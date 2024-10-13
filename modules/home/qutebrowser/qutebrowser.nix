@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.modules.home.progams.qutebrowser;
+  cfg = config.modules.home.programs.qutebrowser;
 in {
 
   options.modules.home.programs.qutebrowser = {

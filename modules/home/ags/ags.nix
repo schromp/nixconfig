@@ -4,8 +4,7 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   dependencies = with pkgs; [
     bash
     coreutils
@@ -13,18 +12,16 @@ with lib; let
     dunst
     pipewire
   ];
-
-  opts = config.modules.user;
-  username = opts.username;
-  cfg = config.modules.programs.ags;
+  cfg = config.modules.home.programs.ags;
 in {
   options.modules.home.programs.ags = {
-    enable = mkEnableOption "Enable ags";
+    enable = lib.mkEnableOption "Enable ags";
   };
 
-  config = mkIf cfg.enable {
+  imports = [inputs.ags.homeManagerModules.default];
+
+  config = lib.mkIf cfg.enable {
     # add the home manager module
-    imports = [inputs.ags.homeManagerModules.default];
 
     programs.ags = {
       enable = true;

@@ -10,7 +10,7 @@ in {
     enable = lib.mkEnableOption "Enable waybar";
   };
 
-  config = lib.mkIf cfg.waybar.enable {
+  config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
       package = pkgs.waybar.overrideAttrs (oldAttrs: {

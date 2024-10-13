@@ -11,9 +11,9 @@ in {
     enable = lib.mkEnableOption "Enable Anyrun";
   };
 
-  config = lib.mkIf cfg.enable {
-    imports = [inputs.anyrun.homeManagerModules.default];
+  imports = [inputs.anyrun.homeManagerModules.default];
 
+  config = lib.mkIf cfg.enable {
     programs.anyrun = {
       enable = true;
       config = {

@@ -3,7 +3,9 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  sysConfig = config.modules.system.general;
+in {
   imports = [
     ../../../users/lk
   ];
@@ -19,13 +21,63 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
-      inherit inputs;
+      inherit inputs sysConfig;
     };
   };
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = false;
+    };
+  };
+
+  nix = {
+    package = pkgs.nixVersions.git;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      warn-dirty = false
+    '';
+
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
+    settings = {
+      auto-optimise-store = true;
+
+      trusted-users = ["root" "@wheel"];
+      builders-use-substitutes = false;
+
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://cosmic.cachix.org/"
+        "https://nixpkgs-wayland.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://anyrun.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+      ];
+    };
+  };
+
+  services = {
+    dbus = {
+      enable = true;
+      packages = with pkgs; [dconf gcr udisks2];
+    };
+  };
   nix.settings.sandbox = true;
 
   modules.system = {
+    general = {
+      keymap = "us-umlaute";
+    };
     programs = {
       greetd.enable = true;
       hyprland.enable = true;
@@ -44,6 +96,11 @@
 
   # PACKAGES
   environment.systemPackages = with pkgs; [
+    git
+    curl
+    coreutils
+    vim
+    ranger
     lxqt.lxqt-policykit
     imagemagick
     rnote
@@ -84,7 +141,7 @@
     avahi = {
       # Scans for printers on the network
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
     gvfs.enable = true;
@@ -155,7 +212,7 @@
   hardware = {
     bluetooth.enable = true;
     opentabletdriver.enable = true;
-    opengl = {
+    graphics = {
       enable = true;
       extraPackages = with pkgs; [
         vaapiVdpau

@@ -28,27 +28,31 @@
       type = with lib.types;
         listOf (submodule {
           options = {
-            name = mkOption {
+            name = lib.mkOption {
               type = str;
             };
-            resolution = mkOption {
+            resolution = lib.mkOption {
               type = str;
             };
-            refreshRate = mkOption {
+            refreshRate = lib.mkOption {
               type = str;
             };
-            scale = mkOption {
+            scale = lib.mkOption {
               type = str;
             };
-            position = mkOption {
+            position = lib.mkOption {
               type = str;
             };
-            vrr = mkOption {
+            vrr = lib.mkOption {
               type = bool;
               default = false;
             };
           };
         });
+    };
+
+    keymap = lib.mkOption {
+      type = lib.types.enum ["us-umlaute"];
     };
   };
 }

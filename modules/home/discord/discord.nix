@@ -7,7 +7,7 @@
 }: let
   cfg = config.modules.home.programs.discord;
 in {
-  options.modules.programs.discord = {
+  options.modules.home.programs.discord = {
     enable = lib.mkEnableOption "Enable Discord";
     aarpc = lib.mkEnableOption "Enable aarpc for discord rich presence";
   };

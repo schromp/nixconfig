@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.modules.programs.eww;
+  cfg = config.modules.home.programs.eww;
   pkg =
     if config.modules.user.displayServerProtocol == "wayland"
     then pkgs.eww-wayland

@@ -5,7 +5,7 @@
 }: let
   cfg = config.modules.home.programs.rio;
 in {
-  options.modules.system.programs.rio = {
+  options.modules.home.programs.rio = {
     enable = lib.mkEnableOption "Enable rio terminal";
   };
 

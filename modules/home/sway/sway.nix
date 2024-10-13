@@ -7,9 +7,11 @@
   cfg = config.modules.home.programs.sway;
   modifier = "Mod4";
 in {
-  config = lib.mkIf cfg.enabled {
-    programs.sway.enable = true;
+  options.modules.home.programs.sway = {
+    enable = lib.mkEnableOption "Enable sway";
+  };
 
+  config = lib.mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
       xwayland = true;

@@ -7,7 +7,7 @@
 }: let
   cfg = config.modules.home.programs.hyprland;
 
-  screenshotTool = config.modules.home.desktop.defaultScreenshotTool;
+  screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default

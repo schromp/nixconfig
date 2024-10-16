@@ -38,7 +38,7 @@ in {
     # ];
 
     exec-once = [
-      "swww init & swww img /home/lk/Documents/Wallpapers/wallpaper.png"
+      "${lib.getExe pkgs.swww} init & ${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
       (
         if appRunner == "walker"
         then ''"walker gapplication-service"''

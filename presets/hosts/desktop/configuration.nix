@@ -80,7 +80,10 @@ in {
     };
     programs = {
       greetd.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        hyprlock = true;
+      };
     };
   };
 
@@ -96,6 +99,7 @@ in {
 
   # PACKAGES
   environment.systemPackages = with pkgs; [
+    btop
     git
     curl
     coreutils
@@ -120,6 +124,7 @@ in {
     nix-prefetch-git
     freecad
     slack
+    pavucontrol
   ];
 
   # SERVICES

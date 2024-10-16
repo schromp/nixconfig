@@ -11,7 +11,9 @@
       ../../modules/home
     ];
 
-    home.packages = [];
+    home.packages = [
+      pkgs.tldr
+    ];
 
     programs = {
       bat.enable = true;
@@ -48,6 +50,7 @@
         };
         libreoffice.enable = true;
         neovim.enable = true;
+        prismLauncher.enable = true;
         rio.enable = true;
         themer.enable = true;
         tmux.enable = true;

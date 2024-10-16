@@ -32,6 +32,7 @@
       ];
     };
     programs = {
+      bottles.enable = true;
       gamemode.enable = true;
       gamescope.enable = true;
       lutris.enable = true;
@@ -40,7 +41,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+  ];
 
   # Bootloader stuff
   boot.loader = {

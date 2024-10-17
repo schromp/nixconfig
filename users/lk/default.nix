@@ -41,8 +41,6 @@
         };
         hyprland = {
           enable = true;
-          sens = "-0.3";
-          accel = "flat";
           xdgOptions = true;
           workspace_animations = false;
 

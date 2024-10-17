@@ -32,6 +32,9 @@ in {
           "194.233.162.214" = {
             identityFile = "~/.ssh/linode";
           };
+          "git.uni-due.de" = {
+            identityFile = "~/.ssh/gitlab-uni-due";
+          };
         };
       };
     };

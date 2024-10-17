@@ -18,6 +18,7 @@ in
   };
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   # Setup home-manager options
   home-manager = {

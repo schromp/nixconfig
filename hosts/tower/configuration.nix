@@ -53,5 +53,12 @@
     };
   };
 
+  home-manager.users.lk = {
+    modules.home.programs.hyprland = {
+      sens = "0.1";
+      accel = "flat";
+    };
+  };
+
   system.stateVersion = "23.11";
 }

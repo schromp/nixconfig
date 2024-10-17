@@ -41,5 +41,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  home-manager.users.lk = {
+    modules.home.programs.hyprland = {
+      sens = "0.1";
+      accel = "adaptive";
+    };
+  };
+
   system.stateVersion = "23.11";
 }

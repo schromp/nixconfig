@@ -125,6 +125,7 @@ in {
     freecad
     slack
     pavucontrol
+    pa_applet
   ];
 
   # SERVICES

@@ -76,6 +76,7 @@ in {
 
   modules.system = {
     general = {
+      configPath = "/home/lk/repos/nixconfig";
       keymap = "us-umlaute";
     };
     programs = {

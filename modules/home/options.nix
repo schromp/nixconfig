@@ -1,6 +1,10 @@
 {lib, ...}:
 with lib; {
   options.modules.home.general = {
+    keymap = lib.mkOption {
+      type = lib.types.enum ["us-umlaute"];
+    };
+
     desktop = lib.mkOption {
       type = with types;
         submodule {

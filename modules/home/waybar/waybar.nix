@@ -17,13 +17,14 @@ in {
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       });
       systemd.enable = true;
+      # style = ./style.css;
       settings = {
         primary = {
           mode = "dock";
           layer = "top";
           position = "top";
 
-          height = 30;
+          height = 15;
 
           modules-left = [
             "hyprland/workspaces"
@@ -43,9 +44,16 @@ in {
             format = "{icon}";
             on-click = "activate";
             format-icons = {
-              active = "";
-              default = "";
-              urgent = "";
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+              "5" = "5";
+              "6" = "6";
+              "7" = "7";
+              "8" = "8";
+              "9" = "9";
+              "0" = "0";
             };
           };
         };

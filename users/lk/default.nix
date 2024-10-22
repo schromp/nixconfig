@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   users.users.lk = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
@@ -23,9 +27,14 @@
       };
     };
 
+
     modules.home = {
       general = {
         keymap = "us-umlaute";
+        theme = {
+          name = "terminal";
+          colorscheme.name = "gruvbox";
+        };
         desktop = {
           defaultTerminal = "rio";
           defaultBrowser = "firefox";

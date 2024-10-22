@@ -20,6 +20,11 @@
     '';
   widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 in {
+
+  imports = [
+    ./themes/terminal.nix
+  ];
+
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -91,28 +96,19 @@ in {
       workspace_swipe_distance = 200;
     };
 
-    animations = {
-      enabled = true;
-      animation = [
-        (
-          if cfg.workspace_animations
-          then "workspaces,1,3,default,slidevert"
-          else "workspaces,0"
-        )
-      ];
-    };
+    # animations = {
+    #   enabled = true;
+    #   animation = [
+    #     (
+    #       if cfg.workspace_animations
+    #       then "workspaces,1,3,default,slidevert"
+    #       else "workspaces,0"
+    #     )
+    #   ];
+    # };
 
     general = {
-      gaps_in = 8;
-      gaps_out = 8;
-      border_size = 2;
-      layout = "dwindle";
-
       allow_tearing = false;
-
-      # WARN: TEMP
-      "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
-      "col.inactive_border" = "rgba(44475aaa)";
     };
 
     dwindle = {
@@ -133,12 +129,6 @@ in {
       "$mod, mouse:273, resizewindow"
     ];
 
-    # WARN: This is temporary until themer-rs is functional
-    decoration = {
-      rounding = 10;
-      "col.shadow" = "rgba(1E202966)";
-    };
-
     bind =
       [
         "$mod, Q, killactive"
@@ -149,7 +139,7 @@ in {
         "$mod, O, pseudo"
         (
           if cfg.hyprlock.enable
-          then "$mod CONTROL, L, exec, hyprlock"
+          then "$mod CONTROL SHIFT, L, exec, hyprlock"
           else ""
         )
 
@@ -162,6 +152,11 @@ in {
         "$mod SHIFT, j, swapwindow, d"
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, l, swapwindow, r"
+
+        "$mod CONTROL, h, resizeactive, -30 0"
+        "$mod CONTROL, j, resizeactive, 0 30"
+        "$mod CONTROL, k, resizeactive, 0 -30"
+        "$mod CONTROL, l, resizeactive, 30 0"
 
         "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"

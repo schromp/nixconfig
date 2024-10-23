@@ -9,6 +9,7 @@
   appRunner = config.modules.home.general.desktop.defaultAppRunner;
   browser = config.modules.home.general.desktop.defaultBrowser;
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
+  terminal = config.modules.home.general.desktop.defaultTerminal;
   monitors = sysConfig.monitors;
   keymap_language =
     if (config.modules.home.general.keymap == "us-umlaute")
@@ -159,7 +160,7 @@ in {
         "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
 
-        "$mod, 36, exec, rio"
+        "$mod, 36, exec, ${terminal}"
         "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
         (
           if screenshotTool == "grimblast"

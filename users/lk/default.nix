@@ -17,6 +17,7 @@
 
     home.packages = [
       pkgs.tldr
+      pkgs.spotify-player
     ];
 
     programs = {

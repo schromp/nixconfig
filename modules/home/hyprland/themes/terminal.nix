@@ -28,6 +28,7 @@ in {
 
     exec-once = [
       "waybar"
+      "swww img ~/Pictures/Wallpaper/black.jpg"
     ];
   };
 }

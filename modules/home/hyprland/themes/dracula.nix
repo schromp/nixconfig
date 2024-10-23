@@ -24,7 +24,7 @@ in {
     };
 
     exec-once = [
-      "${lib.getExe pkgs.swww} init & ${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
+      "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
       "${lib.getExe inputs.hyprpanel.packages.${pkgs.system}.default}"
     ];
   };

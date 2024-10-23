@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.modules.home.programs.waybar;
+  terminal-style = import ./terminal.nix {inherit config;};
 in {
   options.modules.home.programs.waybar = {
     enable = lib.mkEnableOption "Enable waybar";
@@ -17,7 +18,11 @@ in {
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       });
       systemd.enable = true;
-      # style = ./style.css;
+      style =
+        if config.modules.home.general.theme.name == "terminal"
+        then terminal-style
+        else "";
+
       settings = {
         primary = {
           mode = "dock";

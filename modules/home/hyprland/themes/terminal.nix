@@ -6,6 +6,7 @@
   cfg = config.modules.home.general.theme;
   colors = config.modules.home.general.theme.colorscheme.colors;
 in {
+  modules.home.programs.waybar.enable = true;
   wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "terminal") {
     decoration = {
       rounding = 0;
@@ -24,5 +25,9 @@ in {
     animations = {
       enabled = false;
     };
+
+    exec-once = [
+      "waybar"
+    ];
   };
 }

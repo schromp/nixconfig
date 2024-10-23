@@ -1,3 +1,6 @@
+{config}: let
+    colors = config.modules.home.general.theme.colorscheme.colors;
+in ''
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
@@ -8,7 +11,7 @@
 window#waybar {
     /* background-color: rgba(43, 48, 59, 0.5); */
     background-color: transparent;
-    color: #ffffff;
+    color: #${colors.base05};
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -21,17 +24,18 @@ window#waybar {
 }
 
 #workspaces button.empty {
-    color: #f3ba53;
+    color: #${colors.base03};
 }
 
-#workspaces button:hover {
-  color: #a2dfd3;
-}
+/* #workspaces button:hover { */
+/*   color: #a2dfd3; */
+/* } */
 
 #workspaces button.urgent {
-    color: #eb4d4b;
+    color: #${colors.base09};
 }
 
 #workspaces button.active {
-    color: #f32dad;
+    color: #${colors.base0D};
 }
+''

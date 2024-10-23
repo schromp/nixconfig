@@ -151,10 +151,10 @@ in {
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, l, swapwindow, r"
 
-        "$mod CONTROL, h, resizeactive, -30 0"
-        "$mod CONTROL, j, resizeactive, 0 30"
-        "$mod CONTROL, k, resizeactive, 0 -30"
-        "$mod CONTROL, l, resizeactive, 30 0"
+        "$mod CONTROL, h, resizeactive, -75 0"
+        "$mod CONTROL, j, resizeactive, 0 75"
+        "$mod CONTROL, k, resizeactive, 0 -75"
+        "$mod CONTROL, l, resizeactive, 75 0"
 
         "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"

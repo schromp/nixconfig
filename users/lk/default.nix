@@ -55,7 +55,6 @@
           workspace_animations = false;
 
           hyprlock.enable = true;
-          hyprpanel.enable = true;
         };
         kitty.enable = true;
         libreoffice.enable = true;

@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.modules.home.programs.tmux;
+  colors = config.modules.home.general.theme.colorscheme.colors;
 in {
   options.modules.home.programs.tmux = {
     enable = lib.mkEnableOption "Enable tmux";
@@ -87,11 +88,10 @@ in {
         set-option -g automatic-rename on
         set-option -g automatic-rename-format '#{b:pane_current_path}'
 
-        ${
-          if config.modules.home.programs.themer.enable
-          then ''source-file ~/.config/tmux/themer.conf''
-          else ""
-        }
+        set-window-option -g window-status-current-style fg="#${colors.base0D}"
+        set -g status-bg "#${colors.base00}"
+        set -g status-fg "#${colors.base05}"
+        # set-option -g pane-active-border-style fg='#${colors.base0D}'
       '';
     };
   };

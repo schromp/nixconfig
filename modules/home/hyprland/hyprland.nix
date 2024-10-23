@@ -45,6 +45,7 @@ in {
       swayidle
       libnotify
       xwaylandvideobridge
+      swww
 
       slurp
       grim

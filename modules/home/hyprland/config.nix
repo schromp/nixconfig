@@ -43,7 +43,6 @@ in {
     # ];
 
     exec-once = [
-      "${lib.getExe pkgs.swww} init & ${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
       (
         if appRunner == "walker"
         then ''"walker gapplication-service"''
@@ -117,7 +116,6 @@ in {
     };
 
     misc = {
-      force_default_wallpaper = 0;
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       animate_manual_resizes = true;

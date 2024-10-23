@@ -24,21 +24,48 @@ in {
           layer = "top";
           position = "top";
 
-          height = 15;
+          height = 24;
+          spacing = 5;
 
           modules-left = [
             "hyprland/workspaces"
           ];
 
-          modules-middle = [
+          modules-center = [
             "hyprland/window"
           ];
 
           modules-right = [
-            "battery"
             "tray"
+            "wireplumber"
+            "cpu"
+            "memory"
+            "privacy"
+            "battery"
             "clock"
           ];
+
+          cpu = {
+            format = "cpu: {}% ";
+          };
+
+          memory = {
+            format = "mem: {}% ";
+          };
+
+          privacy = {
+            icon-size = 10;
+          };
+
+          wireplumber = {
+            format = "vol: {volume}%";
+            format-muted = "vol: muted";
+          };
+
+          "hyprland/window" = {
+            format = "{}";
+            seperate-ouputs = true;
+          };
 
           "hyprland/workspaces" = {
             format = "{icon}";
@@ -53,7 +80,10 @@ in {
               "7" = "7";
               "8" = "8";
               "9" = "9";
-              "0" = "0";
+              "10" = "0";
+            };
+            persistent-workspaces = {
+              "*" = 10;
             };
           };
         };

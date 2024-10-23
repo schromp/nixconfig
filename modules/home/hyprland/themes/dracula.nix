@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.home.general.theme;
@@ -20,5 +21,9 @@ in {
       "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
       "col.inactive_border" = "rgba(44475aaa)";
     };
+
+    exec-once = [
+      "${lib.getExe pkgs.swww} init & ${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
+    ];
   };
 }

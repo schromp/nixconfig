@@ -1,4 +1,8 @@
-{ config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.modules.home.general.theme;
   colors = config.modules.home.general.theme.colorscheme.colors;
 in {

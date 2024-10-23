@@ -17,7 +17,6 @@ in {
       package = pkgs.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       });
-      systemd.enable = true;
       style =
         if config.modules.home.general.theme.name == "terminal"
         then terminal-style

@@ -57,6 +57,7 @@ in {
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
+      "[workspace special:yazi silent; float] kitty -e yazi"
     ];
 
     windowrulev2 = [
@@ -172,6 +173,8 @@ in {
           else ""
         )
         "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpicker} -a"
+
+        "$mod, Y,togglespecialworkspace, yazi"
 
         "$mod A, A, exec, systemctl --user restart ags"
 

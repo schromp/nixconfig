@@ -42,21 +42,21 @@
         };
         hyprland = {
           enable = true;
-          sens = "-0.3";
-          accel = "flat";
           xdgOptions = true;
           workspace_animations = false;
 
           hyprlock.enable = true;
+          hyprpanel.enable = true;
         };
+        kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
         prismLauncher.enable = true;
         rio.enable = true;
+        ssh.enable = true;
         themer.enable = true;
         tmux.enable = true;
         udiskie.enable = true;
-        waybar.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
         zsh.enable = true;

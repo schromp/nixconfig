@@ -44,6 +44,7 @@ in {
         then ''"walker gapplication-service"''
         else ""
       )
+      "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"

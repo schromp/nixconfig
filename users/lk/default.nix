@@ -33,10 +33,11 @@
         keymap = "us-umlaute";
         theme = {
           name = "terminal";
+          font = "Cascadia Code";
           colorscheme.name = "gruvbox";
         };
         desktop = {
-          defaultTerminal = "rio";
+          defaultTerminal = "kitty";
           defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";

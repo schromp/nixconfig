@@ -25,6 +25,7 @@
 
     modules.home = {
       general = {
+        keymap = "us-umlaute";
         desktop = {
           defaultTerminal = "rio";
           defaultBrowser = "firefox";

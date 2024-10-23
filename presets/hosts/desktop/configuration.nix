@@ -76,7 +76,7 @@ in {
 
   modules.system = {
     general = {
-      keymap = "us-umlaute";
+      configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
       greetd.enable = true;

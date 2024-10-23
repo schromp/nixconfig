@@ -2,6 +2,10 @@
   options.modules.system.general = {
     # Here we define global system options
 
+    configPath = lib.mkOption {
+      type = lib.types.str;
+    };
+
     hostname = lib.mkOption {
       type = lib.types.str;
       description = ''
@@ -51,8 +55,5 @@
         });
     };
 
-    keymap = lib.mkOption {
-      type = lib.types.enum ["us-umlaute"];
-    };
   };
 }

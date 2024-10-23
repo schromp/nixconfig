@@ -11,7 +11,7 @@
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
   monitors = sysConfig.monitors;
   keymap_language =
-    if (sysConfig.keymap == "us-umlaute")
+    if (config.modules.home.general.keymap == "us-umlaute")
     then ''
       us-german-umlaut
     ''

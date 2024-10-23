@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.modules.home.programs.neovim;
+  theme = config.modules.home.general.theme;
 in {
   options.modules.home.programs.neovim.enable = lib.mkEnableOption "Enable neovim";
 
@@ -68,6 +69,10 @@ in {
 
       extraLuaPackages = luaPkgs: with luaPkgs; [cjson];
     };
+
+    xdg.configFile."nvim/config.json".text = ''
+      {"theme": "${theme.colorscheme.nvimName}", "transparency":"${if theme.transparent then "true" else "false"}"}
+    '';
 
     programs.fzf.enable = true;
   };

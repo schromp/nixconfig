@@ -16,8 +16,8 @@
     check = x: isString x && !(hasPrefix "#" x);
   };
   getPaletteFromScheme = slug:
-    if builtins.pathExists ./palettes/${slug}.nix
-    then (import ./palettes/${slug}.nix).palette
+    if builtins.pathExists ./colorschemes/${slug}.nix
+    then (import ./colorschemes/${slug}.nix).palette
     else throw "The following colorscheme was imported but not found: ${slug}";
 in {
   options.modules.home.general.theme = {
@@ -27,8 +27,12 @@ in {
     font = lib.mkOption {
       type = lib.types.str;
     };
+    transparent = lib.mkEnableOption "Enable transparency";
     colorscheme = {
       name = lib.mkOption {
+        type = lib.types.str;
+      };
+      nvimName = lib.mkOption {
         type = lib.types.str;
       };
       colors = lib.mkOption {

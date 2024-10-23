@@ -27,14 +27,17 @@
       };
     };
 
-
     modules.home = {
       general = {
         keymap = "us-umlaute";
         theme = {
           name = "terminal";
           font = "Cascadia Code";
-          colorscheme.name = "gruvbox";
+          transparent = false;
+          colorscheme = {
+            name = "gruvbox";
+            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+          };
         };
         desktop = {
           defaultTerminal = "kitty";

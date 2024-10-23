@@ -13,6 +13,7 @@ in {
     inputs.hyprland.homeManagerModules.default
     ./config.nix
     ./hyprlock.nix
+    ./hyprpanel.nix
   ];
 
   options.modules.home.programs.hyprland = {

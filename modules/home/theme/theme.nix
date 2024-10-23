@@ -24,6 +24,9 @@ in {
     name = lib.mkOption {
       type = lib.types.str;
     };
+    font = lib.mkOption {
+      type = lib.types.str;
+    };
     colorscheme = {
       name = lib.mkOption {
         type = lib.types.str;

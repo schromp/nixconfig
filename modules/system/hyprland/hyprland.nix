@@ -72,5 +72,10 @@ in {
     environment.systemPackages = with pkgs; [xdg-utils];
 
     security.pam.services.hyprlock = lib.mkIf cfg.hyprlock {};
+
+    # This fixes: https://github.com/NixOS/nixpkgs/issues/189851
+    # systemd.user.extraConfig = ''
+    #   DefaultEnvironment="PATH=/run/current-system/sw/bin"
+    # '';
   };
 }

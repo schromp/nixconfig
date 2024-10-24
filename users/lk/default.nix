@@ -26,6 +26,7 @@
         enable = true;
         nix-direnv.enable = true;
       };
+      firefox.enable = true;
     };
 
     modules.home = {
@@ -70,6 +71,11 @@
         themer.enable = true;
         tmux.enable = true;
         udiskie.enable = true;
+        xdg = {
+          enable = true;
+          createDirectories = true;
+          setAssociations = true;
+        };
         yazi.enable = true;
         zoxide.enable = true;
         zsh.enable = true;

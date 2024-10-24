@@ -9,6 +9,7 @@
   appRunner = config.modules.home.general.desktop.defaultAppRunner;
   browser = config.modules.home.general.desktop.defaultBrowser;
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
+  terminal = config.modules.home.general.desktop.defaultTerminal;
   monitors = sysConfig.monitors;
   keymap_language =
     if (config.modules.home.general.keymap == "us-umlaute")
@@ -20,6 +21,11 @@
     '';
   widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 in {
+
+  imports = [
+    ./themes/terminal.nix
+  ];
+
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -38,12 +44,12 @@ in {
     # ];
 
     exec-once = [
-      "${lib.getExe pkgs.swww} init & ${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
       (
         if appRunner == "walker"
         then ''"walker gapplication-service"''
         else ""
       )
+      "${lib.getExe pkgs.swww} init"
       "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
@@ -52,6 +58,7 @@ in {
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
+      "[workspace special:yazi silent; float] kitty -e yazi"
     ];
 
     windowrulev2 = [
@@ -91,28 +98,19 @@ in {
       workspace_swipe_distance = 200;
     };
 
-    animations = {
-      enabled = true;
-      animation = [
-        (
-          if cfg.workspace_animations
-          then "workspaces,1,3,default,slidevert"
-          else "workspaces,0"
-        )
-      ];
-    };
+    # animations = {
+    #   enabled = true;
+    #   animation = [
+    #     (
+    #       if cfg.workspace_animations
+    #       then "workspaces,1,3,default,slidevert"
+    #       else "workspaces,0"
+    #     )
+    #   ];
+    # };
 
     general = {
-      gaps_in = 8;
-      gaps_out = 8;
-      border_size = 2;
-      layout = "dwindle";
-
       allow_tearing = false;
-
-      # WARN: TEMP
-      "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
-      "col.inactive_border" = "rgba(44475aaa)";
     };
 
     dwindle = {
@@ -121,7 +119,6 @@ in {
     };
 
     misc = {
-      force_default_wallpaper = 0;
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       animate_manual_resizes = true;
@@ -133,12 +130,6 @@ in {
       "$mod, mouse:273, resizewindow"
     ];
 
-    # WARN: This is temporary until themer-rs is functional
-    decoration = {
-      rounding = 10;
-      "col.shadow" = "rgba(1E202966)";
-    };
-
     bind =
       [
         "$mod, Q, killactive"
@@ -149,7 +140,7 @@ in {
         "$mod, O, pseudo"
         (
           if cfg.hyprlock.enable
-          then "$mod CONTROL, L, exec, hyprlock"
+          then "$mod CONTROL SHIFT, L, exec, hyprlock"
           else ""
         )
 
@@ -163,10 +154,15 @@ in {
         "$mod SHIFT, k, swapwindow, u"
         "$mod SHIFT, l, swapwindow, r"
 
+        "$mod CONTROL, h, resizeactive, -75 0"
+        "$mod CONTROL, j, resizeactive, 0 75"
+        "$mod CONTROL, k, resizeactive, 0 -75"
+        "$mod CONTROL, l, resizeactive, 75 0"
+
         "$mod CONTROL, 1, movecurrentworkspacetomonitor, 0"
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
 
-        "$mod, 36, exec, rio"
+        "$mod, 36, exec, ${terminal}"
         "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
         (
           if screenshotTool == "grimblast"
@@ -178,6 +174,8 @@ in {
           else ""
         )
         "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpicker} -a"
+
+        "$mod, Y,togglespecialworkspace, yazi"
 
         "$mod A, A, exec, systemctl --user restart ags"
 

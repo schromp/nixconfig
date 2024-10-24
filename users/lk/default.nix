@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   users.users.lk = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
@@ -13,6 +17,7 @@
 
     home.packages = [
       pkgs.tldr
+      pkgs.spotify-player
     ];
 
     programs = {
@@ -26,8 +31,17 @@
     modules.home = {
       general = {
         keymap = "us-umlaute";
+        theme = {
+          name = "terminal";
+          font = "Cascadia Code";
+          transparent = false;
+          colorscheme = {
+            name = "gruvbox";
+            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+          };
+        };
         desktop = {
-          defaultTerminal = "rio";
+          defaultTerminal = "kitty";
           defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
@@ -46,7 +60,6 @@
           workspace_animations = false;
 
           hyprlock.enable = true;
-          hyprpanel.enable = true;
         };
         kitty.enable = true;
         libreoffice.enable = true;

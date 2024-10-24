@@ -13,7 +13,6 @@ in {
     inputs.hyprland.homeManagerModules.default
     ./config.nix
     ./hyprlock.nix
-    ./hyprpanel.nix
   ];
 
   options.modules.home.programs.hyprland = {
@@ -45,6 +44,7 @@ in {
       swayidle
       libnotify
       xwaylandvideobridge
+      swww
 
       slurp
       grim

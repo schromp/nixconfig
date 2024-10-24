@@ -55,7 +55,7 @@
 
   home-manager.users.lk = {
     modules.home.programs.hyprland = {
-      sens = "0.1";
+      sens = "-0.2";
       accel = "flat";
     };
   };

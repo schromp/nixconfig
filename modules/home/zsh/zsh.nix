@@ -6,24 +6,13 @@
   ...
 }: let
   cfg = config.modules.home.programs.zsh;
+  colors = config.modules.home.general.theme.colorscheme.colors;
 in {
   options.modules.home.programs.zsh = {
     enable = lib.mkEnableOption "Enable zsh";
   };
 
   config = lib.mkIf cfg.enable {
-    # for zsh autocompletions on systemlevel
-    # environment.pathsToLink = ["/share/zsh"];
-    # environment.systemPackages = with pkgs; [fzf eza killall];
-
-    # programs.zsh = {
-    #  enable = true;
-    #};
-
-    # programs.fzf.keybindings = true;
-
-    # imports = [./starship.nix];
-
     home.packages = with pkgs; [
       fzf
       eza
@@ -82,21 +71,15 @@ in {
           # Set prompt substitution so we can use the vcs_info_message variable
           setopt prompt_subst
 
-          COL_NAME="cba6f7"
-          COL_DIR="f2cdcd"
-          COL_GIT="fab387"
+          COL_NAME="${colors.base09}"
+          COL_DIR="${colors.base0A}"
+          COL_GIT="${colors.base0E}"
 
           NEWLINE=$'\n'
-          source ~/.config/zsh/prompt.sh
-
-          function getColors() {
-            unset COL_NAME COL_DIR COL_GIT
-            source ~/.config/zsh/prompt.sh
-          }
 
           # add-zsh-hook precmd getColors
           # add-zsh-hook precmd vcs_info
-          precmd_functions+=(vcs_info getColors)
+          precmd_functions+=(vcs_info)
 
           # Style the vcs_info message
           zstyle ':vcs_info:*' enable git
@@ -115,12 +98,6 @@ in {
           ${
             if sysConfig.hostname == "M65L7Q9X32"
             then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
-            else ""
-          }
-
-          ${
-            if config.modules.home.programs.themer.enable
-            then "source ~/.config/zsh/prompt.sh"
             else ""
           }
 

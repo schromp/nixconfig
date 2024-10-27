@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.modules.programs.emacs;
+  cfg = config.modules.home.programs.emacs;
 in {
-  options.modules.programs.emacs = {
+  options.modules.home.programs.emacs = {
     enable = lib.mkEnableOption "Enable emacs";
   };
 

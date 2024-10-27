@@ -55,6 +55,7 @@
         discord = {
           enable = true;
         };
+        emacs.enable = true;
         hyprland = {
           enable = true;
           xdgOptions = true;

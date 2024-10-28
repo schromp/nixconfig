@@ -18,6 +18,7 @@
 (tooltip-mode -1)
 (set-fringe-mode 10)
 (setq visibile-bell t)
+(setq make-backup-files nil)
 
 (menu-bar-mode -1)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -151,5 +152,3 @@
   :config (counsel-projectile-mode))
 
 (use-package magit)
-(use-package evil-magit
-  :after magit)

@@ -52,6 +52,9 @@
     :config
     (evil-leader-mode)
     (evil-mode 1)
+
+    (evil-set-undo-system #'undo-redo)
+
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
     (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
@@ -138,29 +141,8 @@
   :init (load-theme 'doom-gruvbox t))
 #+end_src
 
-** General for leader keys
+** Hydra
 #+begin_src emacs-lisp
-;(use-package general
-;  :config
-;  ;;(general-evil-setup t)
-;
-;  (general-create-definer rune/leader-keys
-;    :keymaps '(normal insert visual emacs)
-;    :prefix "SPC"
-;    :global-prefix "C-SPC")
-;
-;  (rune/leader-keys
-;    "t" '(:ignore t :which-key "toggles")
-;    ;; "ts" '(hydra-text-scale/body :which-key "scale text")
-;    "tt" '(counsel-load-theme :which-key "choose-theme")
-;    ; Buffer keymaps
-;    "b" '(:ignore b :which-key "buffers")
-;    "bb" '(counsel-ibuffer :which-key "find buffers")
-;    ; File keymaps
-;    "f" '(:ignore f :which-key "files")
-;    "ff" '(counsel-find-file :which-key "find file")))
-;    ; projects
-
 (use-package hydra)
 (defhydra hydra-text-scale (:timeout 4)
     "scale text"
@@ -195,39 +177,46 @@
 
 ** Magit
 #+begin_src emacs-lisp
-    (use-package magit
-      :config
-	(evil-define-key 'normal 'global (kbd "<leader>gg") 'magit))
+  (use-package magit
+    :config
+    (evil-define-key 'normal 'global (kbd "<leader>gg") 'magit))
+
 #+end_src
 
-** LSP
+* LSP
 
 #+begin_src emacs-lisp
-      (use-package lsp-mode
-	:commands (lsp lsp-deferred)
-	:init
-	(setq lsp-keymap-prefix "C-c l")
-	:config
-	(lsp-enable-which-key-integration t)
-	(evil-define-minor-mode-key 'normal lsp-mode (kbd "<leader>l") lsp-command-map))
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "SPC l")
+    :config
+    (evil-define-key 'normal 'global (kbd "<leader>l") lsp-command-map)
+    (lsp-enable-which-key-integration t))
+    ;(evil-define-minor-mode-key 'normal lsp-mode (kbd "<leader>l") lsp-command-map))
 
-      (use-package company
-	:init (company-mode))
+  (use-package company
+    :init (company-mode))
 #+end_src
 
-*** Nix LSP
+** Nix LSP
 
+nidx is the currently best developed LSP for nix files.
+Maybe when the ekala atom modules drop we get something better...
+
+WARN: This uses nil currently. This should be changed
 #+begin_src emacs-lisp
   (use-package nix-mode
     :mode "\\.nix\\'"
     :hook (nix-mode . lsp-deferred))
 #+end_src
 
-*** Rust LSP
+** Rust LSP
 
 #+begin_src emacs-lisp
-      (use-package rust-mode
-	:hook (rust-mode . lsp-deferred)
-	:init
-	(setq rust-mode-treesitter-derive t))
+  (use-package rust-mode
+    :hook (rust-mode . lsp-deferred)
+    :init
+    (setq rust-mode-treesitter-derive t)
+    (setq rust-indent-offset 1))
 #+end_src

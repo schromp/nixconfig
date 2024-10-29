@@ -15,10 +15,12 @@ in {
       ripgrep
       fd
       tree-sitter
+      vimPlugins.nvim-treesitter.withAllGrammars
     ];
 
     programs.emacs = {
       enable = true;
+      extraPackages = epkgs: with epkgs; [ tsc tree-sitter-langs tree-sitter treesit-grammars.with-all-grammars ];
     };
 
     services.emacs = {

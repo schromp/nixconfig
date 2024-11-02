@@ -18,6 +18,8 @@
     home.packages = [
       pkgs.tldr
       pkgs.spotify-player
+      inputs.zen-browser.packages.${pkgs.system}.default
+      pkgs.unzip
     ];
 
     programs = {

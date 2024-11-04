@@ -5,7 +5,7 @@
 }: let
   cfg = config.modules.home.general.theme;
   colors = config.modules.home.general.theme.colorscheme.colors;
-in {
+in lib.mkIf config.modules.home.programs.hyprland.enable { # FIX: this should be refactored to be automatically
   modules.home.programs.waybar.enable = true;
   wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "terminal") {
     decoration = {

@@ -41,6 +41,7 @@ in {
         python311Packages.jedi-language-server
         alejandra
         nodePackages.bash-language-server
+        terraform-ls
 
         gopls
         go

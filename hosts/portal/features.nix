@@ -34,7 +34,10 @@
       wezterm.enable = true;
       tmux.enable = true;
       zoxide.enable = true;
-      yazi.enable = true;
+      yazi = {
+        enable = true;
+        macos = true;
+      };
       bat.enable = true;
       zellij.enable = true;
     };

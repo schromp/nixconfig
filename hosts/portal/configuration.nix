@@ -68,6 +68,7 @@
       php83
       nodejs_18
       # openssh
+      terraform
     ];
   };
 

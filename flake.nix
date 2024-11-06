@@ -86,6 +86,7 @@
       url = "github:mrcjkb/rustaceanvim";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zellij-git.url = "github:a-kenji/zellij-nix";
   };
 
   outputs = {

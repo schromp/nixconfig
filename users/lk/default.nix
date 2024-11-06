@@ -80,6 +80,7 @@
           setAssociations = true;
         };
         yazi.enable = true;
+        zellij.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
       };

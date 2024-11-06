@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -11,9 +12,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [zellij];
+    # Track zellij git package until 0.41.0 is in nixpkgs
+    home.packages = [inputs.zellij-git.packages.${pkgs.system}.default];
 
-    xdg.configFile."zellij/config.kdl".text = builtins.readFile ./config.kdl;
-    xdg.configFile."zellij/layouts/default.kdl".text = builtins.readFile ./layouts/default.kdl;
+    # xdg.configFile."zellij/config.kdl".text = builtins.readFile ./config.kdl;
+    # xdg.configFile."zellij/layouts/default.kdl".text = builtins.readFile ./layouts/default.kdl;
   };
 }

@@ -5,7 +5,19 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  sysConfig = config.modules.system.general;
+in {
+
+  imports = [
+    ../../modules/system/options.nix
+  ];
+
+  modules.system.general = {
+    hostname = "M65L7Q9X32";
+    configPath = "/Users/lennart.koziollek/Repos/nixconfig";
+  };
+
   environment.systemPackages = with pkgs; [vim docker neovide coreutils mkpasswd];
 
   # Auto upgrade nix package and the daemon service.
@@ -22,8 +34,7 @@
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   # Set Git commit hash for darwin-version.
   # system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -42,6 +53,13 @@
 
   # inputs.home-manager.useGlobalPkgs = true;
   # inputs.home-manager.useUserPackages = true;
+
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs sysConfig;
+    };
+  };
+
   home-manager.users."lennart.koziollek" = {
     home.stateVersion = "24.05";
     home.username = "lennart.koziollek";
@@ -68,7 +86,42 @@
       php83
       nodejs_18
       # openssh
+      terraform
     ];
+
+    programs = {
+      ssh.enable = true;
+    };
+
+    imports = [
+      ../../modules/home
+    ];
+
+    modules.home = {
+      general = {
+        keymap = "us-umlaute";
+        theme = {
+          name = "terminal";
+          font = "Cascadia Code";
+          transparent = false;
+          colorscheme = {
+            name = "gruvbox";
+            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+          };
+        };
+      };
+
+      programs = {
+        emacs.enable = false;
+        kitty.enable = true;
+        neovim.enable = true;
+        themer.enable = false;
+        tmux.enable = true;
+        yazi.enable = true;
+        zoxide.enable = true;
+        zsh.enable = true;
+      };
+    };
   };
 
   fonts = {
@@ -106,6 +159,7 @@
       "orbstack"
       "proton-pass"
       "flameshot"
+      "zen-browser"
     ];
     taps = [
       "FelixKratz/formulae"

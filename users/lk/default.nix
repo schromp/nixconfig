@@ -29,6 +29,26 @@
         nix-direnv.enable = true;
       };
       firefox.enable = true;
+      ssh = {
+        enable = true;
+        matchBlocks = {
+          "github.com" = {
+            hostname = "github.com";
+            identityFile = "~/.ssh/github";
+          };
+          "linode" = {
+            hostname = "194.233.162.214";
+            identityFile = "~/.ssh/linode";
+          };
+          "git.uni-due.de" = {
+            identityFile = "~/.ssh/gitlab-uni-due";
+          };
+          "git.ude-syssec.de" = {
+            hostname = "git.ude-syssec.de";
+            identityFile = "~/.ssh/gitlab-syssec";
+          };
+        };
+      };
     };
 
     modules.home = {
@@ -70,7 +90,6 @@
         neovim.enable = true;
         prismLauncher.enable = true;
         rio.enable = true;
-        ssh.enable = true;
         themer.enable = true;
         tmux.enable = true;
         udiskie.enable = true;

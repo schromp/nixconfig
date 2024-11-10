@@ -20,6 +20,8 @@
       pkgs.spotify-player
       inputs.zen-browser.packages.${pkgs.system}.default
       pkgs.unzip
+      pkgs.helix
+      pkgs.lazygit
     ];
 
     programs = {

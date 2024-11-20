@@ -2,4 +2,5 @@
 
 ## TODO:
 - sops
-- wezterm persistant session
+- hyprlock theming (currently a blackscreen)
+- more themes other than terminal

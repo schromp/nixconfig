@@ -22,6 +22,7 @@
       pkgs.unzip
       pkgs.helix
       pkgs.lazygit
+      pkgs.obsidian
     ];
 
     programs = {
@@ -31,6 +32,10 @@
         nix-direnv.enable = true;
       };
       firefox.enable = true;
+      git = {
+        enable = true;
+        lfs.enable = true;
+      };
       ssh = {
         enable = true;
         matchBlocks = {

@@ -95,6 +95,9 @@ in {
       ssh = {
         enable = true;
         addKeysToAgent = "yes";
+        extraConfig = ''
+          UseKeychain yes
+        '';
         matchBlocks = let
           createIndiServers = subnet: servers:
             builtins.listToAttrs (
@@ -225,6 +228,12 @@ in {
             "bitbucket.check24.de" = {
               identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
             };
+            "bitbucket.org" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
+            };
+            "https://git.ude-syssec.de" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/syssec";
+            };
           };
       };
     };
@@ -286,7 +295,7 @@ in {
 
     brews = [
       "salt-lint"
-      "openssh"
+      # "openssh"
       "sketchybar"
     ];
     casks = [
@@ -296,6 +305,7 @@ in {
       "orbstack"
       "proton-pass"
       "flameshot"
+      "obsidian"
     ];
     taps = [
       "FelixKratz/formulae"

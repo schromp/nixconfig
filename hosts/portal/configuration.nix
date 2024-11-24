@@ -8,7 +8,6 @@
 }: let
   sysConfig = config.modules.system.general;
 in {
-
   imports = [
     ../../modules/system/options.nix
   ];
@@ -21,7 +20,9 @@ in {
   environment.systemPackages = with pkgs; [vim docker neovide coreutils mkpasswd];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  services = {
+    nix-daemon.enable = true;
+  };
   # nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
@@ -72,6 +73,7 @@ in {
       tldr
       jira-cli-go
       rio
+      helix
 
       spotify
       spicetify-cli
@@ -90,7 +92,150 @@ in {
     ];
 
     programs = {
-      ssh.enable = true;
+      ssh = {
+        enable = true;
+        addKeysToAgent = "yes";
+        extraConfig = ''
+          UseKeychain yes
+        '';
+        matchBlocks = let
+          createIndiServers = subnet: servers:
+            builtins.listToAttrs (
+              map (server: {
+                name = server.name;
+                value = {
+                  host = server.name;
+                  hostname = "10.111.${builtins.toString subnet}.${builtins.toString server.ip}";
+                  port = 42022;
+                  identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_sk_black";
+                };
+              })
+              servers
+            );
+        in
+          (createIndiServers 127 [
+            {
+              name = "ir-uti1";
+              ip = 101;
+            }
+            {
+              name = "ir-uti2";
+              ip = 102;
+            }
+            {
+              name = "ir-uti3";
+              ip = 103;
+            }
+            {
+              name = "ir-uti4";
+              ip = 104;
+            }
+            {
+              name = "ir-uti5";
+              ip = 105;
+            }
+            {
+              name = "ir-uti6";
+              ip = 106;
+            }
+            {
+              name = "ir-uti-m01";
+              ip = 121;
+            }
+            {
+              name = "ir-pve-t01";
+              ip = 231;
+            }
+            {
+              name = "ir-pve-t02";
+              ip = 232;
+            }
+            {
+              name = "ir-lb-p01";
+              ip = 11;
+            }
+            {
+              name = "ir-lb-p02";
+              ip = 12;
+            }
+            {
+              name = "ir-lb-t01";
+              ip = 201;
+            }
+            {
+              name = "ir-fe-p01";
+              ip = 31;
+            }
+            {
+              name = "ir-fe-p02";
+              ip = 32;
+            }
+            {
+              name = "ir-web-p01";
+              ip = 51;
+            }
+            {
+              name = "ir-web-p02";
+              ip = 52;
+            }
+            {
+              name = "ir-db-t01";
+              ip = 221;
+            }
+            {
+              name = "ir-db-t02";
+              ip = 222;
+            }
+            {
+              name = "ir-dbm-p01";
+              ip = 81;
+            }
+            {
+              name = "ir-dbs-p01";
+              ip = 82;
+            }
+            {
+              name = "ir-web-t01";
+              ip = 211;
+            }
+            {
+              name = "ir-web-t02";
+              ip = 212;
+            }
+          ])
+          // (createIndiServers 128 [
+            {
+              name = "irbo-web-p01";
+              ip = 51;
+            }
+            {
+              name = "irbo-web-p02";
+              ip = 52;
+            }
+            {
+              name = "irbo-dbm-p01";
+              ip = 81;
+            }
+            {
+              name = "irbo-dbs-p01";
+              ip = 82;
+            }
+          ])
+          // {
+            "github.com" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/github";
+            };
+            "bitbucket.check24.de" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
+            };
+            "bitbucket.org" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
+            };
+            "https://git.ude-syssec.de" = {
+              identityFile = "/Users/lennart.koziollek/.ssh/syssec";
+            };
+          };
+      };
     };
 
     imports = [
@@ -120,6 +265,7 @@ in {
         yazi.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
+        zellij.enable = true;
       };
     };
   };
@@ -149,7 +295,7 @@ in {
 
     brews = [
       "salt-lint"
-      "openssh"
+      # "openssh"
       "sketchybar"
     ];
     casks = [
@@ -159,7 +305,7 @@ in {
       "orbstack"
       "proton-pass"
       "flameshot"
-      "zen-browser"
+      "obsidian"
     ];
     taps = [
       "FelixKratz/formulae"

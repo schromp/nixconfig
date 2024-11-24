@@ -1,31 +1,33 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
   cfg = config.modules.home.general.theme;
-in {
-  wayland.windowManager.hyprland.settings = lib.mkIf (cfg == "dracula") {
-    decoration = {
-      rounding = 10;
-      "col.shadow" = "rgba(1E202966)";
+  colors = config.modules.home.general.theme.colorscheme.colors;
+in
+  lib.mkIf config.modules.home.programs.hyprland.enable {
+    wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "dracula") {
+      decoration = {
+        rounding = 10;
+        "col.shadow" = "rgb(${colors.base03})";
+      };
+
+      general = {
+        gaps_in = 8;
+        gaps_out = 8;
+        border_size = 2;
+        layout = "dwindle";
+
+        "col.active_border" = "rgb(${colors.base0D})";
+        "col.inactive_border" = "rgb(${colors.base03})";
+        # "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
+        # "col.inactive_border" = "rgba(44475aaa)";
+      };
+
+      exec-once = [
+        "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
+      ];
     };
-
-    general = {
-      gaps_in = 8;
-      gaps_out = 8;
-      border_size = 2;
-      layout = "dwindle";
-
-      "col.active_border" = "rgb(44475a) rgb(bd93f9) 90deg";
-      "col.inactive_border" = "rgba(44475aaa)";
-    };
-
-    exec-once = [
-      "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
-      "${lib.getExe inputs.hyprpanel.packages.${pkgs.system}.default}"
-    ];
-  };
-}
+  }

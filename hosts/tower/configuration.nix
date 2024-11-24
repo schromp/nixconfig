@@ -42,6 +42,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    renoise
+    supercollider
   ];
 
   # Bootloader stuff

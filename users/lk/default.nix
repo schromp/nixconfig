@@ -22,6 +22,7 @@
       pkgs.unzip
       pkgs.helix
       pkgs.lazygit
+      pkgs.unrar
       pkgs.obsidian
     ];
 
@@ -62,12 +63,12 @@
       general = {
         keymap = "us-umlaute";
         theme = {
-          name = "terminal";
+          name = "dracula";
           font = "Cascadia Code";
-          transparent = false;
+          transparent = true;
           colorscheme = {
-            name = "gruvbox";
-            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+            name = "dracula";
+            nvimName = "dracula"; # WARN: This is a temporary fix
           };
         };
         desktop = {

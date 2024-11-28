@@ -24,6 +24,7 @@ in {
 
   imports = [
     ./themes/terminal.nix
+    ./themes/dracula.nix
   ];
 
   wayland.windowManager.hyprland.settings = {

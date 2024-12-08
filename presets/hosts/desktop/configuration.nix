@@ -13,8 +13,8 @@ in {
   # SHELL:
   users.users.root.initialPassword = "1234";
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [zsh];
+  users.defaultUserShell = pkgs.nushell;
+  environment.shells = with pkgs; [nushell zsh];
 
   # HOMEMANAGER
   home-manager = {

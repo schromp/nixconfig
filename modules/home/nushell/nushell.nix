@@ -14,5 +14,7 @@ in {
     home.packages = with pkgs; [
       nushell
     ];
+
+    xdg.configFile."nushell/config.nu".text = builtins.readFile ./config.nu;
   };
 }

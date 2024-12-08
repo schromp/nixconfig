@@ -24,6 +24,7 @@
       pkgs.lazygit
       pkgs.unrar
       pkgs.obsidian
+      pkgs.kicad
     ];
 
     programs = {

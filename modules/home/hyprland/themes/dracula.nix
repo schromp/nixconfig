@@ -11,7 +11,10 @@ in
     wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "dracula") {
       decoration = {
         rounding = 10;
-        "col.shadow" = "rgb(${colors.base03})";
+        shadow = {
+          enabled = true;
+          color = "rgb(${colors.base03})";
+        };
       };
 
       general = {
@@ -28,6 +31,7 @@ in
 
       exec-once = [
         "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
+        "${lib.getExe pkgs.waybar}"
       ];
     };
   }

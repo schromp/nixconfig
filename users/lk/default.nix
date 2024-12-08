@@ -6,7 +6,7 @@
   users.users.lk = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 
@@ -97,6 +97,7 @@
         kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
+        nushell.enable = true;
         prismLauncher.enable = true;
         rio.enable = true;
         themer.enable = true;
@@ -110,7 +111,7 @@
         yazi.enable = true;
         zellij.enable = true;
         zoxide.enable = true;
-        zsh.enable = true;
+        zsh.enable = false;
       };
     };
 

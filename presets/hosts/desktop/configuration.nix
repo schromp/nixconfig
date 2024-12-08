@@ -13,8 +13,8 @@ in {
   # SHELL:
   users.users.root.initialPassword = "1234";
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [zsh];
+  users.defaultUserShell = pkgs.nushell;
+  environment.shells = with pkgs; [nushell zsh];
 
   # HOMEMANAGER
   home-manager = {
@@ -154,14 +154,20 @@ in {
     blueman.enable = true;
     pipewire = {
       enable = true;
-      # audio.enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      wireplumber.enable = true;
+
+      alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
+      wireplumber = {
+        enable = true;
+        configPackages = [
+          (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/51-mitigate-annoying-profile-switch.conf" ''
+            monitor.bluez.properties = {
+              bluez5.roles = [ a2dp_sink a2dp_source ]
+            }
+          '')
+        ];
+      };
     };
   };
 
@@ -176,19 +182,11 @@ in {
   # FONTS
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "JetBrainsMono"
-          "Iosevka"
-          "FiraCode"
-          "Hermit"
-          "ProggyClean"
-          # "Cascadia Code"
-        ];
-      })
-      hack-font
-      # CaskaydiaCove
-      cascadia-code
+      nerd-fonts.hurmit
+      nerd-fonts.proggy-clean-tt
+      nerd-fonts.fira-code
+      nerd-fonts.iosevka
+      nerd-fonts.caskaydia-cove
     ];
 
     enableDefaultPackages = true;

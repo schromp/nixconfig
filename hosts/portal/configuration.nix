@@ -247,11 +247,11 @@ in {
         keymap = "us-umlaute";
         theme = {
           name = "terminal";
-          font = "Cascadia Code";
+          font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "gruvbox";
-            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+            name = "dracula";
+            nvimName = "dracula"; # WARN: This is a temporary fix
           };
         };
       };
@@ -287,6 +287,7 @@ in {
       })
       cascadia-code
       open-dyslexic
+      nerdfonts
     ];
   };
 

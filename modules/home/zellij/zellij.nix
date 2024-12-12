@@ -13,7 +13,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # Track zellij git package until 0.41.0 is in nixpkgs
     home.packages =
       if pkgs.system == "aarch64-darwin"
       then [inputs.nixpkgs.legacyPackages."aarch64-darwin".zellij]

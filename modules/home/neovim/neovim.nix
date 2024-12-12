@@ -56,6 +56,7 @@ in {
       prettierd
       emmet-ls
       phpactor
+      jdt-language-server
     ];
 
     programs.neovim = {

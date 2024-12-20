@@ -62,7 +62,7 @@ in {
   };
 
   home-manager.users."lennart.koziollek" = {
-    home.stateVersion = "24.05";
+    home.stateVersion = "24.11";
     home.username = "lennart.koziollek";
     home.homeDirectory = "/Users/lennart.koziollek";
 
@@ -90,6 +90,10 @@ in {
       # openssh
       terraform
     ];
+
+    home.sessionVariables = {
+      XDG_CONFIG_HOME = "/Users/lennart.koziollek/.config";
+    };
 
     programs = {
       ssh = {
@@ -260,12 +264,14 @@ in {
         emacs.enable = false;
         kitty.enable = true;
         neovim.enable = true;
+        nushell.enable = true;
         themer.enable = false;
         tmux.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
         zellij.enable = true;
+        wezterm.enable = true;
       };
     };
   };

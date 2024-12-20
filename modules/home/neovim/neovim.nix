@@ -57,6 +57,7 @@ in {
       emmet-ls
       phpactor
       jdt-language-server
+      terraform-ls
     ];
 
     programs.neovim = {

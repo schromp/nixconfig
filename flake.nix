@@ -86,6 +86,10 @@
       url = "github:mrcjkb/rustaceanvim";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = {

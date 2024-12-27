@@ -101,6 +101,7 @@ in {
         addKeysToAgent = "yes";
         extraConfig = ''
           UseKeychain yes
+          SetEnv TERM=xterm-256color
         '';
         matchBlocks = let
           createIndiServers = subnet: servers:
@@ -254,14 +255,15 @@ in {
           font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "dracula";
-            nvimName = "dracula"; # WARN: This is a temporary fix
+            name = "gruvbox";
+            nvimName = "gruvbox"; # WARN: This is a temporary fix
           };
         };
       };
 
       programs = {
         emacs.enable = false;
+        ghostty.enable = false;
         kitty.enable = true;
         neovim.enable = true;
         nushell.enable = true;
@@ -313,6 +315,7 @@ in {
       "proton-pass"
       "flameshot"
       "obsidian"
+      "ghostty"
     ];
     taps = [
       "FelixKratz/formulae"

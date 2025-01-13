@@ -1,6 +1,6 @@
 scheme: "gruvbox"
 author: ""
-nvimName: "gruvbox-material"
+nvimName: "gruvbox"
 base00: "282828" # ----
 base01: "3c3836" # ---
 base02: "504945" # --

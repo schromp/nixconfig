@@ -62,7 +62,7 @@ in {
   };
 
   home-manager.users."lennart.koziollek" = {
-    home.stateVersion = "24.05";
+    home.stateVersion = "24.11";
     home.username = "lennart.koziollek";
     home.homeDirectory = "/Users/lennart.koziollek";
 
@@ -91,12 +91,17 @@ in {
       terraform
     ];
 
+    home.sessionVariables = {
+      XDG_CONFIG_HOME = "/Users/lennart.koziollek/.config";
+    };
+
     programs = {
       ssh = {
         enable = true;
         addKeysToAgent = "yes";
         extraConfig = ''
           UseKeychain yes
+          SetEnv TERM=xterm-256color
         '';
         matchBlocks = let
           createIndiServers = subnet: servers:
@@ -137,6 +142,10 @@ in {
             {
               name = "ir-uti6";
               ip = 106;
+            }
+            {
+              name = "ir-uti7";
+              ip = 107;
             }
             {
               name = "ir-uti-m01";
@@ -247,25 +256,28 @@ in {
         keymap = "us-umlaute";
         theme = {
           name = "terminal";
-          font = "Cascadia Code";
+          font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "gruvbox";
-            nvimName = "gruvbox-material"; # WARN: This is a temporary fix
+            name = "catppuccin-frappe";
+            nvimName = "catppuccin-frappe"; # WARN: This is a temporary fix
           };
         };
       };
 
       programs = {
         emacs.enable = false;
+        ghostty.enable = false;
         kitty.enable = true;
         neovim.enable = true;
+        nushell.enable = true;
         themer.enable = false;
         tmux.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
         zellij.enable = true;
+        wezterm.enable = true;
       };
     };
   };
@@ -287,6 +299,7 @@ in {
       })
       cascadia-code
       open-dyslexic
+      nerdfonts
     ];
   };
 
@@ -306,6 +319,7 @@ in {
       "proton-pass"
       "flameshot"
       "obsidian"
+      "ghostty"
     ];
     taps = [
       "FelixKratz/formulae"

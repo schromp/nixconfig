@@ -13,8 +13,8 @@ in {
   # SHELL:
   users.users.root.initialPassword = "1234";
 
-  users.defaultUserShell = pkgs.nushell;
-  environment.shells = with pkgs; [nushell zsh];
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [zsh];
 
   # HOMEMANAGER
   home-manager = {
@@ -71,6 +71,7 @@ in {
       enable = true;
       packages = with pkgs; [dconf gcr udisks2];
     };
+    flatpak.enable = true;
   };
   nix.settings.sandbox = true;
 
@@ -84,6 +85,7 @@ in {
         enable = true;
         hyprlock = true;
       };
+      cosmic.enable = false;
     };
   };
 
@@ -114,7 +116,6 @@ in {
     vlc
     gimp
     chromium
-    element-desktop-wayland
     proton-pass
     protonvpn-gui
     protonmail-desktop
@@ -231,9 +232,9 @@ in {
   };
 
   # Testing https://nixos.wiki/wiki/AMD_GPU
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  # ];
 
   virtualisation.docker.enable = true;
 

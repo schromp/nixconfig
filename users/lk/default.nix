@@ -6,7 +6,7 @@
   users.users.lk = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 
@@ -24,7 +24,7 @@
       pkgs.lazygit
       pkgs.unrar
       pkgs.obsidian
-      pkgs.kicad
+      # mpkgs.kicad
     ];
 
     programs = {
@@ -94,6 +94,8 @@
 
           hyprlock.enable = true;
         };
+
+        sway.enable = true;
         kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
@@ -103,6 +105,7 @@
         themer.enable = true;
         tmux.enable = true;
         udiskie.enable = true;
+        wezterm.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;
@@ -111,7 +114,7 @@
         yazi.enable = true;
         zellij.enable = true;
         zoxide.enable = true;
-        zsh.enable = false;
+        zsh.enable = true;
       };
     };
 

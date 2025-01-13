@@ -141,7 +141,6 @@ for i = 1, 8 do
 	})
 end
 
-<<<<<<< HEAD
 config.font = wezterm.font_with_fallback({
 	"Cascadia Code",
 	"Iosevka Nerd Font",

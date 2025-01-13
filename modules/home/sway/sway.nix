@@ -43,7 +43,7 @@ in {
             accel_profile = "flat";
             pointer_accel = "-0.2";
             # xkb_layout = "us-umlaute";
-            natural_scroll = "enabled";
+            natural_scroll = "false";
             tap = "enabled";
           };
         };

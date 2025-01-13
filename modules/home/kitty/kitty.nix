@@ -29,7 +29,7 @@ in {
         enable_audio_bell no
         single_window_margin_width 1
         confirm_os_window_close 0
-        shell nu
+        shell zsh
 
         background #${colors.base00}
         foreground #${colors.base05}

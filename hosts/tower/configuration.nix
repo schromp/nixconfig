@@ -44,6 +44,7 @@
   environment.systemPackages = with pkgs; [
     renoise
     supercollider
+    obs-studio
   ];
 
   # Bootloader stuff

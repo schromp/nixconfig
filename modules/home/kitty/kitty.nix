@@ -84,7 +84,6 @@ in {
         # Exit the manage window mode
         # map --mode mw esc pop_keyboard_mode
 
-
         background #${colors.base00}
         foreground #${colors.base05}
         selection_background #${colors.base05}

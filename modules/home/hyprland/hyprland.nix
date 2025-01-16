@@ -10,7 +10,7 @@
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
 in {
   imports = [
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     ./config.nix
     ./hyprlock.nix
   ];
@@ -33,6 +33,8 @@ in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = pkgs.hyprland;
+      # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
       # systemd = true;
     };

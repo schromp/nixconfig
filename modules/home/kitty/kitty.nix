@@ -32,47 +32,47 @@ in {
         single_window_margin_width 1
         confirm_os_window_close 0
         shell zsh
-        tab_bar_min_tabs 1
+        tab_bar_min_tabs 2
 
 
         # Keybindings
 
-        map ctrl+h neighboring_window left
-        map ctrl+j neighboring_window down
-        map ctrl+k neighboring_window up
-        map ctrl+l neighboring_window right
-
-        map --new-mode mw ctrl+a --on-action end
-
-        map --mode mw n combine : new_window : pop_keyboard_mode
-        map --mode mw t combine : new_tab : pop_keyboard_mode
-        map --mode mw r combine : set_tab_title " " : pop_keyboard_mode
-        map --mode mw x close_window
-        
-        map --mode mw o next_layout
-
-        map --mode mw 1 combine : goto_tab 1 : pop_keyboard_mode
-        map --mode mw 2 combine : goto_tab 2 : pop_keyboard_mode
-        map --mode mw 3 combine : goto_tab 3 : pop_keyboard_mode
-        map --mode mw 4 combine : goto_tab 4 : pop_keyboard_mode
-        map --mode mw 5 combine : goto_tab 5 : pop_keyboard_mode
-        map --mode mw 6 combine : goto_tab 6 : pop_keyboard_mode
-        map --mode mw 7 combine : goto_tab 7 : pop_keyboard_mode
-        map --mode mw 8 combine : goto_tab 8 : pop_keyboard_mode
-        map --mode mw 9 combine : goto_tab 9 : pop_keyboard_mode
-        map --mode mw 0 combine : goto_tab 10 : pop_keyboard_mode
-
-        # Move the active window in the indicated direction
-        map --mode mw h move_window left
-        map --mode mw j move_window down
-        map --mode mw k move_window up
-        map --mode mw l move_window right
-
-        # Resize the active window
-        map --mode mw shift+h resize_window narrower
-        map --mode mw shift+l resize_window wider
-        map --mode mw shift+k resize_window taller
-        map --mode mw shift+j resize_window shorter
+        # map ctrl+h neighboring_window left
+        # map ctrl+j neighboring_window down
+        # map ctrl+k neighboring_window up
+        # map ctrl+l neighboring_window right
+        #
+        # map --new-mode mw ctrl+a --on-action end
+        #
+        # map --mode mw n combine : new_window : pop_keyboard_mode
+        # map --mode mw t combine : new_tab : pop_keyboard_mode
+        # map --mode mw r combine : set_tab_title " " : pop_keyboard_mode
+        # map --mode mw x close_window
+        #
+        # map --mode mw o next_layout
+        #
+        # map --mode mw 1 combine : goto_tab 1 : pop_keyboard_mode
+        # map --mode mw 2 combine : goto_tab 2 : pop_keyboard_mode
+        # map --mode mw 3 combine : goto_tab 3 : pop_keyboard_mode
+        # map --mode mw 4 combine : goto_tab 4 : pop_keyboard_mode
+        # map --mode mw 5 combine : goto_tab 5 : pop_keyboard_mode
+        # map --mode mw 6 combine : goto_tab 6 : pop_keyboard_mode
+        # map --mode mw 7 combine : goto_tab 7 : pop_keyboard_mode
+        # map --mode mw 8 combine : goto_tab 8 : pop_keyboard_mode
+        # map --mode mw 9 combine : goto_tab 9 : pop_keyboard_mode
+        # map --mode mw 0 combine : goto_tab 10 : pop_keyboard_mode
+        #
+        # # Move the active window in the indicated direction
+        # map --mode mw h move_window left
+        # map --mode mw j move_window down
+        # map --mode mw k move_window up
+        # map --mode mw l move_window right
+        #
+        # # Resize the active window
+        # map --mode mw shift+h resize_window narrower
+        # map --mode mw shift+l resize_window wider
+        # map --mode mw shift+k resize_window taller
+        # map --mode mw shift+j resize_window shorter
 
         # Scrolling submode
         # map --mode mw --new-mode scr
@@ -82,7 +82,7 @@ in {
         # map --mode scr n scroll_to_prompt 1
 
         # Exit the manage window mode
-        map --mode mw esc pop_keyboard_mode
+        # map --mode mw esc pop_keyboard_mode
 
 
         background #${colors.base00}

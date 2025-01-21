@@ -26,6 +26,11 @@ in {
   };
 
   nixpkgs = {
+    config.permittedInsecurePackages = [
+      "fluffychat-linux-1.23.0"
+      "olm-3.2.16"
+    ];
+
     config = {
       allowUnfree = true;
       allowBroken = false;

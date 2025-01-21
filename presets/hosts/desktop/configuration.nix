@@ -126,6 +126,7 @@ in {
     slack
     pavucontrol
     pa_applet
+    powertop
   ];
 
   # SERVICES

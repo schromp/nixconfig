@@ -32,7 +32,9 @@ in {
         single_window_margin_width 1
         confirm_os_window_close 0
         shell zsh
-        tab_bar_min_tabs 1
+        tab_bar_min_tabs 2
+
+        ${if theme.transparent then "background_opacity 0.8" else ""}
 
 
         # Keybindings
@@ -42,7 +44,7 @@ in {
         map ctrl+k neighboring_window up
         map ctrl+l neighboring_window right
 
-        map --new-mode mw ctrl+a --on-action end
+        map --new-mode mw ctrl+b --on-action end
 
         map --mode mw n combine : new_window : pop_keyboard_mode
         map --mode mw t combine : new_tab : pop_keyboard_mode
@@ -82,8 +84,7 @@ in {
         # map --mode scr n scroll_to_prompt 1
 
         # Exit the manage window mode
-        map --mode mw esc pop_keyboard_mode
-
+        # map --mode mw esc pop_keyboard_mode
 
         background #${colors.base00}
         foreground #${colors.base05}

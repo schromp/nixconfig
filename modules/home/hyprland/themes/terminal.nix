@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.modules.home.general.theme;
-  colors = config.modules.home.general.theme.colorscheme.colors;
+  colors = config.modules.home.general.theme;
 in
   lib.mkIf config.modules.home.programs.hyprland.enable {
     modules.home.programs.waybar.enable = true;

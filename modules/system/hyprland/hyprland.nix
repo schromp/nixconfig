@@ -8,7 +8,7 @@
   cfg = config.modules.system.programs.hyprland;
 in {
   imports = [
-    inputs.hyprland.nixosModules.default
+    # inputs.hyprland.nixosModules.default
   ];
 
   options.modules.system.programs.hyprland = {
@@ -21,6 +21,7 @@ in {
       enable = true;
       xwayland.enable = true;
       # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = pkgs.hyprland;
     };
 
     # TODO: move this

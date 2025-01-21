@@ -144,6 +144,10 @@ in {
               ip = 106;
             }
             {
+              name = "ir-uti7";
+              ip = 107;
+            }
+            {
               name = "ir-uti-m01";
               ip = 121;
             }
@@ -255,8 +259,8 @@ in {
           font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "gruvbox";
-            nvimName = "gruvbox"; # WARN: This is a temporary fix
+            name = "catppuccin-frappe";
+            nvimName = "catppuccin-frappe"; # WARN: This is a temporary fix
           };
         };
       };

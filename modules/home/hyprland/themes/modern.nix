@@ -8,7 +8,7 @@
   colors = config.modules.home.general.theme.colorscheme.colors;
 in
   lib.mkIf config.modules.home.programs.hyprland.enable {
-    wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "this is disabled currently!") {
+    wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "modern") {
       decoration = {
         rounding = 10;
         shadow = {
@@ -30,7 +30,7 @@ in
       };
 
       exec-once = [
-        "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
+        "${lib.getExe pkgs.swww} img /home/lk/Pictures/Wallpaper/gruvbox_castle.png"
         "${lib.getExe pkgs.waybar}"
       ];
     };

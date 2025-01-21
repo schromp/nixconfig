@@ -34,6 +34,8 @@ in {
         shell zsh
         tab_bar_min_tabs 1
 
+        ${if theme.transparent then "background_opacity 0.8" else ""}
+
 
         # Keybindings
 
@@ -42,7 +44,7 @@ in {
         map ctrl+k neighboring_window up
         map ctrl+l neighboring_window right
 
-        map --new-mode mw ctrl+a --on-action end
+        map --new-mode mw ctrl+b --on-action end
 
         map --mode mw n combine : new_window : pop_keyboard_mode
         map --mode mw t combine : new_tab : pop_keyboard_mode

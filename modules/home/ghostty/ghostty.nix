@@ -6,6 +6,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ inputs.ghostty.packages.${pkgs.system}.default];
+    home.packages = [pkgs.ghostty];
   };
 }

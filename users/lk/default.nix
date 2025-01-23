@@ -24,6 +24,7 @@
       pkgs.lazygit
       pkgs.unrar
       pkgs.obsidian
+      pkgs.fluffychat
       # mpkgs.kicad
     ];
 
@@ -64,12 +65,12 @@
       general = {
         keymap = "us-umlaute";
         theme = {
-          name = "dracula";
+          name = "modern";
           font = "Cascadia Code";
           transparent = true;
           colorscheme = {
-            name = "dracula";
-            nvimName = "dracula"; # WARN: This is a temporary fix
+            name = "gruvbox-light";
+            nvimName = "gruvbox"; # WARN: This is a temporary fix
           };
         };
         desktop = {
@@ -94,7 +95,7 @@
 
           hyprlock.enable = true;
         };
-
+        ghostty.enable = true;
         sway.enable = true;
         kitty.enable = true;
         libreoffice.enable = true;

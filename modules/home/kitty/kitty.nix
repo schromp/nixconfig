@@ -35,6 +35,8 @@ in {
         tab_bar_min_tabs 2
         macos_option_as_alt yes
 
+        ${if theme.transparent then "background_opacity 0.8" else ""}
+
         # Keybindings
 
         # map ctrl+h neighboring_window left
@@ -42,7 +44,7 @@ in {
         # map ctrl+k neighboring_window up
         # map ctrl+l neighboring_window right
         #
-        # map --new-mode mw ctrl+a --on-action end
+        # map --new-mode mw ctrl+b --on-action end
         #
         # map --mode mw n combine : new_window : pop_keyboard_mode
         # map --mode mw t combine : new_tab : pop_keyboard_mode
@@ -73,16 +75,16 @@ in {
         # map --mode mw shift+l resize_window wider
         # map --mode mw shift+k resize_window taller
         # map --mode mw shift+j resize_window shorter
-
-        # Scrolling submode
-        # map --mode mw --new-mode scr
-        # map --mode scr j scroll_line_down
-        # map --mode scr k scroll_line_up
-        # map --mode scr p scroll_to_prompt -1
-        # map --mode scr n scroll_to_prompt 1
-
-        # Exit the manage window mode
-        # map --mode mw esc pop_keyboard_mode
+        #
+        # # Scrolling submode
+        # # map --mode mw --new-mode scr
+        # # map --mode scr j scroll_line_down
+        # # map --mode scr k scroll_line_up
+        # # map --mode scr p scroll_to_prompt -1
+        # # map --mode scr n scroll_to_prompt 1
+        #
+        # # Exit the manage window mode
+        # # map --mode mw esc pop_keyboard_mode
 
         background #${colors.base00}
         foreground #${colors.base05}

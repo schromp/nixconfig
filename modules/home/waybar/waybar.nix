@@ -6,6 +6,7 @@
 }: let
   cfg = config.modules.home.programs.waybar;
   terminal-style = import ./terminal.nix {inherit config;};
+  modern-style = import ./modern.nix {inherit config;};
 in {
   options.modules.home.programs.waybar = {
     enable = lib.mkEnableOption "Enable waybar";
@@ -20,6 +21,8 @@ in {
       style =
         if config.modules.home.general.theme.name == "terminal"
         then terminal-style
+        else if config.modules.home.general.theme.name == "modern"
+        then modern-style
         else "";
 
       settings = {

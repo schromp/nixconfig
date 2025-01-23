@@ -33,7 +33,7 @@ in {
         confirm_os_window_close 0
         shell zsh
         tab_bar_min_tabs 2
-
+        macos_option_as_alt yes
 
         # Keybindings
 

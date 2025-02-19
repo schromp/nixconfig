@@ -89,6 +89,7 @@ in {
       nodejs_18
       # openssh
       terraform
+      awscli
     ];
 
     home.sessionVariables = {
@@ -112,7 +113,7 @@ in {
                   host = server.name;
                   hostname = "10.111.${builtins.toString subnet}.${builtins.toString server.ip}";
                   port = 42022;
-                  identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_sk_black";
+                  identityFile = "/Users/lennart.koziollek/.ssh/id_ed_25519_2025";
                 };
               })
               servers
@@ -259,8 +260,8 @@ in {
           font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "catppuccin-frappe";
-            nvimName = "catppuccin-frappe"; # WARN: This is a temporary fix
+            name = "nord";
+            nvimName = "nordic"; # WARN: This is a temporary fix
           };
         };
       };

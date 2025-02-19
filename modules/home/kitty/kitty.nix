@@ -34,6 +34,7 @@ in {
         shell zsh
         tab_bar_min_tabs 2
         macos_option_as_alt yes
+        macos_show_window_title_in window
 
         ${if theme.transparent then "background_opacity 0.8" else ""}
 

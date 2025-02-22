@@ -40,6 +40,7 @@ in {
       python311Packages.jedi-language-server
       alejandra
       nodePackages.bash-language-server
+      pyright
 
       gopls
       go

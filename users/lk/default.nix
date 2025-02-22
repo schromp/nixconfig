@@ -69,8 +69,8 @@
           font = "Cascadia Code";
           transparent = true;
           colorscheme = {
-            name = "gruvbox-light";
-            nvimName = "gruvbox"; # WARN: This is a temporary fix
+            name = "dracula";
+            nvimName = "dracula"; # WARN: This is a temporary fix
           };
         };
         desktop = {

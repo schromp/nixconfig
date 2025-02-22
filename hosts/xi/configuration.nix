@@ -34,7 +34,7 @@
   services = {
     upower.enable = true;
     tlp = {
-      enable = true;
+      enable = false;
     };
   };
 

@@ -25,6 +25,7 @@
       pkgs.unrar
       pkgs.obsidian
       pkgs.fluffychat
+      pkgs.element-desktop
       # mpkgs.kicad
     ];
 

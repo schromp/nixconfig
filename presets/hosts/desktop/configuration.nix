@@ -85,12 +85,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = true;
+      greetd.enable = false;
       hyprland = {
-        enable = true;
+        enable = false;
         hyprlock = true;
       };
-      cosmic.enable = false;
+      cosmic.enable = true;
     };
   };
 

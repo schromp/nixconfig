@@ -87,12 +87,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = true;
+      greetd.enable = false;
       hyprland = {
-        enable = true;
+        enable = false;
         hyprlock = true;
       };
-      cosmic.enable = false;
+      cosmic.enable = true;
     };
   };
 
@@ -134,6 +134,7 @@ in {
     slack
     pavucontrol
     pa_applet
+    powertop
   ];
 
   # SERVICES
@@ -229,6 +230,7 @@ in {
     };
     graphics = {
       enable = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl

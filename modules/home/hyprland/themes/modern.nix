@@ -33,5 +33,10 @@ in
         "${lib.getExe pkgs.swww} img /home/lk/Pictures/Wallpaper/gruvbox_castle.png"
         "${lib.getExe pkgs.waybar}"
       ];
+
+      animation = [
+        "windows, 1, 5, default, slide"
+        "windowsOut, 1, 5, default, slide"
+      ];
     };
   }

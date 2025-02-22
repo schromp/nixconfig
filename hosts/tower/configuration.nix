@@ -45,6 +45,7 @@
     renoise
     supercollider
     obs-studio
+    r2modman
   ];
 
   # Bootloader stuff

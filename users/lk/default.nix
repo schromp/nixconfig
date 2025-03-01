@@ -26,6 +26,9 @@
       pkgs.obsidian
       pkgs.fluffychat
       pkgs.element-desktop
+      pkgs.signal-desktop
+      pkgs.flavours
+      pkgs.nomacs
       # mpkgs.kicad
     ];
 
@@ -108,6 +111,8 @@
         tmux.enable = true;
         udiskie.enable = true;
         wezterm.enable = true;
+        ironbar.enable = true;
+        walker.enable = false;
         xdg = {
           enable = true;
           createDirectories = true;

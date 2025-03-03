@@ -87,12 +87,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = false;
+      greetd.enable = true;
       hyprland = {
-        enable = false;
+        enable = true;
         hyprlock = true;
       };
-      cosmic.enable = true;
+      cosmic.enable = false;
     };
   };
 
@@ -153,12 +153,12 @@ in {
     printing = {
       enable = true;
     };
-    avahi = {
-      # Scans for printers on the network
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
+    # avahi = {
+    #   # Scans for printers on the network
+    #   enable = true;
+    #   nssmdns4 = true;
+    #   openFirewall = true;
+    # };
     gvfs.enable = true;
     blueman.enable = true;
     pipewire = {

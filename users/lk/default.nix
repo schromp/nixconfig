@@ -25,6 +25,10 @@
       pkgs.unrar
       pkgs.obsidian
       pkgs.fluffychat
+      pkgs.element-desktop
+      pkgs.signal-desktop
+      pkgs.flavours
+      pkgs.nomacs
       # mpkgs.kicad
     ];
 
@@ -69,8 +73,8 @@
           font = "Cascadia Code";
           transparent = true;
           colorscheme = {
-            name = "gruvbox-light";
-            nvimName = "gruvbox"; # WARN: This is a temporary fix
+            name = "dracula";
+            nvimName = "dracula"; # WARN: This is a temporary fix
           };
         };
         desktop = {
@@ -107,6 +111,8 @@
         tmux.enable = true;
         udiskie.enable = true;
         wezterm.enable = true;
+        ironbar.enable = true;
+        walker.enable = false;
         xdg = {
           enable = true;
           createDirectories = true;

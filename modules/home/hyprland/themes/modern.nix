@@ -31,7 +31,13 @@ in
 
       exec-once = [
         "${lib.getExe pkgs.swww} img /home/lk/Pictures/Wallpaper/gruvbox_castle.png"
-        "${lib.getExe pkgs.waybar}"
+        "${lib.getExe pkgs.swaynotificationcenter}"
+        "${lib.getExe pkgs.ironbar}"
+      ];
+
+      animation = [
+        "windows, 1, 5, default, slide"
+        "windowsOut, 1, 5, default, slide"
       ];
     };
   }

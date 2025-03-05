@@ -31,7 +31,8 @@ in
 
       exec-once = [
         "${lib.getExe pkgs.swww} img /home/lk/Documents/Wallpapers/wallpaper.png"
-        "${lib.getExe pkgs.waybar}"
+        "${lib.getExe pkgs.swaynotificationcenter}"
+        "${lib.getExe pkgs.ironbar}"
       ];
     };
   }

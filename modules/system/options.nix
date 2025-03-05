@@ -51,6 +51,10 @@
               type = bool;
               default = false;
             };
+            transform = lib.mkOption {
+              type = str;
+              default = "";
+            };
           };
         });
     };

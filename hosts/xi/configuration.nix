@@ -28,11 +28,13 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [steam];
+
   # start services
   services = {
     upower.enable = true;
     tlp = {
-      enable = true;
+      enable = false;
     };
   };
 

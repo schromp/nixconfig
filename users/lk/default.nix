@@ -100,7 +100,7 @@
         kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
-        nushell.enable = true;
+        nushell.enable = false;
         prismLauncher.enable = true;
         rio.enable = true;
         themer.enable = true;

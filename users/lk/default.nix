@@ -45,6 +45,7 @@
       };
       ssh = {
         enable = true;
+        forwardAgent = true;
         matchBlocks = {
           "github.com" = {
             hostname = "github.com";
@@ -60,6 +61,10 @@
           "git.ude-syssec.de" = {
             hostname = "git.ude-syssec.de";
             identityFile = "~/.ssh/gitlab-syssec";
+          };
+          "cloudy" = {
+            hostname = "157.180.37.119";
+            identityFile = "~/.ssh/hetzner-cloudy";
           };
         };
       };
@@ -93,7 +98,7 @@
         };
         emacs.enable = true;
         hyprland = {
-          enable = true;
+          enable = false;
           xdgOptions = true;
           workspace_animations = false;
 
@@ -109,7 +114,7 @@
         rio.enable = true;
         themer.enable = true;
         tmux.enable = true;
-        udiskie.enable = true;
+        udiskie.enable = false;
         wezterm.enable = true;
         ironbar.enable = true;
         walker.enable = false;

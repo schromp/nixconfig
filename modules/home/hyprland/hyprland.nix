@@ -45,7 +45,7 @@ in {
       swaylock-effects
       swayidle
       libnotify
-      xwaylandvideobridge
+      # xwaylandvideobridge
       swww
 
       slurp

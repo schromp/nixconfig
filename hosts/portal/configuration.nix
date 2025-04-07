@@ -90,6 +90,7 @@ in {
       # openssh
       terraform
       awscli
+      _1password-cli
     ];
 
     home.sessionVariables = {

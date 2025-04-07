@@ -80,8 +80,8 @@
           font = "DepartureMono Nerd Font";
           transparent = true;
           colorscheme = {
-            name = "dracula";
-            nvimName = "dracula"; # WARN: This is a temporary fix
+            name = "rose-pine-moon";
+            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
           };
         };
         desktop = {

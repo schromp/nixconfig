@@ -6,6 +6,7 @@
 }: let
   cfg = config.modules.home.programs.ironbar;
   colors = config.modules.home.general.theme.colorscheme.colors;
+  font = config.modules.home.general.theme.font;
 in {
   options.modules.home.programs.ironbar = {
     enable = lib.mkEnableOption "Enable ironbar";
@@ -118,7 +119,7 @@ in {
       /* -- base styles -- */
 
       * {
-          font-family: Noto Sans Nerd Font, sans-serif;
+          font-family: ${font}, sans-serif;
           font-size: 16px;
           border: none;
           border-radius: 18px;

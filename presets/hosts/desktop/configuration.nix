@@ -198,6 +198,7 @@ in {
       nerd-fonts.fira-code
       nerd-fonts.iosevka
       nerd-fonts.caskaydia-cove
+      nerd-fonts.departure-mono
     ];
 
     enableDefaultPackages = true;

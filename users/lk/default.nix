@@ -24,11 +24,14 @@
       pkgs.lazygit
       pkgs.unrar
       pkgs.obsidian
-      pkgs.fluffychat
+      # pkgs.fluffychat
       pkgs.element-desktop
       pkgs.signal-desktop
       pkgs.flavours
       pkgs.nomacs
+      pkgs.krita
+      pkgs.teamspeak6-client
+      pkgs.iamb
       # mpkgs.kicad
     ];
 
@@ -75,11 +78,11 @@
         keymap = "us-umlaute";
         theme = {
           name = "modern";
-          font = "Cascadia Code";
+          font = "DepartureMono Nerd Font";
           transparent = true;
           colorscheme = {
-            name = "dracula";
-            nvimName = "dracula"; # WARN: This is a temporary fix
+            name = "rose-pine-moon";
+            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
           };
         };
         desktop = {
@@ -98,7 +101,7 @@
         };
         emacs.enable = true;
         hyprland = {
-          enable = false;
+          enable = true;
           xdgOptions = true;
           workspace_animations = false;
 
@@ -109,7 +112,7 @@
         kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
-        nushell.enable = true;
+        nushell.enable = false;
         prismLauncher.enable = true;
         rio.enable = true;
         themer.enable = true;

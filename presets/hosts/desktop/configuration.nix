@@ -38,7 +38,7 @@ in {
   };
 
   nix = {
-    package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
       warn-dirty = false
@@ -87,12 +87,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = false;
+      greetd.enable = true;
       hyprland = {
-        enable = false;
+        enable = true;
         hyprlock = true;
       };
-      cosmic.enable = true;
+      cosmic.enable = false;
     };
   };
 
@@ -127,6 +127,7 @@ in {
     protonvpn-gui
     protonmail-desktop
     bambu-studio
+    orca-slicer
     alsa-utils # TODO: why?
     p7zip
     nix-prefetch-git
@@ -197,6 +198,7 @@ in {
       nerd-fonts.fira-code
       nerd-fonts.iosevka
       nerd-fonts.caskaydia-cove
+      nerd-fonts.departure-mono
     ];
 
     enableDefaultPackages = true;

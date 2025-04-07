@@ -42,11 +42,17 @@ in {
         else ""
       }");
 
-    # # TODO: make this universal
-    # workspace = mkIf (lists.count monitors != 1) [
-    #   "r[1-5],${(builtins.elemAt monitors 0).name}"
-    #   "r[6-9],${(builtins.elemAt monitors 1).name}"
-    # ];
+    workspace = lib.mkIf (lib.lists.count monitors != 1) [
+      "1, monitor:${(builtins.elemAt monitors 0).name }, default:true"
+      "2, monitor:${(builtins.elemAt monitors 0).name }"
+      "3, monitor:${(builtins.elemAt monitors 0).name }"
+      "4, monitor:${(builtins.elemAt monitors 0).name }"
+      "5, monitor:${(builtins.elemAt monitors 0).name }"
+      "6, monitor:${(builtins.elemAt monitors 0).name }"
+      "7, monitor:${(builtins.elemAt monitors 1).name }"
+      "8, monitor:${(builtins.elemAt monitors 1).name }"
+      "9, monitor:${(builtins.elemAt monitors 1).name }, default:true"
+    ];
 
     exec-once = [
       (

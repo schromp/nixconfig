@@ -90,6 +90,11 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    schildichat = {
+      url = "github:SchildiChat/schildichat-desktop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

@@ -24,11 +24,13 @@
       pkgs.lazygit
       pkgs.unrar
       pkgs.obsidian
-      pkgs.fluffychat
+      # pkgs.fluffychat
       pkgs.element-desktop
       pkgs.signal-desktop
       pkgs.flavours
       pkgs.nomacs
+      pkgs.krita
+      pkgs.teamspeak6-client
       # mpkgs.kicad
     ];
 
@@ -98,7 +100,7 @@
         };
         emacs.enable = true;
         hyprland = {
-          enable = false;
+          enable = true;
           xdgOptions = true;
           workspace_animations = false;
 

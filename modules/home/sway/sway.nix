@@ -64,7 +64,6 @@ in {
       swaylock-effects
       swayidle
       libnotify
-      xwaylandvideobridge
 
       slurp
       grim

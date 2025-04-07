@@ -21,6 +21,9 @@ in {
       displayManager.cosmic-greeter.enable = true;
     };
     environment.systemPackages = [pkgs.wl-clipboard];
+    environment.sessionVariables = {
+      XCURSOR_SIZE = "16";
+    };
 
     nix.settings = {
       substituters = ["https://cosmic.cachix.org/"];

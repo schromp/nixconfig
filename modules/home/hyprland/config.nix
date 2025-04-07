@@ -21,7 +21,6 @@
     '';
   widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 in {
-
   imports = [
     ./themes/terminal.nix
     ./themes/dracula.nix
@@ -34,10 +33,14 @@ in {
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
     monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
-      if monitor.vrr
-      then "vrr,1"
-      else ""
-    }");
+        if monitor.vrr
+        then "vrr,1,"
+        else ""
+      }${
+        if monitor.transform != ""
+        then "transform,${monitor.transform},"
+        else ""
+      }");
 
     # # TODO: make this universal
     # workspace = mkIf (lists.count monitors != 1) [

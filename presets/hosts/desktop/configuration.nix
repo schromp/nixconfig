@@ -153,12 +153,12 @@ in {
     printing = {
       enable = true;
     };
-    avahi = {
-      # Scans for printers on the network
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
+    # avahi = {
+    #   # Scans for printers on the network
+    #   enable = true;
+    #   nssmdns4 = true;
+    #   openFirewall = true;
+    # };
     gvfs.enable = true;
     blueman.enable = true;
     pipewire = {
@@ -182,6 +182,7 @@ in {
 
   security.polkit.enable = true;
   security.rtkit.enable = true;
+  security.pam.enableSSHAgentAuth = true;
 
   # TIMEZONE
   time.timeZone = "Europe/Berlin";

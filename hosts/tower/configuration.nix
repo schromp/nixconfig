@@ -27,6 +27,7 @@
           refreshRate = "60";
           scale = "1";
           position = "0x1440";
+          transform = "2";
           vrr = false;
         }
       ];

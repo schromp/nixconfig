@@ -247,7 +247,7 @@ keybinds clear-defaults=true {
   // Choose the theme that is specified in the themes section.
   // Default: default
   //
-  theme "${config.modules.home.general.theme.colorscheme.name}"
+  theme "${config.modules.home.general.theme.colorscheme.zellijName}"
 
   // Choose the base input mode of zellij.
   // Default: normal
@@ -413,4 +413,6 @@ keybinds clear-defaults=true {
   // Default: true (if the host terminal supports it)
   //
   // support_kitty_keyboard_protocol false
+
+  show_startup_tips false
 ''

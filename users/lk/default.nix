@@ -31,6 +31,7 @@
       pkgs.nomacs
       pkgs.krita
       pkgs.teamspeak6-client
+      pkgs.iamb
       # mpkgs.kicad
     ];
 

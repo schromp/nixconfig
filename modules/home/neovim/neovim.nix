@@ -23,7 +23,7 @@ in {
       clang
       cargo
       rustc
-      inputs.rustacean.packages.${pkgs.system}.codelldb
+      # inputs.rustacean.packages.${pkgs.system}.codelldb
       # gdb # Not supported on darwin
 
       sassc

@@ -1,5 +1,6 @@
-theme = GruvboxDark
+theme = GruvboxLight
 unfocused-split-opacity = 0.75
+macos-option-as-alt = true
 
 gtk-tabs-location = left
 
@@ -28,4 +29,4 @@ keybind = ctrl+a>0=goto_tab:0
 keybind = ctrl+a>j=jump_to_prompt:1
 keybind = ctrl+a>k=jump_to_prompt:-1
 
-keybind = ctrl+a>q=toggle_quick_terminal
+# keybind = ctrl+a>q=toggle_quick_terminal

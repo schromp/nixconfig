@@ -35,6 +35,10 @@ in {
       nvimName = lib.mkOption {
         type = lib.types.str;
       };
+      zellijName = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
       colors = lib.mkOption {
         type = attrsOf (
           coercedTo str (removePrefix "#") hexColorType

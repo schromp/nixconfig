@@ -77,7 +77,7 @@
         keymap = "us-umlaute";
         theme = {
           name = "modern";
-          font = "Cascadia Code";
+          font = "DepartureMono Nerd Font";
           transparent = true;
           colorscheme = {
             name = "dracula";

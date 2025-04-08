@@ -26,6 +26,10 @@ in {
         format = "%H:%M"
 
         [[start]]
+        type = "upower"
+        format = "{percentage}%"
+
+        [[start]]
         type = "tray"
         direction = "horizontal"
 
@@ -35,9 +39,9 @@ in {
         all_monitors = false
         hidden = ["special:yazi"]
 
-        # [center.name_map]
-        # 1 = ""
-        # 2 = "icon:firefox"
+        [center.name_map]
+        1 = ""
+        2 = ""
         # Games = "icon:steam"
         # Code = ""
         # 9 = "󰙯"

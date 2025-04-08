@@ -83,6 +83,7 @@
           colorscheme = {
             name = "rose-pine-moon";
             nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
+            zellijName = "tokyo-night";
           };
         };
         desktop = {

@@ -81,7 +81,7 @@
         };
         wezterm.enable = true;
         eww.enable = false;
-        waybar.enable = true;
+        waybar.enable = false;
         swww.enable = true;
         libreoffice.enable = true;
         discord = {

@@ -26,10 +26,6 @@ in {
         format = "%H:%M"
 
         [[start]]
-        type = "upower"
-        format = "{percentage}%"
-
-        [[start]]
         type = "tray"
         direction = "horizontal"
 
@@ -46,6 +42,9 @@ in {
         # Code = ""
         # 9 = "󰙯"
 
+        [[end]]
+        type = "upower"
+        format = "{percentage}%"
 
         [[end]]
         type = "volume"

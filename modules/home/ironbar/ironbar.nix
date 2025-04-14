@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   pkgs,
   lib,
@@ -43,9 +44,15 @@ in {
         8 = "󰘨"
         9 = ""
 
-        [[end]]
-        type = "upower"
-        format = "{percentage}%"
+        ${
+          if osConfig.services.upower.enable
+          then ''
+            [[end]]
+            type = "upower"
+            format = "{percentage}%"
+          ''
+          else ''''
+        }
 
         [[end]]
         type = "volume"

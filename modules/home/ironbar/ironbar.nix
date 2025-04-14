@@ -40,7 +40,8 @@ in {
         2 = ""
         # Games = "icon:steam"
         # Code = ""
-        # 9 = "󰙯"
+        8 = "󰘨"
+        9 = ""
 
         [[end]]
         type = "upower"

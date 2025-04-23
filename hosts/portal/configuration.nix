@@ -91,6 +91,7 @@ in {
       terraform
       awscli
       _1password-cli
+      gum
     ];
 
     home.sessionVariables = {
@@ -98,6 +99,10 @@ in {
     };
 
     programs = {
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
       ssh = {
         enable = true;
         addKeysToAgent = "yes";
@@ -148,6 +153,18 @@ in {
             {
               name = "ir-uti7";
               ip = 107;
+            }
+            {
+              name = "ir-uti8";
+              ip = 108;
+            }
+            {
+              name = "ir-uti9";
+              ip = 109;
+            }
+            {
+              name = "ir-uti10";
+              ip = 110;
             }
             {
               name = "ir-uti-m01";
@@ -216,6 +233,22 @@ in {
           ])
           // (createIndiServers 128 [
             {
+              name = "irbo-web-t01";
+              ip = 211;
+            }
+            {
+              name = "irbo-web-t02";
+              ip = 212;
+            }
+            {
+              name = "irbo-db-t01";
+              ip = 221;
+            }
+            {
+              name = "irbo-db-t02";
+              ip = 222;
+            }
+            {
               name = "irbo-web-p01";
               ip = 51;
             }
@@ -261,8 +294,9 @@ in {
           font = "JetBrainsMono";
           transparent = false;
           colorscheme = {
-            name = "nord";
-            nvimName = "nordic"; # WARN: This is a temporary fix
+            name = "tokyonight";
+            nvimName = "tokyonight"; # WARN: This is a temporary fix
+            zellijName = "tokyo-night-dark";
           };
         };
       };
@@ -272,7 +306,7 @@ in {
         ghostty.enable = false;
         kitty.enable = true;
         neovim.enable = true;
-        nushell.enable = true;
+        nushell.enable = false;
         themer.enable = false;
         tmux.enable = true;
         yazi.enable = true;

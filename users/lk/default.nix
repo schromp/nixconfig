@@ -69,6 +69,15 @@
             hostname = "157.180.37.119";
             identityFile = "~/.ssh/hetzner-cloudy";
           };
+          "sparrow" = {
+            hostname = "192.168.178.2";
+            identityFile = "~/.ssh/hetzner-cloudy";
+          };
+          "quiescent" = {
+            user = "root";
+            hostname = "192.168.178.3";
+            identityFile = "~/.ssh/hetzner-cloudy";
+          };
         };
       };
     };

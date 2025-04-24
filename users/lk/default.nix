@@ -45,6 +45,11 @@
       git = {
         enable = true;
         lfs.enable = true;
+        extraConfig = {
+          init = {
+            defaultBranch = "main";
+          };
+        };
       };
       ssh = {
         enable = true;
@@ -79,6 +84,11 @@
             identityFile = "~/.ssh/hetzner-cloudy";
           };
         };
+      };
+    };
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
       };
     };
 

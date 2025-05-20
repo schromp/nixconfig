@@ -28,6 +28,7 @@ in {
             xorg.libXScrnSaver
           ];
       };
+      protontricks.enable = true;
       # extraCompatPackages = [
       #   inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       # ];
@@ -36,7 +37,10 @@ in {
       ];
     };
 
-    environment.systemPackages = with pkgs; [mangohud];
+    environment.systemPackages = with pkgs; [
+      mangohud
+      nexusmods-app
+    ];
     hardware.xpadneo.enable = true; # Enable controller support
   };
 }

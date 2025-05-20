@@ -32,6 +32,7 @@
       pkgs.krita
       pkgs.teamspeak6-client
       pkgs.iamb
+      pkgs.pureref
       # mpkgs.kicad
     ];
 
@@ -97,12 +98,12 @@
         keymap = "us-umlaute";
         theme = {
           name = "modern";
-          font = "DepartureMono Nerd Font";
-          transparent = true;
+          font = "Iosevka Nerd Font";
+          transparent = false;
           colorscheme = {
-            name = "rose-pine-moon";
-            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
-            zellijName = "tokyo-night";
+            name = "kanagawa";
+            nvimName = "kanagawa"; # WARN: This is a temporary fix
+            zellijName = "kanagawa";
           };
         };
         desktop = {

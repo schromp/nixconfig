@@ -43,15 +43,15 @@ in {
       }");
 
     workspace = lib.mkIf (lib.lists.count monitors != 1) [
-      "1, monitor:${(builtins.elemAt monitors 0).name }, default:true"
-      "2, monitor:${(builtins.elemAt monitors 0).name }"
-      "3, monitor:${(builtins.elemAt monitors 0).name }"
-      "4, monitor:${(builtins.elemAt monitors 0).name }"
-      "5, monitor:${(builtins.elemAt monitors 0).name }"
-      "6, monitor:${(builtins.elemAt monitors 0).name }"
-      "7, monitor:${(builtins.elemAt monitors 1).name }"
-      "8, monitor:${(builtins.elemAt monitors 1).name }"
-      "9, monitor:${(builtins.elemAt monitors 1).name }, default:true"
+      "1, monitor:${(builtins.elemAt monitors 0).name}, default:true"
+      "2, monitor:${(builtins.elemAt monitors 0).name}"
+      "3, monitor:${(builtins.elemAt monitors 0).name}"
+      "4, monitor:${(builtins.elemAt monitors 0).name}"
+      "5, monitor:${(builtins.elemAt monitors 0).name}"
+      "6, monitor:${(builtins.elemAt monitors 0).name}"
+      "7, monitor:${(builtins.elemAt monitors 1).name}"
+      "8, monitor:${(builtins.elemAt monitors 1).name}"
+      "9, monitor:${(builtins.elemAt monitors 1).name}, default:true"
     ];
 
     exec-once = [
@@ -134,6 +134,7 @@ in {
       key_press_enables_dpms = true;
       animate_manual_resizes = true;
       initial_workspace_tracking = 2;
+      middle_click_paste = false;
     };
 
     bindm = [
@@ -198,6 +199,8 @@ in {
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+        "CONTROL, F12, pass, class:^(com\.obsproject\.Studio)$"
       ]
       ++ (lib.lists.flatten (builtins.genList (
           x: let

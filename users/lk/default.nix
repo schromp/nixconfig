@@ -18,7 +18,6 @@
     home.packages = [
       pkgs.tldr
       pkgs.spotify-player
-      inputs.zen-browser.packages.${pkgs.system}.default
       pkgs.unzip
       pkgs.helix
       pkgs.lazygit
@@ -111,22 +110,22 @@
           defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
-          defaultAppRunner = "anyrun";
+          # defaultAppRunner = "anyrun";
         };
       };
 
       programs = {
-        anyrun.enable = true;
+        # anyrun.enabled = true;
         discord = {
           enable = true;
         };
         emacs.enable = true;
         hyprland = {
-          enable = true;
-          xdgOptions = true;
+          enable = false;
+          xdgOptions = false;
           workspace_animations = false;
 
-          hyprlock.enable = true;
+          hyprlock.enable = false;
         };
         ghostty.enable = true;
         sway.enable = true;
@@ -151,6 +150,7 @@
         zellij.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
+        zen.enable = true;
       };
     };
 

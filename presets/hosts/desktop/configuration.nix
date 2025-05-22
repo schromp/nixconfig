@@ -87,12 +87,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = true;
+      greetd.enable = false;
       hyprland = {
-        enable = true;
-        hyprlock = true;
+        enable = false;
+        hyprlock = false;
       };
-      cosmic.enable = false;
+      cosmic.enable = true;
     };
   };
 
@@ -161,7 +161,7 @@ in {
     #   openFirewall = true;
     # };
     gvfs.enable = true;
-    blueman.enable = true;
+    blueman.enable = false;
     pipewire = {
       enable = true;
 

@@ -8,7 +8,7 @@
 }: let
   cfg = config.modules.home.programs.zellij;
   config_kdl = import ./config_kdl.nix {inherit config;};
-  desktop_layout = import ./layouts/desktop.kdl.nix {inherit config sysConfig;};
+  desktop_layout = import ./layouts/desktop.kdl.nix {inherit config sysConfig pkgs lib;};
 in {
   options.modules.home.programs.zellij = {
     enable = lib.mkEnableOption "Enable zellij";

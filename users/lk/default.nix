@@ -129,6 +129,7 @@
           hyprlock.enable = true;
         };
         ghostty.enable = true;
+        iamb.enable = true;
         sway.enable = true;
         kitty.enable = true;
         libreoffice.enable = true;

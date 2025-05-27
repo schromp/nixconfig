@@ -40,6 +40,8 @@ in {
     environment.systemPackages = with pkgs; [
       mangohud
       nexusmods-app
+      steamcmd
+      steam-tui
     ];
     hardware.xpadneo.enable = true; # Enable controller support
   };

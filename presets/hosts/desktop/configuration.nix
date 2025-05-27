@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  sysConfig = config.modules.system.general;
+  sysConfig = config;
 in {
   imports = [
     ../../../users/lk
@@ -87,12 +87,12 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = false;
+      greetd.enable = true;
       hyprland = {
-        enable = false;
-        hyprlock = false;
+        enable = true;
+        hyprlock = true;
       };
-      cosmic.enable = true;
+      cosmic.enable = false;
     };
   };
 
@@ -161,7 +161,7 @@ in {
     #   openFirewall = true;
     # };
     gvfs.enable = true;
-    blueman.enable = false;
+    blueman.enable = true;
     pipewire = {
       enable = true;
 

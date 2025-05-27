@@ -8,10 +8,12 @@
   cfg = config.modules.home.programs.anyrun;
 in {
   # options.modules.home.programs.anyrun = {
-  #   enabled = lib.mkEnableOption "Enable Anyrun";
+  #   enable = lib.mkEnableOption "Enable Anyrun";
   # };
 
   # imports = [inputs.anyrun.homeManagerModules.default];
+
+  # programs.anyrun.enable = true;
 
   # config = lib.mkIf cfg.enabled {
     # programs.anyrun = {

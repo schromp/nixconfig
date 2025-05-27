@@ -16,7 +16,7 @@ in {
     {
       home.packages = with pkgs; [
         vesktop
-        discord
+        discord-canary
       ];
     }
     (lib.mkIf cfg.aarpc {

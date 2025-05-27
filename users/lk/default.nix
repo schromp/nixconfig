@@ -32,6 +32,7 @@
       pkgs.teamspeak6-client
       pkgs.iamb
       pkgs.pureref
+      pkgs.inkscape
       # mpkgs.kicad
     ];
 
@@ -106,26 +107,26 @@
           };
         };
         desktop = {
-          defaultTerminal = "kitty";
-          defaultBrowser = "firefox";
+          defaultTerminal = "wezterm";
+          defaultBrowser = "zen";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
-          # defaultAppRunner = "anyrun";
+          defaultAppRunner = "walker";
         };
       };
 
       programs = {
-        # anyrun.enabled = true;
+        # anyrun.enable = false;
         discord = {
           enable = true;
         };
         emacs.enable = true;
         hyprland = {
-          enable = false;
-          xdgOptions = false;
+          enable = true;
+          xdgOptions = true;
           workspace_animations = false;
 
-          hyprlock.enable = false;
+          hyprlock.enable = true;
         };
         ghostty.enable = true;
         sway.enable = true;
@@ -140,7 +141,7 @@
         udiskie.enable = false;
         wezterm.enable = true;
         ironbar.enable = true;
-        walker.enable = false;
+        walker.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;

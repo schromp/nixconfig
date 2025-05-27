@@ -14,7 +14,7 @@ with lib; {
               description = ''Choose your terminal emulator'';
             };
             defaultBrowser = mkOption {
-              type = types.enum ["firefox" "qutebrowser" "floorp"];
+              type = types.enum ["firefox" "qutebrowser" "floorp" "zen"];
               description = ''Choose your browser'';
             };
 

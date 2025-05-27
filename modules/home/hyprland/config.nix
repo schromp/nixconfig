@@ -10,7 +10,7 @@
   browser = config.modules.home.general.desktop.defaultBrowser;
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
   terminal = config.modules.home.general.desktop.defaultTerminal;
-  monitors = sysConfig.monitors;
+  monitors = sysConfig.modules.system.general.monitors;
   keymap_language =
     if (config.modules.home.general.keymap == "us-umlaute")
     then ''
@@ -32,7 +32,7 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
+    monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},bitdepth, 8,${
         if monitor.vrr
         then "vrr,1,"
         else ""
@@ -63,11 +63,11 @@ in {
       "${lib.getExe pkgs.swww} init"
       "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
+      # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
       "hyprctl setcursor Bibata-Modern-Ice 24"
-      "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
+      # "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
       "[workspace special:yazi silent; float] kitty -e yazi"
     ];
@@ -175,7 +175,7 @@ in {
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
 
         "$mod, 36, exec, ${terminal}"
-        "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
+        "$mod, B, exec, ${browser}"
         (
           if screenshotTool == "grimblast"
           then "$mod SHIFT, S, exec, grimblast copy area"

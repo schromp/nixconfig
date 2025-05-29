@@ -5,16 +5,21 @@
 }: let
   cfg = config.modules.home.programs.xdg;
 
-  browser = "org.mozilla.firefox.desktop";
+  # Corrected browser desktop file name (adjust if using system Firefox)
+  browserDesktopFile = "zen-beta.desktop";
+  # browserDesktopFile = "firefox.desktop"; # Use this if you're using Nixpkgs/system Firefox
+
   associations = {
-    "default-web-browser" = "org.mozilla.firefox.desktop";
-    "default-url-scheme-handler" = "org.mozilla.firefox.desktop";
+    "x-scheme-handler/http" = browserDesktopFile;
+    "x-scheme-handler/https" = browserDesktopFile;
+    "x-scheme-handler/ftp" = browserDesktopFile;
+    "x-scheme-handler/about" = browserDesktopFile;
+    "x-scheme-handler/unknown" = browserDesktopFile;
+
     "application/pdf" = "org.gnome.Evince.desktop";
-    "x-scheme-handler/http" = browser;
-    "x-scheme-handler/https" = browser;
-    "x-scheme-handler/ftp" = browser;
-    "x-scheme-handler/about" = browser;
-    "x-scheme-handler/unknown" = browser;
+
+    # If you also want to handle local HTML files with the browser
+    "text/html" = browserDesktopFile;
   };
 in {
   options.modules.home.programs.xdg = {
@@ -25,14 +30,16 @@ in {
 
   config = lib.mkIf cfg.enable {
     xdg = {
-      cacheHome = config.home.homeDirectory + "/.local/cache";
+      # This is correct for setting the XDG_CACHE_HOME environment variable
+      # cacheHome = config.home.homeDirectory + "/.local/cache";
+
       userDirs = lib.mkIf cfg.createDirectories {
         enable = true;
         createDirectories = true;
       };
+
       mimeApps = lib.mkIf cfg.setAssociations {
         enable = true;
-        associations.added = associations;
         defaultApplications = associations;
       };
     };

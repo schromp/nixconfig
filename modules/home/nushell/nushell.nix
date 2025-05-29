@@ -13,6 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       nushell
+      fish
     ];
 
     xdg.configFile."nushell/config.nu".text = builtins.readFile ./config.nu;

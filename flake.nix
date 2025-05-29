@@ -74,7 +74,7 @@
     };
 
     walker = {
-      url = "github:abenz1267/walker";
+      url = "github:abenz1267/walker/v0.12.23";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 

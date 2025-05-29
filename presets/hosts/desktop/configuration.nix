@@ -44,7 +44,7 @@ in {
       warn-dirty = false
     '';
 
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    # nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
       auto-optimise-store = true;
@@ -58,8 +58,8 @@ in {
         "https://cosmic.cachix.org/"
         "https://nixpkgs-wayland.cachix.org"
         "https://hyprland.cachix.org"
-        "https://anyrun.cachix.org"
         "https://walker.cachix.org"
+        "https://anyrun.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -67,8 +67,8 @@ in {
         "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
         "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
   };

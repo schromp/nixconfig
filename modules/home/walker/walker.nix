@@ -14,44 +14,47 @@ in {
   imports = [inputs.walker.homeManagerModules.default];
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [libqalculate];
+
     programs.walker = {
       enable = true;
-      runAsService = true;
       config = {
-        list = {
-          height = 300;
-          always_show = false;
-          hide_sub = true;
-        };
-        modules = [
-          {
-            name = "applications";
-            prefix = "";
-          }
-          {
-            name = "runner";
+        builtins = {
+          runner = {
             prefix = "$";
-          }
-          {
-            name = "websearch";
+            eager_loading = true;
+            weight = 5;
+            icon = "utilities-terminal";
+            name = "runner";
+            placeholder = "Runner";
+            typeahead = true;
+            history = true;
+            generic_entry = false;
+            refresh = true;
+            use_fd = false;
+          };
+          websearch = {
             prefix = "?";
-          }
-          {
-            name = "switcher";
-            prefix = "/";
-          }
-          {
-            name = "finder";
+            entries = [
+              {
+                name = "DuckDuckGo";
+                url = "https://duckduckgo.com/?q=%TERM%";
+              }
+            ];
+          };
+          calc = {
+            require_number = true;
+            weight = 5;
+            name = "calc";
+            icon = "accessories-calculator";
+            placeholder = "Calculator";
+            min_chars = 4;
+          };
+          finder = {
             prefix = "~";
-          }
-          {
-            name = "hyprland";
-            prefix = "-";
-          }
-        ];
+          };
+        };
       };
-      # style = builtins.readFile ./style.css;
     };
-    # home.packages = [inputs.walker.packages.${pkgs.system}.default];
   };
 }

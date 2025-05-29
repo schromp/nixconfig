@@ -17,5 +17,6 @@ in {
     ];
 
     xdg.configFile."nushell/config.nu".text = builtins.readFile ./config.nu;
+    xdg.configFile."nushell/zoxide.nu".text = builtins.readFile ./zoxide.nu;
   };
 }

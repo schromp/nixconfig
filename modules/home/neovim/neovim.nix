@@ -59,6 +59,7 @@ in {
       phpactor
       jdt-language-server
       terraform-ls
+      helm-ls
     ];
 
     programs.neovim = {

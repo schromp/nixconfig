@@ -154,12 +154,12 @@ in {
     printing = {
       enable = true;
     };
-    # avahi = {
-    #   # Scans for printers on the network
-    #   enable = true;
-    #   nssmdns4 = true;
-    #   openFirewall = true;
-    # };
+    avahi = {
+      # Scans for printers on the network
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
     gvfs.enable = true;
     blueman.enable = true;
     pipewire = {

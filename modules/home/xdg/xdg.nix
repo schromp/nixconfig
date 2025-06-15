@@ -4,10 +4,13 @@
   ...
 }: let
   cfg = config.modules.home.programs.xdg;
+  defaults = config.modules.home.general.desktop;
 
-  # Corrected browser desktop file name (adjust if using system Firefox)
-  browserDesktopFile = "zen-beta.desktop";
-  # browserDesktopFile = "firefox.desktop"; # Use this if you're using Nixpkgs/system Firefox
+  browserDesktopFile =
+    if defaults.defaultBrowser == "zen"
+    then "zen-beta.desktop"
+    else "firefox.desktop";
+  imageDesktopFile = "loupe.desktop";
 
   associations = {
     "x-scheme-handler/http" = browserDesktopFile;
@@ -17,6 +20,13 @@
     "x-scheme-handler/unknown" = browserDesktopFile;
 
     "application/pdf" = "org.gnome.Evince.desktop";
+
+    # FIX: this doesnt work yet
+    "image/png" = imageDesktopFile;
+    "image/gif" = imageDesktopFile;
+    "image/bmp" = imageDesktopFile;
+    "image/webp" = imageDesktopFile;
+    "image/tiff" = imageDesktopFile;
 
     # If you also want to handle local HTML files with the browser
     "text/html" = browserDesktopFile;

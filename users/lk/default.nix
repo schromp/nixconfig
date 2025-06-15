@@ -33,6 +33,10 @@
       pkgs.iamb
       pkgs.pureref
       pkgs.inkscape
+      pkgs.loupe
+      pkgs.kubectl
+      pkgs.kubernetes-helm
+      pkgs.helmfile
       # mpkgs.kicad
     ];
 

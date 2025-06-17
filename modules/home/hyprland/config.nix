@@ -52,6 +52,7 @@ in {
       "7, monitor:${(builtins.elemAt monitors 1).name}"
       "8, monitor:${(builtins.elemAt monitors 1).name}"
       "9, monitor:${(builtins.elemAt monitors 1).name}, default:true"
+      "w[t1]m[DP-3], gapsout:10 400 10 400"
     ];
 
     exec-once = [
@@ -79,6 +80,11 @@ in {
       "noinitialfocus,class:^(xwaylandvideobridge)$"
       "nofocus, class:^(steam)$, title:^()$"
       "immediate, class:^(overwatch)$"
+      "float, class:steam_app_3411730"
+      "noblur, class:steam_app_3411730"
+      "nofocus, class:steam_app_3411730"
+      "noshadow, class:steam_app_3411730"
+      "noborder, class:steam_app_3411730"
     ];
 
     input = {

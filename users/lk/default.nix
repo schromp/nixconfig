@@ -103,7 +103,7 @@
         theme = {
           name = "modern";
           font = "Iosevka Nerd Font";
-          transparent = false;
+          transparent = true;
           colorscheme = {
             name = "kanagawa";
             nvimName = "kanagawa"; # WARN: This is a temporary fix
@@ -157,6 +157,7 @@
         zoxide.enable = true;
         zsh.enable = true;
         zen.enable = true;
+        quickshell.enable = true;
       };
     };
 

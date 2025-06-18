@@ -95,6 +95,7 @@
       url = "github:SchildiChat/schildichat-desktop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
   };
 
   outputs = {

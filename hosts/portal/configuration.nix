@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  sysConfig = config.modules.system.general;
+  sysConfig = config;
 in {
   imports = [
     ../../modules/system/options.nix
@@ -79,9 +79,10 @@ in {
       spicetify-cli
       raycast
       unnaturalscrollwheels
+      nh
 
       jq
-      yaml-language-server
+      # yaml-language-server
       colima
       devpod
       php83Packages.composer

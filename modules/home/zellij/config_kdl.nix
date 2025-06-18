@@ -292,7 +292,7 @@ keybinds clear-defaults=true {
   //   - true (default, enabled)
   //   - false
   //
-  pane_frames false
+  pane_frames true
 
   // When attaching to an existing session with other users,
   // should the session be mirrored (true)

@@ -18,7 +18,6 @@
     home.packages = [
       pkgs.tldr
       pkgs.spotify-player
-      inputs.zen-browser.packages.${pkgs.system}.default
       pkgs.unzip
       pkgs.helix
       pkgs.lazygit
@@ -32,6 +31,8 @@
       pkgs.krita
       pkgs.teamspeak6-client
       pkgs.iamb
+      pkgs.pureref
+      pkgs.inkscape
       # mpkgs.kicad
     ];
 
@@ -74,6 +75,15 @@
             hostname = "157.180.37.119";
             identityFile = "~/.ssh/hetzner-cloudy";
           };
+          "sparrow" = {
+            hostname = "192.168.178.2";
+            identityFile = "~/.ssh/hetzner-cloudy";
+          };
+          "quiescent" = {
+            user = "root";
+            hostname = "192.168.178.3";
+            identityFile = "~/.ssh/hetzner-cloudy";
+          };
         };
       };
     };
@@ -88,25 +98,25 @@
         keymap = "us-umlaute";
         theme = {
           name = "modern";
-          font = "DepartureMono Nerd Font";
-          transparent = true;
+          font = "Iosevka Nerd Font";
+          transparent = false;
           colorscheme = {
-            name = "rose-pine-moon";
-            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
-            zellijName = "tokyo-night";
+            name = "kanagawa";
+            nvimName = "kanagawa"; # WARN: This is a temporary fix
+            zellijName = "kanagawa";
           };
         };
         desktop = {
-          defaultTerminal = "kitty";
-          defaultBrowser = "firefox";
+          defaultTerminal = "wezterm";
+          defaultBrowser = "zen";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
-          defaultAppRunner = "anyrun";
+          defaultAppRunner = "walker";
         };
       };
 
       programs = {
-        anyrun.enable = true;
+        # anyrun.enable = false;
         discord = {
           enable = true;
         };
@@ -119,11 +129,12 @@
           hyprlock.enable = true;
         };
         ghostty.enable = true;
+        iamb.enable = true;
         sway.enable = true;
         kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
-        nushell.enable = false;
+        nushell.enable = true;
         prismLauncher.enable = true;
         rio.enable = true;
         themer.enable = true;
@@ -131,7 +142,7 @@
         udiskie.enable = false;
         wezterm.enable = true;
         ironbar.enable = true;
-        walker.enable = false;
+        walker.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;
@@ -141,6 +152,7 @@
         zellij.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
+        zen.enable = true;
       };
     };
 

@@ -51,6 +51,7 @@ in {
       slurp
       grim
       hyprpicker
+      anyrun
 
       (
         if screenshotTool == "grimblast"
@@ -62,6 +63,10 @@ in {
         else null
       )
     ];
+
+    # xdg.portal.extraPortals = [
+    #   pkgs.xdg-desktop-portal-gtk
+    # ];
 
     gtk = {
       enable = true;

@@ -38,7 +38,7 @@
     };
   };
 
-  programs.nm-applet.enable = true;
+  programs.nm-applet.enable = false;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

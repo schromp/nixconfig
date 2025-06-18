@@ -33,7 +33,7 @@
       ];
     };
     programs = {
-      bottles.enable = true;
+      bottles.enable = false;
       gamemode.enable = true;
       gamescope.enable = true;
       lutris.enable = true;

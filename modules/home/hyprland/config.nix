@@ -10,7 +10,7 @@
   browser = config.modules.home.general.desktop.defaultBrowser;
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
   terminal = config.modules.home.general.desktop.defaultTerminal;
-  monitors = sysConfig.monitors;
+  monitors = sysConfig.modules.system.general.monitors;
   keymap_language =
     if (config.modules.home.general.keymap == "us-umlaute")
     then ''
@@ -32,7 +32,7 @@ in {
 
     # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
 
-    monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},${
+    monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},bitdepth, 8,${
         if monitor.vrr
         then "vrr,1,"
         else ""
@@ -43,15 +43,15 @@ in {
       }");
 
     workspace = lib.mkIf (lib.lists.count monitors != 1) [
-      "1, monitor:${(builtins.elemAt monitors 0).name }, default:true"
-      "2, monitor:${(builtins.elemAt monitors 0).name }"
-      "3, monitor:${(builtins.elemAt monitors 0).name }"
-      "4, monitor:${(builtins.elemAt monitors 0).name }"
-      "5, monitor:${(builtins.elemAt monitors 0).name }"
-      "6, monitor:${(builtins.elemAt monitors 0).name }"
-      "7, monitor:${(builtins.elemAt monitors 1).name }"
-      "8, monitor:${(builtins.elemAt monitors 1).name }"
-      "9, monitor:${(builtins.elemAt monitors 1).name }, default:true"
+      "1, monitor:${(builtins.elemAt monitors 0).name}, default:true"
+      "2, monitor:${(builtins.elemAt monitors 0).name}"
+      "3, monitor:${(builtins.elemAt monitors 0).name}"
+      "4, monitor:${(builtins.elemAt monitors 0).name}"
+      "5, monitor:${(builtins.elemAt monitors 0).name}"
+      "6, monitor:${(builtins.elemAt monitors 0).name}"
+      "7, monitor:${(builtins.elemAt monitors 1).name}"
+      "8, monitor:${(builtins.elemAt monitors 1).name}"
+      "9, monitor:${(builtins.elemAt monitors 1).name}, default:true"
     ];
 
     exec-once = [
@@ -63,11 +63,11 @@ in {
       "${lib.getExe pkgs.swww} init"
       "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
+      # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
       "ags"
       "hyprctl setcursor Bibata-Modern-Ice 24"
-      "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
+      # "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
       "[workspace special:yazi silent; float] kitty -e yazi"
     ];
@@ -134,6 +134,7 @@ in {
       key_press_enables_dpms = true;
       animate_manual_resizes = true;
       initial_workspace_tracking = 2;
+      middle_click_paste = false;
     };
 
     bindm = [
@@ -174,7 +175,7 @@ in {
         "$mod CONTROL, 2, movecurrentworkspacetomonitor, 1"
 
         "$mod, 36, exec, ${terminal}"
-        "$mod, B, exec, ${lib.getExe pkgs.${browser}}"
+        "$mod, B, exec, ${browser}"
         (
           if screenshotTool == "grimblast"
           then "$mod SHIFT, S, exec, grimblast copy area"
@@ -198,6 +199,8 @@ in {
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+        "CONTROL, F12, pass, class:^(com\.obsproject\.Studio)$"
       ]
       ++ (lib.lists.flatten (builtins.genList (
           x: let

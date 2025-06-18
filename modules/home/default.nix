@@ -5,9 +5,4 @@ in {
     inherit lib;
     type = "home";
   };
-  # imports = [
-  #   ./rio/rio.nix
-  #   ./anyrun/anyrun.nix
-  #   ./options.nix
-  # ];
 }

@@ -7,6 +7,7 @@
 }: let
   cfg = config.modules.home.programs.zsh;
   colors = config.modules.home.general.theme.colorscheme.colors;
+  hostname = sysConfig.modules.system.general.hostname;
 in {
   options.modules.home.programs.zsh = {
     enable = lib.mkEnableOption "Enable zsh";
@@ -53,8 +54,8 @@ in {
         hyprgame-on = "hyprctl keyword unbind SUPER,Q";
         "cat" = "${lib.getExe pkgs.bat}";
 
-        "update-switch" = "sudo nixos-rebuild switch --flake .#${sysConfig.hostname}";
-        "update-test" = "sudo nixos-rebuild test --flake .#${sysConfig.hostname}";
+        "update-switch" = "sudo nixos-rebuild switch --flake .#${hostname}";
+        "update-test" = "sudo nixos-rebuild test --flake .#${hostname}";
         "update-check" = "nix flake check";
       };
       oh-my-zsh = {
@@ -96,7 +97,7 @@ in {
           PROMPT=' ''${NEWLINE}%F{#$COL_NAME}%n%f %F{#$COL_DIR}%3~%f %F{#$COL_GIT}''${vcs_info_msg_0_}%f %(?..%B%F{red}(%?%)%f%b)''${NEWLINE}> '
 
           ${
-            if sysConfig.hostname == "M65L7Q9X32"
+            if hostname == "M65L7Q9X32"
             then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
             else ""
           }

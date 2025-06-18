@@ -39,10 +39,10 @@
     };
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     eww.url = "github:elkowar/eww";
 
@@ -74,7 +74,7 @@
     };
 
     walker = {
-      url = "github:abenz1267/walker";
+      url = "github:abenz1267/walker/v0.12.23";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -85,7 +85,13 @@
     rustacean = {
       url = "github:mrcjkb/rustaceanvim";
     };
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+      # to have it up-to-date or simply don't specify the nixpkgs input
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ghostty = {
       url = "github:ghostty-org/ghostty";

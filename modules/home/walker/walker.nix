@@ -11,51 +11,50 @@ in {
     enable = lib.mkEnableOption "Enable walker";
   };
 
-  # imports = [inputs.walker.homeManagerModules.default];
+  imports = [inputs.walker.homeManagerModules.default];
 
   config = lib.mkIf cfg.enable {
-    # programs.walker = {
-    # enable = true;
-    # runAsService = false;
-    # config = {
-    #   list = {
-    #     height = 300;
-    #     always_show = false;
-    #     hide_sub = true;
-    #   };
-    #   modules = [
-    #     {
-    #       name = "applications";
-    #       prefix = "";
-    #     }
-    #     {
-    #       name = "runner";
-    #       prefix = "$";
-    #     }
-    #     {
-    #       name = "websearch";
-    #       prefix = "?";
-    #     }
-    #     {
-    #       name = "switcher";
-    #       prefix = "/";
-    #     }
-    #     {
-    #       name = "finder";
-    #       prefix = "~";
-    #     }
-    #     {
-    #       name = "hyprland";
-    #       prefix = "-";
-    #     }
-    #   ];
-    # };
-    # style = builtins.readFile ./style.css;
-    # };
-    home.packages = [inputs.walker.packages.${pkgs.system}.default];
-    nix.settings = {
-      substituters = ["https://walker-git.cachix.org"];
-      trusted-public-keys = ["walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="];
+    home.packages = with pkgs; [libqalculate];
+
+    programs.walker = {
+      enable = true;
+      config = {
+        builtins = {
+          runner = {
+            prefix = "$";
+            eager_loading = true;
+            weight = 5;
+            icon = "utilities-terminal";
+            name = "runner";
+            placeholder = "Runner";
+            typeahead = true;
+            history = true;
+            generic_entry = false;
+            refresh = true;
+            use_fd = false;
+          };
+          websearch = {
+            prefix = "?";
+            entries = [
+              {
+                name = "DuckDuckGo";
+                url = "https://duckduckgo.com/?q=%TERM%";
+              }
+            ];
+          };
+          calc = {
+            require_number = true;
+            weight = 5;
+            name = "calc";
+            icon = "accessories-calculator";
+            placeholder = "Calculator";
+            min_chars = 4;
+          };
+          finder = {
+            prefix = "~";
+          };
+        };
+      };
     };
   };
 }

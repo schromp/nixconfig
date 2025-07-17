@@ -40,6 +40,8 @@
       # mpkgs.kicad
     ];
 
+    services.gnome-keyring.enable = true;
+
     programs = {
       bat.enable = true;
       direnv = {
@@ -47,6 +49,7 @@
         nix-direnv.enable = true;
       };
       firefox.enable = true;
+      nheko.enable = true;
       git = {
         enable = true;
         lfs.enable = true;

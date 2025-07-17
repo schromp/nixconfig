@@ -2,6 +2,7 @@
   description = "inspired nixos system config";
 
   inputs = {
+    netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

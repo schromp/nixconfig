@@ -61,7 +61,7 @@ in {
         then ''"walker gapplication-service"''
         else ""
       )
-      "${lib.getExe pkgs.swww} init"
+      "${pkgs.swww}/bin/swww-daemon"
       "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
       # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"

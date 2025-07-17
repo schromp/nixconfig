@@ -18,7 +18,7 @@ in {
         local wezterm = require("wezterm")
         local config = require "extras"
 
-        config.colors = wezterm.color.load_base16_scheme("/home/lk/.config/wezterm/theme.yaml")
+        config.colors = wezterm.color.load_base16_scheme("${config.xdg.configHome}/wezterm/theme.yaml")
         ${
           if theme.transparent
           then "config.window_background_opacity = 0.8"

@@ -123,6 +123,14 @@ in {
         color13 #${colors.base06}
         color14 #${colors.base0F}
         color15 #${colors.base07}
+
+        # extended base16 colors
+        color16 #${colors.base09}
+        color17 #${colors.base0F}
+        color18 #${colors.base01}
+        color19 #${colors.base02}
+        color20 #${colors.base04}
+        color21 #${colors.base06}
       '';
     };
   };

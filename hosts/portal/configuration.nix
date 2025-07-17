@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  sysConfig = config.modules.system.general;
+  sysConfig = config;
 in {
   imports = [
     ../../modules/system/options.nix
@@ -79,19 +79,21 @@ in {
       spicetify-cli
       raycast
       unnaturalscrollwheels
+      nh
 
       jq
-      yaml-language-server
+      # yaml-language-server
       colima
       devpod
       php83Packages.composer
       php83
-      nodejs_18
+      nodejs_23
       # openssh
       terraform
       awscli
       _1password-cli
       gum
+      inputs.mcphub-nvim.packages."${system}".default
     ];
 
     home.sessionVariables = {
@@ -179,6 +181,14 @@ in {
               ip = 232;
             }
             {
+              name = "ir-pve-p01";
+              ip = 131;
+            }
+            {
+              name = "ir-pve-p02";
+              ip = 132;
+            }
+            {
               name = "ir-lb-p01";
               ip = 11;
             }
@@ -189,6 +199,10 @@ in {
             {
               name = "ir-lb-t01";
               ip = 201;
+            }
+            {
+              name = "ir-lb-t02";
+              ip = 202;
             }
             {
               name = "ir-fe-p01";
@@ -229,6 +243,10 @@ in {
             {
               name = "ir-web-t02";
               ip = 212;
+            }
+            {
+              name = "irra-web-t01";
+              ip = 151;
             }
           ])
           // (createIndiServers 128 [
@@ -292,11 +310,11 @@ in {
         theme = {
           name = "terminal";
           font = "JetBrainsMono";
-          transparent = false;
+          transparent = true;
           colorscheme = {
             name = "tokyonight";
             nvimName = "tokyonight"; # WARN: This is a temporary fix
-            zellijName = "tokyo-night-dark";
+            zellijName = "tokyo-night-storm";
           };
         };
       };
@@ -356,6 +374,8 @@ in {
       "flameshot"
       "obsidian"
       "ghostty"
+      "element"
+      "vial"
     ];
     taps = [
       "FelixKratz/formulae"

@@ -2,6 +2,7 @@
   description = "inspired nixos system config";
 
   inputs = {
+    netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -101,7 +102,15 @@
       url = "github:SchildiChat/schildichat-desktop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+<<<<<<< HEAD
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
+=======
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+>>>>>>> quickshell-init
   };
 
   outputs = {

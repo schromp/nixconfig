@@ -257,7 +257,7 @@ keybinds clear-defaults=true {
   // Choose the path to the default shell that zellij will use for opening new panes
   // Default: $SHELL
   //
-  default_shell "nu"
+  default_shell "zsh"
 
   // Choose the path to override cwd that zellij will use for opening new panes
   //

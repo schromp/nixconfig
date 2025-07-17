@@ -52,6 +52,7 @@ in {
       "7, monitor:${(builtins.elemAt monitors 1).name}"
       "8, monitor:${(builtins.elemAt monitors 1).name}"
       "9, monitor:${(builtins.elemAt monitors 1).name}, default:true"
+      "w[t1]m[DP-3], gapsout:10 400 10 400"
     ];
 
     exec-once = [
@@ -60,7 +61,7 @@ in {
         then ''"walker gapplication-service"''
         else ""
       )
-      "${lib.getExe pkgs.swww} init"
+      "${pkgs.swww}/bin/swww-daemon"
       "${lib.getExe pkgs.pa_applet}"
       "${widescreenScript}"
       # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
@@ -79,6 +80,11 @@ in {
       "noinitialfocus,class:^(xwaylandvideobridge)$"
       "nofocus, class:^(steam)$, title:^()$"
       "immediate, class:^(overwatch)$"
+      "float, class:steam_app_3411730"
+      "noblur, class:steam_app_3411730"
+      "nofocus, class:steam_app_3411730"
+      "noshadow, class:steam_app_3411730"
+      "noborder, class:steam_app_3411730"
     ];
 
     input = {

@@ -75,7 +75,11 @@ in {
     };
 
     xdg.configFile."nvim/config.json".text = ''
-      {"theme": "${theme.colorscheme.nvimName}", "transparency":"${if theme.transparent then "true" else "false"}"}
+      {"theme": "${theme.colorscheme.nvimName}", "transparency":"${
+        if theme.transparent
+        then "true"
+        else "false"
+      }"}
     '';
 
     programs.fzf.enable = true;

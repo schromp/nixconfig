@@ -40,6 +40,8 @@
       # mpkgs.kicad
     ];
 
+    services.gnome-keyring.enable = true;
+
     programs = {
       bat.enable = true;
       direnv = {
@@ -47,6 +49,7 @@
         nix-direnv.enable = true;
       };
       firefox.enable = true;
+      nheko.enable = true;
       git = {
         enable = true;
         lfs.enable = true;
@@ -103,7 +106,7 @@
         theme = {
           name = "modern";
           font = "Iosevka Nerd Font";
-          transparent = false;
+          transparent = true;
           colorscheme = {
             name = "kanagawa";
             nvimName = "kanagawa"; # WARN: This is a temporary fix
@@ -157,6 +160,7 @@
         zoxide.enable = true;
         zsh.enable = true;
         zen.enable = true;
+        quickshell.enable = true;
       };
     };
 

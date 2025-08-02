@@ -93,6 +93,7 @@ in {
         hyprlock = true;
       };
       cosmic.enable = false;
+      shpool.enable = true;
     };
   };
 

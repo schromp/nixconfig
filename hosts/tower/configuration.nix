@@ -26,8 +26,8 @@
           resolution = "1920x1080";
           refreshRate = "60";
           scale = "1";
-          position = "0x1440";
-          transform = "2";
+          position = "3440x0";
+          transform = "0";
           vrr = false;
         }
       ];

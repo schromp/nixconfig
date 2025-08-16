@@ -44,5 +44,6 @@ in {
       steam-tui
     ];
     hardware.xpadneo.enable = true; # Enable controller support
+    hardware.steam-hardware.enable = true;
   };
 }

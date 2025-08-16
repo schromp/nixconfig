@@ -37,6 +37,8 @@
       pkgs.kubectl
       pkgs.kubernetes-helm
       pkgs.helmfile
+      pkgs.thunderbird
+      pkgs.localsend
       # mpkgs.kicad
     ];
 
@@ -144,7 +146,6 @@
         nushell.enable = true;
         prismLauncher.enable = true;
         rio.enable = true;
-        themer.enable = true;
         tmux.enable = true;
         udiskie.enable = false;
         wezterm.enable = true;
@@ -160,7 +161,6 @@
         zoxide.enable = true;
         zsh.enable = true;
         zen.enable = true;
-        quickshell.enable = true;
       };
     };
 

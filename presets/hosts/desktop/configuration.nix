@@ -29,6 +29,7 @@ in {
     config.permittedInsecurePackages = [
       "fluffychat-linux-1.23.0"
       "olm-3.2.16"
+      "libsoup-2.74.3"
     ];
 
     config = {
@@ -79,6 +80,27 @@ in {
       packages = with pkgs; [dconf gcr udisks2];
     };
     flatpak.enable = true;
+    resolved = {
+      enable = true;
+      fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
+      dnssec = "false";
+    };
+    netbird = {
+      enable = false;
+      ui.enable = true;
+      clients.echsenclub = {
+        ui.enable = true;
+        port = 51820;
+        config = {
+          ManagementURL = {
+            Host = "netbird.echsen.club:443";
+          };
+          AdminURL = {
+            Host = "netbird.echsen.club:443";
+          };
+        };
+      };
+    };
   };
   nix.settings.sandbox = true;
 
@@ -127,8 +149,8 @@ in {
     proton-pass
     protonvpn-gui
     protonmail-desktop
-    bambu-studio
-    orca-slicer
+    # bambu-studio
+    # orca-slicer
     alsa-utils # TODO: why?
     p7zip
     nix-prefetch-git
@@ -137,6 +159,7 @@ in {
     pavucontrol
     pa_applet
     powertop
+    netbird
   ];
 
   # SERVICES

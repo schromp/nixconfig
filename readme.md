@@ -1,7 +1,8 @@
 # My personal nixos configuration
 
 ## TODO:
+
 - sops
-- hyprlock theming (currently a blackscreen)
-- more themes other than terminal
-- waybar theming
+- niri
+- vicanae launcher
+- symlink relevant XDG_CONFIG_DIRS

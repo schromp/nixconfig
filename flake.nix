@@ -38,23 +38,8 @@
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    eww.url = "github:elkowar/eww";
 
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    webcord.url = "github:fufexan/webcord-flake";
-    arrpc = {
-      url = "github:notashelf/arrpc-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
@@ -69,22 +54,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    themer = {
-      url = "github:schromp/themer";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     walker = {
-      url = "github:abenz1267/walker/v0.12.23";
+      url = "github:abenz1267/walker/v0.13.22";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-    };
-
-    rustacean = {
-      url = "github:mrcjkb/rustaceanvim";
     };
 
     zen-browser = {
@@ -98,19 +74,7 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    schildichat = {
-      url = "github:SchildiChat/schildichat-desktop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-<<<<<<< HEAD
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
-=======
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
->>>>>>> quickshell-init
   };
 
   outputs = {

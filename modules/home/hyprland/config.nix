@@ -191,6 +191,7 @@ in {
           then ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | ${lib.getExe pkgs.swappy} -f -''
           else ""
         )
+        ''$mod CONTROL, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.tesseract} stdin - | wl-copy''
         "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpicker} -a"
 
         "$mod, Y,togglespecialworkspace, yazi"

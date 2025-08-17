@@ -39,10 +39,15 @@
       pkgs.helmfile
       pkgs.thunderbird
       pkgs.localsend
+      pkgs.appflowy
       # mpkgs.kicad
     ];
 
     services.gnome-keyring.enable = true;
+    services.vicinae = {
+      enable = true;
+      linkExtraThemes = true;
+    };
 
     programs = {
       bat.enable = true;
@@ -120,7 +125,7 @@
           defaultBrowser = "zen";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
-          defaultAppRunner = "walker";
+          defaultAppRunner = "vicinae";
         };
       };
 

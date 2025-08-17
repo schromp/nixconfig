@@ -59,6 +59,7 @@ in {
       (
         if appRunner == "walker"
         then ''"walker gapplication-service"''
+        else if appRunner == "vicinae" then ''vicinae''
         else ""
       )
       "${pkgs.swww}/bin/swww-daemon"

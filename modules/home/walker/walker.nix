@@ -18,43 +18,44 @@ in {
 
     programs.walker = {
       enable = true;
-      config = {
-        builtins = {
-          runner = {
-            prefix = "$";
-            eager_loading = true;
-            weight = 5;
-            icon = "utilities-terminal";
-            name = "runner";
-            placeholder = "Runner";
-            typeahead = true;
-            history = true;
-            generic_entry = false;
-            refresh = true;
-            use_fd = false;
-          };
-          websearch = {
-            prefix = "?";
-            entries = [
-              {
-                name = "DuckDuckGo";
-                url = "https://duckduckgo.com/?q=%TERM%";
-              }
-            ];
-          };
-          calc = {
-            require_number = true;
-            weight = 5;
-            name = "calc";
-            icon = "accessories-calculator";
-            placeholder = "Calculator";
-            min_chars = 4;
-          };
-          finder = {
-            prefix = "~";
-          };
-        };
-      };
+      runAsService = true;
+      # config = {
+      #   builtins = {
+      #     runner = {
+      #       prefix = "$";
+      #       eager_loading = true;
+      #       weight = 5;
+      #       icon = "utilities-terminal";
+      #       name = "runner";
+      #       placeholder = "Runner";
+      #       typeahead = true;
+      #       history = true;
+      #       generic_entry = false;
+      #       refresh = true;
+      #       use_fd = false;
+      #     };
+      #     websearch = {
+      #       prefix = "?";
+      #       entries = [
+      #         {
+      #           name = "DuckDuckGo";
+      #           url = "https://duckduckgo.com/?q=%TERM%";
+      #         }
+      #       ];
+      #     };
+      #     calc = {
+      #       require_number = true;
+      #       weight = 5;
+      #       name = "calc";
+      #       icon = "accessories-calculator";
+      #       placeholder = "Calculator";
+      #       min_chars = 4;
+      #     };
+      #     finder = {
+      #       prefix = "~";
+      #     };
+      #   };
+      # };
     };
   };
 }

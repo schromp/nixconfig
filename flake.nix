@@ -75,6 +75,7 @@
     };
 
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = {

@@ -13,6 +13,7 @@
   home-manager.users.lk = {
     imports = [
       ../../modules/home
+      inputs.vicinae.homeManagerModules.default
     ];
 
     home.packages = [
@@ -40,13 +41,15 @@
       pkgs.thunderbird
       pkgs.localsend
       pkgs.appflowy
+      pkgs.heroic
+      pkgs.celluloid
       # mpkgs.kicad
     ];
 
     services.gnome-keyring.enable = true;
     services.vicinae = {
       enable = true;
-      linkExtraThemes = true;
+      autoStart = true;
     };
 
     programs = {

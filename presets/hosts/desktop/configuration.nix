@@ -61,6 +61,7 @@ in {
         "https://hyprland.cachix.org"
         "https://walker.cachix.org"
         "https://anyrun.cachix.org"
+        "https://vicinae.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -70,6 +71,7 @@ in {
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       ];
     };
   };

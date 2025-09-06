@@ -10,7 +10,7 @@
     if defaults.defaultBrowser == "zen"
     then "zen-beta.desktop"
     else "firefox.desktop";
-  imageDesktopFile = "loupe.desktop";
+  imageDesktopFile = "org.gnome.Loupe.desktop";
 
   associations = {
     "x-scheme-handler/http" = browserDesktopFile;
@@ -30,6 +30,9 @@
 
     # If you also want to handle local HTML files with the browser
     "text/html" = browserDesktopFile;
+
+    "inode/directory" = "org.gnome.Nautilus.desktop";
+    "inode/mount-point" = "org.gnome.Nautilus.desktop";
   };
 in {
   options.modules.home.programs.xdg = {

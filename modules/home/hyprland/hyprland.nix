@@ -11,12 +11,16 @@
 in {
   imports = [
     # inputs.hyprland.homeManagerModules.default
+
+    inputs.wired.homeManagerModules.default
+
     ./config.nix
     ./hyprlock.nix
   ];
 
   options.modules.home.programs.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
+    withUWSM = true;
     xdgOptions = lib.mkEnableOption "Enable premade xdg options";
     sens = lib.mkOption {
       type = lib.types.str;
@@ -64,9 +68,9 @@ in {
       )
     ];
 
-    # xdg.portal.extraPortals = [
-    #   pkgs.xdg-desktop-portal-gtk
-    # ];
+    xdg.portal.extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
 
     gtk = {
       enable = true;
@@ -82,8 +86,8 @@ in {
       };
 
       iconTheme = {
-          name = "Papirus";
-          package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+        package = pkgs.papirus-icon-theme;
       };
 
       cursorTheme = {
@@ -92,6 +96,10 @@ in {
       };
     };
 
-    services.dunst.enable = true;
+    # services.dunst.enable = true;
+    services.wired = {
+      enable = true;
+      # config = ./wired.ron;
+    };
   };
 }

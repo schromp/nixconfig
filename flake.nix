@@ -76,6 +76,7 @@
 
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     vicinae.url = "github:vicinaehq/vicinae";
+    wired.url = "github:Toqozz/wired-notify";
   };
 
   outputs = {

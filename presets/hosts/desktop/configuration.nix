@@ -146,9 +146,9 @@ in {
     rnote
     evince
     spotify
-    pcmanfm # TODO: configure this or find something better
     vlc
     gimp
+    nautilus
     chromium
     proton-pass
     protonvpn-gui

@@ -209,6 +209,7 @@ in {
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
         "CONTROL, F12, pass, class:^(com\.obsproject\.Studio)$"
+        "CONTROL, HOME, pass, class:^(discord)$"
       ]
       ++ (lib.lists.flatten (builtins.genList (
           x: let

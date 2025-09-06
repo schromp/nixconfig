@@ -84,7 +84,7 @@ in {
     flatpak.enable = true;
     resolved = {
       enable = true;
-      fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
+      fallbackDns = ["1.1.1.1" "8.8.8.8"];
       dnssec = "false";
     };
     netbird = {
@@ -111,7 +111,9 @@ in {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = true;
+      greetd.enable = false;
+      sddm.enable = false;
+      gdm.enable = true;
       hyprland = {
         enable = true;
         hyprlock = true;
@@ -196,6 +198,14 @@ in {
       pulse.enable = true;
       wireplumber = {
         enable = true;
+        extraConfig.bluetoothEnhancements = {
+          "monitor.bluez.properties" = {
+            "bluez5.enable-sbc-xq" = true;
+            "bluez5.enable-msbc" = true;
+            "bluez5.enable-hw-volume" = true;
+            "bluez5.roles" = ["hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag"];
+          };
+        };
         configPackages = [
           (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/51-mitigate-annoying-profile-switch.conf" ''
             monitor.bluez.properties = {
@@ -208,6 +218,7 @@ in {
   };
 
   security.polkit.enable = true;
+
   security.rtkit.enable = true;
   security.pam.enableSSHAgentAuth = true;
 
@@ -252,7 +263,9 @@ in {
 
   # HARDWARE
   hardware = {
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+    };
     opentabletdriver = {
       enable = true;
       daemon.enable = true;

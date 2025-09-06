@@ -4,16 +4,16 @@
   inputs,
   ...
 }: let
-  cfg = config.modules.system.programs.sddm;
+  cfg = config.modules.system.programs.gdm;
 in {
-  options.modules.system.programs.sddm.enable = lib.mkEnableOption "Enable sddm";
+  options.modules.system.programs.gdm.enable = lib.mkEnableOption "Enable gdm";
 
   config = lib.mkIf cfg.enable {
     services.displayManager = {
       enable = true;
-      sddm = {
+      gdm = {
         enable = true;
-        wayland.enable = true;
+        wayland = true;
       };
     };
   };

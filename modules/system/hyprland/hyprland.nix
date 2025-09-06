@@ -20,6 +20,7 @@ in {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
+      withUWSM = true;
       # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       package = pkgs.hyprland;
     };
@@ -39,7 +40,7 @@ in {
         # WLR_RENDERER = "vulkan";
 
         # XDG_CURRENT_DESKTOP = "Hyprland";
-        # XDG_SESSION_TYPE = "wayland";
+        XDG_SESSION_TYPE = "wayland";
         # XDG_SESSION_DESKTOP = "Hyprland";
 
         # TODO: move this into hidpi option

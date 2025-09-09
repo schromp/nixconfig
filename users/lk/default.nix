@@ -13,43 +13,10 @@
   home-manager.users.lk = {
     imports = [
       ../../modules/home
-      inputs.vicinae.homeManagerModules.default
     ];
 
-    home.packages = [
-      pkgs.tldr
-      pkgs.spotify-player
-      pkgs.unzip
-      pkgs.helix
-      pkgs.lazygit
-      pkgs.unrar
-      pkgs.obsidian
-      # pkgs.fluffychat
-      pkgs.element-desktop
-      pkgs.signal-desktop
-      pkgs.flavours
-      pkgs.nomacs
-      pkgs.krita
-      pkgs.teamspeak6-client
-      pkgs.iamb
-      pkgs.pureref
-      pkgs.inkscape
-      pkgs.loupe
-      pkgs.kubectl
-      pkgs.kubernetes-helm
-      pkgs.helmfile
-      pkgs.thunderbird
-      pkgs.localsend
-      pkgs.appflowy
-      pkgs.heroic
-      pkgs.celluloid
-      # mpkgs.kicad
-    ];
-
-    services.gnome-keyring.enable = true;
-    services.vicinae = {
-      enable = true;
-      autoStart = true;
+    home.packages = import ./packages.nix {
+      inherit pkgs inputs;
     };
 
     programs = {
@@ -133,32 +100,19 @@
       };
 
       programs = {
-        # anyrun.enable = false;
         discord = {
           enable = true;
         };
-        emacs.enable = true;
         hyprland = {
           enable = true;
           xdgOptions = true;
           workspace_animations = false;
-
-          hyprlock.enable = false;
         };
-        ghostty.enable = true;
-        iamb.enable = true;
-        sway.enable = true;
-        kitty.enable = true;
         libreoffice.enable = true;
         neovim.enable = true;
-        nushell.enable = true;
         prismLauncher.enable = true;
-        rio.enable = true;
-        tmux.enable = true;
         udiskie.enable = false;
         wezterm.enable = true;
-        ironbar.enable = true;
-        walker.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;
@@ -168,7 +122,6 @@
         zellij.enable = true;
         zoxide.enable = true;
         zsh.enable = true;
-        zen.enable = true;
       };
     };
 

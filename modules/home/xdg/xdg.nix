@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.home.programs.xdg;
@@ -21,7 +22,6 @@
 
     "application/pdf" = "org.gnome.Evince.desktop";
 
-    # FIX: this doesnt work yet
     "image/png" = imageDesktopFile;
     "image/gif" = imageDesktopFile;
     "image/bmp" = imageDesktopFile;
@@ -42,10 +42,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [xdg-utils];
     xdg = {
-      # This is correct for setting the XDG_CACHE_HOME environment variable
-      # cacheHome = config.home.homeDirectory + "/.local/cache";
-
       userDirs = lib.mkIf cfg.createDirectories {
         enable = true;
         createDirectories = true;

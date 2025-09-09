@@ -19,18 +19,14 @@
     else ''
       us
     '';
-  widescreenScript = pkgs.writeShellScript "widescreen_gaps" (builtins.readFile ./widescreen.sh);
 in {
-  imports = [
-    ./themes/terminal.nix
-    ./themes/dracula.nix
-    ./themes/modern.nix
-  ];
 
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
+    source = [
+      "~/.config/hypr/theme.conf"
+    ];
 
-    # monitor = [ "DP-3,3440x1440@144,0x0,1" ];
+    "$mod" = "SUPER";
 
     monitor = lib.lists.forEach monitors (monitor: "${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${monitor.scale},bitdepth, 8,${
         if monitor.vrr
@@ -64,12 +60,8 @@ in {
       )
       "${pkgs.swww}/bin/swww-daemon"
       "${lib.getExe pkgs.pa_applet}"
-      "${widescreenScript}"
-      # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # screenshare"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
-      "ags"
       "hyprctl setcursor Bibata-Modern-Ice 24"
-      # "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service" # FIX: xdg open doesnt work without this
       "${lib.getExe pkgs.lxqt.lxqt-policykit}"
       "[workspace special:yazi silent; float] kitty -e yazi"
     ];
@@ -102,12 +94,6 @@ in {
       touchpad = {
         scroll_factor = 0.5;
       };
-
-      # device = {
-      #   "kensington-orbit-fusion-wireless-trackball-1" = {
-      #     sensitivity = "-0.5";
-      #   };
-      # };
     };
 
     gestures = {
@@ -131,11 +117,6 @@ in {
       allow_tearing = false;
     };
 
-    # dwindle = {
-    #   # default_split_ratio = 0.7;
-    #   # force_split = 1; # always split to left/top
-    # };
-
     misc = {
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
@@ -157,11 +138,7 @@ in {
         "$mod, F, fullscreen"
         "$mod, P, pin"
         "$mod, O, pseudo"
-        # (
-        #   if cfg.hyprlock.enable
-        #   then "$mod CONTROL SHIFT, L, exec, hyprlock"
-        #   else ""
-        # )
+        "$mod, R, exec, ${appRunner}"
 
         "$mod, h, movefocus, l"
         "$mod, j, movefocus, d"
@@ -195,12 +172,6 @@ in {
         ''$mod CONTROL, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.tesseract} stdin - | wl-copy''
         "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpicker} -a"
 
-        "$mod, Y,togglespecialworkspace, yazi"
-
-        "$mod A, A, exec, systemctl --user restart ags"
-
-        "$mod SHIFT, Z, exec, hyprctl keyword misc:cursor_zoom_factor, 2"
-
         ", XF86MonBrightnessUp, exec, brightnessctl s +10"
         ", XF86MonBrightnessDown, exec, brightnessctl s 10-"
 
@@ -222,15 +193,6 @@ in {
             ''$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)} ''
           ]
         )
-        10))
-      ++ (
-        if appRunner == "tofi"
-        then [
-          ''$mod, R, exec, ${lib.getExe config.modules.programs.tofi.runnerScript}''
-          # ''$mod, R, exec, tofi-drun --drun-launch=true''
-          # ''$mod SHIFT, F, exec, hyprctl clients -j | jq -r '.[] | select(.initialClass != " " and .pid != -1) | .initialClass' | tofi | xargs -r hyprctl dispatch focuswindow --''
-        ]
-        else ["$mod, R, exec, ${appRunner}"] # WARN: problematic because of different executable names
-      );
+        10));
   };
 }

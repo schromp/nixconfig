@@ -10,12 +10,10 @@
   screenshotTool = config.modules.home.general.desktop.defaultScreenshotTool;
 in {
   imports = [
-    # inputs.hyprland.homeManagerModules.default
-
     inputs.wired.homeManagerModules.default
+    inputs.vicinae.homeManagerModules.default
 
     ./config.nix
-    ./hyprlock.nix
   ];
 
   options.modules.home.programs.hyprland = {
@@ -36,19 +34,14 @@ in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      # package = pkgs.hyprland;
-      # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
-      # systemd = true;
     };
 
     home.packages = with pkgs; [
-      brightnessctl # change this to light probably
+      brightnessctl
       wl-clipboard
       swaylock-effects
       swayidle
       libnotify
-      # xwaylandvideobridge
       swww
 
       slurp
@@ -95,10 +88,15 @@ in {
       };
     };
 
-    # services.dunst.enable = true;
-    services.wired = {
-      enable = true;
-      # config = ./wired.ron;
+    services = {
+      gnome-keyring.enable = true;
+      wired = {
+        enable = true;
+      };
+      vicinae = {
+        enable = true;
+        autoStart = true;
+      };
     };
   };
 }

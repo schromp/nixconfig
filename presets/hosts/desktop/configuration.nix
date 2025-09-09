@@ -116,7 +116,6 @@ in {
       gdm.enable = true;
       hyprland = {
         enable = true;
-        hyprlock = false;
       };
       cosmic.enable = false;
       shpool.enable = false;

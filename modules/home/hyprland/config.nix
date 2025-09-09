@@ -116,25 +116,25 @@ in {
       workspace_swipe_distance = 200;
     };
 
-    # animations = {
-    #   enabled = true;
-    #   animation = [
-    #     (
-    #       if cfg.workspace_animations
-    #       then "workspaces,1,3,default,slidevert"
-    #       else "workspaces,0"
-    #     )
-    #   ];
-    # };
+    animations = {
+      enabled = true;
+      animation = [
+        (
+          if cfg.workspace_animations
+          then "workspaces,1,3,default,slidevert"
+          else "workspaces,0"
+        )
+      ];
+    };
 
     general = {
       allow_tearing = false;
     };
 
-    dwindle = {
-      # default_split_ratio = 0.7;
-      # force_split = 1; # always split to left/top
-    };
+    # dwindle = {
+    #   # default_split_ratio = 0.7;
+    #   # force_split = 1; # always split to left/top
+    # };
 
     misc = {
       mouse_move_enables_dpms = true;
@@ -157,11 +157,11 @@ in {
         "$mod, F, fullscreen"
         "$mod, P, pin"
         "$mod, O, pseudo"
-        (
-          if cfg.hyprlock.enable
-          then "$mod CONTROL SHIFT, L, exec, hyprlock"
-          else ""
-        )
+        # (
+        #   if cfg.hyprlock.enable
+        #   then "$mod CONTROL SHIFT, L, exec, hyprlock"
+        #   else ""
+        # )
 
         "$mod, h, movefocus, l"
         "$mod, j, movefocus, d"

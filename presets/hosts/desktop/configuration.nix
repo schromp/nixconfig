@@ -81,7 +81,7 @@ in {
       enable = true;
       packages = with pkgs; [dconf gcr udisks2];
     };
-    flatpak.enable = true;
+    flatpak.enable = false;
     resolved = {
       enable = true;
       fallbackDns = ["1.1.1.1" "8.8.8.8"];
@@ -116,15 +116,16 @@ in {
       gdm.enable = true;
       hyprland = {
         enable = true;
-        hyprlock = true;
+        hyprlock = false;
       };
       cosmic.enable = false;
-      shpool.enable = true;
+      shpool.enable = false;
     };
   };
 
   # PROGRAMS
   programs = {
+    dconf.enable = true;
     zsh.enable = true;
     nix-ld.enable = true;
     nh = {

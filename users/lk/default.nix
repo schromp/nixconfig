@@ -125,7 +125,7 @@
         };
         desktop = {
           defaultTerminal = "wezterm";
-          defaultBrowser = "zen";
+          defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
           defaultAppRunner = "vicinae";
@@ -143,7 +143,7 @@
           xdgOptions = true;
           workspace_animations = false;
 
-          hyprlock.enable = true;
+          hyprlock.enable = false;
         };
         ghostty.enable = true;
         iamb.enable = true;

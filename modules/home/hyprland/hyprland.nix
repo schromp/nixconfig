@@ -20,7 +20,6 @@ in {
 
   options.modules.home.programs.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
-    withUWSM = true;
     xdgOptions = lib.mkEnableOption "Enable premade xdg options";
     sens = lib.mkOption {
       type = lib.types.str;
@@ -37,7 +36,7 @@ in {
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland;
+      # package = pkgs.hyprland;
       # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
       # systemd = true;

@@ -21,8 +21,6 @@ in {
       enable = true;
       xwayland.enable = true;
       withUWSM = true;
-      # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      package = pkgs.hyprland;
     };
 
     # TODO: is this up to date?

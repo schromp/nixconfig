@@ -7,7 +7,7 @@
   colors = config.modules.home.general.theme;
 in
   lib.mkIf config.modules.home.programs.hyprland.enable {
-    modules.home.programs.waybar.enable = true;
+    # modules.home.programs.waybar.enable = true;
     wayland.windowManager.hyprland.settings = lib.mkIf (cfg.name == "terminal") {
       decoration = {
         rounding = 0;

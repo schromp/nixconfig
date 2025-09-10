@@ -1905,11 +1905,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1757325014,
-        "narHash": "sha256-cqzQByWwoCOltHSy7mq3HGap32yob3wKhBuhmdqWQKQ=",
+        "lastModified": 1757524571,
+        "narHash": "sha256-UQhXZk+D3DtK9mUOlD6225Yti1SfaX91mXuR0doYg9k=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "aadb074bf7822fdaf7a41246a270ab8a31c888e4",
+        "rev": "eaeef8442a9dd103099304320871c528c3308e6e",
         "type": "github"
       },
       "original": {

@@ -287,6 +287,11 @@ in {
   #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   # ];
 
+  # Fix vicinae bitwarden extension
+  systemd.tmpfiles.rules = [
+    "L /usr/local/bin/bw - - - - ${pkgs.bitwarden-cli}/bin/bw"
+  ];
+
   virtualisation.docker.enable = true;
 
   # OBS VIRTUAL CAMERA

@@ -9,6 +9,7 @@
   kubectl
   kubernetes-helm
   helmfile
+  bitwarden-cli
 
   # applications
   spotify-player

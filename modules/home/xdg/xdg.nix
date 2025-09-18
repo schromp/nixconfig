@@ -27,6 +27,7 @@
     "image/bmp" = imageDesktopFile;
     "image/webp" = imageDesktopFile;
     "image/tiff" = imageDesktopFile;
+    "image/jpeg" = imageDesktopFile;
 
     # If you also want to handle local HTML files with the browser
     "text/html" = browserDesktopFile;

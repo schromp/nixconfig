@@ -121,7 +121,7 @@ in {
       mouse_move_enables_dpms = true;
       key_press_enables_dpms = true;
       animate_manual_resizes = true;
-      initial_workspace_tracking = 2;
+      initial_workspace_tracking = 0;
       middle_click_paste = false;
     };
 
@@ -138,7 +138,7 @@ in {
         "$mod, F, fullscreen"
         "$mod, P, pin"
         "$mod, O, pseudo"
-        "$mod, R, exec, ${appRunner}"
+        "$mod, SPACE, exec, ${appRunner}"
 
         "$mod, h, movefocus, l"
         "$mod, j, movefocus, d"

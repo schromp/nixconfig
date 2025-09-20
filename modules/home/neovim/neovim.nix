@@ -32,6 +32,7 @@ in {
       clang-tools
       nil
       nixd
+      nixfmt
       sumneko-lua-language-server
       rust-analyzer
       rustfmt

@@ -25,4 +25,8 @@
   thunderbird
   localsend
   heroic
+  libation
+  calibre
+  kicad
+  orca-slicer
 ]

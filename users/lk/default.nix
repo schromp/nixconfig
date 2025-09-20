@@ -111,7 +111,7 @@
         libreoffice.enable = true;
         neovim.enable = true;
         prismLauncher.enable = true;
-        udiskie.enable = false;
+        udiskie.enable = true;
         wezterm.enable = true;
         xdg = {
           enable = true;

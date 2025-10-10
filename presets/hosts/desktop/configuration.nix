@@ -59,8 +59,6 @@ in {
         "https://cosmic.cachix.org/"
         "https://nixpkgs-wayland.cachix.org"
         "https://hyprland.cachix.org"
-        "https://walker.cachix.org"
-        "https://anyrun.cachix.org"
         "https://vicinae.cachix.org"
       ];
 
@@ -69,8 +67,6 @@ in {
         "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
         "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       ];
     };
@@ -220,7 +216,7 @@ in {
   security.polkit.enable = true;
 
   security.rtkit.enable = true;
-  security.pam.enableSSHAgentAuth = true;
+  security.pam.sshAgentAuth.enable = true;
 
   # TIMEZONE
   time.timeZone = "Europe/Berlin";

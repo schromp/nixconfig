@@ -52,12 +52,6 @@ in {
     ];
 
     exec-once = [
-      (
-        if appRunner == "walker"
-        then ''"walker gapplication-service"''
-        else if appRunner == "vicinae" then ''vicinae''
-        else ""
-      )
       "${pkgs.swww}/bin/swww-daemon"
       "${lib.getExe pkgs.pa_applet}"
       "exec-once = wl-paste -p --watch wl-copy -pc # disables middle click paste"
@@ -138,7 +132,7 @@ in {
         "$mod, F, fullscreen"
         "$mod, P, pin"
         "$mod, O, pseudo"
-        "$mod, SPACE, exec, ${appRunner}"
+        "$mod, SPACE, exec, vicinae toggle"
 
         "$mod, h, movefocus, l"
         "$mod, j, movefocus, d"

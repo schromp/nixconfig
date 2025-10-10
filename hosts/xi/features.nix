@@ -49,7 +49,7 @@
           }
         ];
         keymap = "us-umlaute";
-        appRunner = "anyrun";
+        appRunner = "vicinae";
         browser = "firefox";
         screenshotTool = "swappy";
       };

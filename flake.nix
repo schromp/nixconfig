@@ -46,17 +46,9 @@
 
     ags.url = "github:Aylur/ags";
 
-    anyrun.url = "github:Kirottu/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
-
     tmux-sessionx = {
       url = "github:omerxx/tmux-sessionx";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    walker = {
-      url = "github:abenz1267/walker/v0.13.22";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay = {

@@ -2,10 +2,17 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   users.users.lk = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "wireshark" "docker"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "wireshark"
+      "docker"
+    ];
     shell = pkgs.zsh;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
@@ -13,6 +20,13 @@
   home-manager.users.lk = {
     imports = [
       ../../modules/home
+
+      ./layout.nix
+      ./neovim.nix
+      ./prismlauncher.nix
+      ./yazi.nix
+      ./zen.nix
+      ./zoxide.nix
     ];
 
     home.packages = import ./packages.nix {
@@ -77,6 +91,14 @@
       };
     };
 
+    services = {
+      udiskie = {
+        enable = true;
+        automount = true;
+        notify = true;
+      };
+    };
+
     modules.home = {
       general = {
         keymap = "us-umlaute";
@@ -100,27 +122,18 @@
       };
 
       programs = {
-        discord = {
-          enable = true;
-        };
         hyprland = {
           enable = true;
           xdgOptions = true;
           workspace_animations = false;
         };
-        libreoffice.enable = true;
-        neovim.enable = true;
-        prismLauncher.enable = true;
-        udiskie.enable = true;
         wezterm.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;
           setAssociations = true;
         };
-        yazi.enable = true;
         zellij.enable = true;
-        zoxide.enable = true;
         zsh.enable = true;
       };
     };

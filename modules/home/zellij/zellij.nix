@@ -27,6 +27,6 @@ in {
 
     xdg.configFile."zellij/config.kdl".text = config_kdl;
 
-    xdg.configFile."zellij/layouts/desktop.kdl".text = desktop_layout;
+    # xdg.configFile."zellij/layouts/desktop.kdl".text = desktop_layout;
   };
 }

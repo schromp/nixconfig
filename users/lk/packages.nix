@@ -29,4 +29,5 @@
   calibre
   kicad
   orca-slicer
+  discord
 ]

@@ -3,18 +3,24 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   sysConfig = config;
-in {
+in
+{
   imports = [
     ../../../users/lk
+
+    ./nix.nix
+    ./packages.nix
+    ./pipewire.nix
   ];
 
   # SHELL:
   users.users.root.initialPassword = "1234";
 
   users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
 
   # HOMEMANAGER
   home-manager = {
@@ -25,62 +31,30 @@ in {
     };
   };
 
-  nixpkgs = {
-    config.permittedInsecurePackages = [
-      "fluffychat-linux-1.23.0"
-      "olm-3.2.16"
-      "libsoup-2.74.3"
-    ];
-
-    config = {
-      allowUnfree = true;
-      allowBroken = false;
-    };
-  };
-
-  nix = {
-    package = pkgs.nixVersions.latest;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      warn-dirty = false
-    '';
-
-    # nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
-    settings = {
-      auto-optimise-store = true;
-
-      trusted-users = ["root" "@wheel"];
-      builders-use-substitutes = false;
-
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-        "https://cosmic.cachix.org/"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://hyprland.cachix.org"
-        "https://vicinae.cachix.org"
-      ];
-
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-      ];
-    };
-  };
 
   services = {
     dbus = {
       enable = true;
-      packages = with pkgs; [dconf gcr udisks2];
+      packages = with pkgs; [
+        dconf
+        gcr
+        udisks2
+      ];
+    };
+    displayManager = {
+      enable = true;
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
     flatpak.enable = false;
     resolved = {
       enable = true;
-      fallbackDns = ["1.1.1.1" "8.8.8.8"];
+      fallbackDns = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
       dnssec = "false";
     };
     netbird = {
@@ -100,21 +74,15 @@ in {
       };
     };
   };
-  nix.settings.sandbox = true;
 
   modules.system = {
     general = {
       configPath = "/home/lk/repos/nixconfig";
     };
     programs = {
-      greetd.enable = false;
-      sddm.enable = false;
-      gdm.enable = true;
       hyprland = {
         enable = true;
       };
-      cosmic.enable = false;
-      shpool.enable = false;
     };
   };
 
@@ -130,37 +98,6 @@ in {
   };
 
   # PACKAGES
-  environment.systemPackages = with pkgs; [
-    btop
-    git
-    curl
-    coreutils
-    vim
-    ranger
-    lxqt.lxqt-policykit
-    imagemagick
-    rnote
-    evince
-    spotify
-    vlc
-    gimp
-    nautilus
-    chromium
-    proton-pass
-    protonvpn-gui
-    protonmail-desktop
-    # bambu-studio
-    # orca-slicer
-    alsa-utils # TODO: why?
-    p7zip
-    nix-prefetch-git
-    freecad
-    slack
-    pavucontrol
-    pa_applet
-    powertop
-    netbird
-  ];
 
   # SERVICES
   services = {
@@ -186,31 +123,6 @@ in {
     };
     gvfs.enable = true;
     blueman.enable = true;
-    pipewire = {
-      enable = true;
-
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      wireplumber = {
-        enable = true;
-        extraConfig.bluetoothEnhancements = {
-          "monitor.bluez.properties" = {
-            "bluez5.enable-sbc-xq" = true;
-            "bluez5.enable-msbc" = true;
-            "bluez5.enable-hw-volume" = true;
-            "bluez5.roles" = ["hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag"];
-          };
-        };
-        configPackages = [
-          (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/51-mitigate-annoying-profile-switch.conf" ''
-            monitor.bluez.properties = {
-              bluez5.roles = [ a2dp_sink a2dp_source ]
-            }
-          '')
-        ];
-      };
-    };
   };
 
   security.polkit.enable = true;
@@ -233,23 +145,7 @@ in {
       nerd-fonts.caskaydia-cove
       nerd-fonts.departure-mono
     ];
-
     enableDefaultPackages = true;
-
-    # fontconfig = {
-    #   defaultFonts = {
-    #     monospace = [
-    #       "JetBrainsMono Nerd Font"
-    #       "Iosevka Term"
-    #       "Iosevka Term Nerd Font Complete Mono"
-    #       "Iosevka Nerd Font"
-    #       "Noto Color Emoji"
-    #     ];
-    #     sansSerif = ["Lexend" "Noto Color Emoji"];
-    #     serif = ["Noto Serif" "Noto Color Emoji"];
-    #     emoji = ["Noto Color Emoji"];
-    #   };
-    # };
   };
 
   # NETWORKING
@@ -278,16 +174,6 @@ in {
     # pulseaudio.support32Bit = true;
   };
 
-  # Testing https://nixos.wiki/wiki/AMD_GPU
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  # ];
-
-  # Fix vicinae bitwarden extension
-  systemd.tmpfiles.rules = [
-    "L /usr/local/bin/bw - - - - ${pkgs.bitwarden-cli}/bin/bw"
-  ];
-
   virtualisation.docker.enable = true;
 
   # OBS VIRTUAL CAMERA
@@ -298,5 +184,5 @@ in {
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';
 
-  boot.supportedFilesystems = ["ntfs"];
+  boot.supportedFilesystems = [ "ntfs" ];
 }

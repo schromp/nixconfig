@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Presets
-    ../../presets/hosts/desktop/configuration.nix
+    ../../shared/hosts/desktop/configuration.nix
   ];
 
   modules.system = {

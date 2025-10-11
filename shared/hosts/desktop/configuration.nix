@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    ../../../users/lk
+    ../../users/lk
 
     ./nix.nix
     ./packages.nix

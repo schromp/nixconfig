@@ -2,14 +2,12 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.modules.system.programs.niri;
-in {
-  options.modules.system.programs.niri = {
-    enable = lib.mkEnableOption "Enable Niri";
-  };
-
-  config = lib.mkIf cfg.enable {
+}:
+let
+  comp = config.modules.local.system.compositor;
+in
+{
+  config = lib.mkIf (comp == "niri") {
     programs.niri.enable = true;
   };
 }

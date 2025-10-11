@@ -75,6 +75,10 @@ in
     };
   };
 
+  modules.local.system = {
+    compositor = "niri";
+  };
+
   modules.system = {
     general = {
       configPath = "/home/lk/repos/nixconfig";

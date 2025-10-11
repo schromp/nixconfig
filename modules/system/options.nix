@@ -1,4 +1,10 @@
 {lib, ...}: {
+  options.modules.local.system = {
+    compositor = lib.mkOption {
+      type = lib.types.enum [ "hyprland" "niri" "cosmic" ];
+    };
+  };
+
   options.modules.system.general = {
     # Here we define global system options
 

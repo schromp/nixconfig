@@ -27,6 +27,7 @@
       ./yazi.nix
       ./zen.nix
       ./zoxide.nix
+      ./ssh.nix
     ];
 
     home.packages = import ./packages.nix {

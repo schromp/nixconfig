@@ -1,9 +1,8 @@
 {
-  inputs,
   pkgs,
-  config,
   ...
-}: {
+}:
+{
   imports = [
     # Presets
     ../../shared/hosts/desktop/configuration.nix
@@ -31,14 +30,6 @@
           vrr = false;
         }
       ];
-    };
-    programs = {
-      bottles.enable = false;
-      gamemode.enable = true;
-      gamescope.enable = true;
-      lutris.enable = true;
-      retroarch.enable = true;
-      steam.enable = true;
     };
   };
 

@@ -28,6 +28,7 @@
       ./zen.nix
       ./zoxide.nix
       ./ssh.nix
+      ./vicinae.nix
     ];
 
     home.packages = import ./packages.nix {

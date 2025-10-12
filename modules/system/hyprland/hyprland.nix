@@ -5,14 +5,14 @@
   pkgs,
   ...
 }: let
-  cfg = config.modules.system.programs.hyprland;
+  comp = config.modules.local.system.compositor;
 in {
   options.modules.system.programs.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
     hyprlock = lib.mkEnableOption "Enable hyprlock";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (comp == "hyprland") {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

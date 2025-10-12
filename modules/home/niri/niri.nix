@@ -4,6 +4,6 @@ let
 in
 {
   config = lib.mkIf (comp == "niri") {
-    home.file.".config/niri/config.toml".source = config.lib.file.mkOutOfStoreSymlink /home/lk/repos/nixconfig/modules/home/niri/config.toml;
+    home.file.".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink /home/lk/repos/nixconfig/modules/home/niri/config.kdl;
   };
 }

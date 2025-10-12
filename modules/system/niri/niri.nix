@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -9,5 +10,9 @@ in
 {
   config = lib.mkIf (comp == "niri") {
     programs.niri.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      xwayland-satellite
+    ];
   };
 }

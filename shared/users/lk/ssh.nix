@@ -19,6 +19,11 @@
             hostname = "git.ude-syssec.de";
             identityFile = "~/.ssh/gitlab-syssec";
           };
+          "knot.echsen.club" = {
+            hostname = "knot.echsen.club";
+            identityFile = "~/.ssh/tangled";
+            identitiesOnly = true;
+          };
           "cloudy" = {
             hostname = "157.180.37.119";
             identityFile = "~/.ssh/hetzner-cloudy";

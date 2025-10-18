@@ -366,6 +366,8 @@ binds {
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae" "toggle"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Shift+S hotkey-overlay-title="Take a Screenshot" { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
+    Super+Control+S hotkey-overlay-title="Screenshot to text" { spawn-sh "grim -g \"$(slurp)\" - | tesseract stdin - | wl-copy"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -443,18 +445,20 @@ binds {
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    // Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
 
     // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
+    Mod+Shift+Ctrl+H  { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+J  { move-workspace-to-monitor-down; }
+    Mod+Shift+Ctrl+K  { move-workspace-to-monitor-up; }
+    Mod+Shift+Ctrl+L  { move-workspace-to-monitor-right; }
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }

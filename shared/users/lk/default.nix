@@ -65,6 +65,9 @@
         automount = true;
         notify = true;
       };
+      easyeffects = {
+        enable = true;
+      };
     };
 
     modules.home = {

@@ -16,7 +16,15 @@ in
     home.packages = with pkgs; [
       swww
       brightnessctl
+      wl-clipboard
+
+      grim
+      slurp
+      swappy
+      tesseract
     ];
+
+    services.wired.enable = true;
 
   };
 }

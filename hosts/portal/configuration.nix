@@ -94,6 +94,9 @@ in {
       _1password-cli
       gum
       inputs.mcphub-nvim.packages."${system}".default
+
+      argocd
+      minio-client
     ];
 
     home.sessionVariables = {
@@ -108,200 +111,41 @@ in {
       ssh = {
         enable = true;
         addKeysToAgent = "yes";
+        includes = ["~/.ssh/indi-ssh-config/config.d/*"];
         extraConfig = ''
           UseKeychain yes
           SetEnv TERM=xterm-256color
+          IdentityFile /Users/lennart.koziollek/.ssh/id_ed_25519_2025
         '';
-        matchBlocks = let
-          createIndiServers = subnet: servers:
-            builtins.listToAttrs (
-              map (server: {
-                name = server.name;
-                value = {
-                  host = server.name;
-                  hostname = "10.111.${builtins.toString subnet}.${builtins.toString server.ip}";
-                  port = 42022;
-                  identityFile = "/Users/lennart.koziollek/.ssh/id_ed_25519_2025";
-                };
-              })
-              servers
-            );
-        in
-          (createIndiServers 127 [
-            {
-              name = "ir-uti1";
-              ip = 101;
-            }
-            {
-              name = "ir-uti2";
-              ip = 102;
-            }
-            {
-              name = "ir-uti3";
-              ip = 103;
-            }
-            {
-              name = "ir-uti4";
-              ip = 104;
-            }
-            {
-              name = "ir-uti5";
-              ip = 105;
-            }
-            {
-              name = "ir-uti6";
-              ip = 106;
-            }
-            {
-              name = "ir-uti7";
-              ip = 107;
-            }
-            {
-              name = "ir-uti8";
-              ip = 108;
-            }
-            {
-              name = "ir-uti9";
-              ip = 109;
-            }
-            {
-              name = "ir-uti10";
-              ip = 110;
-            }
-            {
-              name = "ir-uti-m01";
-              ip = 121;
-            }
-            {
-              name = "ir-pve-t01";
-              ip = 231;
-            }
-            {
-              name = "ir-pve-t02";
-              ip = 232;
-            }
-            {
-              name = "ir-pve-p01";
-              ip = 131;
-            }
-            {
-              name = "ir-pve-p02";
-              ip = 132;
-            }
-            {
-              name = "ir-lb-p01";
-              ip = 11;
-            }
-            {
-              name = "ir-lb-p02";
-              ip = 12;
-            }
-            {
-              name = "ir-lb-t01";
-              ip = 201;
-            }
-            {
-              name = "ir-lb-t02";
-              ip = 202;
-            }
-            {
-              name = "ir-fe-p01";
-              ip = 31;
-            }
-            {
-              name = "ir-fe-p02";
-              ip = 32;
-            }
-            {
-              name = "ir-web-p01";
-              ip = 51;
-            }
-            {
-              name = "ir-web-p02";
-              ip = 52;
-            }
-            {
-              name = "ir-db-t01";
-              ip = 221;
-            }
-            {
-              name = "ir-db-t02";
-              ip = 222;
-            }
-            {
-              name = "ir-dbm-p01";
-              ip = 81;
-            }
-            {
-              name = "ir-dbs-p01";
-              ip = 82;
-            }
-            {
-              name = "ir-web-t01";
-              ip = 211;
-            }
-            {
-              name = "ir-web-t02";
-              ip = 212;
-            }
-            {
-              name = "irra-web-t01";
-              ip = 151;
-            }
-          ])
-          // (createIndiServers 128 [
-            {
-              name = "irbo-web-t01";
-              ip = 211;
-            }
-            {
-              name = "irbo-web-t02";
-              ip = 212;
-            }
-            {
-              name = "irbo-db-t01";
-              ip = 221;
-            }
-            {
-              name = "irbo-db-t02";
-              ip = 222;
-            }
-            {
-              name = "irbo-web-p01";
-              ip = 51;
-            }
-            {
-              name = "irbo-web-p02";
-              ip = 52;
-            }
-            {
-              name = "irbo-dbm-p01";
-              ip = 81;
-            }
-            {
-              name = "irbo-dbs-p01";
-              ip = 82;
-            }
-          ])
-          // {
-            "github.com" = {
-              identityFile = "/Users/lennart.koziollek/.ssh/github";
-            };
-            "bitbucket.check24.de" = {
-              identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
-            };
-            "bitbucket.org" = {
-              identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
-            };
-            "https://git.ude-syssec.de" = {
-              identityFile = "/Users/lennart.koziollek/.ssh/syssec";
-            };
+        matchBlocks = {
+          "github.com" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/github";
           };
+          "bitbucket.check24.de" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
+          };
+          "bitbucket.org" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
+          };
+          "https://git.ude-syssec.de" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/syssec";
+          };
+        };
       };
     };
 
     imports = [
-      ../../modules/home
+      ../../modules/home/options.nix
+      ../../modules/home/theme/theme.nix
+      ../../modules/home/zellij/zellij.nix
+      ../../modules/home/kitty/kitty.nix
+      ../../modules/home/tmux/tmux.nix
+      ../../modules/home/wezterm/wezterm.nix
+      ../../modules/home/zsh/zsh.nix
+
+      ../../shared/users/lk/neovim.nix
+      ../../shared/users/lk/yazi.nix
+      ../../shared/users/lk/zoxide.nix
     ];
 
     modules.home = {
@@ -309,26 +153,19 @@ in {
         keymap = "us-umlaute";
         theme = {
           name = "terminal";
-          font = "JetBrainsMono";
-          transparent = true;
+          font = "Cascadia Code NF";
+          transparent = false;
           colorscheme = {
-            name = "tokyonight";
-            nvimName = "tokyonight"; # WARN: This is a temporary fix
-            zellijName = "tokyo-night-storm";
+            name = "rose-pine-moon";
+            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
+            zellijName = "rose-pine-moon";
           };
         };
       };
 
       programs = {
-        emacs.enable = false;
-        ghostty.enable = false;
         kitty.enable = true;
-        neovim.enable = true;
-        nushell.enable = false;
-        themer.enable = false;
         tmux.enable = true;
-        yazi.enable = true;
-        zoxide.enable = true;
         zsh.enable = true;
         zellij.enable = true;
         wezterm.enable = true;
@@ -364,6 +201,8 @@ in {
       "salt-lint"
       # "openssh"
       "sketchybar"
+      "netbirdio/tap/netbird"
+      "gemini-cli"
     ];
     casks = [
       "michaelroosz/ssh/libsk-libfido2-install"
@@ -376,6 +215,7 @@ in {
       "ghostty"
       "element"
       "vial"
+      "netbirdio/tap/netbird-ui"
     ];
     taps = [
       "FelixKratz/formulae"

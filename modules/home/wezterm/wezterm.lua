@@ -8,7 +8,7 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 64
 config.enable_tab_bar = false
 
-config.font = wezterm.font('Iosevka Nerd Font') -- This doesnt work
+-- config.font = wezterm.font('Iosevka Nerd Font') -- This doesnt work
 
 config.font_size = 13
 config.audible_bell = "Disabled"

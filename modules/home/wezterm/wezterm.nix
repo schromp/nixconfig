@@ -25,6 +25,8 @@ in {
           else ""
         }
 
+        config.font = wezterm.font('${theme.font}')
+
         return config
       '';
       # enableZshIntegration = false;

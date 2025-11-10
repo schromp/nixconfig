@@ -1,0 +1,27 @@
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = true
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'
+
+[templates.vesktop]
+input_path = '~/.config/matugen/templates/midnight-discord-background.css'
+output_path = '~/.config/vesktop/themes/midnight-discord.css'
+
+# [templates.dunst]
+# input_path = '~/.config/matugen/templates/dunstrc-colors'
+# output_path = '~/.config/dunst/dunstrc'
+# post_hook = 'dunstctl reload'
+
+[templates.vicinae]
+input_path = '~/.config/matugen/templates/vicinae.toml'
+output_path = '~/.local/share/vicinae/themes/matugen.toml'
+post_hook = 'vicinae theme set matugen'
+
+[templates.neovim]
+input_path = '~/.config/matugen/templates/neovim/template.lua'
+output_path = '~/.config/nvim/generated.lua'
+post_hook = 'pkill -SIGUSR1 nvim'

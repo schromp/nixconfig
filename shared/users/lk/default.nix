@@ -13,7 +13,7 @@
       "wireshark"
       "docker"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 
@@ -29,6 +29,8 @@
       ./zoxide.nix
       ./ssh.nix
       ./vicinae.nix
+      ./fish.nix
+      ./matugen/matugen.nix
     ];
 
     home.packages = import ./packages.nix {

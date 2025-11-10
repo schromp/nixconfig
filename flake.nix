@@ -69,6 +69,10 @@
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     vicinae.url = "github:vicinaehq/vicinae";
     wired.url = "github:Toqozz/wired-notify";
+
+    deadlock-mod-manager-nixpkgs = {
+      url = "github:NixOS/nixpkgs/pull/456702/head";
+    };
   };
 
   outputs = {

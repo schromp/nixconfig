@@ -24,7 +24,7 @@ in
       tesseract
     ];
 
-    services.wired.enable = true;
+    services.dunst.enable = true;
 
   };
 }

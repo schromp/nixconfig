@@ -1,4 +1,6 @@
-{pkgs, ...}: with pkgs; [
+{ pkgs, inputs, ... }:
+with pkgs;
+[
 
   # cli
   tldr
@@ -10,6 +12,7 @@
   kubernetes-helm
   helmfile
   bitwarden-cli
+  jujutsu
 
   # applications
   spotify-player
@@ -27,7 +30,9 @@
   heroic
   libation
   calibre
-  kicad
   orca-slicer
   discord
+  (vesktop.override { withSystemVencord = false; })
+
+  (pkgs.callPackage "${inputs.deadlock-mod-manager-nixpkgs}/pkgs/by-name/de/deadlock-modmanager/package.nix" { })
 ]

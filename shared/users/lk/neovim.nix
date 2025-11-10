@@ -28,12 +28,12 @@
     nil
     nixd
     nixfmt
-    sumneko-lua-language-server
+    lua-language-server
     rust-analyzer
     rustfmt
     statix
     nixpkgs-fmt
-    python311Packages.jedi-language-server
+    python313Packages.jedi-language-server
     alejandra
     nodePackages.bash-language-server
     pyright

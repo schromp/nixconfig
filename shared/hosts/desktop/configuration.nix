@@ -94,6 +94,7 @@ in
     dconf.enable = true;
     zsh.enable = true;
     nix-ld.enable = true;
+    fish.enable = true;
     nh = {
       enable = true;
       flake = "/home/lk/repos/nixconfig";
@@ -105,7 +106,6 @@ in
   # SERVICES
   services = {
     udev.packages = [
-      pkgs.android-udev-rules
       pkgs.platformio-core.udev
       pkgs.openocd
     ];
@@ -169,9 +169,8 @@ in
       enable = true;
       enable32Bit = true;
       extraPackages = with pkgs; [
-        vaapiVdpau
+        libva-vdpau-driver
         libvdpau-va-gl
-        amdvlk
       ];
     };
     # pulseaudio.support32Bit = true;

@@ -1,7 +1,11 @@
-[config.wallpaper]
-command = "swww"
-arguments = ["img", "--transition-type", "center"]
-set = true
+[config.custom_colors.yellow]
+color = "#FFFF00"
+blend = true
+
+# [config.wallpaper]
+# command = "swww"
+# arguments = ["img", "--transition-type", "center"]
+# set = true
 
 [templates.starship]
 input_path = '~/.config/matugen/templates/starship-colors.toml'
@@ -25,3 +29,16 @@ post_hook = 'vicinae theme set matugen'
 input_path = '~/.config/matugen/templates/neovim/template.lua'
 output_path = '~/.config/nvim/generated.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.niri]
+input_path = '~/.config/matugen/templates/niri.kdl'
+output_path = '~/.config/niri/colors.kdl'
+
+[templates.ghostty]
+input_path = '~/.config/matugen/templates/ghostty'
+output_path = '~/.config/ghostty/themes/Matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'
+
+[templates.helix]
+input_path = '~/.config/matugen/templates/helix.toml'
+output_path = '~/.config/helix/themes/matugen.toml'

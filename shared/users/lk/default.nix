@@ -28,6 +28,8 @@
       ./zen.nix
       ./zoxide.nix
       ./ssh.nix
+      ./ghostty/ghostty.nix
+      ./helix/helix.nix
       ./vicinae.nix
       ./fish.nix
       ./matugen/matugen.nix

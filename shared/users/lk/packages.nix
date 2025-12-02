@@ -13,6 +13,7 @@ with pkgs;
   helmfile
   bitwarden-cli
   jujutsu
+  gh
 
   # applications
   spotify-player
@@ -32,7 +33,7 @@ with pkgs;
   calibre
   orca-slicer
   discord
+  mission-center
+  deadlock-mod-manager
   (vesktop.override { withSystemVencord = false; })
-
-  (pkgs.callPackage "${inputs.deadlock-mod-manager-nixpkgs}/pkgs/by-name/de/deadlock-modmanager/package.nix" { })
 ]

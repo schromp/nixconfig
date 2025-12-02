@@ -32,6 +32,11 @@
     mangohud
     nexusmods-app
     steamcmd
+
+    prismlauncher
+    glfw
+    alsa-oss
+    openal
   ];
   hardware.xpadneo.enable = true; # Enable controller support
   hardware.steam-hardware.enable = true;

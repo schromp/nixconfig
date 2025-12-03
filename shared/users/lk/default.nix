@@ -23,7 +23,6 @@
 
       ./layout.nix
       ./neovim.nix
-      ./prismlauncher.nix
       ./yazi.nix
       ./zen.nix
       ./zoxide.nix

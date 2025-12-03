@@ -34,6 +34,5 @@ with pkgs;
   orca-slicer
   discord
   mission-center
-  deadlock-mod-manager
   (vesktop.override { withSystemVencord = false; })
 ]

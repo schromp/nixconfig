@@ -38,6 +38,8 @@
     glfw
     alsa-oss
     openal
+
+    deadlock-mod-manager
   ];
   hardware.xpadneo.enable = true; # Enable controller support
   hardware.steam-hardware.enable = true;

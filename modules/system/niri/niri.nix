@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -12,7 +13,8 @@ in
     programs.niri.enable = true;
 
     environment.systemPackages = with pkgs; [
-      xwayland-satellite
+      # xwayland-satellite
+      (pkgs.callPackage "${inputs.nixpkgs-xwayland-satellite}/pkgs/by-name/xw/xwayland-satellite/package.nix" {})
     ];
   };
 }

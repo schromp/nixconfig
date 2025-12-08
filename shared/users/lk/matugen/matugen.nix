@@ -28,6 +28,7 @@ in
 {
   home.packages = [
     pkgs.matugen
+    pkgs.pywalfox-native
   ];
 
   home.file.".config/matugen/templates".source = combined-templates;

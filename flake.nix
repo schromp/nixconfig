@@ -3,6 +3,7 @@
 
   inputs = {
     netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
+    nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -69,6 +70,8 @@
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     vicinae.url = "github:vicinaehq/vicinae";
     wired.url = "github:Toqozz/wired-notify";
+
+    awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 
   outputs = {

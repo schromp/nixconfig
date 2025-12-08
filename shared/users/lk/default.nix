@@ -23,7 +23,6 @@
 
       ./layout.nix
       ./neovim.nix
-      ./prismlauncher.nix
       ./yazi.nix
       ./zen.nix
       ./zoxide.nix
@@ -33,6 +32,7 @@
       ./vicinae.nix
       ./fish.nix
       ./matugen/matugen.nix
+      ./helix/helix.nix
     ];
 
     home.packages = import ./packages.nix {

@@ -32,6 +32,7 @@
     mangohud
     nexusmods-app
     steamcmd
+    gamemode
 
     prismlauncher
     glfw

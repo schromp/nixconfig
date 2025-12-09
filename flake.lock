@@ -1514,6 +1514,19 @@
         "type": "github"
       }
     },
+    "non_public_files": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765240138,
+        "narHash": "sha256-snZrf9MQrH81eeXiPIvoTqY1KhP4aqAlxxFqy+sCSTU=",
+        "path": "/home/lk/repos/nixconfig_private",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/lk/repos/nixconfig_private",
+        "type": "path"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1578,6 +1591,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nixpkgs-xwayland-satellite": "nixpkgs-xwayland-satellite",
+        "non_public_files": "non_public_files",
         "prismlauncher": "prismlauncher",
         "tmux-sessionx": "tmux-sessionx",
         "vicinae": "vicinae",

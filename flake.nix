@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
+    non_public_files = {
+      url = "path:/home/lk/repos/nixconfig_private";
+      flake = false;
+    };
+
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=2566d818848b58b114071f199ffe944609376270&submodules=1";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {

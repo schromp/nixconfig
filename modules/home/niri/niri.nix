@@ -10,7 +10,7 @@ let
   comp = osConfig.modules.local.system.compositor;
   kitty-cursor = pkgs.runCommand "kitty-cursor" { } ''
     mkdir -p $out/share/icons/kitty-cursor
-    cp -r ${../../../extras/private/kitty-cursor}/* $out/share/icons/kitty-cursor/
+    cp -r ${inputs.non_public_files}/extras/private/kitty-cursor/* $out/share/icons/kitty-cursor/
   '';
 
 in

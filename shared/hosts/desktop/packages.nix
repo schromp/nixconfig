@@ -29,5 +29,7 @@
     pa_applet
     powertop
     netbird
+    openlinkhub
+    openrgb
   ];
 }

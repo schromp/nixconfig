@@ -14,6 +14,7 @@
     fd
     fzf
     tree-sitter
+    vimPlugins.nvim-treesitter-parsers.jsonc
 
     clang
     cargo

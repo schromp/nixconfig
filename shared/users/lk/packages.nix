@@ -14,6 +14,7 @@ with pkgs;
   bitwarden-cli
   jujutsu
   gh
+  gemini-cli
 
   # applications
   spotify-player

@@ -38,6 +38,8 @@
     supercollider
     obs-studio
     r2modman
+    kicad
+    audacity
   ];
 
   # Bootloader stuff
@@ -46,13 +48,6 @@
       enable = true;
       device = "/dev/nvme0n1";
       useOSProber = true;
-    };
-  };
-
-  home-manager.users.lk = {
-    modules.home.programs.hyprland = {
-      sens = "-0.2";
-      accel = "flat";
     };
   };
 

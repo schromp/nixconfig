@@ -32,13 +32,14 @@ input {
     // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
-        tap
+        // tap false
         // dwt
         // dwtp
-        // drag false
+        drag true
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
+        click-method "clickfinger"
+        // accel-speed 0.5
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -47,7 +48,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed -0.15
         accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -377,7 +378,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+Space hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae" "toggle"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }

@@ -3,11 +3,18 @@
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
+  
+  home.packages = with pkgs; [
+    playerctl
+  ];
 
   services.vicinae = {
     enable = true;
-    autoStart = true;
-    package = inputs.vicinae.packages.${pkgs.system}.default;
+    systemd = {
+      enable = true;
+      autoStart = true;
+    };
+    # package = inputs.vicinae.packages.${pkgs.system}.default;
     # extensions = [
     #   (inputs.vicinae.mkVicinaeExtension.${pkgs.system} {
     #     inherit pkgs;

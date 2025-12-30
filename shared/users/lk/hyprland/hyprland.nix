@@ -12,7 +12,7 @@ in {
 
     home.packages = with pkgs; [
       wl-clipboard
-      inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+      inputs.awww.packages.${pkgs.stdenv.hostplatform.system}.awww
 
       grim
       slurp
@@ -36,6 +36,6 @@ in {
     services.dunst.enable = true;
 
     xdg.configFile."hypr/hyprland.conf".source = 
-      config.lib.file.mkOutOfStoreSymlink "${config.home.flakePath}/shared/users/lk/hyprland/hyprland.conf";
+      config.lib.mkOutOfStoreSymlink "${config.home.flakePath}/shared/users/lk/hyprland/hyprland.conf";
     };
 }

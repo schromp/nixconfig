@@ -82,11 +82,6 @@ in
     general = {
       configPath = "/home/lk/repos/nixconfig";
     };
-    programs = {
-      hyprland = {
-        enable = true;
-      };
-    };
   };
 
   # PROGRAMS
@@ -105,10 +100,13 @@ in
 
   # SERVICES
   services = {
-    udev.packages = [
-      pkgs.platformio-core.udev
-      pkgs.openocd
-    ];
+    udev = {
+      enable = true;
+      packages = [
+        pkgs.platformio-core.udev
+        pkgs.openocd
+      ];
+    };
 
     journald.extraConfig = ''
       SystemMaxUse=50M
@@ -160,6 +158,21 @@ in
   hardware = {
     bluetooth = {
       enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          AutoEnable = true;
+          # This is the key fix for Magic Trackpads
+          UserspaceHID = true;
+          # Optional: Shows battery percentage in your desktop environment
+          Experimental = true;
+        };
+      };
+      input = {
+        General = {
+          UserspaceHID = true;
+        };
+      };
     };
     opentabletdriver = {
       enable = true;

@@ -12,6 +12,7 @@
       "audio"
       "wireshark"
       "docker"
+      "dialout"
     ];
     shell = pkgs.fish;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
@@ -20,6 +21,7 @@
   home-manager.users.lk = {
     imports = [
       ../../../modules/home
+      ./options.nix
 
       ./layout.nix
       ./neovim.nix
@@ -34,6 +36,8 @@
       ./matugen/matugen.nix
       ./helix/helix.nix
     ];
+
+    home.flakePath = "/home/lk/repos/nixconfig";
 
     home.packages = import ./packages.nix {
       inherit pkgs inputs;
@@ -97,11 +101,6 @@
       };
 
       programs = {
-        hyprland = {
-          enable = true;
-          xdgOptions = true;
-          workspace_animations = false;
-        };
         wezterm.enable = true;
         xdg = {
           enable = true;

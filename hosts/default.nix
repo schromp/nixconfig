@@ -45,6 +45,7 @@ in {
     tower = mkNixosSystem "x86_64-linux" "tower" true;
     xi = mkNixosSystem "x86_64-linux" "xi" true;
     shelf = mkNixosSystem "x86_64-linux" "shelf" true;
+    slab = mkNixosSystem "aarch64-linux" "slab" true;
     # cake = mkNixosSystem "aarch64" "cake";
   };
 

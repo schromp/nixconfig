@@ -13,9 +13,8 @@
   ];
 
   modules.system = {
-    compositor = "none";
     general = {
-      
+      configPath = "/home/lk/repos/nixconfig";
     };
   };
 

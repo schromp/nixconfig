@@ -30,7 +30,6 @@
 
   environment.systemPackages = with pkgs; [
     mangohud
-    nexusmods-app
     steamcmd
     gamemode
 

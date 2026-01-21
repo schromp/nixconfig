@@ -47,7 +47,7 @@ in
         wayland = true;
       };
     };
-    flatpak.enable = false;
+    flatpak.enable = true;
     resolved = {
       enable = true;
       fallbackDns = [
@@ -58,6 +58,14 @@ in
     };
     netbird = {
       enable = false;
+      package = pkgs.netbird.overrideAttrs (oldAttrs: rec {
+        version = "0.63.0";
+        src = oldAttrs.src.override {
+          tag = "v${version}";
+          hash = "sha256-PNxwbqehDtBNKkoR5MtnmW49AYC+RdiXpImGGeO/TPg=";
+        };
+        vendorHash = "sha256-iTfwu6CsYQYwyfCax2y/DbMFsnfGZE7TlWE/0Fokvy4=";
+      });
       ui.enable = true;
       clients.echsenclub = {
         ui.enable = true;

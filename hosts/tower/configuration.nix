@@ -38,7 +38,7 @@
     supercollider
     obs-studio
     r2modman
-    kicad
+    # kicad
     audacity
   ];
 

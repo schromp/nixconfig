@@ -247,7 +247,7 @@ keybinds clear-defaults=true {
   // Choose the theme that is specified in the themes section.
   // Default: default
   //
-  theme "${config.modules.home.general.theme.colorscheme.zellijName}"
+  theme "Matugen"
 
   // Choose the base input mode of zellij.
   // Default: normal

@@ -23,7 +23,7 @@
     alsa-utils # TODO: why?
     p7zip
     nix-prefetch-git
-    freecad
+    # freecad
     slack
     pavucontrol
     pa_applet

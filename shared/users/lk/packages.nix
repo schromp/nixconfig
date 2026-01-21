@@ -13,8 +13,11 @@ with pkgs;
   helmfile
   bitwarden-cli
   jujutsu
+  lazyjj
+  lazysql
   gh
   gemini-cli
+  opencode
 
   # applications
   spotify-player
@@ -35,5 +38,6 @@ with pkgs;
   orca-slicer
   discord
   mission-center
-  (vesktop.override { withSystemVencord = false; })
+  blockbench
+  # (vesktop.override { withSystemVencord = false; })
 ]

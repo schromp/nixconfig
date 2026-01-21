@@ -224,7 +224,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -252,7 +252,7 @@ layout {
         spread 5
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=5 y=5
 
         // You can also change the shadow color and opacity.
         color "#0007"

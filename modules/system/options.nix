@@ -1,7 +1,8 @@
 {lib, ...}: {
   options.modules.local.system = {
     compositor = lib.mkOption {
-      type = lib.types.enum [ "hyprland" "niri" "cosmic" ];
+      type = lib.types.enum [ "hyprland" "niri" "cosmic" "none" ];
+      default = "none";
     };
   };
 

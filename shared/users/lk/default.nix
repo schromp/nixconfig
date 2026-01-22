@@ -37,6 +37,7 @@
       ./helix/helix.nix
       ./noctalia.nix
       ./zellij/zellij.nix
+      ./opencode/opencode.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";

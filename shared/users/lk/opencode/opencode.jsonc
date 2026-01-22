@@ -1,0 +1,5 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "matugen",
+  "plugin": ["opencode-gemini-auth@latest"]
+}

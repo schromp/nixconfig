@@ -12,13 +12,8 @@ input_path = '~/.config/matugen/templates/starship-colors.toml'
 output_path = '~/.config/starship.toml'
 
 [templates.vesktop]
-input_path = '~/.config/matugen/templates/midnight-discord-background.css'
+input_path = '~/.config/matugen/templates/midnight-discord.css'
 output_path = '~/.config/vesktop/themes/midnight-discord.css'
-
-# [templates.dunst]
-# input_path = '~/.config/matugen/templates/dunstrc-colors'
-# output_path = '~/.config/dunst/dunstrc'
-# post_hook = 'dunstctl reload'
 
 [templates.vicinae]
 input_path = '~/.config/matugen/templates/vicinae.toml'
@@ -51,3 +46,26 @@ post_hook = 'pywalfox update'
 [templates.zellij]
 input_path = '~/.config/matugen/templates/zellij.kdl'
 output_path = '~/.config/zellij/themes/colors.kdl'
+post_hook = "sed -i 's/theme \"Matugen\"/theme \"default\"/g' ~/.config/zellij/config.kdl && sed -i 's/theme \"default\"/theme \"Matugen\"/g' ~/.config/zellij/config.kdl"
+
+[templates.noctalia]
+input_path = '~/.config/matugen/templates/noctalia.json'
+output_path = '~/.config/noctalia/colors.json'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop'
+
+[templates.opencode]
+input_path = '~/.config/matugen/templates/opencode-colors.json'
+output_path = '~/.config/opencode/themes/matugen.json'

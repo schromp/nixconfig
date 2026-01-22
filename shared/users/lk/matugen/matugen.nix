@@ -1,10 +1,10 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 let
   matugen-themes = pkgs.fetchFromGitHub {
     owner = "InioX";
     repo = "matugen-themes";
     rev = "main";
-    sha256 = "sha256-loFuvBqNT1As9I2gSZ2FxaqaDYbMh9xPVUsKBPlxI7M=";
+    sha256 = "sha256-XhQVvhwHAmnles30A9BINsNWq73rsy+/mulfpDOBTp0=";
   };
 
   vicinae-theme = pkgs.fetchFromGitHub {
@@ -34,4 +34,11 @@ in
   home.file.".config/matugen/templates".source = combined-templates;
   home.file.".config/matugen/config.toml".source =
     config.lib.file.mkOutOfStoreSymlink /home/lk/repos/nixconfig/shared/users/lk/matugen/config.toml;
+
+  home.file.".config/gtk-3.0/gtk.css".text = ''
+    @import 'colors.css';
+  '';
+  home.file.".config/gtk-4.0/gtk.css".text = ''
+    @import 'colors.css';
+  '';
 }

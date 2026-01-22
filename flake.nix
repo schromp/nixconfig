@@ -49,16 +49,6 @@
 
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
-
-    ags.url = "github:Aylur/ags";
-
-    tmux-sessionx = {
-      url = "github:omerxx/tmux-sessionx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
@@ -74,11 +64,14 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     vicinae.url = "github:vicinaehq/vicinae";
-    wired.url = "github:Toqozz/wired-notify";
 
     awww.url = "git+https://codeberg.org/LGFae/awww";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

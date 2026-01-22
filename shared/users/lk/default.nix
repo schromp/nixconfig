@@ -35,6 +35,8 @@
       ./fish.nix
       ./matugen/matugen.nix
       ./helix/helix.nix
+      ./noctalia.nix
+      ./zellij/zellij.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -107,7 +109,6 @@
           createDirectories = true;
           setAssociations = true;
         };
-        zellij.enable = true;
         zsh.enable = true;
       };
     };

@@ -1,4 +1,3 @@
-{config, ...}: ''
 keybinds clear-defaults=true {
       locked {
           bind "Ctrl a" { SwitchToMode "normal"; }
@@ -415,4 +414,3 @@ keybinds clear-defaults=true {
   // support_kitty_keyboard_protocol false
 
   show_startup_tips false
-''

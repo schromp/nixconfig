@@ -39,5 +39,8 @@ with pkgs;
   discord
   mission-center
   blockbench
+  gnome-calendar
+  geary
+  vesktop
   # (vesktop.override { withSystemVencord = false; })
 ]

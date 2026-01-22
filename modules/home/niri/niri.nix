@@ -30,7 +30,15 @@ in
       tesseract
     ];
 
-    services.dunst.enable = true;
+    gtk = {
+      enable = true;
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+      gtk4.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+    };
 
     home.pointerCursor = {
       enable = true;

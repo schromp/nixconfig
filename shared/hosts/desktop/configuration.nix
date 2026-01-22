@@ -32,6 +32,7 @@ in
   };
 
   services = {
+    gnome.evolution-data-server.enable = true;
     dbus = {
       enable = true;
       packages = with pkgs; [

@@ -77,7 +77,7 @@
         notify = true;
       };
       easyeffects = {
-        enable = true;
+        enable = false;
       };
     };
 

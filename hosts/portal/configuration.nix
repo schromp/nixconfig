@@ -19,12 +19,6 @@ in {
 
   environment.systemPackages = with pkgs; [vim docker neovide coreutils mkpasswd];
 
-  # Auto upgrade nix package and the daemon service.
-  services = {
-    nix-daemon.enable = true;
-  };
-  # nix.package = pkgs.nix;
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs = {
@@ -43,6 +37,7 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
+  system.primaryUser = "lennart.koziollek";
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -65,8 +60,30 @@ in {
     home.stateVersion = "24.11";
     home.username = "lennart.koziollek";
     home.homeDirectory = "/Users/lennart.koziollek";
+    home.flakePath = "/Users/lennart.koziollek/Repos/nixconfig";
 
-    home.packages = with pkgs; [
+    imports = [
+      ../../modules/home/options.nix
+      ../../modules/home/theme/theme.nix
+      ../../modules/home/kitty/kitty.nix
+      ../../modules/home/wezterm/wezterm.nix
+      ../../modules/home/zsh/zsh.nix
+
+      ../../shared/users/lk/options.nix
+      ../../shared/users/lk/neovim.nix
+      ../../shared/users/lk/yazi.nix
+      ../../shared/users/lk/zoxide.nix
+      ../../shared/users/lk/ghostty/ghostty.nix
+      ../../shared/users/lk/matugen/matugen.nix
+      ../../shared/users/lk/fish.nix
+      ../../shared/users/lk/zellij/zellij.nix
+    ];
+
+    home.packages = with pkgs; let
+      php = pkgs.php84.buildEnv {
+          extensions = { enabled, all }: enabled ++ (with all; [ opentelemetry ]); 
+        };
+    in [
       # openfortivpn
       lazygit
       htop
@@ -75,28 +92,29 @@ in {
       rio
       helix
 
-      spotify
+      # spotify
       spicetify-cli
       raycast
       unnaturalscrollwheels
       nh
+      flashspace
 
       jq
       # yaml-language-server
       colima
       devpod
-      php83Packages.composer
-      php83
-      nodejs_23
+      nodejs_22
       # openssh
       terraform
       awscli
       _1password-cli
       gum
-      inputs.mcphub-nvim.packages."${system}".default
 
       argocd
       minio-client
+
+      (pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.opentelemetry ])).packages.composer
+      php
     ];
 
     home.sessionVariables = {
@@ -110,7 +128,7 @@ in {
       };
       ssh = {
         enable = true;
-        addKeysToAgent = "yes";
+        enableDefaultConfig = true;
         includes = ["~/.ssh/indi-ssh-config/config.d/*"];
         extraConfig = ''
           UseKeychain yes
@@ -134,19 +152,6 @@ in {
       };
     };
 
-    imports = [
-      ../../modules/home/options.nix
-      ../../modules/home/theme/theme.nix
-      ../../modules/home/zellij/zellij.nix
-      ../../modules/home/kitty/kitty.nix
-      ../../modules/home/tmux/tmux.nix
-      ../../modules/home/wezterm/wezterm.nix
-      ../../modules/home/zsh/zsh.nix
-
-      ../../shared/users/lk/neovim.nix
-      ../../shared/users/lk/yazi.nix
-      ../../shared/users/lk/zoxide.nix
-    ];
 
     modules.home = {
       general = {
@@ -165,9 +170,7 @@ in {
 
       programs = {
         kitty.enable = true;
-        tmux.enable = true;
         zsh.enable = true;
-        zellij.enable = true;
         wezterm.enable = true;
       };
     };
@@ -175,22 +178,22 @@ in {
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "JetBrainsMono"
-          "Iosevka"
-          "FiraCode"
-          "Hermit"
-          "SpaceMono"
-          "OpenDyslexic"
-          "Terminus"
-          "BigBlueTerminal"
-          "HeavyData"
-        ];
-      })
+      # (nerdfonts.override {
+      #   fonts = [
+      #     "JetBrainsMono"
+      #     "Iosevka"
+      #     "FiraCode"
+      #     "Hermit"
+      #     "SpaceMono"
+      #     "OpenDyslexic"
+      #     "Terminus"
+      #     "BigBlueTerminal"
+      #     "HeavyData"
+      #   ];
+      # })
+      fira-code
       cascadia-code
       open-dyslexic
-      nerdfonts
     ];
   };
 
@@ -203,6 +206,7 @@ in {
       "sketchybar"
       "netbirdio/tap/netbird"
       "gemini-cli"
+      "opencode"
     ];
     casks = [
       "michaelroosz/ssh/libsk-libfido2-install"
@@ -212,7 +216,6 @@ in {
       "proton-pass"
       "flameshot"
       "obsidian"
-      "ghostty"
       "element"
       "vial"
       "netbirdio/tap/netbird-ui"
@@ -237,10 +240,10 @@ in {
     NSGlobalDomain.KeyRepeat = 1;
   };
 
-  system.activationScripts.postUserActivation.text = ''
-    # Following line should allow us to avoid a logout/login cycle when changing macos options
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
+  # system.activationScripts.postUserActivation.text = ''
+  #   # Following line should allow us to avoid a logout/login cycle when changing macos options
+  #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  # '';
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }

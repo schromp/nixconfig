@@ -2,6 +2,7 @@ theme = "Matugen"
 # unfocused-split-opacity = 0.75
 macos-option-as-alt = true
 background-opacity = 1
+window-decoration = none
 
 # gtk-tabs-location = left
 

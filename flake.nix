@@ -5,14 +5,14 @@
     netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     nix-avf.url = "github:nix-community/nixos-avf";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
@@ -22,7 +22,7 @@
     };
 
     home-manager-darwin = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 

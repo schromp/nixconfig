@@ -5,25 +5,19 @@
     netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     nix-avf.url = "github:nix-community/nixos-avf";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager-darwin = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
     non_public_files = {
@@ -78,11 +72,10 @@
     self,
     nixpkgs,
     home-manager,
-    home-manager-darwin,
     nix-darwin,
     ...
   } @ inputs: let
-    hosts = import ./hosts {inherit inputs home-manager home-manager-darwin nixpkgs nix-darwin;};
+    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
     # pkgs = nixpkgs.legacyPackages."x86_64-linux";
   in {
     nixosConfigurations = hosts.nixosSystems;

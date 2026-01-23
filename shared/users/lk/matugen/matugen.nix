@@ -33,7 +33,7 @@ in
 
   home.file.".config/matugen/templates".source = combined-templates;
   home.file.".config/matugen/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink /home/lk/repos/nixconfig/shared/users/lk/matugen/config.toml;
+    config.lib.file.mkOutOfStoreSymlink "${config.home.flakePath}/shared/users/lk/matugen/config.toml";
 
   home.file.".config/gtk-3.0/gtk.css".text = ''
     @import 'colors.css';

@@ -2,7 +2,6 @@
   nixpkgs,
   inputs,
   home-manager,
-  home-manager-darwin,
   nix-darwin,
   ...
 }: let
@@ -56,9 +55,7 @@ in {
 
   darwinSystems = {
     "M65L7Q9X32" = nix-darwin.lib.darwinSystem {
-      modules = let
-        home-manager = home-manager-darwin;
-      in [
+      modules = [
         ./portal/default.nix
         home-manager.darwinModules.home-manager
         {

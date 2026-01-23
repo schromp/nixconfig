@@ -77,6 +77,8 @@ in {
       ../../shared/users/lk/matugen/matugen.nix
       ../../shared/users/lk/fish.nix
       ../../shared/users/lk/zellij/zellij.nix
+      ../../shared/users/lk/opencode/opencode.nix
+      ../../shared/users/lk/k9s.nix
     ];
 
     home.packages = with pkgs; let
@@ -125,6 +127,9 @@ in {
       direnv = {
         enable = true;
         nix-direnv.enable = true;
+      };
+      git = {
+        enable = true;
       };
       ssh = {
         enable = true;
@@ -206,7 +211,6 @@ in {
       "sketchybar"
       "netbirdio/tap/netbird"
       "gemini-cli"
-      "opencode"
     ];
     casks = [
       "michaelroosz/ssh/libsk-libfido2-install"

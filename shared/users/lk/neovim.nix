@@ -67,7 +67,7 @@
     withNodeJs = true;
     withPython3 = true;
 
-    extraLuaPackages = luaPkgs: with luaPkgs; [ cjson ];
+    # extraLuaPackages = luaPkgs: with luaPkgs; [ cjson ];
   };
 
   # xdg.configFile."nvim/config.json".text = ''

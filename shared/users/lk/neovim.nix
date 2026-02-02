@@ -37,6 +37,7 @@
     alejandra
     nodePackages.bash-language-server
     pyright
+    copilot-language-server
 
     gopls
     go

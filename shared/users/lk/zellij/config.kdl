@@ -1,4 +1,7 @@
 keybinds clear-defaults=true {
+      normal {
+          unbind "Ctrl l"
+      }
       locked {
           bind "Ctrl a" { SwitchToMode "normal"; }
       }

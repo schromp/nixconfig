@@ -35,7 +35,7 @@
       ./fish.nix
       ./matugen/matugen.nix
       ./helix/helix.nix
-      ./noctalia.nix
+      ./noctalia/noctalia.nix
       ./zellij/zellij.nix
       ./opencode/opencode.nix
     ];

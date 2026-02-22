@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     coreutils
+    lsof
     curl
     git
     vim

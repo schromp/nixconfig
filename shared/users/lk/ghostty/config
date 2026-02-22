@@ -4,6 +4,8 @@ macos-option-as-alt = true
 background-opacity = 1
 window-decoration = none
 
+font-family = "Liberation Mono"
+
 # gtk-tabs-location = left
 
 # keybind = ctrl+a>v=new_split:right

@@ -96,7 +96,7 @@
         };
         desktop = {
           defaultTerminal = "wezterm";
-          defaultBrowser = "firefox";
+          defaultBrowser = "zen";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
           defaultAppRunner = "vicinae";

@@ -66,6 +66,8 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri.url = "github:niri-wm/niri/pull/3483/head";
   };
 
   outputs = {

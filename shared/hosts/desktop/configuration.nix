@@ -132,7 +132,6 @@ in
       openFirewall = true;
     };
     gvfs.enable = true;
-    blueman.enable = true;
   };
 
   security.polkit.enable = true;

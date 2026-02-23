@@ -1,7 +1,7 @@
 theme = "Matugen"
 # unfocused-split-opacity = 0.75
 macos-option-as-alt = true
-background-opacity = 1
+background-opacity = 0.8
 window-decoration = none
 
 font-family = "Liberation Mono"

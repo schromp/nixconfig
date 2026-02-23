@@ -10,7 +10,10 @@ let
 in
 {
   config = lib.mkIf (comp == "niri") {
-    programs.niri.enable = true;
+    programs.niri = {
+      enable = true;
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+    };
 
     environment.systemPackages = with pkgs; [
       # xwayland-satellite

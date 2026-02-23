@@ -35,11 +35,11 @@ input {
         // tap false
         // dwt
         // dwtp
-        drag true
+        drag false
         // drag-lock
         natural-scroll
         click-method "clickfinger"
-        // accel-speed 0.5
+        // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -385,6 +385,29 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+    draw-border-with-background false
+    background-effect {
+        blur true
+    }
+}
+
+layer-rule {
+  match namespace="vicinae"
+
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+blur {
+  passes 5
+  offset 3
+  noise 0.02
+  saturation 1.5
 }
 
 layer-rule {

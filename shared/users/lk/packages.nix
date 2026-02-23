@@ -44,6 +44,7 @@ with pkgs;
   vesktop
   helvum
   owncloud-client
+  logseq
 
   # (vesktop.override { withSystemVencord = false; })
 ]

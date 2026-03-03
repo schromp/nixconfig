@@ -42,5 +42,9 @@ with pkgs;
   gnome-calendar
   geary
   vesktop
+  helvum
+  owncloud-client
+  logseq
+
   # (vesktop.override { withSystemVencord = false; })
 ]

@@ -10,4 +10,6 @@
     };
     systemd.enable = true;
   };
+
+  xdg.configFile."noctalia/settings.json".source = ./noctalia.json;
 }

@@ -12,7 +12,7 @@ input_path = '~/.config/matugen/templates/starship-colors.toml'
 output_path = '~/.config/starship.toml'
 
 [templates.vesktop]
-input_path = '~/.config/matugen/templates/midnight-discord.css'
+input_path = '~/.config/matugen/templates/midnight-discord-background.css'
 output_path = '~/.config/vesktop/themes/midnight-discord.css'
 
 [templates.vicinae]

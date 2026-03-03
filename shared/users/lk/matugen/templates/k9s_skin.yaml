@@ -1,0 +1,74 @@
+k9s:
+  # General K9s styles
+  body:
+    fgColor: "{{colors.on_surface.default.hex}}"
+    bgColor: "{{colors.surface.default.hex}}"
+    logoColor: "{{colors.primary.default.hex}}"
+
+  # ClusterInfoView styles
+  info:
+    fgColor: "{{colors.secondary.default.hex}}"
+    sectionColor: "{{colors.on_surface.default.hex}}"
+
+  # Frame styles
+  frame:
+    # Borders styles
+    border:
+      fgColor: "{{colors.on_surface_variant.default.hex}}"
+      focusColor: "{{colors.primary.default.hex}}"
+
+    # MenuView attributes and styles
+    menu:
+      fgColor: "{{colors.on_surface.default.hex}}"
+      keyColor: "{{colors.secondary.default.hex}}"
+      # Used for favorite namespaces
+      numKeyColor: "{{colors.tertiary.default.hex}}"
+
+    # CrumbView attributes for history navigation.
+    crumbs:
+      fgColor: "{{colors.on_primary.default.hex}}"
+      bgColor: "{{colors.primary.default.hex}}"
+      activeColor: "{{colors.tertiary.default.hex}}"
+
+    # Resource status and update styles
+    status:
+      newColor: "{{colors.primary.default.hex}}"
+      modifyColor: "{{colors.secondary.default.hex}}"
+      addColor: "{{colors.tertiary.default.hex}}"
+      errorColor: "{{colors.error.default.hex}}"
+      highlightcolor: "{{colors.tertiary.default.hex}}"
+      killColor: "{{colors.error.default.hex}}"
+      completedColor: "{{colors.on_surface_variant.default.hex}}"
+
+    # Border title styles.
+    title:
+      fgColor: "{{colors.on_surface.default.hex}}"
+      bgColor: "{{colors.surface.default.hex}}"
+      highlightColor: "{{colors.secondary.default.hex}}"
+      counterColor: "{{colors.tertiary.default.hex}}"
+      filterColor: "{{colors.primary.default.hex}}"
+
+  # Specific views styles
+  views:
+    # TableView attributes.
+    table:
+      fgColor: "{{colors.on_surface.default.hex}}"
+      bgColor: "{{colors.surface.default.hex}}"
+      cursorColor: "{{colors.secondary_container.default.hex}}"
+      # Header row styles.
+      header:
+        fgColor: "{{colors.on_surface_variant.default.hex}}"
+        bgColor: "{{colors.surface.default.hex}}"
+        sorterColor: "{{colors.secondary.default.hex}}"
+
+    # YAML info styles.
+    yaml:
+      keyColor: "{{colors.primary.default.hex}}"
+      colonColor: "{{colors.on_surface.default.hex}}"
+      valueColor: "{{colors.on_surface.default.hex}}"
+
+    # Logs styles.
+    logs:
+      fgColor: "{{colors.on_surface.default.hex}}"
+      bgColor: "{{colors.surface.default.hex}}"
+      indicatorColor: "{{colors.primary.default.hex}}"

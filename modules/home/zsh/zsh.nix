@@ -42,6 +42,9 @@ in {
 
         eval "$(direnv hook zsh)"
       '';
+      initContent = ''
+        export PATH="$HOME/.local/bin:$PATH"
+      '';
       shellAliases = {
         ".." = "cd ..";
         "..." = "cd ../..";
@@ -98,7 +101,9 @@ in {
 
           ${
             if hostname == "M65L7Q9X32"
-            then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
+            then ''
+              export SSH_AUTH_SOCK="$HOME/.ssh/agent"
+            ''
             else ""
           }
 
@@ -107,6 +112,7 @@ in {
             then ''
               eval $(/opt/homebrew/bin/brew shellenv)
               export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
+              export PATH="''${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
             ''
             else ''''
           }

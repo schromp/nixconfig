@@ -93,6 +93,7 @@ in {
       jira-cli-go
       rio
       helix
+      jujutsu
 
       # spotify
       spicetify-cli
@@ -111,12 +112,17 @@ in {
       awscli
       _1password-cli
       gum
+      mcp-grafana
 
       argocd
       minio-client
 
       (pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.opentelemetry ])).packages.composer
       php
+    ];
+
+    home.sessionPath = [
+      "$HOME/.local/bin"
     ];
 
     home.sessionVariables = {
@@ -223,6 +229,7 @@ in {
       "element"
       "vial"
       "netbirdio/tap/netbird-ui"
+      "cursor-cli"
     ];
     taps = [
       "FelixKratz/formulae"

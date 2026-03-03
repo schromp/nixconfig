@@ -46,7 +46,9 @@ post_hook = 'pywalfox update'
 [templates.zellij]
 input_path = '~/.config/matugen/templates/zellij.kdl'
 output_path = '~/.config/zellij/themes/colors.kdl'
-post_hook = "sed -i 's/theme \"Matugen\"/theme \"default\"/g' ~/.config/zellij/config.kdl && sed -i 's/theme \"default\"/theme \"Matugen\"/g' ~/.config/zellij/config.kdl"
+# post_hook = "sed -i 's/theme \"Matugen\"/theme \"default\"/g' ~/.config/zellij/config.kdl && sed -i 's/theme \"default\"/theme \"Matugen\"/g' ~/.config/zellij/config.kdl"
+# post_hook = "sed -i '' 's/theme \"Matugen\"/theme \"default\"/g' ~/.config/zellij/config.kdl && sed -i '' 's/theme \"default\"/theme \"Matugen\"/g' ~/.config/zellij/config.kdl"
+post_hook = "FILE=$(realpath ~/.config/zellij/config.kdl) && perl -i -pe 's/theme \"Matugen\"/theme \"default\"/g' \"$FILE\" && perl -i -pe 's/theme \"default\"/theme \"Matugen\"/g' \"$FILE\""
 
 [templates.noctalia]
 input_path = '~/.config/matugen/templates/noctalia.json'
@@ -69,3 +71,7 @@ post_hook = 'pkill -USR2 btop'
 [templates.opencode]
 input_path = '~/.config/matugen/templates/opencode-colors.json'
 output_path = '~/.config/opencode/themes/matugen.json'
+
+[templates.k9s]
+input_path = '~/.config/matugen/templates/k9s_skin.yaml'
+output_path = '~/.config/k9s/matugen_skin.yaml'

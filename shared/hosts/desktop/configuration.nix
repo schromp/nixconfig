@@ -11,6 +11,7 @@ in
   imports = [
     ../../users/lk
 
+    ./sops.nix
     ./nix.nix
     ./packages.nix
     ./pipewire.nix

@@ -8,6 +8,11 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-avf.url = "github:nix-community/nixos-avf";
 
     nix-darwin = {
@@ -70,22 +75,32 @@
     niri.url = "github:niri-wm/niri/pull/3483/head";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    ...
-  } @ inputs: let
-    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
-    # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-  in {
-    nixosConfigurations = hosts.nixosSystems;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      ...
+    }@inputs:
+    let
+      hosts = import ./hosts {
+        inherit
+          inputs
+          home-manager
+          nixpkgs
+          nix-darwin
+          ;
+      };
+      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    in
+    {
+      nixosConfigurations = hosts.nixosSystems;
 
-    homeConfigurations = hosts.hmSystems;
+      homeConfigurations = hosts.hmSystems;
 
-    packages = import ./packages {inherit nixpkgs;};
+      packages = import ./packages { inherit nixpkgs; };
 
-    darwinConfigurations = hosts.darwinSystems;
-  };
+      darwinConfigurations = hosts.darwinSystems;
+    };
 }

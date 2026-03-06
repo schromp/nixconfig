@@ -21,6 +21,7 @@
           }
           ./${hostname}
           ../modules/system
+          inputs.sops-nix.nixosModules.sops
         ]
         ++ (
           if homeManager

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    sops
     coreutils
     lsof
     curl
@@ -32,5 +33,6 @@
     netbird
     openlinkhub
     openrgb
+    virt-viewer
   ];
 }

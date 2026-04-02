@@ -60,25 +60,22 @@ in
     };
     netbird = {
       enable = false;
-      package = pkgs.netbird.overrideAttrs (oldAttrs: rec {
-        version = "0.63.0";
-        src = oldAttrs.src.override {
-          tag = "v${version}";
-          hash = "sha256-PNxwbqehDtBNKkoR5MtnmW49AYC+RdiXpImGGeO/TPg=";
-        };
-        vendorHash = "sha256-iTfwu6CsYQYwyfCax2y/DbMFsnfGZE7TlWE/0Fokvy4=";
-      });
       ui.enable = true;
       clients.echsenclub = {
         ui.enable = true;
         port = 51820;
         config = {
           ManagementURL = {
+            Scheme = "https";
             Host = "netbird.echsen.club:443";
           };
           AdminURL = {
+            Scheme = "https";
             Host = "netbird.echsen.club:443";
           };
+        };
+        environment = {
+          NB_MANAGEMENT_URL = "https://netbird.echsen.club:443";
         };
       };
     };

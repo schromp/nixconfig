@@ -35,7 +35,6 @@
     nixpkgs-fmt
     python313Packages.jedi-language-server
     alejandra
-    nodePackages.bash-language-server
     pyright
     copilot-language-server
 
@@ -47,8 +46,7 @@
     stylua
     prettierd
     yamllint
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    typescript-language-server
     # vscode-langservers-extracted
     texlab
     prettierd

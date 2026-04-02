@@ -2,7 +2,6 @@
   description = "inspired nixos system config";
 
   inputs = {
-    netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -63,7 +62,7 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    vicinae.url = "github:vicinaehq/vicinae";
+    vicinae.url = "github:schromp/vicinae/rework-nix-module-settings";
 
     awww.url = "git+https://codeberg.org/LGFae/awww";
 
@@ -73,6 +72,8 @@
     };
 
     niri.url = "github:niri-wm/niri/pull/3483/head";
+
+    fluxer.url = "github:NixOS/nixpkgs/pull/497870/merge";
   };
 
   outputs =

@@ -42,9 +42,11 @@ with pkgs;
   gnome-calendar
   geary
   vesktop
-  helvum
   owncloud-client
   logseq
+  affine
 
   # (vesktop.override { withSystemVencord = false; })
+
+  (pkgs.callPackage "${inputs.fluxer}/pkgs/by-name/fl/fluxer-desktop/package.nix" { })
 ]

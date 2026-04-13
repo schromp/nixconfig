@@ -18,7 +18,7 @@
     nautilus
     chromium
     proton-pass
-    protonvpn-gui
+    proton-vpn
     protonmail-desktop
     # bambu-studio
     # orca-slicer

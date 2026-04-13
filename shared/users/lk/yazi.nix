@@ -9,7 +9,8 @@
     enable = true;
     enableZshIntegration = true;
     package = lib.mkIf (
-      pkgs.system == "aarch64-darwin"
-    ) inputs.nixpkgs-unstable.legacyPackages."aarch64-darwin".yazi;
+      pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
+    ) inputs.nixpkgs.legacyPackages."aarch64-darwin".yazi;
+    shellWrapperName = "y";
   };
 }

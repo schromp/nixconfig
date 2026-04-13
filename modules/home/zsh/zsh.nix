@@ -6,8 +6,6 @@
   ...
 }: let
   cfg = config.modules.home.programs.zsh;
-  colors = config.modules.home.general.theme.colorscheme.colors;
-  hostname = sysConfig.modules.system.general.hostname;
 in {
   options.modules.home.programs.zsh = {
     enable = lib.mkEnableOption "Enable zsh";
@@ -24,7 +22,7 @@ in {
 
     programs.zsh = {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = config.xdg.configHome + "/zsh";
       autosuggestion.enable = true;
       # enableAutosuggestions = true;
       enableCompletion = true;
@@ -54,8 +52,6 @@ in {
         hyprgame-on = "hyprctl keyword unbind SUPER,Q";
         "cat" = "${lib.getExe pkgs.bat}";
 
-        "update-switch" = "sudo nixos-rebuild switch --flake .#${hostname}";
-        "update-test" = "sudo nixos-rebuild test --flake .#${hostname}";
         "update-check" = "nix flake check";
       };
       oh-my-zsh = {
@@ -71,10 +67,6 @@ in {
 
           # Set prompt substitution so we can use the vcs_info_message variable
           setopt prompt_subst
-
-          COL_NAME="${colors.base09}"
-          COL_DIR="${colors.base0A}"
-          COL_GIT="${colors.base0E}"
 
           NEWLINE=$'\n'
 
@@ -97,16 +89,11 @@ in {
           PROMPT=' ''${NEWLINE}%F{#$COL_NAME}%n%f %F{#$COL_DIR}%3~%f %F{#$COL_GIT}''${vcs_info_msg_0_}%f %(?..%B%F{red}(%?%)%f%b)''${NEWLINE}> '
 
           ${
-            if hostname == "M65L7Q9X32"
-            then ''export SSH_AUTH_SOCK="$HOME/.ssh/agent"''
-            else ""
-          }
-
-          ${
-            if pkgs.system == "aarch64-darwin"
+            if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
             then ''
               eval $(/opt/homebrew/bin/brew shellenv)
               export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
+              export SSH_AUTH_SOCK="$HOME/.ssh/agent"
             ''
             else ''''
           }

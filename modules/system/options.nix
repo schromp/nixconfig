@@ -13,24 +13,11 @@
       type = lib.types.str;
     };
 
-    hostname = lib.mkOption {
-      type = lib.types.str;
-      description = ''
-        The hostname of the system. Is also used as network name
-      '';
-    };
-
     homeManager = lib.mkOption {
       type = lib.types.bool;
       description = ''
         Enable home-manager on this system
       '';
-    };
-
-    architecture = lib.mkOption {
-      type = lib.types.str;
-      description = "The architecture of the system";
-      example = "x86_64-linux";
     };
 
     nvidia = lib.mkEnableOption "Enable Nvidia drivers";

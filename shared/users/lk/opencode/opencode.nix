@@ -5,7 +5,7 @@
 }:
 {
   home.packages = [
-    (if pkgs.system == "aarch64-darwin" then pkgs.opencode else pkgs.opencode)
+    (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then pkgs.opencode else pkgs.opencode)
     pkgs.mcp-grafana
   ];
 

@@ -50,9 +50,9 @@
       };
     };
 
-    # package = inputs.vicinae.packages.${pkgs.system}.default;
+    # package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default;
     # extensions = [
-    #   (inputs.vicinae.mkVicinaeExtension.${pkgs.system} {
+    #   (inputs.vicinae.mkVicinaeExtension.${pkgs.stdenv.hostPlatform.system} {
     #     inherit pkgs;
     #     name = "swww-switcher";
     #     src = pkgs.fetchFromGitHub {

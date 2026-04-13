@@ -52,11 +52,13 @@ in
     flatpak.enable = true;
     resolved = {
       enable = true;
-      fallbackDns = [
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
-      dnssec = "false";
+      settings.Resolve = {
+        FallbackDNS = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+        DNSSEC = "false";
+      };
     };
     netbird = {
       enable = false;
@@ -191,6 +193,9 @@ in
         libva-vdpau-driver
         libvdpau-va-gl
       ];
+      package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
+      package32 =
+        inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
     };
     # pulseaudio.support32Bit = true;
   };

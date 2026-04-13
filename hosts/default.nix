@@ -5,17 +5,12 @@
   nix-darwin,
   ...
 }: let
-  mkNixosSystem = system: hostname: homeManager:
+  mkNixosSystem = hostname: homeManager:
     nixpkgs.lib.nixosSystem {
-      system = "${system}";
       modules =
         [
           {
             config = {
-              modules.system.general = {
-                hostname = hostname;
-                architecture = system;
-              };
               networking.hostName = hostname;
             };
           }
@@ -32,26 +27,12 @@
         );
       specialArgs = {inherit inputs;};
     };
-
-  mkHmSystem = system: hostname:
-    home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [
-        ./${hostname}
-      ];
-    };
 in {
   nixosSystems = {
-    tower = mkNixosSystem "x86_64-linux" "tower" true;
-    xi = mkNixosSystem "x86_64-linux" "xi" true;
-    shelf = mkNixosSystem "x86_64-linux" "shelf" true;
-    slab = mkNixosSystem "aarch64-linux" "slab" true;
-    # cake = mkNixosSystem "aarch64" "cake";
-  };
-
-  hmSystems = {
-    submarine = mkHmSystem "x86_64-linux" "submarine";
-    work = mkHmSystem "x86_64-linux" "work";
+    tower = mkNixosSystem "tower" true;
+    xi = mkNixosSystem "xi" true;
+    shelf = mkNixosSystem "shelf" true;
+    slab = mkNixosSystem "slab" true;
   };
 
   darwinSystems = {

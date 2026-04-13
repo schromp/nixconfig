@@ -57,7 +57,8 @@
       git = {
         enable = true;
         lfs.enable = true;
-        extraConfig = {
+        signing.format = null;
+        settings = {
           init = {
             defaultBranch = "main";
           };
@@ -71,11 +72,6 @@
     };
 
     services = {
-      udiskie = {
-        enable = true;
-        automount = true;
-        notify = true;
-      };
       easyeffects = {
         enable = false;
       };
@@ -84,16 +80,6 @@
     modules.home = {
       general = {
         keymap = "us-umlaute";
-        theme = {
-          name = "modern";
-          font = "Iosevka Nerd Font";
-          transparent = true;
-          colorscheme = {
-            name = "kanagawa";
-            nvimName = "kanagawa"; # WARN: This is a temporary fix
-            zellijName = "kanagawa";
-          };
-        };
         desktop = {
           defaultTerminal = "wezterm";
           defaultBrowser = "zen";

@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -35,17 +35,6 @@
       url = "github:hyprwm/contrib";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpaper.url = "github:hyprwm/hyprpaper";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -62,7 +51,7 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    vicinae.url = "github:schromp/vicinae/rework-nix-module-settings";
+    vicinae.url = "github:vicinaehq/vicinae";
 
     awww.url = "git+https://codeberg.org/LGFae/awww";
 

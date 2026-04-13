@@ -1,9 +1,12 @@
-{...}: 
+{ ... }:
 {
   programs.ssh = {
     enable = true;
-    forwardAgent = true;
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        forwardAgent = true;
+      };
       "github.com" = {
         hostname = "github.com";
         identityFile = "~/.ssh/github";

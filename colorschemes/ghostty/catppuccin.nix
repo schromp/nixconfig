@@ -1,0 +1,7 @@
+{
+  files = {
+    "theme" = ''
+      theme = "Catppuccin";
+    '';
+  };
+}

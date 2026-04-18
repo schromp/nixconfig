@@ -1,6 +1,6 @@
 let
   lib = import <nixpkgs/lib>;
-  pkgs = import <nixpkgs> {};
+  pkgs = import <nixpkgs> { };
   entries = builtins.readDir ./.;
   programs = lib.filterAttrs (n: type: type == "directory") entries;
   programsAndThemes = lib.mapAttrs (
@@ -17,21 +17,30 @@ let
         name = lib.removeSuffix ".nix" name;
         value = import ./${program}/${name};
       }) colorschemeFiles;
+
       # Build derivations for the colorschemes
-      colorschemesWithDerivations = lib.mapAttrs (
-        schemeName: schemeData:
-        let
-          drv = pkgs.linkFarm "${program}-${schemeName}" (
-            lib.mapAttrsToList (path: content: {
-              name = path;
-              path = pkgs.writeText (baseNameOf path) content;
-            }) schemeData.files
-          );
-        in
-        schemeData // { out = drv; }
-      ) colorschemes;
+      allFiles = lib.foldlAttrs (
+        acc: schemeName: schemeData:
+        acc
+        // (lib.mapAttrs' (fileName: content: {
+          name = "${schemeName}/${fileName}";
+          value = content;
+        }) schemeData.files)
+      ) { } colorschemes;
+
+      # Single derivation per program
+      drv = pkgs.linkFarm "${program}-colorschemes" (
+        lib.mapAttrsToList (path: content: {
+          name = path;
+          path = pkgs.writeText (baseNameOf path) content;
+        }) allFiles
+      );
     in
-    meta // { colorschemes = colorschemesWithDerivations; }
+    meta
+    // {
+      colorschemes = colorschemes;
+      out = drv;
+    }
   ) programs;
 
   # Activation Script

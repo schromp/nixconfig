@@ -2,11 +2,15 @@
   description = "inspired nixos system config";
 
   inputs = {
-    netbird-new-module.url = "github:NixOS/nixpkgs/pull/354032/head";
     nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-avf.url = "github:nix-community/nixos-avf";
 
@@ -31,17 +35,6 @@
       url = "github:hyprwm/contrib";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpaper.url = "github:hyprwm/hyprpaper";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -68,24 +61,36 @@
     };
 
     niri.url = "github:niri-wm/niri/pull/3483/head";
+
+    fluxer.url = "github:NixOS/nixpkgs/pull/497870/merge";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-darwin,
-    ...
-  } @ inputs: let
-    hosts = import ./hosts {inherit inputs home-manager nixpkgs nix-darwin;};
-    # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-  in {
-    nixosConfigurations = hosts.nixosSystems;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      ...
+    }@inputs:
+    let
+      hosts = import ./hosts {
+        inherit
+          inputs
+          home-manager
+          nixpkgs
+          nix-darwin
+          ;
+      };
+      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    in
+    {
+      nixosConfigurations = hosts.nixosSystems;
 
-    homeConfigurations = hosts.hmSystems;
+      homeConfigurations = hosts.hmSystems;
 
-    packages = import ./packages {inherit nixpkgs;};
+      packages = import ./packages { inherit nixpkgs; };
 
-    darwinConfigurations = hosts.darwinSystems;
-  };
+      darwinConfigurations = hosts.darwinSystems;
+    };
 }

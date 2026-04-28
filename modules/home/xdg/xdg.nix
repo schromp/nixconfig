@@ -48,6 +48,7 @@ in {
       userDirs = lib.mkIf cfg.createDirectories {
         enable = true;
         createDirectories = true;
+        setSessionVariables = true;
       };
 
       mimeApps = lib.mkIf cfg.setAssociations {

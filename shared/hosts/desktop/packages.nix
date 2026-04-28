@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    sops
     coreutils
     lsof
     curl
@@ -17,7 +18,7 @@
     nautilus
     chromium
     proton-pass
-    protonvpn-gui
+    proton-vpn
     protonmail-desktop
     # bambu-studio
     # orca-slicer
@@ -32,5 +33,6 @@
     netbird
     openlinkhub
     openrgb
+    virt-viewer
   ];
 }

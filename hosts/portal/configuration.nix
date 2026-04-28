@@ -5,9 +5,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   sysConfig = config;
-in {
+in
+{
   imports = [
     ../../modules/system/options.nix
   ];
@@ -17,7 +19,13 @@ in {
     configPath = "/Users/lennart.koziollek/Repos/nixconfig";
   };
 
-  environment.systemPackages = with pkgs; [vim docker neovide coreutils mkpasswd];
+  environment.systemPackages = with pkgs; [
+    vim
+    docker
+    neovide
+    coreutils
+    mkpasswd
+  ];
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -81,9 +89,11 @@ in {
       ../../shared/users/lk/k9s.nix
     ];
 
-    home.packages = with pkgs; let
-      php = pkgs.php84.buildEnv {
-          extensions = { enabled, all }: enabled ++ (with all; [ opentelemetry ]); 
+    home.packages =
+      with pkgs;
+      let
+        php = pkgs.php84.buildEnv {
+          extensions = { enabled, all }: enabled ++ (with all; [ opentelemetry ]);
         };
     in [
       # openfortivpn
@@ -95,12 +105,12 @@ in {
       helix
       jujutsu
 
-      # spotify
-      spicetify-cli
-      raycast
-      unnaturalscrollwheels
-      nh
-      flashspace
+        # spotify
+        spicetify-cli
+        raycast
+        unnaturalscrollwheels
+        nh
+        flashspace
 
       jq
       # yaml-language-server
@@ -114,12 +124,12 @@ in {
       gum
       mcp-grafana
 
-      argocd
-      minio-client
+        argocd
+        minio-client
 
-      (pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.opentelemetry ])).packages.composer
-      php
-    ];
+        (pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.opentelemetry ])).packages.composer
+        php
+      ];
 
     home.sessionPath = [
       "$HOME/.local/bin"
@@ -140,7 +150,7 @@ in {
       ssh = {
         enable = true;
         enableDefaultConfig = true;
-        includes = ["~/.ssh/indi-ssh-config/config.d/*"];
+        includes = [ "~/.ssh/indi-ssh-config/config.d/*" ];
         extraConfig = ''
           UseKeychain yes
           SetEnv TERM=xterm-256color
@@ -162,7 +172,6 @@ in {
         };
       };
     };
-
 
     modules.home = {
       general = {

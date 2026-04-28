@@ -3,7 +3,7 @@
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
-  
+
   home.packages = with pkgs; [
     playerctl
   ];
@@ -14,9 +14,45 @@
       enable = true;
       autoStart = true;
     };
-    # package = inputs.vicinae.packages.${pkgs.system}.default;
+    settings = {
+      font = {
+        normal = {
+          family = "CaskaydiaCove Nerd Font";
+        };
+      };
+      theme = {
+        dark = {
+          name = "matugen";
+          icon_theme = "Adwaita";
+        };
+      };
+      launcher_window = {
+        opacity = 0.8;
+        client_side_decorations = {
+          enabled = true;
+        };
+      };
+      providers = {
+        "@sovereign/store.vicinae.awww-switcher" = {
+          preferences = {
+            colorGenTool = "matugen";
+            gridRows = "4";
+            postProduction = "no";
+            showImageDetails = true;
+            toggleVicinaeSetting = true;
+            transitionDuration = "3";
+            transitionFPS = "60";
+            transitionStep = "90";
+            transitionType = "random";
+            wallpaperPath = "/home/lk/Pictures/Wallpaper";
+          };
+        };
+      };
+    };
+
+    # package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default;
     # extensions = [
-    #   (inputs.vicinae.mkVicinaeExtension.${pkgs.system} {
+    #   (inputs.vicinae.mkVicinaeExtension.${pkgs.stdenv.hostPlatform.system} {
     #     inherit pkgs;
     #     name = "swww-switcher";
     #     src = pkgs.fetchFromGitHub {

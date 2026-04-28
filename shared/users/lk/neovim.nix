@@ -18,7 +18,7 @@
     clang
     cargo
     rustc
-    # inputs.rustacean.packages.${pkgs.system}.codelldb
+    # inputs.rustacean.packages.${pkgs.stdenv.hostPlatform.system}.codelldb
     # gdb # Not supported on darwin
 
     sassc
@@ -35,7 +35,6 @@
     nixpkgs-fmt
     python313Packages.jedi-language-server
     alejandra
-    nodePackages.bash-language-server
     pyright
     copilot-language-server
 
@@ -47,8 +46,7 @@
     stylua
     prettierd
     yamllint
-    nodePackages.typescript
-    nodePackages.typescript-language-server
+    typescript-language-server
     # vscode-langservers-extracted
     texlab
     prettierd
@@ -62,7 +60,7 @@
   programs.neovim = {
     enable = true;
 
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     defaultEditor = true;
     withNodeJs = true;

@@ -11,15 +11,15 @@
           libpulseaudio
           libvorbis
           stdenv.cc.cc.lib
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libxcursor
+          libxi
+          libxinerama
+          libxscrnsaver
         ];
     };
     protontricks.enable = true;
     # extraCompatPackages = [
-    #   inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+    #   inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge
     # ];
     extraCompatPackages = [
       pkgs.proton-ge-bin

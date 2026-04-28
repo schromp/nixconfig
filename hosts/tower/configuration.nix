@@ -40,7 +40,11 @@
     r2modman
     # kicad
     audacity
+
+    wireguard-tools
   ];
+
+  networking.firewall.checkReversePath = false;
 
   # Bootloader stuff
   boot.loader = {

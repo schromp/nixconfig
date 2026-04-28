@@ -11,6 +11,7 @@ in
   imports = [
     ../../users/lk
 
+    ./sops.nix
     ./nix.nix
     ./packages.nix
     ./pipewire.nix
@@ -51,33 +52,32 @@ in
     flatpak.enable = true;
     resolved = {
       enable = true;
-      fallbackDns = [
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
-      dnssec = "false";
+      settings.Resolve = {
+        FallbackDNS = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+        DNSSEC = "false";
+      };
     };
     netbird = {
       enable = false;
-      package = pkgs.netbird.overrideAttrs (oldAttrs: rec {
-        version = "0.63.0";
-        src = oldAttrs.src.override {
-          tag = "v${version}";
-          hash = "sha256-PNxwbqehDtBNKkoR5MtnmW49AYC+RdiXpImGGeO/TPg=";
-        };
-        vendorHash = "sha256-iTfwu6CsYQYwyfCax2y/DbMFsnfGZE7TlWE/0Fokvy4=";
-      });
       ui.enable = true;
       clients.echsenclub = {
         ui.enable = true;
         port = 51820;
         config = {
           ManagementURL = {
+            Scheme = "https";
             Host = "netbird.echsen.club:443";
           };
           AdminURL = {
+            Scheme = "https";
             Host = "netbird.echsen.club:443";
           };
+        };
+        environment = {
+          NB_MANAGEMENT_URL = "https://netbird.echsen.club:443";
         };
       };
     };
@@ -193,6 +193,9 @@ in
         libva-vdpau-driver
         libvdpau-va-gl
       ];
+      package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
+      package32 =
+        inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
     };
     # pulseaudio.support32Bit = true;
   };

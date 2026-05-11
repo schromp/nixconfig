@@ -2,7 +2,6 @@
   description = "inspired nixos system config";
 
   inputs = {
-    nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -59,8 +58,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    niri.url = "github:niri-wm/niri/pull/3483/head";
 
     fluxer.url = "github:NixOS/nixpkgs/pull/497870/merge";
   };

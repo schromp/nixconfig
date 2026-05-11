@@ -193,9 +193,9 @@ in
         libva-vdpau-driver
         libvdpau-va-gl
       ];
-      package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
-      package32 =
-        inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
+      # package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
+      # package32 =
+      #   inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
     };
     # pulseaudio.support32Bit = true;
   };

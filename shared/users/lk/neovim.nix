@@ -37,6 +37,7 @@
     alejandra
     pyright
     copilot-language-server
+    tinymist
 
     gopls
     go

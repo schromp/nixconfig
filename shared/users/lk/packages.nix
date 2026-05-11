@@ -18,6 +18,7 @@ with pkgs;
   gh
   gemini-cli
   opencode
+  pi-coding-agent
 
   # applications
   spotify-player
@@ -45,6 +46,7 @@ with pkgs;
   owncloud-client
   logseq
   affine
+  libreoffice
 
   # (vesktop.override { withSystemVencord = false; })
 

@@ -38,6 +38,7 @@
       ./noctalia/noctalia.nix
       ./zellij/zellij.nix
       ./opencode/opencode.nix
+      ./pi/pi.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -90,6 +91,7 @@
       };
 
       programs = {
+        npm.enable = true;
         wezterm.enable = true;
         xdg = {
           enable = true;

@@ -18,7 +18,6 @@ with pkgs;
   gh
   gemini-cli
   opencode
-  pi-coding-agent
 
   # applications
   spotify-player

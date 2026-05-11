@@ -1,0 +1,5 @@
+{
+  "lastChangelogVersion": "0.70.5",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "qwen3.6-plus"
+}

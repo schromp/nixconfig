@@ -1,5 +1,8 @@
 {
-  "lastChangelogVersion": "0.70.5",
+  "lastChangelogVersion": "0.75.4",
   "defaultProvider": "opencode-go",
-  "defaultModel": "qwen3.6-plus"
+  "defaultModel": "minimax-m2.7",
+  "packages": [
+    "npm:pi-web-access"
+  ]
 }

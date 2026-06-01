@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 {
-  home.packages = [
-    pkgs.pi-coding-agent
+  home.packages = with pkgs; [
+    pi-coding-agent
+    nodejs
   ];
 
   home.file.".pi".source =

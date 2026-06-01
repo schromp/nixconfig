@@ -46,7 +46,6 @@ in
       enable = true;
       gdm = {
         enable = true;
-        wayland = true;
       };
     };
     flatpak.enable = true;

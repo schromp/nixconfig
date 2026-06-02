@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Wrapper script for colorscheme switcher
+# Usage: ./cs <command> [args...]
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# Try to find nushell, falling back to nix shell
+if command -v nu &> /dev/null; then
+    exec nu cs.nu "$@"
+else
+    exec nix shell nixpkgs#nushell -c nu cs.nu "$@"
+fi

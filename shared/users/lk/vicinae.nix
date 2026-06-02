@@ -20,12 +20,12 @@
           family = "CaskaydiaCove Nerd Font";
         };
       };
-      theme = {
-        dark = {
-          name = "matugen";
-          icon_theme = "Adwaita";
-        };
-      };
+      # theme = {
+      #   dark = {
+      #     name = "matugen";
+      #     icon_theme = "Adwaita";
+      #   };
+      # };
       launcher_window = {
         opacity = 0.8;
         client_side_decorations = {

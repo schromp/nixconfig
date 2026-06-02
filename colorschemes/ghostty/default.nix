@@ -1,5 +1,5 @@
 {
   supportedMetaAttributes = [ "opacity" ];
-  directory = "xdgConfig/ghostty"; # TODO: function to get xdgConfig
+  directory = "ghostty";
   activationScript = "pkill -SIGUSR2 ghostty";
 }

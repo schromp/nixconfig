@@ -1,4 +1,5 @@
-theme = "Matugen"
+config-file = "theme"
+# theme = "Matugen"
 # unfocused-split-opacity = 0.75
 macos-option-as-alt = true
 background-opacity = 0.8

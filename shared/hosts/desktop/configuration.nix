@@ -44,8 +44,9 @@ in
     };
     displayManager = {
       enable = true;
-      gdm = {
+      sddm = {
         enable = true;
+        wayland.enable = true;
       };
     };
     flatpak.enable = true;

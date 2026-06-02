@@ -43,8 +43,8 @@ with pkgs;
   geary
   vesktop
   owncloud-client
-  logseq
-  affine
+  # logseq
+  # affine
   libreoffice
 
   # (vesktop.override { withSystemVencord = false; })

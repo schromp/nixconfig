@@ -48,6 +48,10 @@
       inherit pkgs inputs;
     };
 
+    programs.fish.shellInit = ''
+      alias cs='${inputs.self.packages.${pkgs.system}.colorschemes}/bin/cs'
+    '';
+
     programs = {
       bat.enable = true;
       direnv = {

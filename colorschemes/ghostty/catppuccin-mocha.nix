@@ -1,7 +1,7 @@
 {
   files = {
     "theme" = ''
-      theme = "Catppuccin";
+      theme = Catppuccin Mocha
     '';
   };
 }

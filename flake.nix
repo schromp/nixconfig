@@ -85,6 +85,9 @@
           ;
       };
       # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      colorschemes-pkg = import ./colorschemes/package.nix {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
     in
     {
       nixosConfigurations = hosts.nixosSystems;
@@ -92,6 +95,8 @@
       homeConfigurations = hosts.hmSystems;
 
       packages = import ./packages { inherit nixpkgs; };
+
+      colorschemes = colorschemes-pkg;
 
       darwinConfigurations = hosts.darwinSystems;
     };

@@ -2,7 +2,11 @@ let
   lib = import <nixpkgs/lib>;
   pkgs = import <nixpkgs> { };
   entries = builtins.readDir ./.;
-  programs = lib.filterAttrs (n: type: type == "directory") entries;
+  programs = lib.filterAttrs (
+    n: type:
+      type == "directory"
+      && n != "lib"  # exclude non-program directories
+  ) entries;
   programsAndThemes = lib.mapAttrs (
     program: _:
     let

@@ -40,6 +40,7 @@
       ./zellij/zellij.nix
       ./opencode/opencode.nix
       ./pi/pi.nix
+      ./vesktop.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -48,9 +49,9 @@
       inherit pkgs inputs;
     };
 
-    programs.fish.shellInit = ''
-      alias cs='${inputs.self.packages.${pkgs.system}.colorschemes}/bin/cs'
-    '';
+    # programs.fish.shellInit = ''
+    #   alias cs='${inputs.self.packages.${pkgs.system}.colorschemes}/bin/cs'
+    # '';
 
     programs = {
       bat.enable = true;

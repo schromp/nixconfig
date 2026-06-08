@@ -41,7 +41,6 @@ with pkgs;
   blockbench
   gnome-calendar
   geary
-  vesktop
   owncloud-client
   # logseq
   # affine

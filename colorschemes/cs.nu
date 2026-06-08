@@ -41,7 +41,26 @@ def activate-cmd [program: string, scheme?: string] {
             $meta.activationScript
         })
         print $"running activation: ($cmd)"
-        ^bash -c $cmd
+        # If command doesn't contain a path separator, search in COLORSCHEMES_OUT/bin
+        if not ($cmd | str contains "/") {
+            # Check if the binary name (before first space) exists in PATH
+            let binName = ($cmd | split row " " | get 0)
+            if not ($binName | str contains "/") {
+                # First check if command exists in PATH
+                let existsInPath = (try { ^which $binName out+err> /dev/null; true } catch { false })
+                if $existsInPath {
+                    ^bash -c $cmd
+                } else {
+                    # Fall back to COLORSCHEMES_BIN
+                    let fullCmd = [($env.COLORSCHEMES_BIN) $binName] | path join
+                    ^bash -c $fullCmd
+                }
+            } else {
+                ^bash -c $cmd
+            }
+        } else {
+            ^bash -c $cmd
+        }
     }
 }
 

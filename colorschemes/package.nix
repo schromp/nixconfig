@@ -53,23 +53,36 @@ let
     cp ${./cs.nu} $out/share/colorschemes/cs/cs.nu
     cp ${./lib/data.nu} $out/share/colorschemes/cs/lib/data.nu
     cp ${./lib/install.nu} $out/share/colorschemes/cs/lib/install.nu
-    chmod +x $out/share/colorschemes/cs/cs.nu
-  '';
 
-  # CLI wrapper - pass all data via env
-  cli = pkgs.writeScriptBin "cs" ''
-    #!/usr/bin/env bash
-    export COLORSCHEMES_OUT="${linkFarm}"
-    export COLORSCHEMES_DATA='${builtins.toJSON (lib.mapAttrs (program: data: {
+    # Write the colorscheme data to a JSON file at build time
+    cp ${pkgs.writeText "cs-data.json" (builtins.toJSON (lib.mapAttrs (program: data: {
       baseDir = if data ? baseDir then data.baseDir else null;
       inherit (data) directory activationScript supportedMetaAttributes;
       out = data.out;
       colorschemes = lib.mapAttrs (scheme: schemeData: {
         files = schemeData.files;
       }) data.colorschemes;
-    }) colorschemeData)}'
+    }) colorschemeData))} $out/share/colorschemes/cs/lib/cs_data.json
+    chmod +x $out/share/colorschemes/cs/cs.nu
+  '';
+
+  # Program activation scripts (static scripts, no quoting issues)
+  neovimActivate = pkgs.writeScriptBin "neovim-activate" ''
+    #!/usr/bin/env bash
+    scheme="$1"
+    for server in $(nvim --serverlist 2>/dev/null); do
+        nvim --server "$server" --remote-expr 0 "colorscheme $scheme" 2>/dev/null
+    done
+  '';
+
+  # CLI wrapper - pass paths via env
+  cli = pkgs.writeScriptBin "cs" ''
+    #!/usr/bin/env bash
+    export COLORSCHEMES_OUT="${toString linkFarm}"
+    export COLORSCHEMES_DATA_FILE="${cliFiles}/share/colorschemes/cs/lib/cs_data.json"
+    export COLORSCHEMES_BIN="${neovimActivate}/bin"
     cd ${cliFiles}/share/colorschemes/cs
-    exec ${pkgs.nushell}/bin/nu cs.nu "$@"
+    exec ${pkgs.nushell}/bin/nu -I .:. ./cs.nu "$@"
   '';
 
 in
@@ -79,6 +92,7 @@ pkgs.symlinkJoin {
     linkFarm
     cli
     cliFiles
+    neovimActivate
   ];
   passthru = {
     inherit colorschemeData;

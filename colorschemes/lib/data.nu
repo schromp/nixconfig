@@ -1,9 +1,13 @@
 # Data access layer for colorscheme linkFarm
-# Uses COLORSCHEMES_DATA env var set by the wrapper script
+# Uses COLORSCHEMES_DATA_FILE env var set by the wrapper script
 
-# Get all colorscheme data from environment
+# Get all colorscheme data from file
 def get-all-data [] {
-    $env.COLORSCHEMES_DATA | from json
+    if ($env.COLORSCHEMES_DATA_FILE? | is-not-empty) {
+        ^cat $env.COLORSCHEMES_DATA_FILE | from json
+    } else {
+        $env.COLORSCHEMES_DATA | from json
+    }
 }
 
 # Get COLORSCHEMES_OUT path

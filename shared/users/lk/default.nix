@@ -41,6 +41,7 @@
       ./opencode/opencode.nix
       ./pi/pi.nix
       ./vesktop.nix
+      ./wezterm/wezterm.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -98,7 +99,6 @@
 
       programs = {
         npm.enable = true;
-        wezterm.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;

@@ -141,7 +141,7 @@ in
 
   # TIMEZONE
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_DK.UTF-8";
   time.hardwareClockInLocalTime = true;
 
   # FONTS
@@ -153,6 +153,7 @@ in
       nerd-fonts.iosevka
       nerd-fonts.caskaydia-cove
       nerd-fonts.departure-mono
+      rubik
     ];
     enableDefaultPackages = true;
   };

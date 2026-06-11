@@ -3,9 +3,32 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.use_fancy_tab_bar = false
-config.tab_max_width = 64
-config.enable_tab_bar = true
+-- TODO: replace this with something actually good
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+bar.apply_to_config(config, {
+  position = "top",
+	modules = {
+		spotify = {
+			enabled = false,
+		},
+    username = {
+      enabled = false,
+    },
+    hostname = {
+      enabled = false,
+    },
+    clock = {
+      enabled = false,
+    },
+    workspace = {
+      enabled = false,
+    },
+	},
+})
+
+-- config.use_fancy_tab_bar = false
+-- config.tab_max_width = 64
+-- config.enable_tab_bar = true
 
 config.font = wezterm.font("Hurmit Nerd Font")
 
@@ -14,6 +37,8 @@ config.audible_bell = "Disabled"
 
 config.color_scheme = "catppuccin-mocha"
 config.window_background_opacity = 0.8
+
+-- Tab bar themed from Catppuccin Mocha colors
 
 config.leader = { key = "a", mods = "CTRL" }
 config.keys = {
@@ -82,6 +107,8 @@ config.key_tables = {
 	},
 	tab = {
 		{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
+		{ key = "h", action = act.MoveTabRelative(-1) },
+		{ key = "l", action = act.MoveTabRelative(1) },
 	},
 }
 

@@ -42,6 +42,14 @@ config.keys = {
 		}),
 	},
 	{
+		key = "t",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({
+			name = "tab",
+			timeout_milliseconds = 1000,
+		}),
+	},
+	{
 		key = "r",
 		mods = "LEADER",
 		action = act.ActivateKeyTable({
@@ -71,7 +79,9 @@ config.key_tables = {
 	pane = {
 		{ key = "n", action = act.SplitPane({ direction = "Right" }) },
 		{ key = "j", action = act.ActivatePaneDirection("Down") },
-		{ key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+	},
+	tab = {
+		{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
 	},
 }
 

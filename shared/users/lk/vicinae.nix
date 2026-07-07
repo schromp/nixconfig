@@ -14,6 +14,7 @@
       enable = true;
       autoStart = true;
     };
+    enableFirefoxIntegration = true;
     settings = {
       font = {
         normal = {

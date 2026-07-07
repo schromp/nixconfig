@@ -64,7 +64,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fluxer.url = "github:NixOS/nixpkgs/pull/497870/merge";
+    fluxer-bin.url = "github:NixOS/nixpkgs/pull/490554/merge";
   };
 
   outputs =

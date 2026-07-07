@@ -23,7 +23,7 @@ with pkgs;
   spotify-player
   obsidian
   element-desktop
-  signal-desktop
+  # signal-desktop
   nomacs
   krita
   pureref
@@ -48,5 +48,12 @@ with pkgs;
 
   # (vesktop.override { withSystemVencord = false; })
 
-  (pkgs.callPackage "${inputs.fluxer}/pkgs/by-name/fl/fluxer-desktop/package.nix" { })
+  ((pkgs.callPackage "${inputs.fluxer-bin}/pkgs/by-name/fl/fluxer-bin/package.nix" { }).overrideAttrs
+    (oldAttrs: {
+      src = pkgs.fetchurl {
+        url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/v2026.602.31138/appimage";
+        hash = "sha256-d4FAWwrWyoyp7lo8X+nIe+Dd6Z8rDThyK1wU00f7rjY=";
+      };
+    })
+  )
 ]

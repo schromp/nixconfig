@@ -1,8 +1,9 @@
 {
-  "lastChangelogVersion": "0.75.4",
+  "lastChangelogVersion": "0.79.1",
   "defaultProvider": "opencode-go",
-  "defaultModel": "minimax-m2.7",
+  "defaultModel": "kimi-k2.6",
   "packages": [
     "npm:pi-web-access"
-  ]
+  ],
+  "defaultThinkingLevel": "high"
 }

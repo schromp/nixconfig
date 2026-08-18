@@ -65,6 +65,9 @@
     };
 
     fluxer-bin.url = "github:NixOS/nixpkgs/pull/490554/merge";
+
+    firefox.url = "github:nix-community/flake-firefox-nightly";
+    firefox.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

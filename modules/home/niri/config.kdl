@@ -199,7 +199,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -277,13 +277,13 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 50
 
         // Spread expands the shadow.
-        spread 10
+        spread 15
 
         // Offset moves the shadow relative to the window.
-        offset x=5 y=5
+        offset x=-15 y=15
 
         // You can also change the shadow color and opacity.
         color "#0007"
@@ -404,9 +404,9 @@ layer-rule {
 }
 
 blur {
-  passes 2
+  passes 3
   offset 3
-  noise 0.10
+  // noise 0.10
   saturation 1.5
 }
 

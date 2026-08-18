@@ -3,8 +3,10 @@
   "/home/lk/repos",
   "/home/lk/repos",
   "/home/lk/repos",
+  "/home/lk/repos",
   "/nix/store",
   "/tmp",
   "/home/lk/.config/DankMaterialShell",
-  "/home/lk/.npm-global/lib/node_modules/pi-web-access/skills/librarian"
+  "/home/lk/.npm-global/lib/node_modules/pi-web-access/skills/librarian",
+  "/home/lk/.pi/agent/extensions/plan-mode"
 ]

@@ -60,7 +60,10 @@
         enable = true;
         nix-direnv.enable = true;
       };
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        package = inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
+      };
       nheko.enable = true;
       git = {
         enable = true;
@@ -90,7 +93,7 @@
         keymap = "us-umlaute";
         desktop = {
           defaultTerminal = "wezterm";
-          defaultBrowser = "zen";
+          defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
           defaultAppRunner = "vicinae";

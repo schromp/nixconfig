@@ -37,6 +37,7 @@
     alejandra
     pyright
     copilot-language-server
+    tinymist
 
     gopls
     go
@@ -65,6 +66,7 @@
     defaultEditor = true;
     withNodeJs = true;
     withPython3 = true;
+    sideloadInitLua = true;
 
     # extraLuaPackages = luaPkgs: with luaPkgs; [ cjson ];
   };

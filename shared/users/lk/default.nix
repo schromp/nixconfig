@@ -35,9 +35,13 @@
       ./fish.nix
       ./matugen/matugen.nix
       ./helix/helix.nix
-      ./noctalia/noctalia.nix
+      # ./noctalia/noctalia.nix
+      ./dms/dms.nix
       ./zellij/zellij.nix
       ./opencode/opencode.nix
+      ./pi/pi.nix
+      ./vesktop.nix
+      ./wezterm/wezterm.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -46,13 +50,20 @@
       inherit pkgs inputs;
     };
 
+    # programs.fish.shellInit = ''
+    #   alias cs='${inputs.self.packages.${pkgs.system}.colorschemes}/bin/cs'
+    # '';
+
     programs = {
       bat.enable = true;
       direnv = {
         enable = true;
         nix-direnv.enable = true;
       };
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        package = inputs.firefox.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
+      };
       nheko.enable = true;
       git = {
         enable = true;
@@ -82,7 +93,7 @@
         keymap = "us-umlaute";
         desktop = {
           defaultTerminal = "wezterm";
-          defaultBrowser = "zen";
+          defaultBrowser = "firefox";
           defaultFileManager = "pcmanfm";
           defaultScreenshotTool = "swappy";
           defaultAppRunner = "vicinae";
@@ -90,7 +101,7 @@
       };
 
       programs = {
-        wezterm.enable = true;
+        npm.enable = true;
         xdg = {
           enable = true;
           createDirectories = true;

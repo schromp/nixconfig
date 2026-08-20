@@ -1,0 +1,14 @@
+{
+  "lastChangelogVersion": "0.80.6",
+  "defaultProvider": "openrouter",
+  "defaultModel": "deepseek/deepseek-v4-flash",
+  "packages": [
+    "npm:pi-web-access"
+  ],
+  "defaultThinkingLevel": "high",
+  "theme": "dark",
+  "enabledModels": [
+    "openrouter/deepseek/deepseek-v4-flash"
+  ],
+  "hideThinkingBlock": true
+}

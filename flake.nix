@@ -2,7 +2,6 @@
   description = "inspired nixos system config";
 
   inputs = {
-    nixpkgs-xwayland-satellite.url = "github:Nixos/nixpkgs/pull/466734/head";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -60,9 +59,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri.url = "github:niri-wm/niri/pull/3483/head";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    fluxer.url = "github:NixOS/nixpkgs/pull/497870/merge";
+    fluxer-bin.url = "github:NixOS/nixpkgs/pull/490554/merge";
+
+    firefox.url = "github:nix-community/flake-firefox-nightly";
+    firefox.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -83,6 +88,9 @@
           ;
       };
       # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      colorschemes-pkg = import ./colorschemes/package.nix {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
     in
     {
       nixosConfigurations = hosts.nixosSystems;
@@ -90,6 +98,8 @@
       homeConfigurations = hosts.hmSystems;
 
       packages = import ./packages { inherit nixpkgs; };
+
+      colorschemes = colorschemes-pkg;
 
       darwinConfigurations = hosts.darwinSystems;
     };

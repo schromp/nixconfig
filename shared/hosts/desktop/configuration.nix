@@ -44,9 +44,9 @@ in
     };
     displayManager = {
       enable = true;
-      gdm = {
+      sddm = {
         enable = true;
-        wayland = true;
+        wayland.enable = true;
       };
     };
     flatpak.enable = true;
@@ -141,7 +141,7 @@ in
 
   # TIMEZONE
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_DK.UTF-8";
   time.hardwareClockInLocalTime = true;
 
   # FONTS
@@ -153,6 +153,7 @@ in
       nerd-fonts.iosevka
       nerd-fonts.caskaydia-cove
       nerd-fonts.departure-mono
+      rubik
     ];
     enableDefaultPackages = true;
   };
@@ -193,9 +194,9 @@ in
         libva-vdpau-driver
         libvdpau-va-gl
       ];
-      package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
-      package32 =
-        inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
+      # package = inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
+      # package32 =
+      #   inputs.nixpkgs-25-05.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa;
     };
     # pulseaudio.support32Bit = true;
   };

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Apply colorscheme to all running neovim instances
+scheme="$1"
+if [ -z "$scheme" ]; then
+    echo "Usage: neovim-activate <colorscheme>"
+    exit 1
+fi
+
+for server in $(nvim --serverlist 2>/dev/null); do
+    nvim --server "$server" --remote-expr 0 "colorscheme $scheme" 2>/dev/null
+done

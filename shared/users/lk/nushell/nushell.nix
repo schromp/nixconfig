@@ -1,22 +1,15 @@
 {
-  config,
   pkgs,
-  lib,
   ...
-}: let
-  cfg = config.modules.home.programs.nushell;
-in {
-  options.modules.home.programs.nushell = {
-    enable = lib.mkEnableOption "Enable nushell";
-  };
+}:
+let
+in
+{
+  home.packages = with pkgs; [
+    nushell
+    fish
+  ];
 
-  config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      nushell
-      fish
-    ];
-
-    xdg.configFile."nushell/config.nu".text = builtins.readFile ./config.nu;
-    xdg.configFile."nushell/zoxide.nu".text = builtins.readFile ./zoxide.nu;
-  };
+  xdg.configFile."nushell/config.nu".text = builtins.readFile ./config.nu;
+  xdg.configFile."nushell/zoxide.nu".text = builtins.readFile ./zoxide.nu;
 }

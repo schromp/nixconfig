@@ -15,7 +15,6 @@ in
   ];
 
   modules.system.general = {
-    hostname = "M65L7Q9X32";
     configPath = "/Users/lennart.koziollek/Repos/nixconfig";
   };
 
@@ -53,6 +52,7 @@ in
   users.users."lennart.koziollek" = {
     description = "test";
     home = "/Users/lennart.koziollek";
+    shell = pkgs.nushell;
   };
 
   # inputs.home-manager.useGlobalPkgs = true;
@@ -72,8 +72,6 @@ in
 
     imports = [
       ../../modules/home/options.nix
-      ../../modules/home/theme/theme.nix
-      ../../modules/home/kitty/kitty.nix
       ../../modules/home/wezterm/wezterm.nix
       ../../modules/home/zsh/zsh.nix
 
@@ -87,6 +85,7 @@ in
       ../../shared/users/lk/zellij/zellij.nix
       ../../shared/users/lk/opencode/opencode.nix
       ../../shared/users/lk/k9s.nix
+      ../../shared/users/lk/nushell/nushell.nix
     ];
 
     home.packages =
@@ -95,15 +94,17 @@ in
         php = pkgs.php84.buildEnv {
           extensions = { enabled, all }: enabled ++ (with all; [ opentelemetry ]);
         };
-    in [
-      # openfortivpn
-      lazygit
-      htop
-      tldr
-      jira-cli-go
-      rio
-      helix
-      jujutsu
+      in
+      [
+        # openfortivpn
+        lazygit
+        htop
+        tldr
+        jira-cli-go
+        rio
+        helix
+        jujutsu
+        opentofu
 
         # spotify
         spicetify-cli
@@ -112,17 +113,20 @@ in
         nh
         flashspace
 
-      jq
-      # yaml-language-server
-      colima
-      devpod
-      nodejs_22
-      # openssh
-      terraform
-      awscli
-      _1password-cli
-      gum
-      mcp-grafana
+        jq
+        # yaml-language-server
+        colima
+        devpod
+        nodejs_22
+        # openssh
+        terraform
+        awscli
+        _1password-cli
+        gum
+        mcp-grafana
+        jiratui
+        # gcx
+        kubernetes-helm
 
         argocd
         minio-client
@@ -151,12 +155,17 @@ in
         enable = true;
         enableDefaultConfig = true;
         includes = [ "~/.ssh/indi-ssh-config/config.d/*" ];
+        serverAliveInterval = 60;
         extraConfig = ''
-          UseKeychain yes
           SetEnv TERM=xterm-256color
-          IdentityFile /Users/lennart.koziollek/.ssh/id_ed_25519_2025
+          IdentityFile /Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket
+          IdentitiesOnly yes
         '';
         matchBlocks = {
+          "ir-* irbo-*" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/id_ed_25519_2025";
+            identitiesOnly = false;
+          };
           "github.com" = {
             identityFile = "/Users/lennart.koziollek/.ssh/github";
           };
@@ -166,8 +175,8 @@ in
           "bitbucket.org" = {
             identityFile = "/Users/lennart.koziollek/.ssh/id_ed25519_black_bitbucket";
           };
-          "https://git.ude-syssec.de" = {
-            identityFile = "/Users/lennart.koziollek/.ssh/syssec";
+          "knot.echsen.club" = {
+            identityFile = "/Users/lennart.koziollek/.ssh/tangled";
           };
         };
       };
@@ -176,20 +185,9 @@ in
     modules.home = {
       general = {
         keymap = "us-umlaute";
-        theme = {
-          name = "terminal";
-          font = "Cascadia Code NF";
-          transparent = false;
-          colorscheme = {
-            name = "rose-pine-moon";
-            nvimName = "rose-pine-moon"; # WARN: This is a temporary fix
-            zellijName = "rose-pine-moon";
-          };
-        };
       };
 
       programs = {
-        kitty.enable = true;
         zsh.enable = true;
         wezterm.enable = true;
       };
@@ -214,35 +212,34 @@ in
       fira-code
       cascadia-code
       open-dyslexic
+      maple-mono.NF
+      nerd-fonts.monaspace
     ];
   };
 
   homebrew = {
     enable = true;
 
-    brews = [
-      "salt-lint"
-      # "openssh"
-      "sketchybar"
-      "netbirdio/tap/netbird"
-      "gemini-cli"
-    ];
-    casks = [
-      "michaelroosz/ssh/libsk-libfido2-install"
-      "whatsapp"
-      "nikitabobko/tap/aerospace"
-      "orbstack"
-      "proton-pass"
-      "flameshot"
-      "obsidian"
-      "element"
-      "vial"
-      "netbirdio/tap/netbird-ui"
-      "cursor-cli"
-    ];
-    taps = [
-      "FelixKratz/formulae"
-    ];
+    # brews = [
+    #   "netbirdio/tap/netbird"
+    #   "webstonehq/tap/tuxedo"
+    # ];
+    # casks = [
+    #   "michaelroosz/ssh/libsk-libfido2-install"
+    #   "whatsapp"
+    #   "nikitabobko/tap/aerospace"
+    #   "orbstack"
+    #   "proton-pass"
+    #   "flameshot"
+    #   "element"
+    #   "vial"
+    #   "netbirdio/tap/netbird-ui"
+    #   "cursor-cli"
+    #   "claude-code"
+    # ];
+    # taps = [
+    #   "FelixKratz/formulae"
+    # ];
   };
 
   # System settings

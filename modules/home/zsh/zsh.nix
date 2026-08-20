@@ -95,8 +95,6 @@ in {
             if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
             then ''
               eval $(/opt/homebrew/bin/brew shellenv)
-              export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
-              export SSH_AUTH_SOCK="$HOME/.ssh/agent"
             ''
             else ''''
           }

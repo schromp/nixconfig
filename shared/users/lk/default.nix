@@ -14,7 +14,7 @@
       "docker"
       "dialout"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 
@@ -42,6 +42,8 @@
       ./pi/pi.nix
       ./vesktop.nix
       ./wezterm/wezterm.nix
+      ./nushell/nushell.nix
+      ./emacs/emacs.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";

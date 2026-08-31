@@ -18,6 +18,7 @@ with pkgs;
   gh
   gemini-cli
   opencode
+  crush
 
   # applications
   spotify-player

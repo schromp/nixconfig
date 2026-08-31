@@ -56,6 +56,10 @@
     jdt-language-server
     terraform-ls
     helm-ls
+
+    gleam
+    beamPackages.erlang
+    beamPackages.rebar3
   ];
 
   programs.neovim = {

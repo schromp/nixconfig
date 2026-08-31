@@ -9,5 +9,6 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = if zsh then true else false;
+    enableNushellIntegration = true;
   };
 }

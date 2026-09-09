@@ -180,8 +180,15 @@
    "-l --almost-all --human-readable --group-directories-first --no-group")
   :config
   (evil-define-key 'normal dired-mode-map
+    (kbd ".") #'dired-omit-mode
     (kbd "h") #'dired-up-directory
     (kbd "l") #'dired-find-file))
+
+(use-package dired-x
+  :ensure nil
+  :after dired
+  :custom
+  (dired-omit-files "\\`[.]"))
 
 (use-package nerd-icons)
 
@@ -204,6 +211,7 @@
      ("d" "~/Downloads/" "Downloads")))
   :config
   (evil-define-key 'normal dirvish-mode-map
+    (kbd ".") #'dired-omit-mode
     (kbd "h") #'dired-up-directory
     (kbd "l") #'dired-find-file
     (kbd "?") #'dirvish-dispatch
@@ -332,6 +340,7 @@
   (evil-define-key 'normal eglot-mode-map (kbd "K") #'eldoc-box-help-at-point)
   (evil-define-key 'normal eglot-mode-map (kbd "] d") #'flymake-goto-next-error)
   (evil-define-key 'normal eglot-mode-map (kbd "[ d") #'flymake-goto-prev-error)
+  (evil-define-key 'normal eglot-mode-map (kbd "SPC c f") #'eglot-format-buffer)
   (evil-define-key 'normal eglot-mode-map (kbd "SPC c d") #'flymake-show-buffer-diagnostics))
 
 (use-package doom-themes
@@ -340,6 +349,18 @@
         doom-themes-enable-italic t)
   (load-theme 'doom-tokyo-night t)
   (doom-themes-org-config))
+
+(use-package diff-hl
+  :init
+  (global-diff-hl-mode 1)
+  :hook
+  (dired-mode . diff-hl-dired-mode)
+  :config
+  (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh)
+  (evil-define-key 'normal 'global
+    (kbd "] c") #'diff-hl-next-hunk
+    (kbd "[ c") #'diff-hl-previous-hunk
+    (kbd "SPC g h") #'diff-hl-show-hunk))
 
 (use-package magit
   :defer t
@@ -424,7 +445,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(consult corfu doom-themes eldoc-box embark embark-consult
+   '(consult corfu diff-hl doom-themes eldoc-box embark embark-consult
              evil-collection evil-ghostel go-template-helper-mode
              hotfuzz magit marginalia markdown-mode nix-mode orderless
              projectile vertico vterm yaml-mode)))

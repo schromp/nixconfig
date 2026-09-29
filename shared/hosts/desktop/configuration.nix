@@ -151,6 +151,7 @@ in
       nerd-fonts.proggy-clean-tt
       nerd-fonts.fira-code
       nerd-fonts.iosevka
+      nerd-fonts.monaspace
       nerd-fonts.caskaydia-cove
       nerd-fonts.departure-mono
       rubik

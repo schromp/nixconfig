@@ -14,7 +14,7 @@
       "docker"
       "dialout"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
   };
 

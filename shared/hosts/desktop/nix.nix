@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
   nixpkgs = {
     config.permittedInsecurePackages = [
       "fluffychat-linux-1.23.0"
@@ -10,6 +10,9 @@
       allowUnfree = true;
       allowBroken = false;
     };
+    overlays = [
+      inputs.emacs-overlay.overlays.default
+    ];
   };
 
   nix = {

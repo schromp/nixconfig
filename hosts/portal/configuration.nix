@@ -72,7 +72,6 @@ in
 
     imports = [
       ../../modules/home/options.nix
-      ../../modules/home/wezterm/wezterm.nix
       ../../modules/home/zsh/zsh.nix
 
       ../../shared/users/lk/options.nix
@@ -86,6 +85,7 @@ in
       ../../shared/users/lk/opencode/opencode.nix
       ../../shared/users/lk/k9s.nix
       ../../shared/users/lk/nushell/nushell.nix
+      ../../shared/users/lk/wezterm/wezterm.nix
     ];
 
     home.packages =
@@ -105,6 +105,7 @@ in
         helix
         jujutsu
         opentofu
+        crush
 
         # spotify
         spicetify-cli
@@ -189,7 +190,6 @@ in
 
       programs = {
         zsh.enable = true;
-        wezterm.enable = true;
       };
     };
   };

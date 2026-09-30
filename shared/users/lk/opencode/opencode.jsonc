@@ -6,47 +6,40 @@
     "opencode-parser"
   ],
   "mcp": {
-    "grafana-echsenclub": {
+    "grafana-staging": {
       "type": "local",
-      "command": [ "mcp-grafana" ],
-      "enabled": false,
+      "command": ["mcp-grafana"],
       "environment": {
-        "GRAFANA_URL": "https://grafana.echsen.club",
-        "GRAFANA_API_KEY": "{file:/run/secrets/grafana-service-account}"
+        "GRAFANA_URL": "https://monitoring-cluster.individualreisen.check24-test.de/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "TODO",
+        "GRAFANA_ORG_ID": "1"
       }
     },
-    "clickhouse": {
+    "grafana-production": {
       "type": "local",
-      "enabled": false,
-      "command": [
-        "docker", 
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "CLICKHOUSE_HOST",
-        "-e",
-        "CLICKHOUSE_USER",
-        "-e",
-        "CLICKHOUSE_SECURE",
-        "-e",
-        "CLICKHOUSE_VERIFY",
-        "-e",
-        "CLICKHOUSE_CONNECT_TIMEOUT",
-        "-e",
-        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT",
-        "-e",
-        "CLICKHOUSE_PASSWORD",
-        "mcp/clickhouse"
-      ],
+      "command": ["mcp-grafana"],
       "environment": {
-        "CLICKHOUSE_HOST": "https://clickhouse.echsen.club",
-        "CLICKHOUSE_USER": "default",
-        "CLICKHOUSE_SECURE": "true",
-        "CLICKHOUSE_VERIFY": "true",
-        "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30",
-        "CLICKHOUSE_PASSWORD": ""
+        "GRAFANA_URL": "https://monitoring-cluster.individualreisen.check24.de/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "TODO",
+        "GRAFANA_ORG_ID": "1"
+      }
+    },
+    "grafana-local": {
+      "type": "local",
+      "command": ["mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "http://lgtm.lgtm.orb.local",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "TODO",
+        "GRAFANA_ORG_ID": "1"
+      }
+    },
+    "grafana-local-cms": {
+      "type": "local",
+      "command": ["mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "http://lgtm.lgtm.orb.local",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "TODO",
+        "GRAFANA_ORG_ID": "1"
       }
     }
   }

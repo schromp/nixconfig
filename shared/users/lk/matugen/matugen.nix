@@ -4,7 +4,7 @@ let
     owner = "InioX";
     repo = "matugen-themes";
     rev = "main";
-    sha256 = "sha256-LyQ5lrcmyf0+oR2TC8tLiMdsyGqL0N2BuGR0WZJl/D0=";
+    sha256 = "sha256-+6Sn7LNHDdNmVb46JWbnZep0GWa8cxjo5LOpQM0yOh8=";
   };
 
   vicinae-theme = pkgs.fetchFromGitHub {

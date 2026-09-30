@@ -36,7 +36,7 @@
     python313Packages.jedi-language-server
     alejandra
     pyright
-    copilot-language-server
+    # copilot-language-server
     tinymist
 
     gopls

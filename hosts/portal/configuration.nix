@@ -33,6 +33,9 @@ in
       allowUnfree = true;
       allowBroken = false;
     };
+    overlays = [
+      inputs.emacs-overlay.overlays.default
+    ];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -59,6 +62,7 @@ in
   # inputs.home-manager.useUserPackages = true;
 
   home-manager = {
+    useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs sysConfig;
     };
@@ -86,6 +90,7 @@ in
       ../../shared/users/lk/k9s.nix
       ../../shared/users/lk/nushell/nushell.nix
       ../../shared/users/lk/wezterm/wezterm.nix
+      ../../shared/users/lk/emacs/emacs.nix
     ];
 
     home.packages =
@@ -214,6 +219,10 @@ in
       open-dyslexic
       maple-mono.NF
       nerd-fonts.monaspace
+      jetbrains-mono
+      inter
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
     ];
   };
 

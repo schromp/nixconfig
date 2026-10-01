@@ -21,6 +21,8 @@
           pdf-tools
           vterm
           spacious-padding
+          mixed-pitch
+          olivetti
         ];
     };
   };

@@ -1,4 +1,4 @@
-#+property: header-args :tangle "init.el"
+#+property: header-args :tangle init.el"
 #+startup: content indent
 
 * Useful things to know
@@ -19,8 +19,15 @@ Dont do uneeded ui stuff
   (pixel-scroll-precision-mode 1)
 #+end_src
 
-Fonts
-TODO
+** Macos
+#+begin_src emacs-lisp
+  (when (eq system-type 'darwin)
+    (dolist (path (list (expand-file-name "~/.nix-profile/bin")
+                        "/run/current-system/sw/bin"))
+      (when (file-directory-p path)
+        (add-to-list 'exec-path path)
+        (setenv "PATH" (concat path ":" (getenv "PATH"))))))
+#+end_src
 
 * Modal editing
 
@@ -30,14 +37,12 @@ TODO
     :init
     (setq evil-want-integration t
           evil-want-keybinding nil
-          evil-want-C-u-scroll t
+          ;; evil-want-C-u-scroll t
           evil-want-C-i-jump nil
           evil-undo-system 'undo-redo
           evil-shift-width 2)
     :config
     (evil-mode 1)
-    (evil-define-key 'insert 'global (kbd "TAB") #'lk/insert-soft-tab)
-    (evil-define-key 'insert 'global (kbd "<tab>") #'lk/insert-soft-tab)
     (evil-define-key 'normal 'global
       (kbd "H") #'tab-bar-switch-to-prev-tab
       (kbd "L") #'tab-bar-switch-to-next-tab
@@ -51,6 +56,9 @@ TODO
     :config
     (evil-collection-init))
 #+end_src
+
+#+RESULTS:
+: t
 
 ** Meow
 
@@ -167,13 +175,13 @@ Setup
     (when (display-graphic-p)
       ;; 1. Global default (Monospace for code and general UI)
       (set-face-attribute 'default nil
-                          :family "JetBrains Mono"
+                          :family "JetBrainsMono Nerd Font Mono"
                           :height 130
                           :weight 'regular)
 
       ;; 2. Explicit fixed-pitch (Inherited by mixed-pitch for tables, blocks, tags)
       (set-face-attribute 'fixed-pitch nil
-                          :family "JetBrains Mono"
+                          :family "JetBrainsMono Nerd Font Mono"
                           :height 130
                           :weight 'regular)
 
@@ -181,7 +189,12 @@ Setup
       (set-face-attribute 'variable-pitch nil
                           :family "Inter"
                           :height 140
-                          :weight 'regular)))
+                          :weight 'regular)
+
+      ;; Fallback for glyphs not in JetBrainsMono Nerd Font (e.g. geometric shapes, emoji)
+      (set-fontset-font t '(#x1f780 . #x1f7ff) "Iosevka Nerd Font Mono")
+      (set-fontset-font t nil "Iosevka Nerd Font Mono" nil 'append)
+      (set-fontset-font t nil "Apple Color Emoji" nil 'append)))
 
   ;; Apply fonts immediately if running as a standalone GUI app,
   ;; or defer until a GUI client connects to the daemon.
@@ -449,12 +462,16 @@ For better margins while writing org files
 #+begin_src emacs-lisp
   (use-package ghostel
     :ensure t
+    :custom
+    ;; Name buffers after the shell's OSC 2 title (current dir / running program)
+    (ghostel-buffer-name-function #'ghostel-buffer-name-by-title) ;
     :bind (("C-x t" . ghostel)))
 
   (use-package evil-ghostel
     :ensure t
     :after (ghostel evil)
-    :hook (ghostel-mode . evil-ghostel-mode))
+    :hook ((ghostel-mode . evil-ghostel-mode)
+           (ghostel-mode . lk/ghostel-fix-evil-tab)))
 
   ;; (use-package consult-ghostel
   ;;   :hook (after-init . consult-ghostel-mode)
@@ -464,6 +481,9 @@ For better margins while writing org files
   ;;         :map ghostel-semi-char-mode-map
   ;;         ("C-c h" . consult-ghostel-history)))
 #+end_src
+
+#+RESULTS:
+| lk/ghostel-fix-evil-tab | evil-ghostel-mode |
 
 * LSP
 ** Language Modes
@@ -569,17 +589,6 @@ This sets up the lsp
 
 (setq-default indent-tabs-mode nil
               tab-width 2)
-
-(defun lk/insert-soft-tab ()
-  "Insert one indentation unit without reindenting the line."
-  (interactive)
-  (if indent-tabs-mode
-      (insert "\t")
-    (insert (make-string (max 1 (or (and (boundp 'evil-shift-width)
-                                         evil-shift-width)
-                                    tab-width
-                                    2))
-                         ?\s))))
 
 (setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)

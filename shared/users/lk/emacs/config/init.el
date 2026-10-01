@@ -7,6 +7,13 @@
 (setq gc-cons-threshold (* 64 1024 1024))
 (pixel-scroll-precision-mode 1)
 
+(when (eq system-type 'darwin)
+  (dolist (path (list (expand-file-name "~/.nix-profile/bin")
+                      "/run/current-system/sw/bin"))
+    (when (file-directory-p path)
+      (add-to-list 'exec-path path)
+      (setenv "PATH" (concat path ":" (getenv "PATH"))))))
+
 (use-package evil
   :init
   (setq evil-want-integration t
@@ -132,13 +139,13 @@
   (when (display-graphic-p)
     ;; 1. Global default (Monospace for code and general UI)
     (set-face-attribute 'default nil
-                        :family "JetBrains Mono"
+                        :family "JetBrainsMono Nerd Font Mono"
                         :height 130
                         :weight 'regular)
 
     ;; 2. Explicit fixed-pitch (Inherited by mixed-pitch for tables, blocks, tags)
     (set-face-attribute 'fixed-pitch nil
-                        :family "JetBrains Mono"
+                        :family "JetBrainsMono Nerd Font Mono"
                         :height 130
                         :weight 'regular)
 
@@ -146,7 +153,12 @@
     (set-face-attribute 'variable-pitch nil
                         :family "Inter"
                         :height 140
-                        :weight 'regular)))
+                        :weight 'regular)
+
+    ;; Fallback for glyphs not in JetBrainsMono Nerd Font (e.g. geometric shapes, emoji)
+    (set-fontset-font t '(#x1f780 . #x1f7ff) "Iosevka Nerd Font Mono")
+    (set-fontset-font t nil "Iosevka Nerd Font Mono" nil 'append)
+    (set-fontset-font t nil "Apple Color Emoji" nil 'append)))
 
 ;; Apply fonts immediately if running as a standalone GUI app,
 ;; or defer until a GUI client connects to the daemon.
@@ -360,12 +372,21 @@
 
 (use-package ghostel
   :ensure t
+  :custom
+  ;; Name buffers after the shell's OSC 2 title (current dir / running program)
+  (ghostel-buffer-name-function #'ghostel-buffer-name-by-title)
   :bind (("C-x t" . ghostel)))
+
+(defun lk/ghostel-fix-evil-tab ()
+  "Unset the global lk/insert-soft-tab binding so TAB reaches the terminal."
+  (evil-local-set-key 'insert (kbd "TAB") nil)
+  (evil-local-set-key 'insert (kbd "<tab>") nil))
 
 (use-package evil-ghostel
   :ensure t
   :after (ghostel evil)
-  :hook (ghostel-mode . evil-ghostel-mode))
+  :hook ((ghostel-mode . evil-ghostel-mode)
+         (ghostel-mode . lk/ghostel-fix-evil-tab)))
 
 ;; (use-package consult-ghostel
 ;;   :hook (after-init . consult-ghostel-mode)
@@ -447,6 +468,9 @@
   (evil-define-key 'normal eglot-mode-map (kbd "] d") #'flymake-goto-next-error)
   (evil-define-key 'normal eglot-mode-map (kbd "[ d") #'flymake-goto-prev-error)
   (evil-define-key 'normal eglot-mode-map (kbd "SPC c d") #'flymake-show-buffer-diagnostics))
+(with-eval-after-load 'evil
+  ;; Unbind C-y in insert mode so Corfu (and native Emacs yank) can use it
+  (define-key evil-insert-state-map (kbd "C-y") nil))
 
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
@@ -489,7 +513,7 @@
   (dirvish-attributes
    '(vc-state subtree-state nerd-icons collapse git-msg file-time file-size))
   (dirvish-cache-dir
-   (expand-file-name "emacs/dirvish/"
+   (expand-file-name "emacs/dirvsh/"
                      (or (getenv "XDG_CACHE_HOME") "~/.cache/")))
   (dirvish-large-directory-threshold 20000)
   (dirvish-preview-dispatchers '(pdf))
@@ -583,3 +607,21 @@ grammar is already available at load time."
   (let ((spc (lookup-key evil-normal-state-map (kbd "SPC"))))
     (when (keymapp spc)
       (define-key lk/leader-map (kbd "SPC") spc))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(avy cape corfu diff-hl dirvish doom-themes eat eldoc-box
+         embark-consult evil-collection evil-ghostel
+         go-template-helper-mode hotfuzz json-mode kind-icon magit
+         marginalia markdown-mode meow mixed-pitch nerd-icons nix-mode
+         olivetti orderless projectile spacious-padding tempel vertico
+         vterm yaml-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

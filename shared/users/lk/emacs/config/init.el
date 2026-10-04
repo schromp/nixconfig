@@ -18,14 +18,12 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
-        evil-want-C-u-scroll t
+        ;; evil-want-C-u-scroll t
         evil-want-C-i-jump nil
         evil-undo-system 'undo-redo
         evil-shift-width 2)
   :config
   (evil-mode 1)
-  (evil-define-key 'insert 'global (kbd "TAB") #'lk/insert-soft-tab)
-  (evil-define-key 'insert 'global (kbd "<tab>") #'lk/insert-soft-tab)
   (evil-define-key 'normal 'global
     (kbd "H") #'tab-bar-switch-to-prev-tab
     (kbd "L") #'tab-bar-switch-to-next-tab
@@ -372,21 +370,16 @@
 
 (use-package ghostel
   :ensure t
-  :custom
+  ;;:custom
   ;; Name buffers after the shell's OSC 2 title (current dir / running program)
-  (ghostel-buffer-name-function #'ghostel-buffer-name-by-title)
+  ;;(ghostel-buffer-name-function #'ghostel-buffer-name-by-title) ;
   :bind (("C-x t" . ghostel)))
-
-(defun lk/ghostel-fix-evil-tab ()
-  "Unset the global lk/insert-soft-tab binding so TAB reaches the terminal."
-  (evil-local-set-key 'insert (kbd "TAB") nil)
-  (evil-local-set-key 'insert (kbd "<tab>") nil))
 
 (use-package evil-ghostel
   :ensure t
   :after (ghostel evil)
-  :hook ((ghostel-mode . evil-ghostel-mode)
-         (ghostel-mode . lk/ghostel-fix-evil-tab)))
+  :hook ((ghostel-mode . evil-ghostel-mode)))
+         ;;(ghostel-mode . lk/ghostel-fix-evil-tab)))
 
 ;; (use-package consult-ghostel
 ;;   :hook (after-init . consult-ghostel-mode)
@@ -472,22 +465,24 @@
   ;; Unbind C-y in insert mode so Corfu (and native Emacs yank) can use it
   (define-key evil-insert-state-map (kbd "C-y") nil))
 
+(use-package gptel
+  :ensure t
+  :config
+  (setq gptel-backend
+        (gptel-make-openai "Hypercharm"
+          :host "https://hyper.charm.land"
+          :protocol "http"
+          :endpoint "/v1/chat/completions"
+          :stream t
+         :key "sk-hyper-141c7987-0ece-4e27-91cf-ab71680236da"
+          :models '("gemma-4-26b-a4b-it")))
+  (setq gptel-model "gemma-4-26b-a4b-it"))
+
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
 
 (setq-default indent-tabs-mode nil
               tab-width 2)
-
-(defun lk/insert-soft-tab ()
-  "Insert one indentation unit without reindenting the line."
-  (interactive)
-  (if indent-tabs-mode
-      (insert "\t")
-    (insert (make-string (max 1 (or (and (boundp 'evil-shift-width)
-                                         evil-shift-width)
-                                    tab-width
-                                    2))
-                         ?\s))))
 
 (setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
@@ -613,12 +608,12 @@ grammar is already available at load time."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy cape corfu diff-hl dirvish doom-themes eat eldoc-box
-         embark-consult evil-collection evil-ghostel
-         go-template-helper-mode hotfuzz json-mode kind-icon magit
-         marginalia markdown-mode meow mixed-pitch nerd-icons nix-mode
-         olivetti orderless projectile spacious-padding tempel vertico
-         vterm yaml-mode)))
+   '(auctex corfu dirvish doom-themes eldoc-box embark-consult
+            evil-collection evil-ghostel go-mode
+            go-template-helper-mode gptel hotfuzz just-mode magit
+            marginalia markdown-mode meow mixed-pitch nerd-icons
+            nix-mode olivetti orderless pdf-tools projectile
+            spacious-padding use-package vertico vterm yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

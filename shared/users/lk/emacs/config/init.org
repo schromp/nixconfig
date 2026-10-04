@@ -1,4 +1,4 @@
-#+property: header-args :tangle init.el"
+#+property: header-args :tangle init.el
 #+startup: content indent
 
 * Useful things to know
@@ -462,16 +462,16 @@ For better margins while writing org files
 #+begin_src emacs-lisp
   (use-package ghostel
     :ensure t
-    :custom
+    ;;:custom
     ;; Name buffers after the shell's OSC 2 title (current dir / running program)
-    (ghostel-buffer-name-function #'ghostel-buffer-name-by-title) ;
+    ;;(ghostel-buffer-name-function #'ghostel-buffer-name-by-title) ;
     :bind (("C-x t" . ghostel)))
 
   (use-package evil-ghostel
     :ensure t
     :after (ghostel evil)
-    :hook ((ghostel-mode . evil-ghostel-mode)
-           (ghostel-mode . lk/ghostel-fix-evil-tab)))
+    :hook ((ghostel-mode . evil-ghostel-mode)))
+           ;;(ghostel-mode . lk/ghostel-fix-evil-tab)))
 
   ;; (use-package consult-ghostel
   ;;   :hook (after-init . consult-ghostel-mode)
@@ -580,6 +580,27 @@ This sets up the lsp
     ;; Unbind C-y in insert mode so Corfu (and native Emacs yank) can use it
     (define-key evil-insert-state-map (kbd "C-y") nil))
 #+end_src
+
+* GPTel
+#+begin_src emacs-lisp
+  (use-package gptel
+    :ensure t
+    :config
+    (setq gptel-backend
+          (gptel-make-openai "Hypercharm"
+            :host "hyper.charm.land"
+            :protocol "https"
+            :endpoint "/v1/chat/completions"
+            :stream t
+            :key "sk-hyper-141c7987-0ece-4e27-91cf-ab71680236da"
+            :models '("gemma-4-26b-a4b-it")))
+    (setq gptel-display-buffer-action
+      '(nil (side . right) (window-width . 0.4)))
+    (setq gptel-model "gemma-4-26b-a4b-it"))
+#+end_src
+
+#+RESULTS:
+: t
 
 * old
 

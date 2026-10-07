@@ -23,7 +23,8 @@ Dont do uneeded ui stuff
 #+begin_src emacs-lisp
   (when (eq system-type 'darwin)
     (dolist (path (list (expand-file-name "~/.nix-profile/bin")
-                        "/run/current-system/sw/bin"))
+                        "/run/current-system/sw/bin"
+                        "/opt/homebrew/bin"))
       (when (file-directory-p path)
         (add-to-list 'exec-path path)
         (setenv "PATH" (concat path ":" (getenv "PATH"))))))
@@ -601,6 +602,23 @@ This sets up the lsp
 
 #+RESULTS:
 : t
+* Agent Shell
+#+begin_src emacs-lisp
+  (use-package agent-shell
+    :ensure t
+    :config
+      (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
+      (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input)
+
+      (add-hook 'diff-mode-hook
+                (lambda ()
+                  (when (string-match-p "\\*agent-shell-diff\\*" (buffer-name))
+                    (evil-emacs-state)))))
+#+end_src
+
+#+RESULTS:
+: t
+
 
 * old
 

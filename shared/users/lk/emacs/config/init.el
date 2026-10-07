@@ -9,7 +9,8 @@
 
 (when (eq system-type 'darwin)
   (dolist (path (list (expand-file-name "~/.nix-profile/bin")
-                      "/run/current-system/sw/bin"))
+                      "/run/current-system/sw/bin"
+                      "/opt/homebrew/bin"))
     (when (file-directory-p path)
       (add-to-list 'exec-path path)
       (setenv "PATH" (concat path ":" (getenv "PATH"))))))
@@ -470,13 +471,26 @@
   :config
   (setq gptel-backend
         (gptel-make-openai "Hypercharm"
-          :host "https://hyper.charm.land"
-          :protocol "http"
+          :host "hyper.charm.land"
+          :protocol "https"
           :endpoint "/v1/chat/completions"
           :stream t
-         :key "sk-hyper-141c7987-0ece-4e27-91cf-ab71680236da"
+          :key "sk-hyper-141c7987-0ece-4e27-91cf-ab71680236da"
           :models '("gemma-4-26b-a4b-it")))
+  (setq gptel-display-buffer-action
+    '(nil (side . right) (window-width . 0.4)))
   (setq gptel-model "gemma-4-26b-a4b-it"))
+
+(use-package agent-shell
+  :ensure t
+  :config
+    (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
+    (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input)
+
+    (add-hook 'diff-mode-hook
+              (lambda ()
+                (when (string-match-p "\\*agent-shell-diff\\*" (buffer-name))
+                  (evil-emacs-state)))))
 
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
@@ -602,21 +616,3 @@ grammar is already available at load time."
   (let ((spc (lookup-key evil-normal-state-map (kbd "SPC"))))
     (when (keymapp spc)
       (define-key lk/leader-map (kbd "SPC") spc))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(auctex corfu dirvish doom-themes eldoc-box embark-consult
-            evil-collection evil-ghostel go-mode
-            go-template-helper-mode gptel hotfuzz just-mode magit
-            marginalia markdown-mode meow mixed-pitch nerd-icons
-            nix-mode olivetti orderless pdf-tools projectile
-            spacious-padding use-package vertico vterm yaml-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

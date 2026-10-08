@@ -44,6 +44,7 @@
       ./wezterm/wezterm.nix
       ./nushell/nushell.nix
       ./emacs/emacs.nix
+      ./omp.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";

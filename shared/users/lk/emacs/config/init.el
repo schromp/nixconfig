@@ -374,12 +374,32 @@
   ;;:custom
   ;; Name buffers after the shell's OSC 2 title (current dir / running program)
   ;;(ghostel-buffer-name-function #'ghostel-buffer-name-by-title) ;
-  :bind (("C-x t" . ghostel)))
+  :bind (("C-x t" . ghostel))
+  :hook (ghostel-mode . (lambda ()
+                        ;; 1. Disable expensive bidirectional text scanning
+                        (setq bidi-paragraph-direction 'left-to-right)
+                        (setq bidi-inhibit-bpa t)
+                        
+                        ;; 2. Stop Emacs from trying to calculate word wraps
+                        (setq truncate-lines t)
+                        (setq nobreak-char-display nil)
+                        
+                        ;; 3. Disable heavy visual minor modes
+                        (display-line-numbers-mode -1)
+                        (hl-line-mode -1)))
+  )
 
 (use-package evil-ghostel
   :ensure t
   :after (ghostel evil)
-  :hook ((ghostel-mode . evil-ghostel-mode)))
+  :hook ((ghostel-mode . evil-ghostel-mode)
+       ;; Add Evil-specific performance tweaks
+       (ghostel-mode . (lambda ()
+                         ;; Prevent Evil from freezing inputs with heavy jump-list tracking
+                         (remove-hook 'pre-command-hook #'evil-jump-hook t)
+                         ;; Disable minor modes that intercept keystrokes unnecessarily here
+                         (when (fboundp 'evil-snipe-local-mode) (evil-snipe-local-mode -1))
+                         (when (fboundp 'evil-surround-mode) (evil-surround-mode -1))))))
          ;;(ghostel-mode . lk/ghostel-fix-evil-tab)))
 
 ;; (use-package consult-ghostel
@@ -484,8 +504,9 @@
 (use-package agent-shell
   :ensure t
   :config
+    (evil-set-initial-state 'agent-shell-mode 'insert)
     (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
-    (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input)
+    (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'agent-shell-accept)
 
     (add-hook 'diff-mode-hook
               (lambda ()

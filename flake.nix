@@ -71,6 +71,13 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     omp.url = "github:can1357/oh-my-pi";
+
+    albedo.url = "git+https://tangled.org/okami.mom/albedo";
+
+    # Pinned to a release tag: the upstream flake can't see git tags and stamps
+    # version 0.0.0, which fails plugins' `requires_hermes` check, so
+    # hosts/tower/hermes.nix passes the version in. Bump both together.
+    hermes-agent.url = "github:NousResearch/hermes-agent/v0.22.5";
   };
 
   outputs =

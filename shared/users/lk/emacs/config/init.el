@@ -1,3 +1,9 @@
+;;; init.el --- lk's Emacs config -*- lexical-binding: t; -*-
+
+;; Silence harmless native-compile warnings (e.g. go-mode referencing
+;; optional eglot/lsp-mode functions), without losing the compile log.
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -423,6 +429,9 @@
   :ensure nil
   :hook (helm-template-mode . go-template-helper-mode))
 
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+
 (use-package yaml-mode
   :demand t
   :custom
@@ -470,7 +479,9 @@
          (LaTeX-mode . eglot-ensure)
          (go-mode . eglot-ensure)
          (go-ts-mode . eglot-ensure)
-         (go-mod-ts-mode . eglot-ensure))
+         (go-mod-ts-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
                '((kubernetes-yaml-mode :language-id "yaml")
@@ -521,47 +532,6 @@
 
 (setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
-
-(use-package dired
-  :ensure nil
-  :custom
-  (dired-dwim-target t)
-  (dired-kill-when-opening-new-dired-buffer t)
-  (dired-listing-switches
-   "-l --almost-all --human-readable --group-directories-first --no-group")
-  :config
-  (evil-define-key 'normal dired-mode-map
-    (kbd "h") #'dired-up-directory
-    (kbd "l") #'dired-find-file))
-
-(use-package dirvish
-  :init
-  (dirvish-override-dired-mode)
-  (evil-define-key 'normal 'global (kbd "SPC f d") #'dirvish-dwim)
-  (evil-define-key 'normal 'global (kbd "SPC f D") #'dirvish)
-  :custom
-  (dirvish-attributes
-   '(vc-state subtree-state nerd-icons collapse git-msg file-time file-size))
-  (dirvish-cache-dir
-   (expand-file-name "emacs/dirvsh/"
-                     (or (getenv "XDG_CACHE_HOME") "~/.cache/")))
-  (dirvish-large-directory-threshold 20000)
-  (dirvish-preview-dispatchers '(pdf))
-  (dirvish-quick-access-entries
-   '(("h" "~/" "Home")
-     ("r" "~/Repos/" "Repositories")
-     ("d" "~/Downloads/" "Downloads")))
-  :config
-  (evil-define-key 'normal dirvish-mode-map
-    (kbd "h") #'dired-up-directory
-    (kbd "l") #'dired-find-file
-    (kbd "?") #'dirvish-dispatch
-    (kbd "a") #'dirvish-setup-menu
-    (kbd "o") #'dirvish-quick-access
-    (kbd "q") #'dirvish-quit
-    (kbd "s") #'dirvish-quicksort
-    (kbd "TAB") #'dirvish-subtree-toggle))
-
 
 (use-package editorconfig
   :ensure nil

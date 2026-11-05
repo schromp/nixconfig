@@ -1,14 +1,13 @@
 {
-  "lastChangelogVersion": "0.80.6",
-  "defaultProvider": "openrouter",
-  "defaultModel": "deepseek/deepseek-v4-flash",
+  "lastChangelogVersion": "1.3.0",
+  "defaultProvider": "hyper",
+  "defaultModel": "kimi-k3",
   "packages": [
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:@charmland/pi-hyper-provider"
   ],
   "defaultThinkingLevel": "high",
   "theme": "dark",
-  "enabledModels": [
-    "openrouter/deepseek/deepseek-v4-flash"
-  ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "tuiMode": "fullscreen"
 }

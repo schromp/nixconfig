@@ -28,11 +28,11 @@
     # freecad
     slack
     pavucontrol
-    pa_applet
     powertop
     netbird
     openlinkhub
     openrgb
     virt-viewer
+    distrobox
   ];
 }

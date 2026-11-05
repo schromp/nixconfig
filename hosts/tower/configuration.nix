@@ -6,6 +6,7 @@
   imports = [
     # Presets
     ../../shared/hosts/desktop/configuration.nix
+    ./hermes.nix
   ];
 
   modules.system = {
@@ -39,7 +40,7 @@
     obs-studio
     r2modman
     # kicad
-    audacity
+    # audacity
 
     wireguard-tools
   ];

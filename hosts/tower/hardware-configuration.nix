@@ -13,7 +13,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"

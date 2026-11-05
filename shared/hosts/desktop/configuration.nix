@@ -38,7 +38,6 @@ in
       enable = true;
       packages = with pkgs; [
         dconf
-        gcr
         udisks2
       ];
     };
@@ -117,10 +116,6 @@ in
       ];
     };
 
-    journald.extraConfig = ''
-      SystemMaxUse=50M
-      RuntimeMaxUse=10M
-    '';
     udisks2.enable = true;
     printing = {
       enable = true;
@@ -204,13 +199,18 @@ in
 
   virtualisation.docker.enable = true;
 
+  # Rootless podman for distrobox. Not docker: lk is in the docker group, so a box
+  # reaching the docker socket (the host / is mounted at /run/host) would be root here.
+  virtualisation.podman.enable = true;
+  environment.sessionVariables.DBX_CONTAINER_MANAGER = "podman";
+
   # OBS VIRTUAL CAMERA
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-  '';
+  # boot.extraModulePackages = with config.boot.kernelPackages; [
+  #   v4l2loopback
+  # ];
+  # boot.extraModprobeConfig = ''
+  #   options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  # '';
 
   boot.supportedFilesystems = [ "ntfs" ];
 }

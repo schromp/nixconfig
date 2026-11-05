@@ -1,7 +1,7 @@
 {inputs, ... }: {
   imports = [ inputs.omp.homeManagerModules.default ];
   programs.omp = {
-    enable = true;
+    enable = false;
     settings.startup.quiet = true;
   };
 }

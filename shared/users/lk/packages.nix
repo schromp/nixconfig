@@ -18,7 +18,7 @@ with pkgs;
   gh
   gemini-cli
   opencode
-  crush
+  # crush
 
   # applications
   spotify-player
@@ -35,7 +35,6 @@ with pkgs;
   localsend
   heroic
   libation
-  calibre
   orca-slicer
   discord
   mission-center
@@ -46,6 +45,12 @@ with pkgs;
   # logseq
   # affine
   libreoffice
+  qpwgraph
+
+  inputs.albedo.packages.${pkgs.stdenv.hostPlatform.system}.default
+  zed-editor
+  claude-code
+  claude-agent-acp
 
   # (vesktop.override { withSystemVencord = false; })
 

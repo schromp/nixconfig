@@ -23,6 +23,10 @@
           spacious-padding
           mixed-pitch
           olivetti
+          (treesit-grammars.with-grammars (grammars: [
+            grammars.tree-sitter-typescript
+            grammars.tree-sitter-tsx
+          ]))
         ];
     };
   };

@@ -44,6 +44,12 @@
         hostname = "192.168.178.3";
         identityFile = "~/.ssh/hetzner-cloudy";
       };
+      "hermes" = {
+        user = "root";
+        hostname = "192.168.178.2";
+        identityFile = "~/.ssh/hetzner-cloudy";
+        # data.proxyJump = "root@sparrow.internal.echsen.club";
+      };
     };
   };
 }

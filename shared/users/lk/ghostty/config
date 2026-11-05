@@ -3,7 +3,7 @@ config-file = "theme"
 # unfocused-split-opacity = 0.75
 macos-option-as-alt = true
 background-opacity = 1
-window-decoration = none
+# window-decoration = none
 
 font-family = "Liberation Mono"
 

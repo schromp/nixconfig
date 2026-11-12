@@ -29,6 +29,7 @@
       };
       "cloudy" = {
         hostname = "157.180.37.119";
+        port = 2200;
         identityFile = "~/.ssh/hetzner-cloudy";
       };
       "doorman" = {

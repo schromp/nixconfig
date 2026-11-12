@@ -15,31 +15,34 @@ in
     enable = true;
 
     sources = {
+      # our own skills: every folder in ./skills with a SKILL.md is installed (see enableAll)
+      custom = {
+        path = ./skills;
+      };
       obsidian = {
         path = "${inputs.obsidian-skills}";
         subdir = "plugins/obsidian/skills";
       };
-      vercel = {
-        path = "${inputs.vercel-skills}";
-        subdir = "skills";
-      };
       # shipped with the packages, so they match the installed versions
-      herdr = {
-        path = "${llm-agents.herdr}/share/skills/herdr";
+      # herdr-core (hc), what the Herdr app's terminals run in; it points agents at
+      # `hc --skill` / `herdr-app --skill`. Not llm-agents.herdr's skill: that one is for
+      # the herdr TUI and gives up without HERDR_ENV, which herdr-app never sets.
+      herdr-core = {
+        path = "${llm-agents.herdr-core}/share/skills/herdr-core";
       };
       terminal-browser = {
         path = "${llm-agents.terminal-browser}/lib/terminal-browser/skills/default";
       };
     };
 
+    skills.enableAll = [ "custom" ];
     skills.enable = [
       "defuddle"
       "json-canvas"
       "obsidian-bases"
       "obsidian-cli"
       "obsidian-markdown"
-      "find-skills"
-      "herdr"
+      "herdr-core"
       "terminal-browser"
     ];
 

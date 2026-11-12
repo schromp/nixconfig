@@ -19,6 +19,7 @@
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILa3o+D922G1gYVtzVSTjPRwq79u/LT7bosxakSOKRhc herdr-mobile"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOwXTCcORxRR62+qZn7u9x56KJSLoyrIWb/ZstB/2Nhd herdr-ipad"
     ];
   };
 

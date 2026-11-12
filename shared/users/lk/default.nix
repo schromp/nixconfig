@@ -45,6 +45,7 @@
       ./pi/pi.nix
       ./herdr/herdr.nix
       ./agent-skills.nix
+      ./agents
       ./vesktop.nix
       ./wezterm/wezterm.nix
       ./nushell/nushell.nix

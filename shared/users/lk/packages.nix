@@ -16,6 +16,7 @@ with pkgs;
   lazyjj
   lazysql
   gh
+  inputs.tg.packages.${pkgs.stdenv.hostPlatform.system}.tg # tangled cli
   # opencode
 
   # applications

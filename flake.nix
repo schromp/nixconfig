@@ -66,6 +66,11 @@
     # no nixpkgs follows, so the numtide binary cache actually hits
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    tg = {
+      url = "github:alyraffauf/tg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";

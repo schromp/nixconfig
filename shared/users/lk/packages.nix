@@ -21,7 +21,8 @@ with pkgs;
 
   # applications
   spotify
-  obsidian
+  # electron 43.8.7 breaks the renderer (webFrame defineProperty TypeError); drop once nixpkgs electron is fixed
+  (obsidian.override { electron = electron_44; })
   signal-desktop
   nomacs
   krita

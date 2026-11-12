@@ -17,6 +17,7 @@ with pkgs;
   lazysql
   gh
   inputs.tg.packages.${pkgs.stdenv.hostPlatform.system}.tg # tangled cli
+  (callPackage ../../../packages/clickhousectl.nix { }) # for the ClickHouse infra-* agent skills
   # opencode
 
   # applications

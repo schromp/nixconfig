@@ -11,4 +11,5 @@ in
     tmux-powerline = pkgs.callPackage ./tmux-powerline.nix {};
     colibri-social = pkgs.callPackage ./colibri-social.nix {};
     affine = pkgs.callPackage ./affine.nix {};
+    clickhousectl = pkgs.callPackage ./clickhousectl.nix {};
   })

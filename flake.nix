@@ -79,6 +79,14 @@
       url = "github:kepano/obsidian-skills";
       flake = false;
     };
+    clickhouse-skills = {
+      url = "github:ClickHouse/agent-skills";
+      flake = false;
+    };
+    grafana-skills = {
+      url = "github:grafana/skills";
+      flake = false;
+    };
   };
 
   outputs =

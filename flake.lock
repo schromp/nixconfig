@@ -107,6 +107,22 @@
         "type": "github"
       }
     },
+    "clickhouse-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793630555,
+        "narHash": "sha256-/OsVNfdjvvQ0xMw8lMYABabqjiZMrrnI2Kd9brYjOIk=",
+        "owner": "ClickHouse",
+        "repo": "agent-skills",
+        "rev": "d3b2b5ba43a8b80c2d08858b68d53edc701b5ace",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ClickHouse",
+        "repo": "agent-skills",
+        "type": "github"
+      }
+    },
     "dank-qml-common": {
       "flake": false,
       "locked": {
@@ -402,6 +418,22 @@
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "grafana-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793134833,
+        "narHash": "sha256-PAeYV+ZJWO6eoz+w2v0TsD3TYbkfWnvVrx3yHXmtkNU=",
+        "owner": "grafana",
+        "repo": "skills",
+        "rev": "8fb72a527961f05e708f53d2a0500709e12d7970",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grafana",
+        "repo": "skills",
         "type": "github"
       }
     },
@@ -1285,10 +1317,12 @@
       "inputs": {
         "agent-skills": "agent-skills",
         "awww": "awww",
+        "clickhouse-skills": "clickhouse-skills",
         "dms": "dms",
         "emacs-overlay": "emacs-overlay",
         "firefox": "firefox",
         "ghostty": "ghostty",
+        "grafana-skills": "grafana-skills",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",

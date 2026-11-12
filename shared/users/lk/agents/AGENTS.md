@@ -61,4 +61,11 @@ If `$HC_TERMINAL_ID` is set, you are running inside Herdr: your terminal is a pa
 the user's Herdr window, next to their other panes and agents. Load the `herdr-core`
 skill at the start and use it whenever it fits, not only when asked.
 
+Run background and long-running work in Herdr panes (via `hc`), not your harness's own
+background mechanism, so the user can watch it in their window. This covers dev
+servers, watchers, builds, long test runs and sub-agents. In Claude Code that means
+using Herdr instead of Bash `run_in_background`, the Monitor tool and Agent-tool
+subagents; elsewhere it replaces shell `&`, `nohup` and tmux. Commands that finish
+quickly still run in the foreground as usual.
+
 Only type into another pane or agent when the user asks you to; reading is fine.

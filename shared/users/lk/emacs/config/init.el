@@ -506,7 +506,7 @@
           :protocol "https"
           :endpoint "/v1/chat/completions"
           :stream t
-          :key "sk-hyper-141c7987-0ece-4e27-91cf-ab71680236da"
+          :key #'gptel-api-key-from-auth-source
           :models '("gemma-4-26b-a4b-it")))
   (setq gptel-display-buffer-action
     '(nil (side . right) (window-width . 0.4)))

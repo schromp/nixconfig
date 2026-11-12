@@ -131,7 +131,6 @@ in
         gum
         mcp-grafana
         jiratui
-        gcx
         kubernetes-helm
 
         argocd

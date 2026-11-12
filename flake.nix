@@ -65,6 +65,19 @@
 
     # no nixpkgs follows, so the numtide binary cache actually hits
     llm-agents.url = "github:numtide/llm-agents.nix";
+
+    agent-skills = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    obsidian-skills = {
+      url = "github:kepano/obsidian-skills";
+      flake = false;
+    };
+    vercel-skills = {
+      url = "github:vercel-labs/skills";
+      flake = false;
+    };
   };
 
   outputs =

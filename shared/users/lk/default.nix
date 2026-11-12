@@ -16,6 +16,10 @@
     ];
     shell = pkgs.zsh;
     hashedPassword = "$y$j9t$r/yxsyyrlpxxxy0tptnrc1$.6pbk8mv/f7aeh0bghkdejtfk.7rrissy6wgrtafvh1";
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILa3o+D922G1gYVtzVSTjPRwq79u/LT7bosxakSOKRhc herdr-mobile"
+    ];
   };
 
   home-manager.users.lk = {
@@ -39,6 +43,7 @@
       # ./opencode/opencode.nix
       ./pi/pi.nix
       ./herdr/herdr.nix
+      ./agent-skills.nix
       ./vesktop.nix
       ./wezterm/wezterm.nix
       ./nushell/nushell.nix

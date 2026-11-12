@@ -16,6 +16,7 @@ in
     ./packages.nix
     ./pipewire.nix
     ./cosmic.nix
+    ./openssh.nix
   ];
 
   # SHELL:

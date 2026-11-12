@@ -18,3 +18,4 @@
 /mods/*/jsconfig.json
 !/mods/herdr-nvim
 !/mods/herdr-nvim-header
+!/mods/pane-or-tab/

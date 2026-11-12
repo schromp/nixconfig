@@ -209,6 +209,14 @@
       },
       "edge": "bottom",
       "align": "end"
+    },
+    {
+      "id": "pane-or-tab",
+      "content": {
+        "mod": "pane-or-tab"
+      },
+      "edge": "bottom",
+      "align": "start"
     }
   ]
 }

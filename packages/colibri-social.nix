@@ -1,15 +1,18 @@
 {appimageTools, fetchurl, lib, stdenv, ...}: let
-  version = "0.6.0-spaces.2";
   appimage =
     if stdenv.hostPlatform.isAarch64 then {
+      version = "0.6.0-spaces.2";
       arch = "aarch64";
       hash = "sha256-R1AVZjcsITU8fKyAospLExufAaEZ0ytukYygyHuyPyE=";
     }
     else if stdenv.hostPlatform.isx86_64 then {
+      version = "0.6.0-spaces.3";
       arch = "amd64";
-      hash = "sha256-qckqXleU9Ng6B2GUii+vdYP8CEnn9s9KvcNQlTbTm1k=";
+      hash = "sha256-h4vMnq2ujrwvQmDk7xZqVNbQ3ZgfgEY95u4TkjlgE9I=";
     }
     else throw "colibri-social is only available on x86_64-linux and aarch64-linux";
+
+  inherit (appimage) version;
 
   src = fetchurl {
     url = "https://github.com/colibri-social/colibri.social/releases/download/v${version}/Colibri.Social_${version}_${appimage.arch}.AppImage";

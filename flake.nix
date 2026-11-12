@@ -23,11 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    non_public_files = {
-      url = "path:/home/lk/repos/nixconfig_private";
-      flake = false;
-    };
-
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=2566d818848b58b114071f199ffe944609376270&submodules=1";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {
@@ -64,20 +59,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fluxer-bin.url = "github:NixOS/nixpkgs/pull/490554/merge";
-
     firefox.url = "github:nix-community/flake-firefox-nightly";
     firefox.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    omp.url = "github:can1357/oh-my-pi";
-
-    albedo.url = "git+https://tangled.org/okami.mom/albedo";
-
-    # Pinned to a release tag: the upstream flake can't see git tags and stamps
-    # version 0.0.0, which fails plugins' `requires_hermes` check, so
-    # hosts/tower/hermes.nix passes the version in. Bump both together.
-    hermes-agent.url = "github:NousResearch/hermes-agent/v0.22.5";
+    # no nixpkgs follows, so the numtide binary cache actually hits
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =

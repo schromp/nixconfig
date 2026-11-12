@@ -8,31 +8,15 @@
     git
     vim
     btop
+    ncdu
     lxqt.lxqt-policykit
     imagemagick
-    rnote
-    evince
-    spotify
-    vlc
-    gimp
-    nautilus
-    chromium
-    proton-pass
-    proton-vpn
-    protonmail-desktop
-    # bambu-studio
-    # orca-slicer
     alsa-utils # TODO: why?
     p7zip
     nix-prefetch-git
-    # freecad
-    slack
     pavucontrol
     powertop
     netbird
-    openlinkhub
-    openrgb
-    virt-viewer
     distrobox
   ];
 }

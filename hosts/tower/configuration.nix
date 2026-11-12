@@ -6,7 +6,6 @@
   imports = [
     # Presets
     ../../shared/hosts/desktop/configuration.nix
-    ./hermes.nix
   ];
 
   modules.system = {

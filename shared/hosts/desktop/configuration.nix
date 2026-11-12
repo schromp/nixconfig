@@ -15,6 +15,7 @@ in
     ./nix.nix
     ./packages.nix
     ./pipewire.nix
+    ./cosmic.nix
   ];
 
   # SHELL:
@@ -41,13 +42,13 @@ in
         udisks2
       ];
     };
-    displayManager = {
-      enable = true;
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-    };
+    # displayManager = {
+    #   enable = true;
+    #   sddm = {
+    #     enable = true;
+    #     wayland.enable = true;
+    #   };
+    # };
     flatpak.enable = true;
     resolved = {
       enable = true;

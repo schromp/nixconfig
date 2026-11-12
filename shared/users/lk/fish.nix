@@ -1,7 +1,6 @@
 {...}: {
   programs.fish = {
     enable = true;
-    generateCompletions = true;
     shellAliases = {
       "lg" = "lazygit";
     };

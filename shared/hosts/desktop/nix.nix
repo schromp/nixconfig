@@ -40,6 +40,7 @@
         "https://cosmic.cachix.org/"
         "https://hyprland.cachix.org"
         "https://vicinae.cachix.org"
+        "https://cache.numtide.com"
       ];
 
       trusted-public-keys = [
@@ -47,6 +48,7 @@
         "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       ];
     };
   };

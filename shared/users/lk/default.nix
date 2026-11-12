@@ -32,19 +32,17 @@
       ./ghostty/ghostty.nix
       ./helix/helix.nix
       ./vicinae.nix
-      ./fish.nix
-      ./matugen/matugen.nix
       ./helix/helix.nix
       # ./noctalia/noctalia.nix
-      ./dms/dms.nix
+      # ./dms/dms.nix
       ./zellij/zellij.nix
-      ./opencode/opencode.nix
+      # ./opencode/opencode.nix
       ./pi/pi.nix
+      ./herdr/herdr.nix
       ./vesktop.nix
       ./wezterm/wezterm.nix
       ./nushell/nushell.nix
       ./emacs/emacs.nix
-      ./omp.nix
     ];
 
     home.flakePath = "/home/lk/repos/nixconfig";
@@ -52,10 +50,6 @@
     home.packages = import ./packages.nix {
       inherit pkgs inputs;
     };
-
-    # programs.fish.shellInit = ''
-    #   alias cs='${inputs.self.packages.${pkgs.system}.colorschemes}/bin/cs'
-    # '';
 
     programs = {
       bat.enable = true;

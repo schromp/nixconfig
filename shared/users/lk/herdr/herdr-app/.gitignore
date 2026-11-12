@@ -1,0 +1,17 @@
+# herdr writes most of this dir itself (state, shipped mods, generated docs);
+# only track what's ours
+/*
+!/.gitignore
+!/keys.json
+!/settings.json
+!/programs.json
+
+!/layouts/
+/layouts/*
+!/layouts/mine.json
+
+!/mods/
+/mods/*
+!/mods/files-open/
+/mods/*/gpui-kit.d.ts
+/mods/*/jsconfig.json

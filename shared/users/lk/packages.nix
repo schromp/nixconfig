@@ -16,50 +16,38 @@ with pkgs;
   lazyjj
   lazysql
   gh
-  gemini-cli
-  opencode
-  # crush
+  # opencode
 
   # applications
-  spotify-player
+  spotify
   obsidian
-  element-desktop
-  # signal-desktop
+  signal-desktop
   nomacs
   krita
   pureref
   inkscape
-  loupe
-  celluloid
+  loupe # image viewer
+  celluloid # video player
+  evince # pdf
+  vlc
   thunderbird
-  localsend
   heroic
-  libation
+  libation # audible stuff
   orca-slicer
   discord
-  mission-center
   blockbench
   gnome-calendar
-  geary
-  owncloud-client
-  # logseq
-  # affine
   libreoffice
   qpwgraph
+  openlinkhub
+  openrgb
+  gimp
+  nautilus
+  chromium
 
-  inputs.albedo.packages.${pkgs.stdenv.hostPlatform.system}.default
   zed-editor
   claude-code
   claude-agent-acp
 
   # (vesktop.override { withSystemVencord = false; })
-
-  ((pkgs.callPackage "${inputs.fluxer-bin}/pkgs/by-name/fl/fluxer-bin/package.nix" { }).overrideAttrs
-    (oldAttrs: {
-      src = pkgs.fetchurl {
-        url = "https://api.canary.fluxer.app/dl/desktop/canary/linux/x64/v2026.602.31138/appimage";
-        hash = "sha256-d4FAWwrWyoyp7lo8X+nIe+Dd6Z8rDThyK1wU00f7rjY=";
-      };
-    })
-  )
 ]

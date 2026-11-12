@@ -8,10 +8,10 @@
 }:
 let
   comp = osConfig.modules.local.system.compositor;
-  kitty-cursor = pkgs.runCommand "kitty-cursor" { } ''
-    mkdir -p $out/share/icons/kitty-cursor
-    cp -r ${inputs.non_public_files}/extras/private/kitty-cursor/* $out/share/icons/kitty-cursor/
-  '';
+  # kitty-cursor = pkgs.runCommand "kitty-cursor" { } ''
+  #   mkdir -p $out/share/icons/kitty-cursor
+  #   cp -r ${inputs.non_public_files}/extras/private/kitty-cursor/* $out/share/icons/kitty-cursor/
+  # '';
 
 in
 {
@@ -43,15 +43,15 @@ in
       };
     };
 
-    home.pointerCursor = {
-      enable = true;
-      gtk.enable = true;
-      x11.enable = true;
-
-      name = "kitty-cursor";
-
-      package = kitty-cursor;
-    };
+    # home.pointerCursor = {
+    #   enable = true;
+    #   gtk.enable = true;
+    #   x11.enable = true;
+    #
+    #   name = "kitty-cursor";
+    #
+    #   package = kitty-cursor;
+    # };
 
   };
 }

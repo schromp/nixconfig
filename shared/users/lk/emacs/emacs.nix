@@ -46,15 +46,16 @@
     nil
     yaml-language-server
     yamllint
-    (texlive.combine {
-      inherit (texlive.pkgs)
-        scheme-medium
-        latexmk
-        biber
-        collection-latexextra
-        collection-mathscience
-        ;
-    })
+    texliveMedium
+    # (texlive.combine {
+    #   inherit (texlive.pkgs)
+    #     scheme-medium
+    #     latexmk
+    #     biber
+    #     collection-latexextra
+    #     collection-mathscience
+    #     ;
+    # })
 
     # Fonts
     jetbrains-mono

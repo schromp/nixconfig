@@ -58,7 +58,10 @@
     "ctrl-shift-z": "pane.zoom",
     "ctrl-shift-l": "layout.switch",
     "f2": "tab.rename",
-    "shift-f2": "space.rename"
+    "shift-f2": "space.rename",
+    "alt-e": "mod.open:herdr-nvim",
+    "alt-o": "herdr-nvim.pick",
+    "alt-shift-e": "herdr-nvim.reveal"
   },
   "terminal": {
     "ctrl-backspace": "send:\u0017",

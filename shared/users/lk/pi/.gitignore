@@ -1,3 +1,4 @@
-agent/sessions
-agent/auth.json
-agent/dir-permissions-whitelist.json
+pi/agent/sessions
+pi/agent/auth.json
+pi/agent/dir-permissions-whitelist.json
+pi/agent/models-store.json

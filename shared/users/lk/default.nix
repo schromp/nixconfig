@@ -90,6 +90,7 @@
       easyeffects = {
         enable = false;
       };
+      owncloud-client.enable = true;
     };
 
     modules.home = {

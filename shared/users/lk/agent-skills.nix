@@ -32,6 +32,10 @@ in
         path = "${inputs.grafana-skills}";
         subdir = "skills";
       };
+      anthropic = {
+        path = "${inputs.anthropic-skills}";
+        subdir = "skills";
+      };
       # shipped with the packages, so they match the installed versions
       # herdr-core (hc), what the Herdr app's terminals run in; it points agents at
       # `hc --skill` / `herdr-app --skill`. Not llm-agents.herdr's skill: that one is for
@@ -58,6 +62,7 @@ in
       "clickhouse-architecture-advisor"
       "infra-clickhouse"
       "infra-postgres"
+      "frontend-design"
     ];
 
     # Grafana core + LGTM. Claude Code only finds skills one level deep, so each nested

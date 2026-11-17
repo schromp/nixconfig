@@ -56,6 +56,7 @@
     jdt-language-server
     terraform-ls
     helm-ls
+    biome
 
     gleam
     beamPackages.erlang

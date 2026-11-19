@@ -52,6 +52,7 @@ with pkgs;
   zed-editor
   claude-code
   claude-agent-acp
+  inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.paseo-desktop
 
   # (vesktop.override { withSystemVencord = false; })
 ]

@@ -27,6 +27,11 @@
         identityFile = "~/.ssh/tangled";
         identitiesOnly = true;
       };
+      "tangled.org" = {
+        hostname = "tangled.org";
+        identityFile = "~/.ssh/tangled";
+        identitiesOnly = true;
+      };
       "cloudy" = {
         hostname = "157.180.37.119";
         port = 2200;

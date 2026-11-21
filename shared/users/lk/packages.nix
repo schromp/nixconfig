@@ -19,7 +19,6 @@ with pkgs;
   gcx
   inputs.tg.packages.${pkgs.stdenv.hostPlatform.system}.tg # tangled cli
   (callPackage ../../../packages/clickhousectl.nix { }) # for the ClickHouse infra-* agent skills
-  # opencode
 
   # applications
   spotify
@@ -48,10 +47,12 @@ with pkgs;
   gimp
   nautilus
   chromium
+  trezor-suite
 
   zed-editor
   claude-code
   claude-agent-acp
+  opencode
   inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.paseo-desktop
 
   # (vesktop.override { withSystemVencord = false; })

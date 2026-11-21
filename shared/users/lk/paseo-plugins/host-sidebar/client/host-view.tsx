@@ -5,10 +5,12 @@ import {
   type ProjectRef,
   type WorkspaceRef,
   useHosts,
+  useProjects,
   useSettings,
   useWorkspace,
   useWorkspaces,
 } from "@getpaseo/plugin/client";
+import type { PluginWorkspaceSnapshot } from "@getpaseo/plugin";
 import { Icon, ScrollView } from "@getpaseo/plugin/client/ui";
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
 import { PanResponder, Pressable, Text, View, type ViewStyle } from "react-native";
@@ -62,6 +64,8 @@ function useLayout() {
         })),
       setPaneSizes: (sizes: Record<string, number>) =>
         update((current) => ({ ...current, paneSizes: { ...current.paneSizes, ...sizes } })),
+      setFilter: (filter: "hideEmpty" | "hideInactive", value: boolean) =>
+        update((current) => ({ ...current, [filter]: value })),
     }),
     [layout, update],
   );
@@ -244,21 +248,28 @@ function WorkspaceRow({
   );
 }
 
+/** A project in a host pane. Empty projects come from the project list, so they still get a header and +. */
+interface Section {
+  key: string;
+  title: string;
+  project: ProjectRef | null;
+  items: readonly WorkspaceRef[];
+}
+
 function ProjectSection({
   hostId,
   group,
   grip,
 }: {
   hostId: string;
-  group: Group<WorkspaceRef>;
+  group: Section;
   grip: Grip;
 }) {
   const { props, layout } = useView();
   const { theme, navigation, active } = props;
-  const title = group.title ?? group.key;
+  const { title, project } = group;
   const collapseKey = `project:${hostId}:${group.key}`;
   const isCollapsed = layout.isCollapsed(collapseKey);
-  const project: ProjectRef | null = useWorkspace(group.items[0]!, (ws) => ws.project);
   return (
     <View>
       <View style={{ flexDirection: "row", alignItems: "center", paddingLeft: 12, paddingRight: 8, gap: 2 }}>
@@ -309,7 +320,41 @@ function ProjectSection({
   );
 }
 
-const groupKey = (group: Group<WorkspaceRef>) => group.key;
+const sectionKey = (section: Section) => section.key;
+
+/** A project counts as inactive when nothing is running or waiting and nothing was prompted in this window. */
+const INACTIVE_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
+
+function isActive(ws: PluginWorkspaceSnapshot, now: number): boolean {
+  if (ws.indicator !== "done") return true;
+  const last = ws.lastPromptAt ?? ws.createdAt;
+  return last !== null && now - Date.parse(last) < INACTIVE_AFTER_MS;
+}
+
+/** Every project on the host, with its workspaces; workspaces whose project is unknown keep their own group. */
+function buildSections(
+  projects: readonly Group<ProjectRef>[],
+  workspaces: readonly Group<WorkspaceRef>[],
+): Section[] {
+  const byId = new Map(workspaces.map((group) => [group.key, group]));
+  const byTitle = new Map(workspaces.map((group) => [group.title, group]));
+  const used = new Set<string>();
+  const sections: Section[] = projects.map((group) => {
+    const match = byId.get(group.key) ?? byTitle.get(group.title);
+    if (match) used.add(match.key);
+    return {
+      key: group.key,
+      title: group.title ?? group.key,
+      project: group.items[0] ?? null,
+      items: match?.items ?? [],
+    };
+  });
+  for (const group of workspaces) {
+    if (used.has(group.key)) continue;
+    sections.push({ key: group.key, title: group.title ?? group.key, project: null, items: group.items });
+  }
+  return sections.sort((a, b) => a.title.localeCompare(b.title));
+}
 const hostCollapseKey = (serverId: string) => `host:${serverId}`;
 
 /** The line between two host panes. Drag it to give one pane more room than the other. */
@@ -384,8 +429,28 @@ function HostSection({
       (b.lastPromptAt ?? b.createdAt ?? "").localeCompare(a.lastPromptAt ?? a.createdAt ?? ""),
     groupBy: (ws) => ({ key: ws.projectId, title: ws.projectDisplayName }),
   });
+  const projects = useProjects({
+    hosts,
+    groupBy: (project) => ({ key: project.ref.id, title: project.displayName }),
+  });
+  // Grouped by both ID and name, so the name fallback in buildSections matches here too.
+  const activeGroups = useWorkspaces({
+    hosts,
+    where: (ws) => !ws.background && ws.archivingAt === null && isActive(ws, Date.now()),
+    groupBy: (ws) => [ws.projectId, `name:${ws.projectDisplayName}`],
+  });
+  const { hideEmpty, hideInactive } = layout.layout;
   const savedOrder = layout.layout.projectOrder[host.serverId];
-  const ordered = useMemo(() => applyOrder(groups, groupKey, savedOrder ?? []), [groups, savedOrder]);
+  const ordered = useMemo(() => {
+    const active = new Set(activeGroups.map((group) => group.key));
+    const visible = buildSections(projects, groups).filter(
+      (section) =>
+        !(hideEmpty && section.items.length === 0) &&
+        !(hideInactive && !active.has(section.key) && !active.has(`name:${section.title}`)),
+    );
+    return applyOrder(visible, sectionKey, savedOrder ?? []);
+  }, [projects, groups, activeGroups, hideEmpty, hideInactive, savedOrder]);
+  const hidden = projects.length - ordered.length;
   const count = groups.reduce((n, g) => n + g.items.length, 0);
 
   return (
@@ -436,12 +501,12 @@ function HostSection({
         >
           {ordered.length === 0 ? (
             <Text style={{ color: theme.colors.foregroundMuted, fontSize: 11, paddingLeft: 40, paddingVertical: 4 }}>
-              {host.status === "online" ? "No workspaces" : `Host ${host.status}`}
+              {host.status === "online" ? (hidden > 0 ? `${hidden} hidden by filters` : "No workspaces") : `Host ${host.status}`}
             </Text>
           ) : (
             <DragList
               items={ordered}
-              keyOf={groupKey}
+              keyOf={sectionKey}
               liftedColor={theme.colors.surface1}
               onDraggingChange={setDragging}
               onReorder={(keys) => layout.setProjectOrder(host.serverId, keys)}
@@ -456,6 +521,63 @@ function HostSection({
 }
 
 const hostKeyOf = (host: PluginHostSummary) => host.serverId;
+
+function FilterChip({
+  label,
+  value,
+  onChange,
+  theme,
+}: {
+  label: string;
+  value: boolean;
+  onChange: (value: boolean) => void;
+  theme: Theme;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="switch"
+      accessibilityState={{ checked: value }}
+      accessibilityLabel={label}
+      onPress={() => onChange(!value)}
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 4,
+        paddingHorizontal: 8,
+        paddingVertical: 3,
+        borderRadius: 999,
+        borderWidth: 1,
+        borderColor: value ? theme.colors.accent : theme.colors.border,
+        backgroundColor: value ? theme.colors.surface2 : "transparent",
+      }}
+    >
+      <Icon name={value ? "EyeOff" : "Eye"} size={11} color={value ? theme.colors.accent : theme.colors.foregroundMuted} />
+      <Text style={{ color: value ? theme.colors.foreground : theme.colors.foregroundMuted, fontSize: 11 }}>{label}</Text>
+    </Pressable>
+  );
+}
+
+function FilterBar() {
+  const { props, layout } = useView();
+  const { theme } = props;
+  return (
+    <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 6, paddingHorizontal: 12, paddingVertical: 6 }}>
+      <Text style={{ color: theme.colors.foregroundMuted, fontSize: 11 }}>Hide</Text>
+      <FilterChip
+        label="Empty"
+        value={layout.layout.hideEmpty}
+        onChange={(value) => layout.setFilter("hideEmpty", value)}
+        theme={theme}
+      />
+      <FilterChip
+        label="Inactive"
+        value={layout.layout.hideInactive}
+        onChange={(value) => layout.setFilter("hideInactive", value)}
+        theme={theme}
+      />
+    </View>
+  );
+}
 
 export function HostSidebarView(props: PluginSidebarViewProps) {
   const hosts = useHosts();
@@ -478,6 +600,7 @@ export function HostSidebarView(props: PluginSidebarViewProps) {
       : { flexGrow: panes.weightOf(host.serverId), flexShrink: 1, flexBasis: 0, minHeight: MIN_PANE };
   return (
     <Ctx.Provider value={context}>
+      <FilterBar />
       <DragList
         items={ordered}
         keyOf={hostKeyOf}

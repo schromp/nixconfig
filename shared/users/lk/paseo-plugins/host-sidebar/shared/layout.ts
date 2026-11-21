@@ -10,6 +10,9 @@ export const layoutSchema = z.object({
   projectOrder: z.record(z.string(), z.array(z.string())).default({}),
   /** Per host server ID, the pane's flex weight set by dragging the dividers. */
   paneSizes: z.record(z.string(), z.number().positive()).default({}),
+  /** Sidebar filters. */
+  hideEmpty: z.boolean().default(false),
+  hideInactive: z.boolean().default(false),
 });
 
 export type Layout = z.output<typeof layoutSchema>;

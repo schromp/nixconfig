@@ -11,6 +11,8 @@ let
     inherit (upstream.passthru) flutterSdk shellBundle flutterEngine;
     inherit (dependencies) cargoHash;
     buildCommit = inputs.veshell.rev;
+    # libdisplay-info-sys 0.3 wants libdisplay-info < 0.4
+    libdisplay-info = pkgs.libdisplay-info_0_3;
   };
 in
 {

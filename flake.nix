@@ -1,6 +1,26 @@
 {
   description = "inspired nixos system config";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      "https://cosmic.cachix.org/"
+      "https://hyprland.cachix.org"
+      "https://vicinae.cachix.org"
+      "https://cache.numtide.com"
+      "https://veshell.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "veshell.cachix.org-1:C8J71PCJ1Fx4+4shICPNsSOnGgijVEHZCTrWhbYyjOI="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -48,6 +68,9 @@
     vicinae.url = "github:vicinaehq/vicinae";
 
     awww.url = "git+https://codeberg.org/LGFae/awww";
+
+    # no nixpkgs follows: it pins nixpkgs to match the cached Flutter engine
+    veshell.url = "github:free-explorers/veshell";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";

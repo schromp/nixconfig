@@ -16,6 +16,7 @@ in
     ./packages.nix
     ./pipewire.nix
     ./cosmic.nix
+    ./veshell.nix
     ./openssh.nix
   ];
 

@@ -159,6 +159,11 @@ in
 
   # NETWORKING
   networking = {
+    firewall.trustedInterfaces = [
+      "br-+"
+      "docker0"
+    ];
+
     networkmanager.enable = true;
   };
 

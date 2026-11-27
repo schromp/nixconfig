@@ -74,6 +74,10 @@
         lfs.enable = true;
         signing.format = null;
         settings = {
+          user = {
+            name = "schromp";
+            email = "schromp@echsen.club";
+          };
           init = {
             defaultBranch = "main";
           };
